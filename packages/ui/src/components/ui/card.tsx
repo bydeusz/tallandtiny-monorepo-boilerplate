@@ -32,7 +32,7 @@ function CardHeader({
 function CardTitle({
   className,
   ...props
-}: React.HTMLAttributes<HTMLHeadingElement>) {
+}: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
       className={cn("leading-none font-semibold", className)}
@@ -44,7 +44,7 @@ function CardTitle({
 function CardDescription({
   className,
   ...props
-}: React.HTMLAttributes<HTMLParagraphElement>) {
+}: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
       className={cn("text-muted-foreground text-sm", className)}
