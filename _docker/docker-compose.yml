@@ -1,3 +1,5 @@
+name: tintsmith
+
 services:
   postgres:
     image: postgres:16
