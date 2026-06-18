@@ -134,3 +134,23 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# dependencies
+node_modules/
+
+# turborepo
+.turbo/
+
+# builds
+dist/
+.next/
+out/
+
+# prisma generated client (build artifact; recreated by db:generate)
+packages/database/src/generated/
+
+# env
+.env
+*.env
+!.env.example
+!_docker/.env.example
