@@ -11,7 +11,6 @@ export const nestConfig = [
     rules: {
       // NestJS DI relies on decorator metadata; these are noisy in idiomatic Nest code
       '@typescript-eslint/no-extraneous-class': 'off',
-      '@typescript-eslint/interface-name-prefix': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
     },
   },

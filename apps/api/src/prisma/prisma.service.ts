@@ -1,4 +1,4 @@
-import { Injectable, OnModuleInit } from '@nestjs/common';
+import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 import { PrismaClient, prisma } from '@repo/database';
 
 /**
@@ -10,10 +10,14 @@ import { PrismaClient, prisma } from '@repo/database';
  * the configured singleton via `this.db` so feature services call `this.prisma.db.mini.*`.
  */
 @Injectable()
-export class PrismaService implements OnModuleInit {
+export class PrismaService implements OnModuleInit, OnModuleDestroy {
   readonly db: PrismaClient = prisma;
 
   async onModuleInit() {
     await this.db.$connect();
+  }
+
+  async onModuleDestroy() {
+    await this.db.$disconnect();
   }
 }
