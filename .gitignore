@@ -146,6 +146,9 @@ dist/
 .next/
 out/
 
+# next.js auto-generated type declaration (recreated on dev/build)
+next-env.d.ts
+
 # prisma generated client (build artifact; recreated by db:generate)
 packages/database/src/generated/
 
