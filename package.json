@@ -1,0 +1,29 @@
+{
+  "name": "tintsmith",
+  "private": true,
+  "packageManager": "pnpm@10.28.2",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "check-types": "turbo run check-types",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "db:generate": "turbo run db:generate",
+    "db:migrate": "turbo run db:migrate",
+    "db:deploy": "turbo run db:deploy",
+    "gen:queries": "turbo run gen:queries",
+    "docker:up": "docker compose -f _docker/docker-compose.yml up -d",
+    "docker:down": "docker compose -f _docker/docker-compose.yml down"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "turbo": "^2.5.0",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["@prisma/engines", "prisma"]
+  }
+}
