@@ -16,6 +16,7 @@
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:studio": "prisma studio",
+    "dev": "prisma studio --browser none --port 5555",
     "build": "tsc",
     "check-types": "tsc --noEmit"
   },
