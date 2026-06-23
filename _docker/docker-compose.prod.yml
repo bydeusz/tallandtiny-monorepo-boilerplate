@@ -44,6 +44,17 @@ services:
       echo 'bucket ready';
       "
 
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
   migrate:
     build:
       context: ..
@@ -65,10 +76,28 @@ services:
     restart: unless-stopped
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?schema=public
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
       S3_ENDPOINT: http://minio:9000
       S3_ACCESS_KEY: ${MINIO_ROOT_USER}
       S3_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
       S3_BUCKET: ${MINIO_BUCKET}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+      JWT_EXPIRATION: ${JWT_EXPIRATION}
+      JWT_REFRESH_EXPIRATION: ${JWT_REFRESH_EXPIRATION}
+      CORS_ORIGIN: ${CORS_ORIGIN}
+      ALLOWED_EMAIL_DOMAINS: ${ALLOWED_EMAIL_DOMAINS}
+      REGISTRATION_ENABLED: ${REGISTRATION_ENABLED}
+      FRONTEND_URL: ${FRONTEND_URL}
+      LOG_LEVEL: ${LOG_LEVEL}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_SECURE: ${SMTP_SECURE}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      MAIL_FROM: ${MAIL_FROM}
+      SUPPORT_EMAIL: ${SUPPORT_EMAIL}
       PORT: ${PORT}
       NODE_ENV: production
     ports:
@@ -80,53 +109,60 @@ services:
         condition: service_healthy
       minio:
         condition: service_healthy
+      redis:
+        condition: service_healthy
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "node -e \"fetch('http://localhost:'+process.env.PORT+'/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\"",
+          "node -e \"fetch('http://localhost:'+process.env.PORT+'/api/v1/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\"",
         ]
       interval: 30s
       timeout: 5s
       retries: 3
       start_period: 20s
 
-  # ── Later (nestjs-boilerplate port): queues + worker ─────────────────
-  # Enable when apps/api gains redis/BullMQ and a worker entrypoint
-  # (apps/api/src/main-worker.ts -> dist/main-worker.js). The worker reuses
-  # the SAME image (target: runner) with a different command — no Dockerfile
-  # change. Also uncomment `redis-data:` under volumes.
-  #
-  # redis:
-  #   image: redis:7
-  #   restart: unless-stopped
-  #   volumes:
-  #     - redis-data:/data
-  #   healthcheck:
-  #     test: ["CMD", "redis-cli", "ping"]
-  #     interval: 5s
-  #     timeout: 5s
-  #     retries: 10
-  #
-  # worker:
-  #   build:
-  #     context: ..
-  #     dockerfile: _docker/Dockerfile
-  #     target: runner
-  #   command: ["node", "dist/main-worker.js"]
-  #   restart: unless-stopped
-  #   environment:
-  #     DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?schema=public
-  #     REDIS_HOST: redis
-  #     REDIS_PORT: 6379
-  #     NODE_ENV: production
-  #   depends_on:
-  #     migrate:
-  #       condition: service_completed_successfully
-  #     redis:
-  #       condition: service_healthy
+  worker:
+    build:
+      context: ..
+      dockerfile: _docker/Dockerfile
+      target: runner
+    command: ["node", "dist/main-worker.js"]
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?schema=public
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      S3_ENDPOINT: http://minio:9000
+      S3_ACCESS_KEY: ${MINIO_ROOT_USER}
+      S3_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
+      S3_BUCKET: ${MINIO_BUCKET}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+      JWT_EXPIRATION: ${JWT_EXPIRATION}
+      JWT_REFRESH_EXPIRATION: ${JWT_REFRESH_EXPIRATION}
+      CORS_ORIGIN: ${CORS_ORIGIN}
+      ALLOWED_EMAIL_DOMAINS: ${ALLOWED_EMAIL_DOMAINS}
+      REGISTRATION_ENABLED: ${REGISTRATION_ENABLED}
+      FRONTEND_URL: ${FRONTEND_URL}
+      LOG_LEVEL: ${LOG_LEVEL}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_SECURE: ${SMTP_SECURE}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      MAIL_FROM: ${MAIL_FROM}
+      SUPPORT_EMAIL: ${SUPPORT_EMAIL}
+      NODE_ENV: production
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
 
 volumes:
   postgres-data:
   minio-data:
-  # redis-data:   # uncomment together with the redis service above
+  redis-data:
