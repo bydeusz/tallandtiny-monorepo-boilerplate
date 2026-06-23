@@ -1,23 +1,36 @@
-import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
-import { PrismaClient, prisma } from '@repo/database';
+import {
+  Injectable,
+  Logger,
+  OnModuleDestroy,
+  OnModuleInit,
+} from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { PrismaPg } from '@prisma/adapter-pg';
+import { PrismaClient } from '@repo/database';
 
-/**
- * Thin injectable wrapper around the shared Prisma singleton from @repo/database.
- *
- * NOTE: Prisma 7's PrismaClientConstructor requires an `options` argument in its
- * `new()` signature (the adapter is mandatory), so `extends PrismaClient` with
- * a bare `super()` call fails to compile. We use the documented fallback: expose
- * the configured singleton via `this.db` so feature services call `this.prisma.db.mini.*`.
- */
 @Injectable()
-export class PrismaService implements OnModuleInit, OnModuleDestroy {
-  readonly db: PrismaClient = prisma;
+export class PrismaService
+  extends PrismaClient
+  implements OnModuleInit, OnModuleDestroy
+{
+  private readonly logger = new Logger(PrismaService.name);
 
-  async onModuleInit() {
-    await this.db.$connect();
+  constructor(private readonly configService: ConfigService) {
+    const connectionString = configService.get<string>('database.url');
+    if (!connectionString) {
+      throw new Error('DATABASE_URL is not configured');
+    }
+    const adapter = new PrismaPg({ connectionString });
+    super({ adapter });
   }
 
-  async onModuleDestroy() {
-    await this.db.$disconnect();
+  async onModuleInit(): Promise<void> {
+    await this.$connect();
+  }
+
+  async onModuleDestroy(): Promise<void> {
+    this.logger.log('Disconnecting Prisma client...');
+    await this.$disconnect();
+    this.logger.log('Prisma client disconnected');
   }
 }
