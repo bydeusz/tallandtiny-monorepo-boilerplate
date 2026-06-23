@@ -29,6 +29,6 @@
     "node": ">=22.12"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["@prisma/engines", "prisma"]
+    "onlyBuiltDependencies": ["@prisma/engines", "prisma", "bcrypt"]
   }
 }

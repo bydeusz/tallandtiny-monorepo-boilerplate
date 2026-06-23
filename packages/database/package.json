@@ -15,6 +15,7 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
+    "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
     "dev": "prisma studio --browser none --port 5555",
     "build": "tsc",
@@ -27,9 +28,12 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
+    "@types/bcrypt": "^6.0.0",
     "@types/pg": "^8.11.0",
+    "bcrypt": "^6.0.0",
     "dotenv": "^16.4.0",
     "prisma": "^7.0.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.0"
   }
 }
