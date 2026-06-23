@@ -31,7 +31,12 @@ async function bootstrap() {
 
   const port = process.env.PORT ?? 3001;
   await app.listen(port);
-  console.log(`API listening on http://localhost:${port}/api`);
+
+  const base = `http://localhost:${port}`;
+  console.log(`\n  🎨 Tintsmith API ready`);
+  console.log(`  ├─ API:          ${base}/api`);
+  console.log(`  ├─ Swagger UI:   ${base}/api/docs`);
+  console.log(`  └─ OpenAPI JSON: ${base}/api/docs-json\n`);
 }
 
 void bootstrap();
