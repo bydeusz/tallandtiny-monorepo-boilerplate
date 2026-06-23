@@ -16,6 +16,7 @@
 - **Source of truth for copies:** `BP=/Users/tadeuszderuijter/dev/boilerplate/nestjs-boilerplate`. **Destination:** `API=/Users/tadeuszderuijter/dev/tintsmith/apps/api`. Repo root: `/Users/tadeuszderuijter/dev/tintsmith`.
 - **API conventions (locked):** URI versioning (`/api/v1`), global prefix `api`, response envelope `{success,statusCode,data,meta,…}`, all global guards/filters/interceptors/pino — ported 1:1. Port **3001**. Swagger served at **`/api/docs`** (JSON at `/api/docs-json`), non-production only.
 - **Package manager:** pnpm `10.28.2`. Native deps need allow-listing in root `pnpm.onlyBuiltDependencies`.
+- **Strict mode:** `apps/api` inherits `strict: true` (so `strictPropertyInitialization` is on), but the ported class-validator DTOs and `env.validation.ts` declare required fields without initializers (`field: string;`) — the boilerplate ran without that flag. `apps/api/tsconfig.json` sets `"strictPropertyInitialization": false` (the standard NestJS + class-validator setting) so the ported code compiles unchanged. Other strict flags stay on; catch blocks already narrow with `instanceof Error`. (Discovered during Task 1.2 review; applied in Task 1.3.)
 - **Commit** after every task. Branch is `develop` (a feature branch — commit directly, no push unless asked).
 - Spec: `docs/superpowers/specs/2026-06-24-nestjs-boilerplate-port-api-design.md`.
 
@@ -780,12 +781,30 @@ git commit -m "feat(api): port config, common, and Prisma service from boilerpla
 ### Task 1.3: Port all feature modules
 
 **Files:**
+- Modify: `apps/api/tsconfig.json` (add `"strictPropertyInitialization": false`)
 - Copy: `$BP/src/modules` → `$API/src/modules` (auth, users, organisations, files, mail, queue, redis, storage, health — incl. 8 `.hbs` templates)
 - Delete: copied `*.spec.ts`, `*.prisma`, `.DS_Store`
 
 **Interfaces:**
 - Consumes: `PrismaService` / `PrismaModule` (Task 1.2), `@repo/database` model types, `common/*`.
 - Produces: `AuthModule`, `UsersModule`, `OrganisationsModule` (+ exported `OrganisationAccessService`), `FilesModule`, `MailModule` (exports `MailService`), `QueueModule.register(mode)`, `RedisModule` (`@Global`), `StorageModule` (`@Global`), `HealthModule` — exactly the symbols `app.module.ts`/`worker.module.ts` import.
+
+- [ ] **Step 0: Relax `strictPropertyInitialization` (class-validator DTOs need it)**
+
+The boilerplate's DTOs and `env.validation.ts` declare required fields without initializers (`field: string;`). tintsmith's base config is `strict: true`, which turns on `strictPropertyInitialization`. Add the standard NestJS override so the ported code compiles unchanged — write `apps/api/tsconfig.json`:
+
+```json
+{
+  "extends": "@repo/typescript-config/nestjs.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "strictPropertyInitialization": false
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
+```
 
 - [ ] **Step 1: Copy the modules tree**
 
