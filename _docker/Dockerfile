@@ -14,6 +14,8 @@ RUN pnpm dlx turbo@2 prune api --docker
 
 # ── Install all deps, then build api (+ its deps) ─────────────────────
 FROM base AS build
+# bcrypt is a native module; Alpine (musl) compiles it from source.
+RUN apk add --no-cache python3 make g++
 # Dummy DATABASE_URL so `prisma generate` (run by `turbo build`) never trips
 # on a missing env var. Never used at runtime — real value comes from compose.
 ENV DATABASE_URL="postgresql://build:build@localhost:5432/build?schema=public"
@@ -26,6 +28,7 @@ RUN pnpm turbo build --filter=api
 
 # ── Production-only dependencies ──────────────────────────────────────
 FROM base AS prod-deps
+RUN apk add --no-cache python3 make g++
 COPY --from=prune /app/out/json/ .
 RUN pnpm install --frozen-lockfile --prod
 
