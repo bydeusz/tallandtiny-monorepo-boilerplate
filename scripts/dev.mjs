@@ -4,6 +4,8 @@ import { spawn } from 'node:child_process';
 
 const TARGETS = [
   { name: 'web', url: 'http://localhost:3000' },
+  { name: 'dashboard', url: 'http://localhost:3002' },
+  { name: 'website', url: 'http://localhost:3003' },
   { name: 'swagger', url: 'http://localhost:3001/api/docs' },
   { name: 'prisma studio', url: 'http://localhost:5555' },
 ];
