@@ -1,0 +1,24 @@
+# Dependencies & build outputs (reinstalled / rebuilt inside the image)
+node_modules
+**/node_modules
+**/dist
+**/.next
+.next
+.turbo
+**/.turbo
+
+# VCS, env, docs, local state
+.git
+.gitignore
+**/*.md
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+**/coverage
+
+# MinIO runtime data and OS cruft
+_docker/storage
+.DS_Store
+**/.DS_Store
