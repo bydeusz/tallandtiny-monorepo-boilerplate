@@ -5,4 +5,18 @@ export * from './generated/endpoints/mail/mail';
 export * from './generated/endpoints/organisations/organisations';
 export * from './generated/endpoints/users/users';
 export * from './generated/model';
-export { setAuthTokenGetter } from './mutator/custom-axios';
+
+export {
+  setAuthTokenGetter,
+  configureAuthRefresh,
+  refreshAccessToken,
+} from './mutator/custom-axios';
+export {
+  getAccessToken,
+  setAccessToken,
+  clearAccessToken,
+} from './mutator/auth-token-store';
+
+export * from './helpers/api-error';
+export * from './helpers/member-response';
+export * from './helpers/organisation-response';
