@@ -1,0 +1,398 @@
+{
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "description": "Sign in to continue to your dashboard.",
+      "email": "Email address",
+      "password": "Password",
+      "signIn": "Sign in",
+      "forgotPassword": "Forgot password?",
+      "alreadyHaveAccount": "Don't have an account?",
+      "noAccount": "Create one",
+      "errorTitle": "Sign-in failed",
+      "errors": {
+        "missingCredentials": "Please enter your email and password.",
+        "userNotFound": "No account was found for this email address.",
+        "invalidPassword": "The password you entered is incorrect.",
+        "emailNotVerified": "Please verify your email before signing in.",
+        "passwordResetRequired": "Your account is temporarily disabled after a password reset. Check your email and set a new password first.",
+        "default": "Unable to sign in right now. Please try again."
+      }
+    },
+    "register": {
+      "form": {
+        "title": "Create your account",
+        "description": "Fill in your details to get started.",
+        "firstname": "First name",
+        "firstnamePlaceholder": "John",
+        "surname": "Last name",
+        "surnamePlaceholder": "Doe",
+        "email": "Email address",
+        "emailPlaceholder": "john@doe.com",
+        "signUp": "Sign up",
+        "alreadyHaveAccount": "Already have an account?",
+        "errorTitle": "Registration failed"
+      },
+      "confirm": {
+        "title": "Check your inbox",
+        "description": "We sent a confirmation email to {email}. Please open it and confirm your account.",
+        "emailFallback": "your email address",
+        "button": "Back to login"
+      }
+    },
+    "verify": {
+      "title": "Verify your email",
+      "description": "Enter the activation code from your email to verify your account.",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "john@doe.com",
+      "codeLabel": "Activation code",
+      "codePlaceholder": "123456",
+      "submit": "Verify account",
+      "missingEmail": "We are missing your email address. Please use the verification link from your email.",
+      "codeRequired": "Please enter the activation code from your email.",
+      "error": "We could not verify your email.",
+      "success": "Your email has been verified successfully.",
+      "redirecting": "Your account is verified. Click \"Back to login\" to continue.",
+      "backToLogin": "Back to login"
+    },
+    "reset": {
+      "title": "Reset your password",
+      "description": "Set a new password for your account.",
+      "email": "Email address",
+      "submit": "Send reset link",
+      "login": "Back to login",
+      "error": "We could not process your request.",
+      "success": "If an account exists for this email, a reset link has been sent.",
+      "missingEmail": "We are missing your email address. Please use the link from your email.",
+      "temporaryPassword": "Temporary password",
+      "temporaryPasswordPlaceholder": "Enter the temporary password from your email",
+      "newPassword": "New password",
+      "newPasswordPlaceholder": "Enter your new password",
+      "confirmPassword": "Confirm new password",
+      "confirmPasswordPlaceholder": "Confirm your new password",
+      "resetButton": "Reset password",
+      "errors": {
+        "passwordMismatch": "Passwords do not match.",
+        "passwordLength": "Password must be at least 8 characters.",
+        "expired": "The temporary password has expired. Please request a new one."
+      }
+    }
+  },
+  "navigation": {
+    "navbar": {
+      "search": "Search...",
+      "links": {
+        "dashboard": "Dashboard",
+        "organisation": "Organisation",
+        "settings": "Settings",
+        "support": "Support"
+      }
+    },
+    "language": {
+      "dutch": "Dutch",
+      "english": "English"
+    },
+    "organisation": {
+      "loading": "Loading organisations…",
+      "placeholder": "Select organisation",
+      "empty": "No organisations found.",
+      "addOrganisation": "New organisation"
+    }
+  },
+  "banners": {
+    "noOrganisation": {
+      "title": "Get started",
+      "description": "You are not part of an organisation yet. Create your first one to start using the dashboard.",
+      "cta": "Create organisation"
+    }
+  },
+  "forms": {
+    "support": {
+      "title": "Support",
+      "description": "Run into a problem? Send us a message and we will get back to you soon.",
+      "name": "Name",
+      "namePlaceholder": "John Doe",
+      "email": "Email address",
+      "subject": "Subject",
+      "subjectPlaceholder": "What can we help with?",
+      "message": "Message",
+      "attachment": "Attachment",
+      "attachmentHelp": "Allowed file types: JPG, JPEG, PNG, GIF. Maximum size: 3 MB.",
+      "submit": "Send message",
+      "errorTitle": "Something went wrong",
+      "fileTypeError": "Invalid file type. Please upload JPG, JPEG, PNG, or GIF.",
+      "fileSizeError": "File is too large. Maximum allowed size is 3 MB.",
+      "successTitle": "Message sent",
+      "success": "Your message has been sent successfully."
+    },
+    "user-avatar": {
+      "title": "Profile photo",
+      "desc": "Upload a new profile photo.",
+      "button": "Update avatar",
+      "errorTitle": "Avatar update failed",
+      "successTitle": "Avatar updated",
+      "success": "Your profile photo has been updated."
+    },
+    "user-password": {
+      "title": "Update password",
+      "currentPassword": "Current password",
+      "currentPasswordPlaceholder": "Enter your current password",
+      "newPassword": "New password",
+      "newPasswordPlaceholder": "Enter a new password",
+      "confirmPassword": "Confirm new password",
+      "confirmPasswordPlaceholder": "Confirm your new password",
+      "update": "Update password",
+      "errors": {
+        "passwordMismatch": "Passwords do not match.",
+        "passwordLength": "Password must be at least 6 characters.",
+        "default": "Failed to update password."
+      }
+    },
+    "user-update": {
+      "title": "Profile information",
+      "firstname": "First name",
+      "firstnamePlaceholder": "John",
+      "surname": "Last name",
+      "surnamePlaceholder": "Doe",
+      "email": "Email address",
+      "emailPlaceholder": "john@doe.com",
+      "save": "Save changes",
+      "successTitle": "Profile updated",
+      "successMessage": "Your profile has been updated successfully.",
+      "errorTitle": "Update failed"
+    },
+    "user-email": {
+      "title": "Change email address",
+      "description": "Request a change of your email address. We'll send a confirmation link to the new address.",
+      "currentLabel": "Current email address",
+      "newEmail": "New email address",
+      "newEmailPlaceholder": "name@example.com",
+      "submit": "Send confirmation link",
+      "successTitle": "Confirmation link sent",
+      "successDescription": "We've sent a confirmation link to your new email address. Click the link to complete the change.",
+      "errorTitle": "Could not request email change"
+    },
+    "user-billing": {
+      "title": "Billing details",
+      "description": "Address and tax details for your invoices. CoC and VAT are only needed if you operate a business.",
+      "address": "Address",
+      "addressPlaceholder": "Street and number",
+      "postalCode": "Postal code",
+      "postalCodePlaceholder": "1234 AB",
+      "city": "City",
+      "cityPlaceholder": "Amsterdam",
+      "country": "Country",
+      "countryPlaceholder": "Select a country",
+      "countries": {
+        "NL": "Netherlands",
+        "BE": "Belgium",
+        "DE": "Germany"
+      },
+      "kvk": "Chamber of Commerce (KvK)",
+      "kvkPlaceholder": "8 digits, e.g. 12345678",
+      "vatNumber": "VAT number",
+      "vatNumberPlaceholder": "e.g. NL123456789B01",
+      "save": "Save changes",
+      "saving": "Saving…",
+      "successTitle": "Billing details updated",
+      "successMessage": "Your billing details have been saved.",
+      "errorTitle": "Update failed",
+      "errorMessage": "Something went wrong. Please try again."
+    },
+    "user-delete": {
+      "title": "Delete account",
+      "description": "Permanently remove your account and all related data.",
+      "deleteButton": "Delete account"
+    },
+    "createOrganisation": {
+      "title": "New organisation",
+      "description": "Create an organisation and add yourself as a member.",
+      "loading": "Loading…",
+      "name": "Organisation name",
+      "namePlaceholder": "Acme Inc.",
+      "address": "Address",
+      "addressPlaceholder": "Street and number",
+      "postalCode": "Postal code",
+      "postalCodePlaceholder": "1234 AB",
+      "city": "City",
+      "cityPlaceholder": "Amsterdam",
+      "kvk": "Chamber of Commerce (KvK)",
+      "kvkPlaceholder": "Optional",
+      "vatNumber": "VAT number",
+      "vatNumberPlaceholder": "Optional",
+      "iban": "IBAN",
+      "ibanPlaceholder": "Optional",
+      "submit": "Create",
+      "submitting": "Creating…",
+      "cancel": "Cancel",
+      "successTitle": "Organisation created",
+      "success": "Your organisation has been created.",
+      "errorTitle": "Could not create organisation",
+      "error": "Something went wrong. Please try again."
+    },
+    "organisation-settings": {
+      "title": "Details",
+      "description": "View and edit the organisation currently selected in the sidebar.",
+      "adminOnlyHint": "Only organisation owners can edit these details.",
+      "noSelection": "Select an organisation in the sidebar to see its details here.",
+      "loading": "Loading organisation…",
+      "errorLoad": "Could not load organisation.",
+      "logoTitle": "Logo",
+      "logoDescription": "Upload a logo for this organisation. Shown in the organisation switcher.",
+      "logoButton": "Upload logo",
+      "logoHelp": "JPEG, PNG, WEBP or SVG (max 5MB)",
+      "logoInvalidType": "Please upload a JPEG, PNG, WEBP (or SVG) file.",
+      "logoTooLarge": "File size must be less than 5MB.",
+      "name": "Organisation name",
+      "namePlaceholder": "Acme Inc.",
+      "address": "Address",
+      "addressPlaceholder": "Street and number",
+      "postalCode": "Postal code",
+      "postalCodePlaceholder": "1234 AB",
+      "city": "City",
+      "cityPlaceholder": "Amsterdam",
+      "kvk": "Chamber of Commerce (KvK)",
+      "kvkPlaceholder": "Optional",
+      "vatNumber": "VAT number",
+      "vatNumberPlaceholder": "Optional",
+      "iban": "IBAN",
+      "ibanPlaceholder": "Optional",
+      "save": "Save changes",
+      "saving": "Saving…",
+      "successTitle": "Organisation updated",
+      "successMessage": "Your changes have been saved.",
+      "errorTitle": "Update failed",
+      "errorMessage": "Something went wrong. Please try again."
+    }
+  },
+  "modals": {
+    "delete": {
+      "title": "Delete account",
+      "desc": "This action cannot be undone. Your account will be permanently deleted.",
+      "label": "Type your full name to confirm deletion of",
+      "placeholder": "Full name",
+      "button": "Delete account",
+      "error": {
+        "title": "Could not delete account"
+      }
+    },
+    "inviteMember": {
+      "button": "Invite member",
+      "title": "Invite team member",
+      "desc": "Add an existing user by email, or create a new user by also filling in their name.",
+      "email": "Email address",
+      "emailPlaceholder": "name@example.com",
+      "firstname": "First name",
+      "firstnamePlaceholder": "Required for new users",
+      "surname": "Last name",
+      "surnamePlaceholder": "Required for new users",
+      "role": "Role",
+      "roleOwner": "Owner",
+      "roleMember": "Member",
+      "submit": "Send invite",
+      "submitting": "Sending...",
+      "successTitle": "Member invited",
+      "successDescription": "The new member has been added to the organisation.",
+      "errorTitle": "Could not invite member"
+    },
+    "removeMember": {
+      "title": "Remove member",
+      "desc": "This person will lose access to this organisation.",
+      "label": "Type the full name to confirm removing",
+      "placeholder": "Full name",
+      "button": "Remove member",
+      "errorTitle": "Could not remove member"
+    },
+    "changeRole": {
+      "promote": {
+        "title": "Make organisation owner",
+        "desc": "This member will gain full control of the organisation.",
+        "label": "Type the full name to confirm promoting",
+        "placeholder": "Full name",
+        "button": "Promote to owner"
+      },
+      "demote": {
+        "title": "Demote to member",
+        "desc": "This owner will become a regular member.",
+        "label": "Type the full name to confirm demoting",
+        "placeholder": "Full name",
+        "button": "Demote"
+      },
+      "errorTitle": "Could not update role"
+    }
+  },
+  "tables": {
+    "team": {
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "status": "Status",
+      "settings": "Settings",
+      "owner": "Owner",
+      "member": "Member",
+      "active": "Active",
+      "pending": "Pending",
+      "empty": "No members yet.",
+      "selectOrgFirst": "Select an organisation to view its members.",
+      "loadError": "Could not load team members.",
+      "truncationHint": "Showing {shown} of {total} members."
+    }
+  },
+  "pages": {
+    "settings": {
+      "title": "Settings",
+      "description": "Manage your account preferences.",
+      "tabs": {
+        "personal": "Personal information",
+        "account": "Account",
+        "subscription": "Subscription",
+        "delete": "Delete"
+      },
+      "subscription": {
+        "title": "Subscription",
+        "description": "Manage your subscription and payment details.",
+        "comingSoonTitle": "Coming soon",
+        "comingSoonDescription": "Subscription and payment management is not available yet."
+      }
+    },
+    "organisation": {
+      "title": "Organisation",
+      "description": "Manage your organisation's details and team members.",
+      "tabs": {
+        "details": "Organisation",
+        "branding": "Branding",
+        "team": "Team"
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "organisationCardTitle": "Organisation",
+      "organisationCardDescription": "Manage your organisation here. Update details, branding, and team members.",
+      "organisationCardButton": "Open",
+      "organisationCardBadge": "Organisation"
+    }
+  },
+  "common": {
+    "buttons": {
+      "logout": "Log out"
+    },
+    "data": {
+      "roles": {
+        "designer": "Designer",
+        "sales": "Sales",
+        "softwareEngineer": "Software Engineer",
+        "manager": "Manager",
+        "seoSpecialist": "SEO Specialist",
+        "contentCreator": "Content Creator"
+      }
+    }
+  },
+  "inputs": {
+    "errors": {
+      "required": "This field is required.",
+      "email": "Please enter a valid email address.",
+      "url": "Please enter a valid URL.",
+      "tel": "Please enter a valid phone number."
+    }
+  }
+}

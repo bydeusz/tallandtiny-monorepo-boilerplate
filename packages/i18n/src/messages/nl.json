@@ -1,0 +1,398 @@
+{
+  "auth": {
+    "login": {
+      "title": "Welkom terug",
+      "description": "Log in om door te gaan naar je dashboard.",
+      "email": "E-mailadres",
+      "password": "Wachtwoord",
+      "signIn": "Inloggen",
+      "forgotPassword": "Wachtwoord vergeten?",
+      "alreadyHaveAccount": "Heb je nog geen account?",
+      "noAccount": "Maak er een aan",
+      "errorTitle": "Inloggen mislukt",
+      "errors": {
+        "missingCredentials": "Vul je e-mailadres en wachtwoord in.",
+        "userNotFound": "Er is geen account gevonden met dit e-mailadres.",
+        "invalidPassword": "Het ingevoerde wachtwoord is onjuist.",
+        "emailNotVerified": "Verifieer eerst je e-mailadres voordat je inlogt.",
+        "passwordResetRequired": "Je account is tijdelijk uitgeschakeld na een wachtwoordreset. Controleer je e-mail en stel eerst een nieuw wachtwoord in.",
+        "default": "Inloggen lukt nu niet. Probeer het opnieuw."
+      }
+    },
+    "register": {
+      "form": {
+        "title": "Maak je account aan",
+        "description": "Vul je gegevens in om te starten.",
+        "firstname": "Voornaam",
+        "firstnamePlaceholder": "John",
+        "surname": "Achternaam",
+        "surnamePlaceholder": "Doe",
+        "email": "E-mailadres",
+        "emailPlaceholder": "John@voorbeeld.nl",
+        "signUp": "Registreren",
+        "alreadyHaveAccount": "Heb je al een account?",
+        "errorTitle": "Registreren mislukt"
+      },
+      "confirm": {
+        "title": "Controleer je inbox",
+        "description": "We hebben een bevestigingsmail gestuurd naar {email}. Open de mail en bevestig je account.",
+        "emailFallback": "je e-mailadres",
+        "button": "Terug naar inloggen"
+      }
+    },
+    "verify": {
+      "title": "Verifieer je e-mailadres",
+      "description": "Vul de activatiecode uit je e-mail in om je account te verifiëren.",
+      "emailLabel": "E-mailadres",
+      "emailPlaceholder": "John@voorbeeld.nl",
+      "codeLabel": "Activatiecode",
+      "codePlaceholder": "123456",
+      "submit": "Account verifiëren",
+      "missingEmail": "Je e-mailadres ontbreekt. Gebruik de verificatielink uit je e-mail.",
+      "codeRequired": "Vul de activatiecode uit je e-mail in.",
+      "error": "We konden je e-mailadres niet verifiëren.",
+      "success": "Je e-mailadres is succesvol geverifieerd.",
+      "redirecting": "Je account is geverifieerd. Klik op \"Terug naar inloggen\" om verder te gaan.",
+      "backToLogin": "Terug naar inloggen"
+    },
+    "reset": {
+      "title": "Wachtwoord opnieuw instellen",
+      "description": "Stel een nieuw wachtwoord in voor je account.",
+      "email": "E-mailadres",
+      "submit": "Verstuur resetlink",
+      "login": "Terug naar inloggen",
+      "error": "We konden je aanvraag niet verwerken.",
+      "success": "Als er een account bestaat voor dit e-mailadres, is er een resetlink verstuurd.",
+      "missingEmail": "Je e-mailadres ontbreekt. Gebruik de link uit je e-mail.",
+      "temporaryPassword": "Tijdelijk wachtwoord",
+      "temporaryPasswordPlaceholder": "Voer het tijdelijke wachtwoord uit je e-mail in",
+      "newPassword": "Nieuw wachtwoord",
+      "newPasswordPlaceholder": "Voer je nieuwe wachtwoord in",
+      "confirmPassword": "Bevestig nieuw wachtwoord",
+      "confirmPasswordPlaceholder": "Bevestig je nieuwe wachtwoord",
+      "resetButton": "Wachtwoord resetten",
+      "errors": {
+        "passwordMismatch": "Wachtwoorden komen niet overeen.",
+        "passwordLength": "Wachtwoord moet minimaal 8 tekens bevatten.",
+        "expired": "Het tijdelijke wachtwoord is verlopen. Vraag een nieuw wachtwoord aan."
+      }
+    }
+  },
+  "navigation": {
+    "navbar": {
+      "search": "Zoeken...",
+      "links": {
+        "dashboard": "Dashboard",
+        "organisation": "Organisatie",
+        "settings": "Instellingen",
+        "support": "Ondersteuning"
+      }
+    },
+    "language": {
+      "dutch": "Nederlands",
+      "english": "Engels"
+    },
+    "organisation": {
+      "loading": "Organisaties laden…",
+      "placeholder": "Kies organisatie",
+      "empty": "Geen organisaties gevonden.",
+      "addOrganisation": "Nieuwe organisatie"
+    }
+  },
+  "banners": {
+    "noOrganisation": {
+      "title": "Aan de slag",
+      "description": "Je zit nog niet in een organisatie. Maak je eerste organisatie aan om het dashboard te gebruiken.",
+      "cta": "Organisatie aanmaken"
+    }
+  },
+  "forms": {
+    "support": {
+      "title": "Support",
+      "description": "Loop je ergens tegenaan? Stuur ons een bericht en we nemen zo snel mogelijk contact met je op.",
+      "name": "Naam",
+      "namePlaceholder": "John Doe",
+      "email": "E-mailadres",
+      "subject": "Onderwerp",
+      "subjectPlaceholder": "Waarmee kunnen we helpen?",
+      "message": "Bericht",
+      "attachment": "Bijlage",
+      "attachmentHelp": "Toegestane bestandstypen: JPG, JPEG, PNG, GIF. Maximale grootte: 3 MB.",
+      "submit": "Bericht verzenden",
+      "errorTitle": "Er is iets misgegaan",
+      "fileTypeError": "Ongeldig bestandstype. Upload JPG, JPEG, PNG of GIF.",
+      "fileSizeError": "Bestand is te groot. Maximale grootte is 3 MB.",
+      "successTitle": "Bericht verzonden",
+      "success": "Je bericht is succesvol verzonden."
+    },
+    "user-avatar": {
+      "title": "Profielfoto",
+      "desc": "Upload een nieuwe profielfoto.",
+      "button": "Avatar bijwerken",
+      "errorTitle": "Bijwerken van avatar mislukt",
+      "successTitle": "Avatar bijgewerkt",
+      "success": "Je profielfoto is bijgewerkt."
+    },
+    "user-password": {
+      "title": "Wachtwoord bijwerken",
+      "currentPassword": "Huidig wachtwoord",
+      "currentPasswordPlaceholder": "Voer je huidige wachtwoord in",
+      "newPassword": "Nieuw wachtwoord",
+      "newPasswordPlaceholder": "Voer een nieuw wachtwoord in",
+      "confirmPassword": "Bevestig nieuw wachtwoord",
+      "confirmPasswordPlaceholder": "Bevestig je nieuwe wachtwoord",
+      "update": "Wachtwoord bijwerken",
+      "errors": {
+        "passwordMismatch": "Wachtwoorden komen niet overeen.",
+        "passwordLength": "Wachtwoord moet minimaal 6 tekens bevatten.",
+        "default": "Bijwerken van wachtwoord mislukt."
+      }
+    },
+    "user-update": {
+      "title": "Profielgegevens",
+      "firstname": "Voornaam",
+      "firstnamePlaceholder": "John",
+      "surname": "Achternaam",
+      "surnamePlaceholder": "Doe",
+      "email": "E-mailadres",
+      "emailPlaceholder": "John@voorbeeld.nl",
+      "save": "Wijzigingen opslaan",
+      "successTitle": "Profiel bijgewerkt",
+      "successMessage": "Je profiel is succesvol bijgewerkt.",
+      "errorTitle": "Bijwerken mislukt"
+    },
+    "user-email": {
+      "title": "E-mailadres wijzigen",
+      "description": "Vraag een wijziging van je e-mailadres aan. We sturen een bevestigingslink naar het nieuwe adres.",
+      "currentLabel": "Huidig e-mailadres",
+      "newEmail": "Nieuw e-mailadres",
+      "newEmailPlaceholder": "naam@voorbeeld.nl",
+      "submit": "Bevestigingslink versturen",
+      "successTitle": "Bevestigingslink verstuurd",
+      "successDescription": "We hebben een bevestigingslink naar je nieuwe e-mailadres gestuurd. Klik op de link om de wijziging te voltooien.",
+      "errorTitle": "Wijzigen e-mailadres mislukt"
+    },
+    "user-billing": {
+      "title": "Factuurgegevens",
+      "description": "Adres en fiscale gegevens voor je facturen. KvK en BTW zijn alleen nodig als je een onderneming hebt.",
+      "address": "Adres",
+      "addressPlaceholder": "Straat en huisnummer",
+      "postalCode": "Postcode",
+      "postalCodePlaceholder": "1234 AB",
+      "city": "Plaats",
+      "cityPlaceholder": "Amsterdam",
+      "country": "Land",
+      "countryPlaceholder": "Kies een land",
+      "countries": {
+        "NL": "Nederland",
+        "BE": "België",
+        "DE": "Duitsland"
+      },
+      "kvk": "KvK-nummer",
+      "kvkPlaceholder": "8 cijfers, bijv. 12345678",
+      "vatNumber": "BTW-nummer",
+      "vatNumberPlaceholder": "Bijv. NL123456789B01",
+      "save": "Wijzigingen opslaan",
+      "saving": "Bezig met opslaan…",
+      "successTitle": "Factuurgegevens bijgewerkt",
+      "successMessage": "Je factuurgegevens zijn opgeslagen.",
+      "errorTitle": "Bijwerken mislukt",
+      "errorMessage": "Er ging iets mis. Probeer het opnieuw."
+    },
+    "user-delete": {
+      "title": "Account verwijderen",
+      "description": "Verwijder je account en alle bijbehorende gegevens permanent.",
+      "deleteButton": "Account verwijderen"
+    },
+    "createOrganisation": {
+      "title": "Nieuwe organisatie",
+      "description": "Maak een organisatie aan; je wordt automatisch lid.",
+      "loading": "Laden…",
+      "name": "Organisatienaam",
+      "namePlaceholder": "Acme B.V.",
+      "address": "Adres",
+      "addressPlaceholder": "Straat en huisnummer",
+      "postalCode": "Postcode",
+      "postalCodePlaceholder": "1234 AB",
+      "city": "Plaats",
+      "cityPlaceholder": "Amsterdam",
+      "kvk": "KvK-nummer",
+      "kvkPlaceholder": "Optioneel",
+      "vatNumber": "BTW-nummer",
+      "vatNumberPlaceholder": "Optioneel",
+      "iban": "IBAN",
+      "ibanPlaceholder": "Optioneel",
+      "submit": "Aanmaken",
+      "submitting": "Bezig met aanmaken…",
+      "cancel": "Annuleren",
+      "successTitle": "Organisatie aangemaakt",
+      "success": "Je organisatie is aangemaakt.",
+      "errorTitle": "Organisatie aanmaken mislukt",
+      "error": "Er ging iets mis. Probeer het opnieuw."
+    },
+    "organisation-settings": {
+      "title": "Gegevens",
+      "description": "Bekijk en bewerk de organisatie die je nu in de sidebar hebt geselecteerd.",
+      "adminOnlyHint": "Alleen organisatie-eigenaren kunnen deze gegevens aanpassen.",
+      "noSelection": "Selecteer een organisatie in de sidebar om de gegevens hier te zien.",
+      "loading": "Organisatie laden…",
+      "errorLoad": "Organisatie kon niet worden geladen.",
+      "logoTitle": "Logo",
+      "logoDescription": "Upload een logo voor deze organisatie. Zichtbaar in de organisatieschakelaar.",
+      "logoButton": "Logo uploaden",
+      "logoHelp": "JPEG, PNG, WEBP of SVG (max. 5 MB)",
+      "logoInvalidType": "Upload een JPEG-, PNG-, WEBP- of SVG-bestand.",
+      "logoTooLarge": "Het bestand mag maximaal 5 MB zijn.",
+      "name": "Organisatienaam",
+      "namePlaceholder": "Acme B.V.",
+      "address": "Adres",
+      "addressPlaceholder": "Straat en huisnummer",
+      "postalCode": "Postcode",
+      "postalCodePlaceholder": "1234 AB",
+      "city": "Plaats",
+      "cityPlaceholder": "Amsterdam",
+      "kvk": "KvK-nummer",
+      "kvkPlaceholder": "Optioneel",
+      "vatNumber": "BTW-nummer",
+      "vatNumberPlaceholder": "Optioneel",
+      "iban": "IBAN",
+      "ibanPlaceholder": "Optioneel",
+      "save": "Wijzigingen opslaan",
+      "saving": "Bezig met opslaan…",
+      "successTitle": "Organisatie bijgewerkt",
+      "successMessage": "Je wijzigingen zijn opgeslagen.",
+      "errorTitle": "Bijwerken mislukt",
+      "errorMessage": "Er ging iets mis. Probeer het opnieuw."
+    }
+  },
+  "modals": {
+    "delete": {
+      "title": "Account verwijderen",
+      "desc": "Deze actie kan niet ongedaan worden gemaakt. Je account wordt permanent verwijderd.",
+      "label": "Typ je volledige naam om verwijderen te bevestigen van",
+      "placeholder": "Volledige naam",
+      "button": "Account verwijderen",
+      "error": {
+        "title": "Account verwijderen mislukt"
+      }
+    },
+    "inviteMember": {
+      "button": "Lid uitnodigen",
+      "title": "Teamlid uitnodigen",
+      "desc": "Voeg een bestaande gebruiker toe via e-mail, of maak een nieuwe gebruiker aan door ook de naam in te vullen.",
+      "email": "E-mailadres",
+      "emailPlaceholder": "naam@voorbeeld.nl",
+      "firstname": "Voornaam",
+      "firstnamePlaceholder": "Verplicht voor nieuwe gebruikers",
+      "surname": "Achternaam",
+      "surnamePlaceholder": "Verplicht voor nieuwe gebruikers",
+      "role": "Rol",
+      "roleOwner": "Eigenaar",
+      "roleMember": "Lid",
+      "submit": "Uitnodiging versturen",
+      "submitting": "Versturen...",
+      "successTitle": "Lid uitgenodigd",
+      "successDescription": "Het nieuwe lid is toegevoegd aan de organisatie.",
+      "errorTitle": "Lid uitnodigen mislukt"
+    },
+    "removeMember": {
+      "title": "Lid verwijderen",
+      "desc": "Deze persoon verliest toegang tot deze organisatie.",
+      "label": "Typ de volledige naam om verwijderen te bevestigen van",
+      "placeholder": "Volledige naam",
+      "button": "Lid verwijderen",
+      "errorTitle": "Lid verwijderen mislukt"
+    },
+    "changeRole": {
+      "promote": {
+        "title": "Organisatie-eigenaar maken",
+        "desc": "Dit lid krijgt volledige controle over de organisatie.",
+        "label": "Typ de volledige naam om promoveren te bevestigen van",
+        "placeholder": "Volledige naam",
+        "button": "Promoveren tot eigenaar"
+      },
+      "demote": {
+        "title": "Degraderen naar lid",
+        "desc": "Deze eigenaar wordt een gewoon lid.",
+        "label": "Typ de volledige naam om degraderen te bevestigen van",
+        "placeholder": "Volledige naam",
+        "button": "Degraderen"
+      },
+      "errorTitle": "Rol bijwerken mislukt"
+    }
+  },
+  "tables": {
+    "team": {
+      "name": "Naam",
+      "email": "E-mail",
+      "role": "Rol",
+      "status": "Status",
+      "settings": "Instellingen",
+      "owner": "Eigenaar",
+      "member": "Lid",
+      "active": "Actief",
+      "pending": "In afwachting",
+      "empty": "Nog geen leden.",
+      "selectOrgFirst": "Selecteer een organisatie om de leden te bekijken.",
+      "loadError": "Kon teamleden niet laden.",
+      "truncationHint": "{shown} van {total} leden weergegeven."
+    }
+  },
+  "pages": {
+    "settings": {
+      "title": "Instellingen",
+      "description": "Beheer je accountvoorkeuren.",
+      "tabs": {
+        "personal": "Persoonlijke gegevens",
+        "account": "Account",
+        "subscription": "Abonnement",
+        "delete": "Verwijderen"
+      },
+      "subscription": {
+        "title": "Abonnement",
+        "description": "Beheer je abonnement en betaalgegevens.",
+        "comingSoonTitle": "Binnenkort beschikbaar",
+        "comingSoonDescription": "Het beheer van abonnementen en betalingen is nog niet beschikbaar."
+      }
+    },
+    "organisation": {
+      "title": "Organisatie",
+      "description": "Beheer de gegevens en teamleden van je organisatie.",
+      "tabs": {
+        "details": "Organisatie",
+        "branding": "Huisstijl",
+        "team": "Team"
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "organisationCardTitle": "Organisatie",
+      "organisationCardDescription": "Beheer hier je organisatie. Pas de gegevens, huisstijl en teamgenoten aan.",
+      "organisationCardButton": "Openen",
+      "organisationCardBadge": "Organisatie"
+    }
+  },
+  "common": {
+    "buttons": {
+      "logout": "Uitloggen"
+    },
+    "data": {
+      "roles": {
+        "designer": "Designer",
+        "sales": "Sales",
+        "softwareEngineer": "Software Engineer",
+        "manager": "Manager",
+        "seoSpecialist": "SEO-specialist",
+        "contentCreator": "Contentmaker"
+      }
+    }
+  },
+  "inputs": {
+    "errors": {
+      "required": "Dit veld is verplicht.",
+      "email": "Vul een geldig e-mailadres in.",
+      "url": "Vul een geldige URL in.",
+      "tel": "Vul een geldig telefoonnummer in."
+    }
+  }
+}
