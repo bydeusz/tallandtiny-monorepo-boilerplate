@@ -17,11 +17,14 @@ function parseBackendBody(text: string): BackendTokens {
 }
 
 function readRefreshToken(request: Request): string | undefined {
-  return request.headers
-    .get("cookie")
-    ?.split(";")
-    .find((c) => c.trim().startsWith(`${REFRESH_TOKEN_COOKIE_NAME}=`))
-    ?.split("=")[1];
+  const cookies = request.headers.get("cookie")?.split(";") ?? [];
+  for (const cookie of cookies) {
+    const trimmed = cookie.trim();
+    if (trimmed.startsWith(`${REFRESH_TOKEN_COOKIE_NAME}=`)) {
+      return trimmed.slice(REFRESH_TOKEN_COOKIE_NAME.length + 1);
+    }
+  }
+  return undefined;
 }
 
 function setRefreshCookie(response: NextResponse, value: string, maxAge: number) {
@@ -92,10 +95,12 @@ export async function refreshHandler(request: Request): Promise<NextResponse> {
       return nextResponse;
     }
     if (!accessToken || !rotated) {
-      return NextResponse.json(
+      const nextResponse = NextResponse.json(
         { message: "Invalid token response from backend" },
         { status: 502 },
       );
+      setRefreshCookie(nextResponse, "", 0);
+      return nextResponse;
     }
 
     const nextResponse = NextResponse.json({ access_token: accessToken }, { status: 200 });
