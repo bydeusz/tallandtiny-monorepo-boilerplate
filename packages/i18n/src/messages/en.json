@@ -137,7 +137,8 @@
       "button": "Update avatar",
       "errorTitle": "Avatar update failed",
       "successTitle": "Avatar updated",
-      "success": "Your profile photo has been updated."
+      "success": "Your profile photo has been updated.",
+      "hint": "JPEG, PNG, WEBP — max 800×800px, max 5MB"
     },
     "user-password": {
       "title": "Update password",

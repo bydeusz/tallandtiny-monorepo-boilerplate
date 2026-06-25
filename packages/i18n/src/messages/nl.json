@@ -137,7 +137,8 @@
       "button": "Avatar bijwerken",
       "errorTitle": "Bijwerken van avatar mislukt",
       "successTitle": "Avatar bijgewerkt",
-      "success": "Je profielfoto is bijgewerkt."
+      "success": "Je profielfoto is bijgewerkt.",
+      "hint": "JPEG, PNG, WEBP — max 800×800px, max 5MB"
     },
     "user-password": {
       "title": "Wachtwoord bijwerken",
