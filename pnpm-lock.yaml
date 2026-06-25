@@ -180,6 +180,12 @@ importers:
 
   apps/dashboard:
     dependencies:
+      '@repo/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
+      '@repo/i18n':
+        specifier: workspace:*
+        version: link:../../packages/i18n
       '@repo/queries':
         specifier: workspace:*
         version: link:../../packages/queries
@@ -189,9 +195,18 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.62.0
         version: 5.101.0(react@19.2.7)
+      flag-icons:
+        specifier: ^7.5.0
+        version: 7.5.0
+      lucide-react:
+        specifier: ^0.468.0
+        version: 0.468.0(react@19.2.7)
       next:
         specifier: ^16.0.0
         version: 16.2.9(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      next-intl:
+        specifier: ^4.8.3
+        version: 4.13.0(next@16.2.9(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)(typescript@5.9.3)
       react:
         specifier: ^19.0.0
         version: 19.2.7
