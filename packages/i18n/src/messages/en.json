@@ -77,6 +77,7 @@
       "confirmPassword": "Confirm new password",
       "confirmPasswordPlaceholder": "Confirm your new password",
       "resetButton": "Reset password",
+      "errorTitle": "Something went wrong",
       "errors": {
         "passwordMismatch": "Passwords do not match.",
         "passwordLength": "Password must be at least 8 characters.",
@@ -129,7 +130,8 @@
       "fileTypeError": "Invalid file type. Please upload JPG, JPEG, PNG, or GIF.",
       "fileSizeError": "File is too large. Maximum allowed size is 3 MB.",
       "successTitle": "Message sent",
-      "success": "Your message has been sent successfully."
+      "success": "Your message has been sent successfully.",
+      "errorMessage": "Could not send your message. Please try again."
     },
     "user-avatar": {
       "title": "Profile photo",
@@ -138,7 +140,12 @@
       "errorTitle": "Avatar update failed",
       "successTitle": "Avatar updated",
       "success": "Your profile photo has been updated.",
-      "hint": "JPEG, PNG, WEBP — max 800×800px, max 5MB"
+      "hint": "JPEG, PNG, WEBP — max 800×800px, max 5MB",
+      "invalidType": "Please upload a JPEG, PNG, or WEBP image.",
+      "tooLarge": "The image must be smaller than 5MB.",
+      "tooLargeDimensions": "The image dimensions must not exceed 800×800 pixels.",
+      "readError": "Could not read the image file. Please try another.",
+      "sessionError": "Your session was not found. Please sign in again."
     },
     "user-password": {
       "title": "Update password",
@@ -149,6 +156,7 @@
       "confirmPassword": "Confirm new password",
       "confirmPasswordPlaceholder": "Confirm your new password",
       "update": "Update password",
+      "errorTitle": "Something went wrong",
       "errors": {
         "passwordMismatch": "Passwords do not match.",
         "passwordLength": "Password must be at least 6 characters.",
@@ -166,7 +174,8 @@
       "save": "Save changes",
       "successTitle": "Profile updated",
       "successMessage": "Your profile has been updated successfully.",
-      "errorTitle": "Update failed"
+      "errorTitle": "Update failed",
+      "errorMessage": "Could not update your details. Please try again."
     },
     "user-email": {
       "title": "Change email address",

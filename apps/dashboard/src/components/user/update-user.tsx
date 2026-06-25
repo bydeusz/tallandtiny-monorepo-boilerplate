@@ -70,9 +70,7 @@ export function UpdateUser() {
       toast({
         variant: "destructive",
         title: t("errorTitle"),
-        description:
-          extractErrorMessage(err) ??
-          (err instanceof Error ? err.message : t("errorTitle")),
+        description: extractErrorMessage(err) ?? t("errorMessage"),
       });
     } finally {
       setIsSaving(false);

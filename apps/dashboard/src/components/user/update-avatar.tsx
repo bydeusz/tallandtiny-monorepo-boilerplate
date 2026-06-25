@@ -55,7 +55,7 @@ export function UpdateAvatar() {
       toast({
         variant: "destructive",
         title: t("errorTitle"),
-        description: "Please upload a JPEG, PNG, or WEBP file.",
+        description: t("invalidType"),
       });
       e.target.value = "";
       return;
@@ -66,7 +66,7 @@ export function UpdateAvatar() {
       toast({
         variant: "destructive",
         title: t("errorTitle"),
-        description: "File size must be less than 5MB.",
+        description: t("tooLarge"),
       });
       e.target.value = "";
       return;
@@ -83,7 +83,7 @@ export function UpdateAvatar() {
         toast({
           variant: "destructive",
           title: t("errorTitle"),
-          description: `Image dimensions must not exceed ${MAX_DIMENSION}×${MAX_DIMENSION} pixels.`,
+          description: t("tooLargeDimensions"),
         });
         e.target.value = "";
         return;
@@ -93,7 +93,7 @@ export function UpdateAvatar() {
         toast({
           variant: "destructive",
           title: t("errorTitle"),
-          description: "User session not found. Please reload and try again.",
+          description: t("sessionError"),
         });
         return;
       }
@@ -138,7 +138,7 @@ export function UpdateAvatar() {
       toast({
         variant: "destructive",
         title: t("errorTitle"),
-        description: "Could not read the image file. Please try a different file.",
+        description: t("readError"),
       });
       e.target.value = "";
     };

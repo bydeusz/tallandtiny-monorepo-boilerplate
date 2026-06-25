@@ -105,9 +105,7 @@ export function ContactForm() {
       toast({
         variant: "destructive",
         title: t("errorTitle"),
-        description:
-          extractErrorMessage(err) ??
-          (err instanceof Error ? err.message : "Something went wrong"),
+        description: extractErrorMessage(err) ?? t("errorMessage"),
       });
     }
   }

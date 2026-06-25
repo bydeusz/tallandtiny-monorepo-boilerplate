@@ -100,7 +100,7 @@ export function LoginForm() {
 
         <Button type="submit" className="w-full" disabled={isSubmitting}>
           {isSubmitting && <Loader2 className="mr-2 size-4 animate-spin" />}
-          {isSubmitting ? t("signIn") : t("signIn")}
+          {t("signIn")}
         </Button>
 
         <div className="flex items-center gap-1 text-xs">
