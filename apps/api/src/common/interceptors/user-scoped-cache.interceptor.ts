@@ -5,11 +5,11 @@ import type { Request } from 'express';
 /**
  * Cache interceptor that namespaces entries by the authenticated
  * user's id. The default `CacheInterceptor` keys only on the request
- * URL, which means a non-member could be served cached data populated
- * by an authorised member (the route handler — and thus
- * `assertMembership` — never runs on a cache hit). Including
- * `req.user.sub` in the key forces each user to populate their own
- * cache entry so authorisation is re-evaluated.
+ * URL, which means one user could be served cached data populated by
+ * another (the route handler — and thus its authorisation checks —
+ * never runs on a cache hit). Including `req.user.sub` in the key
+ * forces each user to populate their own cache entry so authorisation
+ * is re-evaluated.
  *
  * Falls back to "anon" when no JWT user is present (public routes).
  */

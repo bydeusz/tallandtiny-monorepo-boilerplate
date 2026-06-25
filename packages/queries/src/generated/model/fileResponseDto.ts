@@ -13,8 +13,6 @@ export interface FileResponseDto {
   folder: string;
   scope: string;
   userId: string;
-  /** @nullable */
-  organisationId: string | null;
   downloadUrl: string;
   id: string;
   createdAt: string;

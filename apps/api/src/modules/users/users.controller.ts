@@ -21,7 +21,6 @@ import { PaginationQueryDto } from '../../common/dto';
 import { ApiPaginatedResponse, CurrentUser } from '../../common/decorators';
 import { PaginatedResult } from '../../common/interfaces';
 import { UserScopedCacheInterceptor } from '../../common/interceptors';
-import { OrganisationAccessService } from '../organisations/organisation-access.service';
 import { UpdateUserDto, UserResponseDto } from './dto';
 import { UsersService } from './users.service';
 
@@ -30,10 +29,7 @@ import { UsersService } from './users.service';
 @ApiBearerAuth()
 @UseInterceptors(UserScopedCacheInterceptor)
 export class UsersController {
-  constructor(
-    private readonly usersService: UsersService,
-    private readonly organisationAccess: OrganisationAccessService,
-  ) {}
+  constructor(private readonly usersService: UsersService) {}
 
   @ApiOperation({ operationId: 'UserList' })
   @ApiPaginatedResponse(UserResponseDto)
@@ -41,32 +37,17 @@ export class UsersController {
   @CacheTTL(30000)
   findAll(
     @Query() query: PaginationQueryDto,
-    @CurrentUser('sub') currentUserId: string,
   ): Promise<PaginatedResult<UserResponseDto>> {
-    return this.usersService.findAllInSharedOrganisations(currentUserId, query);
+    return this.usersService.findAll(query);
   }
 
   @ApiOperation({ operationId: 'UserGet' })
   @ApiOkResponse({ type: UserResponseDto })
   @Get(':id')
   @CacheTTL(60000)
-  async findOne(
+  findOne(
     @Param('id', ParseUUIDPipe) id: string,
-    @CurrentUser('sub') currentUserId: string,
   ): Promise<UserResponseDto> {
-    if (currentUserId !== id) {
-      const shared = await this.organisationAccess.sharesOrganisationWith(
-        currentUserId,
-        id,
-      );
-
-      if (!shared) {
-        throw new ForbiddenException(
-          'You can only access users in your organisations.',
-        );
-      }
-    }
-
     return this.usersService.findOne(id);
   }
 

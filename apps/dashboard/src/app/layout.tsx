@@ -3,11 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
-import {
-  QueryProvider,
-  AuthProvider,
-  OrganisationProvider,
-} from "@repo/auth";
+import { QueryProvider, AuthProvider } from "@repo/auth";
 import { Toaster } from "@repo/ui/components/ui/toaster";
 
 const fontSans = Inter({
@@ -35,10 +31,8 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <QueryProvider>
             <AuthProvider>
-              <OrganisationProvider>
-                {children}
-                <Toaster />
-              </OrganisationProvider>
+              {children}
+              <Toaster />
             </AuthProvider>
           </QueryProvider>
         </NextIntlClientProvider>

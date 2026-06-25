@@ -90,7 +90,6 @@
       "search": "Zoeken...",
       "links": {
         "dashboard": "Dashboard",
-        "organisation": "Organisatie",
         "settings": "Instellingen",
         "support": "Ondersteuning"
       }
@@ -98,19 +97,6 @@
     "language": {
       "dutch": "Nederlands",
       "english": "Engels"
-    },
-    "organisation": {
-      "loading": "Organisaties laden…",
-      "placeholder": "Kies organisatie",
-      "empty": "Geen organisaties gevonden.",
-      "addOrganisation": "Nieuwe organisatie"
-    }
-  },
-  "banners": {
-    "noOrganisation": {
-      "title": "Aan de slag",
-      "description": "Je zit nog niet in een organisatie. Maak je eerste organisatie aan om het dashboard te gebruiken.",
-      "cta": "Organisatie aanmaken"
     }
   },
   "forms": {
@@ -219,66 +205,6 @@
       "title": "Account verwijderen",
       "description": "Verwijder je account en alle bijbehorende gegevens permanent.",
       "deleteButton": "Account verwijderen"
-    },
-    "createOrganisation": {
-      "title": "Nieuwe organisatie",
-      "description": "Maak een organisatie aan; je wordt automatisch lid.",
-      "loading": "Laden…",
-      "name": "Organisatienaam",
-      "namePlaceholder": "Acme B.V.",
-      "address": "Adres",
-      "addressPlaceholder": "Straat en huisnummer",
-      "postalCode": "Postcode",
-      "postalCodePlaceholder": "1234 AB",
-      "city": "Plaats",
-      "cityPlaceholder": "Amsterdam",
-      "kvk": "KvK-nummer",
-      "kvkPlaceholder": "Optioneel",
-      "vatNumber": "BTW-nummer",
-      "vatNumberPlaceholder": "Optioneel",
-      "iban": "IBAN",
-      "ibanPlaceholder": "Optioneel",
-      "submit": "Aanmaken",
-      "submitting": "Bezig met aanmaken…",
-      "cancel": "Annuleren",
-      "successTitle": "Organisatie aangemaakt",
-      "success": "Je organisatie is aangemaakt.",
-      "errorTitle": "Organisatie aanmaken mislukt",
-      "error": "Er ging iets mis. Probeer het opnieuw."
-    },
-    "organisation-settings": {
-      "title": "Gegevens",
-      "description": "Bekijk en bewerk de organisatie die je nu in de sidebar hebt geselecteerd.",
-      "adminOnlyHint": "Alleen organisatie-eigenaren kunnen deze gegevens aanpassen.",
-      "noSelection": "Selecteer een organisatie in de sidebar om de gegevens hier te zien.",
-      "loading": "Organisatie laden…",
-      "errorLoad": "Organisatie kon niet worden geladen.",
-      "logoTitle": "Logo",
-      "logoDescription": "Upload een logo voor deze organisatie. Zichtbaar in de organisatieschakelaar.",
-      "logoButton": "Logo uploaden",
-      "logoHelp": "JPEG, PNG, WEBP of SVG (max. 5 MB)",
-      "logoInvalidType": "Upload een JPEG-, PNG-, WEBP- of SVG-bestand.",
-      "logoTooLarge": "Het bestand mag maximaal 5 MB zijn.",
-      "name": "Organisatienaam",
-      "namePlaceholder": "Acme B.V.",
-      "address": "Adres",
-      "addressPlaceholder": "Straat en huisnummer",
-      "postalCode": "Postcode",
-      "postalCodePlaceholder": "1234 AB",
-      "city": "Plaats",
-      "cityPlaceholder": "Amsterdam",
-      "kvk": "KvK-nummer",
-      "kvkPlaceholder": "Optioneel",
-      "vatNumber": "BTW-nummer",
-      "vatNumberPlaceholder": "Optioneel",
-      "iban": "IBAN",
-      "ibanPlaceholder": "Optioneel",
-      "save": "Wijzigingen opslaan",
-      "saving": "Bezig met opslaan…",
-      "successTitle": "Organisatie bijgewerkt",
-      "successMessage": "Je wijzigingen zijn opgeslagen.",
-      "errorTitle": "Bijwerken mislukt",
-      "errorMessage": "Er ging iets mis. Probeer het opnieuw."
     }
   },
   "modals": {
@@ -291,67 +217,6 @@
       "error": {
         "title": "Account verwijderen mislukt"
       }
-    },
-    "inviteMember": {
-      "button": "Lid uitnodigen",
-      "title": "Teamlid uitnodigen",
-      "desc": "Voeg een bestaande gebruiker toe via e-mail, of maak een nieuwe gebruiker aan door ook de naam in te vullen.",
-      "email": "E-mailadres",
-      "emailPlaceholder": "naam@voorbeeld.nl",
-      "firstname": "Voornaam",
-      "firstnamePlaceholder": "Verplicht voor nieuwe gebruikers",
-      "surname": "Achternaam",
-      "surnamePlaceholder": "Verplicht voor nieuwe gebruikers",
-      "role": "Rol",
-      "roleOwner": "Eigenaar",
-      "roleMember": "Lid",
-      "submit": "Uitnodiging versturen",
-      "submitting": "Versturen...",
-      "successTitle": "Lid uitgenodigd",
-      "successDescription": "Het nieuwe lid is toegevoegd aan de organisatie.",
-      "errorTitle": "Lid uitnodigen mislukt"
-    },
-    "removeMember": {
-      "title": "Lid verwijderen",
-      "desc": "Deze persoon verliest toegang tot deze organisatie.",
-      "label": "Typ de volledige naam om verwijderen te bevestigen van",
-      "placeholder": "Volledige naam",
-      "button": "Lid verwijderen",
-      "errorTitle": "Lid verwijderen mislukt"
-    },
-    "changeRole": {
-      "promote": {
-        "title": "Organisatie-eigenaar maken",
-        "desc": "Dit lid krijgt volledige controle over de organisatie.",
-        "label": "Typ de volledige naam om promoveren te bevestigen van",
-        "placeholder": "Volledige naam",
-        "button": "Promoveren tot eigenaar"
-      },
-      "demote": {
-        "title": "Degraderen naar lid",
-        "desc": "Deze eigenaar wordt een gewoon lid.",
-        "label": "Typ de volledige naam om degraderen te bevestigen van",
-        "placeholder": "Volledige naam",
-        "button": "Degraderen"
-      },
-      "errorTitle": "Rol bijwerken mislukt"
-    }
-  },
-  "tables": {
-    "team": {
-      "name": "Naam",
-      "email": "E-mail",
-      "role": "Rol",
-      "status": "Status",
-      "settings": "Instellingen",
-      "owner": "Eigenaar",
-      "member": "Lid",
-      "active": "Actief",
-      "pending": "In afwachting",
-      "empty": "Nog geen leden.",
-      "selectOrgFirst": "Selecteer een organisatie om de leden te bekijken.",
-      "loadError": "Kon teamleden niet laden.",
-      "truncationHint": "{shown} van {total} leden weergegeven."
     }
   },
   "pages": {
@@ -371,21 +236,8 @@
         "comingSoonDescription": "Het beheer van abonnementen en betalingen is nog niet beschikbaar."
       }
     },
-    "organisation": {
-      "title": "Organisatie",
-      "description": "Beheer de gegevens en teamleden van je organisatie.",
-      "tabs": {
-        "details": "Organisatie",
-        "branding": "Huisstijl",
-        "team": "Team"
-      }
-    },
     "dashboard": {
-      "title": "Dashboard",
-      "organisationCardTitle": "Organisatie",
-      "organisationCardDescription": "Beheer hier je organisatie. Pas de gegevens, huisstijl en teamgenoten aan.",
-      "organisationCardButton": "Openen",
-      "organisationCardBadge": "Organisatie"
+      "title": "Dashboard"
     }
   },
   "common": {

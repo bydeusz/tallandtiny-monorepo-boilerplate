@@ -90,7 +90,6 @@
       "search": "Search...",
       "links": {
         "dashboard": "Dashboard",
-        "organisation": "Organisation",
         "settings": "Settings",
         "support": "Support"
       }
@@ -98,19 +97,6 @@
     "language": {
       "dutch": "Dutch",
       "english": "English"
-    },
-    "organisation": {
-      "loading": "Loading organisations…",
-      "placeholder": "Select organisation",
-      "empty": "No organisations found.",
-      "addOrganisation": "New organisation"
-    }
-  },
-  "banners": {
-    "noOrganisation": {
-      "title": "Get started",
-      "description": "You are not part of an organisation yet. Create your first one to start using the dashboard.",
-      "cta": "Create organisation"
     }
   },
   "forms": {
@@ -219,66 +205,6 @@
       "title": "Delete account",
       "description": "Permanently remove your account and all related data.",
       "deleteButton": "Delete account"
-    },
-    "createOrganisation": {
-      "title": "New organisation",
-      "description": "Create an organisation and add yourself as a member.",
-      "loading": "Loading…",
-      "name": "Organisation name",
-      "namePlaceholder": "Acme Inc.",
-      "address": "Address",
-      "addressPlaceholder": "Street and number",
-      "postalCode": "Postal code",
-      "postalCodePlaceholder": "1234 AB",
-      "city": "City",
-      "cityPlaceholder": "Amsterdam",
-      "kvk": "Chamber of Commerce (KvK)",
-      "kvkPlaceholder": "Optional",
-      "vatNumber": "VAT number",
-      "vatNumberPlaceholder": "Optional",
-      "iban": "IBAN",
-      "ibanPlaceholder": "Optional",
-      "submit": "Create",
-      "submitting": "Creating…",
-      "cancel": "Cancel",
-      "successTitle": "Organisation created",
-      "success": "Your organisation has been created.",
-      "errorTitle": "Could not create organisation",
-      "error": "Something went wrong. Please try again."
-    },
-    "organisation-settings": {
-      "title": "Details",
-      "description": "View and edit the organisation currently selected in the sidebar.",
-      "adminOnlyHint": "Only organisation owners can edit these details.",
-      "noSelection": "Select an organisation in the sidebar to see its details here.",
-      "loading": "Loading organisation…",
-      "errorLoad": "Could not load organisation.",
-      "logoTitle": "Logo",
-      "logoDescription": "Upload a logo for this organisation. Shown in the organisation switcher.",
-      "logoButton": "Upload logo",
-      "logoHelp": "JPEG, PNG, WEBP or SVG (max 5MB)",
-      "logoInvalidType": "Please upload a JPEG, PNG, WEBP (or SVG) file.",
-      "logoTooLarge": "File size must be less than 5MB.",
-      "name": "Organisation name",
-      "namePlaceholder": "Acme Inc.",
-      "address": "Address",
-      "addressPlaceholder": "Street and number",
-      "postalCode": "Postal code",
-      "postalCodePlaceholder": "1234 AB",
-      "city": "City",
-      "cityPlaceholder": "Amsterdam",
-      "kvk": "Chamber of Commerce (KvK)",
-      "kvkPlaceholder": "Optional",
-      "vatNumber": "VAT number",
-      "vatNumberPlaceholder": "Optional",
-      "iban": "IBAN",
-      "ibanPlaceholder": "Optional",
-      "save": "Save changes",
-      "saving": "Saving…",
-      "successTitle": "Organisation updated",
-      "successMessage": "Your changes have been saved.",
-      "errorTitle": "Update failed",
-      "errorMessage": "Something went wrong. Please try again."
     }
   },
   "modals": {
@@ -291,67 +217,6 @@
       "error": {
         "title": "Could not delete account"
       }
-    },
-    "inviteMember": {
-      "button": "Invite member",
-      "title": "Invite team member",
-      "desc": "Add an existing user by email, or create a new user by also filling in their name.",
-      "email": "Email address",
-      "emailPlaceholder": "name@example.com",
-      "firstname": "First name",
-      "firstnamePlaceholder": "Required for new users",
-      "surname": "Last name",
-      "surnamePlaceholder": "Required for new users",
-      "role": "Role",
-      "roleOwner": "Owner",
-      "roleMember": "Member",
-      "submit": "Send invite",
-      "submitting": "Sending...",
-      "successTitle": "Member invited",
-      "successDescription": "The new member has been added to the organisation.",
-      "errorTitle": "Could not invite member"
-    },
-    "removeMember": {
-      "title": "Remove member",
-      "desc": "This person will lose access to this organisation.",
-      "label": "Type the full name to confirm removing",
-      "placeholder": "Full name",
-      "button": "Remove member",
-      "errorTitle": "Could not remove member"
-    },
-    "changeRole": {
-      "promote": {
-        "title": "Make organisation owner",
-        "desc": "This member will gain full control of the organisation.",
-        "label": "Type the full name to confirm promoting",
-        "placeholder": "Full name",
-        "button": "Promote to owner"
-      },
-      "demote": {
-        "title": "Demote to member",
-        "desc": "This owner will become a regular member.",
-        "label": "Type the full name to confirm demoting",
-        "placeholder": "Full name",
-        "button": "Demote"
-      },
-      "errorTitle": "Could not update role"
-    }
-  },
-  "tables": {
-    "team": {
-      "name": "Name",
-      "email": "Email",
-      "role": "Role",
-      "status": "Status",
-      "settings": "Settings",
-      "owner": "Owner",
-      "member": "Member",
-      "active": "Active",
-      "pending": "Pending",
-      "empty": "No members yet.",
-      "selectOrgFirst": "Select an organisation to view its members.",
-      "loadError": "Could not load team members.",
-      "truncationHint": "Showing {shown} of {total} members."
     }
   },
   "pages": {
@@ -371,21 +236,8 @@
         "comingSoonDescription": "Subscription and payment management is not available yet."
       }
     },
-    "organisation": {
-      "title": "Organisation",
-      "description": "Manage your organisation's details and team members.",
-      "tabs": {
-        "details": "Organisation",
-        "branding": "Branding",
-        "team": "Team"
-      }
-    },
     "dashboard": {
-      "title": "Dashboard",
-      "organisationCardTitle": "Organisation",
-      "organisationCardDescription": "Manage your organisation here. Update details, branding, and team members.",
-      "organisationCardButton": "Open",
-      "organisationCardBadge": "Organisation"
+      "title": "Dashboard"
     }
   },
   "common": {

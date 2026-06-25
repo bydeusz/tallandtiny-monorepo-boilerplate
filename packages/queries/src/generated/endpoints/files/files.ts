@@ -35,7 +35,7 @@ import type { ErrorType, BodyType } from '../../../mutator/custom-axios';
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1];
 
 export const fileUpload = (
-  scope: 'user' | 'organisation',
+  scope: 'user',
   ownerId: string,
   folder: string,
   fileUploadBody: BodyType<FileUploadBody>,
@@ -67,7 +67,7 @@ export const getFileUploadMutationOptions = <
     Awaited<ReturnType<typeof fileUpload>>,
     TError,
     {
-      scope: 'user' | 'organisation';
+      scope: 'user';
       ownerId: string;
       folder: string;
       data: BodyType<FileUploadBody>;
@@ -80,7 +80,7 @@ export const getFileUploadMutationOptions = <
   Awaited<ReturnType<typeof fileUpload>>,
   TError,
   {
-    scope: 'user' | 'organisation';
+    scope: 'user';
     ownerId: string;
     folder: string;
     data: BodyType<FileUploadBody>;
@@ -100,7 +100,7 @@ export const getFileUploadMutationOptions = <
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof fileUpload>>,
     {
-      scope: 'user' | 'organisation';
+      scope: 'user';
       ownerId: string;
       folder: string;
       data: BodyType<FileUploadBody>;
@@ -127,7 +127,7 @@ export const useFileUpload = <TError = ErrorType<unknown>, TContext = unknown>(
       Awaited<ReturnType<typeof fileUpload>>,
       TError,
       {
-        scope: 'user' | 'organisation';
+        scope: 'user';
         ownerId: string;
         folder: string;
         data: BodyType<FileUploadBody>;
@@ -142,7 +142,7 @@ export const useFileUpload = <TError = ErrorType<unknown>, TContext = unknown>(
   Awaited<ReturnType<typeof fileUpload>>,
   TError,
   {
-    scope: 'user' | 'organisation';
+    scope: 'user';
     ownerId: string;
     folder: string;
     data: BodyType<FileUploadBody>;
@@ -155,7 +155,7 @@ export const useFileUpload = <TError = ErrorType<unknown>, TContext = unknown>(
   return useMutation(mutationOptions, queryClient);
 };
 export const fileReplace = (
-  scope: 'user' | 'organisation',
+  scope: 'user',
   ownerId: string,
   folder: string,
   fileReplaceBody: BodyType<FileReplaceBody>,
@@ -183,7 +183,7 @@ export const getFileReplaceMutationOptions = <
     Awaited<ReturnType<typeof fileReplace>>,
     TError,
     {
-      scope: 'user' | 'organisation';
+      scope: 'user';
       ownerId: string;
       folder: string;
       data: BodyType<FileReplaceBody>;
@@ -195,7 +195,7 @@ export const getFileReplaceMutationOptions = <
   Awaited<ReturnType<typeof fileReplace>>,
   TError,
   {
-    scope: 'user' | 'organisation';
+    scope: 'user';
     ownerId: string;
     folder: string;
     data: BodyType<FileReplaceBody>;
@@ -214,7 +214,7 @@ export const getFileReplaceMutationOptions = <
   const mutationFn: MutationFunction<
     Awaited<ReturnType<typeof fileReplace>>,
     {
-      scope: 'user' | 'organisation';
+      scope: 'user';
       ownerId: string;
       folder: string;
       data: BodyType<FileReplaceBody>;
@@ -240,7 +240,7 @@ export const useFileReplace = <TError = ErrorType<unknown>, TContext = unknown>(
       Awaited<ReturnType<typeof fileReplace>>,
       TError,
       {
-        scope: 'user' | 'organisation';
+        scope: 'user';
         ownerId: string;
         folder: string;
         data: BodyType<FileReplaceBody>;
@@ -254,7 +254,7 @@ export const useFileReplace = <TError = ErrorType<unknown>, TContext = unknown>(
   Awaited<ReturnType<typeof fileReplace>>,
   TError,
   {
-    scope: 'user' | 'organisation';
+    scope: 'user';
     ownerId: string;
     folder: string;
     data: BodyType<FileReplaceBody>;

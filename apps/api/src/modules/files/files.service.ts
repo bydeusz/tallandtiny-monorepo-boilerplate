@@ -4,14 +4,9 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import type { Express } from 'express';
-import {
-  FileScope,
-  OrganisationRole,
-  Prisma,
-} from '@repo/database';
+import { FileScope, Prisma } from '@repo/database';
 import { PaginatedResult } from '../../common/interfaces';
 import { buildPaginationMeta, buildPrismaSkipTake } from '../../common/utils';
-import { OrganisationAccessService } from '../organisations/organisation-access.service';
 import { PrismaService } from '../../prisma/prisma.service';
 import { StorageService } from '../storage';
 import { FileListQueryDto, FileResponseDto } from './dto';
@@ -21,13 +16,11 @@ export class FilesService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly storageService: StorageService,
-    private readonly organisationAccess: OrganisationAccessService,
   ) {}
 
   async upload(
     scope: FileScope,
     ownerId: string,
-    actorUserId: string,
     folder: string,
     file: Express.Multer.File,
     replace = false,
@@ -66,8 +59,7 @@ export class FilesService {
           key,
           folder,
           scope,
-          userId: scope === FileScope.USER ? ownerId : actorUserId,
-          organisationId: scope === FileScope.ORGANISATION ? ownerId : null,
+          userId: ownerId,
         },
       });
 
@@ -89,15 +81,7 @@ export class FilesService {
       scope: query.scope,
       folder: query.folder,
       mimeType: query.mimeType,
-      OR: [
-        { userId: currentUserId, scope: FileScope.USER },
-        {
-          scope: FileScope.ORGANISATION,
-          organisation: {
-            members: { some: { userId: currentUserId } },
-          },
-        },
-      ],
+      userId: currentUserId,
     };
 
     const [items, total] = await this.prisma.$transaction([
@@ -132,7 +116,7 @@ export class FilesService {
       throw new NotFoundException('File not found.');
     }
 
-    await this.assertReadAccess(file, currentUserId);
+    this.assertReadAccess(file, currentUserId);
 
     return this.toResponseDto(file);
   }
@@ -146,7 +130,7 @@ export class FilesService {
       throw new NotFoundException('File not found.');
     }
 
-    await this.assertDeleteAccess(file, userId);
+    this.assertDeleteAccess(file, userId);
 
     await this.storageService.delete(file.key);
 
@@ -155,71 +139,27 @@ export class FilesService {
         where: { id: fileId },
       });
 
-      await this.syncEntityAssetUrl(
-        tx,
-        file.scope,
-        this.getOwnerId(file),
-        file.folder,
-      );
+      await this.syncEntityAssetUrl(tx, file.scope, file.userId, file.folder);
     });
 
     return this.toResponseDto(file);
   }
 
-  private async assertReadAccess(
-    file: { scope: FileScope; userId: string; organisationId: string | null },
+  private assertReadAccess(
+    file: { userId: string },
     currentUserId: string,
-  ): Promise<void> {
-    if (file.scope === FileScope.USER) {
-      if (file.userId !== currentUserId) {
-        throw new ForbiddenException('You cannot access this file.');
-      }
-      return;
-    }
-
-    if (!file.organisationId) {
+  ): void {
+    if (file.userId !== currentUserId) {
       throw new ForbiddenException('You cannot access this file.');
     }
-
-    await this.organisationAccess.assertMembership(
-      file.organisationId,
-      currentUserId,
-    );
   }
 
-  private async assertDeleteAccess(
-    file: { scope: FileScope; userId: string; organisationId: string | null },
+  private assertDeleteAccess(
+    file: { userId: string },
     currentUserId: string,
-  ): Promise<void> {
-    if (file.scope === FileScope.USER) {
-      if (file.userId !== currentUserId) {
-        throw new ForbiddenException('You can only delete your own files.');
-      }
-      return;
-    }
-
-    if (!file.organisationId) {
-      throw new ForbiddenException('You cannot delete this file.');
-    }
-
-    if (file.userId === currentUserId) {
-      // Uploader can always delete their own organisation file.
-      await this.organisationAccess.assertMembership(
-        file.organisationId,
-        currentUserId,
-      );
-      return;
-    }
-
-    const role = await this.organisationAccess.assertMembership(
-      file.organisationId,
-      currentUserId,
-    );
-
-    if (role !== OrganisationRole.OWNER) {
-      throw new ForbiddenException(
-        'Only the uploader or an organisation owner can delete this file.',
-      );
+  ): void {
+    if (file.userId !== currentUserId) {
+      throw new ForbiddenException('You can only delete your own files.');
     }
   }
 
@@ -231,20 +171,8 @@ export class FilesService {
     return {
       scope,
       folder,
-      ...(scope === FileScope.USER
-        ? { userId: ownerId }
-        : { organisationId: ownerId }),
+      userId: ownerId,
     };
-  }
-
-  private getOwnerId(file: {
-    scope: FileScope;
-    userId: string;
-    organisationId: string | null;
-  }): string {
-    return file.scope === FileScope.USER
-      ? file.userId
-      : (file.organisationId ?? '');
   }
 
   private async syncEntityAssetUrl(
@@ -262,15 +190,6 @@ export class FilesService {
         },
       });
     }
-
-    if (scope === FileScope.ORGANISATION && folder === 'logo') {
-      await tx.organisation.update({
-        where: { id: ownerId },
-        data: {
-          logoUrl: key ?? null,
-        },
-      });
-    }
   }
 
   private async toResponseDto(file: {
@@ -282,7 +201,6 @@ export class FilesService {
     folder: string;
     scope: FileScope;
     userId: string;
-    organisationId: string | null;
     createdAt: Date;
     updatedAt: Date;
   }): Promise<FileResponseDto> {
@@ -296,7 +214,6 @@ export class FilesService {
       folder: file.folder,
       scope: file.scope,
       userId: file.userId,
-      organisationId: file.organisationId,
       downloadUrl,
       createdAt: file.createdAt,
       updatedAt: file.updatedAt,
