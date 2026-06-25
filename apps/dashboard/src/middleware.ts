@@ -1,0 +1,10 @@
+import { createAuthMiddleware } from "@repo/auth/server";
+
+export const middleware = createAuthMiddleware({
+  authRoutes: ["/login", "/register", "/reset-password", "/verify"],
+  protectedRoutes: ["/", "/organisation", "/settings", "/support"],
+});
+
+export const config = {
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+};
