@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { Pool } from 'pg';
 import { PrismaClient } from '../src/generated/prisma/client.js';
+import { resetDatabase } from './seeders/reset.seeder.js';
 import { seedUsers } from './seeders/user.seeder.js';
 
 const connectionString = process.env.DATABASE_URL;
@@ -14,6 +15,8 @@ const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
+  console.log('Clearing database...');
+  await resetDatabase(prisma);
   console.log('Seeding database...');
   await seedUsers(prisma);
   console.log('Seeding completed.');

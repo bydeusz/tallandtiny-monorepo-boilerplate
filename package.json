@@ -11,6 +11,7 @@
     "db:generate": "turbo run db:generate",
     "db:migrate": "turbo run db:migrate",
     "db:deploy": "turbo run db:deploy",
+    "db:seed": "turbo run db:seed",
     "gen:queries": "turbo run gen:queries",
     "docker:up": "docker compose -f _docker/docker-compose.yml up -d",
     "docker:down": "docker compose -f _docker/docker-compose.yml down",

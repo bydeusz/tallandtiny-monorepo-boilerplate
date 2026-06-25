@@ -28,6 +28,10 @@
     "db:deploy": {
       "cache": false
     },
+    "db:seed": {
+      "dependsOn": ["db:generate"],
+      "cache": false
+    },
     "gen:queries": {
       "cache": false
     }
