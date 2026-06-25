@@ -533,7 +533,7 @@ export class AuthService {
     name: string,
     code: string,
   ): Promise<void> {
-    const activationUrl = this.buildActivationUrl(email, code);
+    const activationUrl = this.buildActivationUrl(email);
 
     await this.queueService.addMailJob(MAIL_JOB_SEND, {
       to: email,
@@ -547,7 +547,7 @@ export class AuthService {
     });
   }
 
-  private buildActivationUrl(email: string, _code: string): string {
+  private buildActivationUrl(email: string): string {
     const frontendUrl = this.configService.get<string>(
       'auth.frontendUrl',
       'http://localhost:3000',
