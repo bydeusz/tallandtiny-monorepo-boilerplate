@@ -29,9 +29,15 @@
         "surnamePlaceholder": "Doe",
         "email": "E-mailadres",
         "emailPlaceholder": "John@voorbeeld.nl",
+        "password": "Wachtwoord",
         "signUp": "Registreren",
+        "signIn": "Inloggen",
         "alreadyHaveAccount": "Heb je al een account?",
-        "errorTitle": "Registreren mislukt"
+        "errorTitle": "Registreren mislukt",
+        "errors": {
+          "passwordLength": "Wachtwoord moet minimaal 8 tekens bevatten.",
+          "default": "Registreren mislukt. Probeer het opnieuw."
+        }
       },
       "confirm": {
         "title": "Controleer je inbox",

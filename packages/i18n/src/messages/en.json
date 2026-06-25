@@ -29,9 +29,15 @@
         "surnamePlaceholder": "Doe",
         "email": "Email address",
         "emailPlaceholder": "john@doe.com",
+        "password": "Password",
         "signUp": "Sign up",
+        "signIn": "Sign in",
         "alreadyHaveAccount": "Already have an account?",
-        "errorTitle": "Registration failed"
+        "errorTitle": "Registration failed",
+        "errors": {
+          "passwordLength": "Password must be at least 8 characters.",
+          "default": "Registration failed. Please try again."
+        }
       },
       "confirm": {
         "title": "Check your inbox",
