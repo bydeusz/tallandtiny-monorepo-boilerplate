@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { X, Menu, Settings, LifeBuoy } from "lucide-react";
 import { NavLink } from "@repo/ui/components/ui/nav-link";
-import { OrganisationSwitcher } from "@repo/auth";
 import { LanguageSwitcher } from "@repo/i18n";
 import { Brand } from "./brand";
 import { LogoutButton } from "./logout-button";
@@ -66,10 +65,6 @@ export function DashboardSidebar({
       <div className="mb-3 flex justify-between">
         <Brand href="/" />
         <div className="hidden md:block">{thumbnail}</div>
-      </div>
-
-      <div className="mb-4">
-        <OrganisationSwitcher />
       </div>
 
       <nav className="border-border flex-1 space-y-2 border-t pt-4">

@@ -1,8 +1,8 @@
 import { IsIn, IsString, IsUUID } from 'class-validator';
 
 export class UploadFileParamsDto {
-  @IsIn(['user', 'organisation'])
-  scope!: 'user' | 'organisation';
+  @IsIn(['user'])
+  scope!: 'user';
 
   @IsUUID()
   ownerId!: string;

@@ -26,7 +26,6 @@ import type { Express } from 'express';
 import { CurrentUser } from '../../common/decorators';
 import { FileScope } from '@repo/database';
 import { PaginatedResult } from '../../common/interfaces';
-import { OrganisationAccessService } from '../organisations/organisation-access.service';
 import {
   FileListQueryDto,
   FileResponseDto,
@@ -45,10 +44,7 @@ import {
 @ApiTags('Files')
 @ApiBearerAuth()
 export class FilesController {
-  constructor(
-    private readonly filesService: FilesService,
-    private readonly organisationAccess: OrganisationAccessService,
-  ) {}
+  constructor(private readonly filesService: FilesService) {}
 
   @ApiOperation({ operationId: 'FileUpload' })
   @Post(':scope/:ownerId/:folder')
@@ -80,13 +76,12 @@ export class FilesController {
     file: Express.Multer.File,
   ): Promise<FileResponseDto> {
     const scope = this.resolveScope(params.scope);
-    await this.assertUploadAccess(scope, params.ownerId, userId);
+    this.assertUploadAccess(params.ownerId, userId);
     this.assertSafeUpload(file);
 
     return this.filesService.upload(
       scope,
       params.ownerId,
-      userId,
       params.folder,
       file,
       query.replace ?? false,
@@ -122,13 +117,12 @@ export class FilesController {
     file: Express.Multer.File,
   ): Promise<FileResponseDto> {
     const scope = this.resolveScope(params.scope);
-    await this.assertUploadAccess(scope, params.ownerId, userId);
+    this.assertUploadAccess(params.ownerId, userId);
     this.assertSafeUpload(file);
 
     return this.filesService.upload(
       scope,
       params.ownerId,
-      userId,
       params.folder,
       file,
       true,
@@ -167,26 +161,13 @@ export class FilesController {
       return FileScope.USER;
     }
 
-    if (scope === 'organisation') {
-      return FileScope.ORGANISATION;
-    }
-
-    throw new BadRequestException('Scope must be either user or organisation.');
+    throw new BadRequestException('Scope must be user.');
   }
 
-  private async assertUploadAccess(
-    scope: FileScope,
-    ownerId: string,
-    currentUserId: string,
-  ): Promise<void> {
-    if (scope === FileScope.USER) {
-      if (ownerId !== currentUserId) {
-        throw new ForbiddenException('You can only upload files for yourself.');
-      }
-      return;
+  private assertUploadAccess(ownerId: string, currentUserId: string): void {
+    if (ownerId !== currentUserId) {
+      throw new ForbiddenException('You can only upload files for yourself.');
     }
-
-    await this.organisationAccess.assertMembership(ownerId, currentUserId);
   }
 
   private assertSafeUpload(file: Express.Multer.File): void {

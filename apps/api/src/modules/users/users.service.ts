@@ -15,7 +15,6 @@ const userPublicSelect = {
   surname: true,
   email: true,
   isActive: true,
-  memberships: { select: { organisationId: true } },
   avatarUrl: true,
   address: true,
   postalCode: true,
@@ -40,33 +39,19 @@ export class UsersService {
     await this.cacheManager.clear();
   }
 
-  async findAllInSharedOrganisations(
-    currentUserId: string,
+  async findAll(
     query: PaginationQueryDto,
   ): Promise<PaginatedResult<UserResponseDto>> {
     const { skip, take } = buildPrismaSkipTake(query);
 
-    const where: Prisma.UserWhereInput = {
-      memberships: {
-        some: {
-          organisation: {
-            members: {
-              some: { userId: currentUserId },
-            },
-          },
-        },
-      },
-    };
-
     const [items, total] = await this.prisma.$transaction([
       this.prisma.user.findMany({
-        where,
         orderBy: { createdAt: 'desc' },
         select: userPublicSelect,
         skip,
         take,
       }),
-      this.prisma.user.count({ where }),
+      this.prisma.user.count(),
     ]);
 
     const data = await Promise.all(
@@ -156,11 +141,9 @@ export class UsersService {
 
   private async toUserResponseDto(user: UserPublic): Promise<UserResponseDto> {
     const avatarUrl = await this.resolveAssetUrl(user.avatarUrl);
-    const { memberships, ...rest } = user;
 
     return {
-      ...rest,
-      organisationIds: memberships.map((m) => m.organisationId),
+      ...user,
       avatarUrl,
     };
   }

@@ -1,9 +1,5 @@
 import bcrypt from 'bcrypt';
-import {
-  OrganisationRole,
-  PrismaClient,
-} from '../../src/generated/prisma/client.js';
-import type { SeededOrganisationIds } from './organisation.seeder.js';
+import { PrismaClient } from '../../src/generated/prisma/client.js';
 
 interface SeedUser {
   name: string;
@@ -15,13 +11,9 @@ interface SeedUser {
   country?: string;
   kvk?: string;
   vatNumber?: string;
-  organisations: Array<{ organisationId: string; role: OrganisationRole }>;
 }
 
-export async function seedUsers(
-  prisma: PrismaClient,
-  organisationIds: SeededOrganisationIds,
-): Promise<void> {
+export async function seedUsers(prisma: PrismaClient): Promise<void> {
   const passwordHash = await bcrypt.hash('Admin123!', 10);
 
   const users: SeedUser[] = [
@@ -33,9 +25,6 @@ export async function seedUsers(
       postalCode: '1012 LM',
       city: 'Amsterdam',
       country: 'NL',
-      organisations: [
-        { organisationId: organisationIds.nike, role: OrganisationRole.MEMBER },
-      ],
     },
     {
       name: 'Lisa',
@@ -47,14 +36,11 @@ export async function seedUsers(
       country: 'NL',
       kvk: '87654321',
       vatNumber: 'NL987654321B01',
-      organisations: [
-        { organisationId: organisationIds.nike, role: OrganisationRole.OWNER },
-      ],
     },
   ];
 
   for (const user of users) {
-    const created = await prisma.user.upsert({
+    await prisma.user.upsert({
       where: { email: user.email },
       update: {
         name: user.name,
@@ -82,22 +68,5 @@ export async function seedUsers(
         vatNumber: user.vatNumber,
       },
     });
-
-    for (const membership of user.organisations) {
-      await prisma.organisationMember.upsert({
-        where: {
-          userId_organisationId: {
-            userId: created.id,
-            organisationId: membership.organisationId,
-          },
-        },
-        update: { role: membership.role },
-        create: {
-          userId: created.id,
-          organisationId: membership.organisationId,
-          role: membership.role,
-        },
-      });
-    }
   }
 }

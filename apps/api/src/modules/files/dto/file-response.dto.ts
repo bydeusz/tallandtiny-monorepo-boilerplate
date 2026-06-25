@@ -7,6 +7,5 @@ export class FileResponseDto extends BaseEntityDto {
   folder!: string;
   scope!: string;
   userId!: string;
-  organisationId!: string | null;
   downloadUrl!: string;
 }

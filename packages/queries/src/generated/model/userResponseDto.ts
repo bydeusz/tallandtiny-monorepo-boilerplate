@@ -11,7 +11,6 @@ export interface UserResponseDto {
   surname: string;
   email: string;
   isActive: boolean;
-  organisationIds: string[];
   /** @nullable */
   avatarUrl: string | null;
   /** @nullable */

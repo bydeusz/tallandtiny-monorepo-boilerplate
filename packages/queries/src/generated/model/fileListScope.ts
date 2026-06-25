@@ -11,5 +11,4 @@ export type FileListScope = (typeof FileListScope)[keyof typeof FileListScope];
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const FileListScope = {
   USER: 'USER',
-  ORGANISATION: 'ORGANISATION',
 } as const;
