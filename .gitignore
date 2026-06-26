@@ -160,3 +160,7 @@ packages/database/src/generated/
 *.env
 !.env.example
 !_docker/.env.example
+
+# Superpowers
+docs/
+.superpowers/
