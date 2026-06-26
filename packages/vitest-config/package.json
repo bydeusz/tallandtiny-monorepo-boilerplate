@@ -23,9 +23,11 @@
   },
   "dependencies": {
     "@swc/core": "^1.15.43",
+    "@testcontainers/postgresql": "^12.0.3",
     "@testing-library/jest-dom": "^6.9.1",
     "@vitejs/plugin-react": "^6.0.3",
     "reflect-metadata": "^0.2.2",
+    "testcontainers": "^12.0.3",
     "unplugin-swc": "^1.5.9",
     "vite-tsconfig-paths": "^6.1.1"
   }

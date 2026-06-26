@@ -12,6 +12,7 @@
     "lint": "eslint \"src/**/*.ts\"",
     "check-types": "tsc --noEmit",
     "test": "vitest run",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
     "test:watch": "vitest"
   },
   "dependencies": {
