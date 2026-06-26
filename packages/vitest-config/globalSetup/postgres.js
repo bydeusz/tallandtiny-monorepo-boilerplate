@@ -15,10 +15,16 @@ export async function setup({ provide }) {
 
   // Apply migrations to the throwaway database. prisma.config.ts reads
   // DATABASE_URL from env, and dotenv does not override an already-set var.
-  execSync("pnpm --filter @repo/database run db:deploy", {
-    stdio: "inherit",
-    env: { ...process.env, DATABASE_URL: url },
-  });
+  try {
+    execSync("pnpm --filter @repo/database run db:deploy", {
+      stdio: "inherit",
+      env: { ...process.env, DATABASE_URL: url },
+    });
+  } catch (err) {
+    await container.stop();
+    container = undefined;
+    throw err;
+  }
 }
 
 export async function teardown() {
