@@ -73,11 +73,17 @@ export function DashboardSidebar({
 
       <nav className="border-border absolute bottom-0 left-0 w-full space-y-2 border-t p-4">
         <LanguageSwitcher />
-        <NavLink href="/settings" className="w-full">
+        <NavLink
+          href="/settings"
+          className="flex w-full gap-1.5 px-2.5 text-xs text-foreground"
+        >
           <Settings className="size-4" />
           {t("links.settings")}
         </NavLink>
-        <NavLink href="/support" className="w-full">
+        <NavLink
+          href="/support"
+          className="flex w-full gap-1.5 px-2.5 text-xs text-foreground"
+        >
           <LifeBuoy className="size-4" />
           {t("links.support")}
         </NavLink>
