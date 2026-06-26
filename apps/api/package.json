@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "nest build",
-    "dev": "nest start --watch",
+    "dev": "node ../../scripts/dev-log.mjs api -- nest start --watch",
     "dev:worker": "nest start --watch --entryFile main-worker",
     "start": "node dist/main.js",
     "start:worker": "node dist/main-worker.js",

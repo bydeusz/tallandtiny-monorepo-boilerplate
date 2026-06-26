@@ -1,6 +1,19 @@
 // Runs `turbo run dev` (keeping its interactive TUI) and opens the dev URLs in
 // the browser once each service is reachable. Invoked via the root `dev` script.
+//
+// Each app's dev task pipes its output through scripts/dev-log.mjs, which tees a
+// clean copy to tmp/<app>-dev.log. We wipe those logs here so every `pnpm dev`
+// starts from a clean slate (even for apps that aren't running this time).
 import { spawn } from 'node:child_process';
+import { mkdirSync, readdirSync, rmSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, resolve } from 'node:path';
+
+const logDir = resolve(dirname(fileURLToPath(import.meta.url)), '..', 'tmp');
+mkdirSync(logDir, { recursive: true });
+for (const file of readdirSync(logDir)) {
+  if (file.endsWith('-dev.log')) rmSync(resolve(logDir, file), { force: true });
+}
 
 const TARGETS = [
   { name: 'web', url: 'http://localhost:3000' },
