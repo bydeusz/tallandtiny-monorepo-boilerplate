@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
-import { Button } from "@repo/ui/components/ui/button";
+import { Button } from "@repo/ui/atoms";
 
 export function RegisterConfirmForm() {
   const router = useRouter();

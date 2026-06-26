@@ -11,8 +11,8 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@repo/ui/components/ui/card";
-import { Button } from "@repo/ui/components/ui/button";
+} from "@repo/ui/molecules";
+import { Button } from "@repo/ui/atoms";
 import { TextField } from "@/components/forms/text-field";
 
 export function ChangeEmail() {

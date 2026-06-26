@@ -6,8 +6,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@repo/ui/components/ui/card";
-import { Badge } from "@repo/ui/components/ui/badge";
+} from "@repo/ui/molecules";
+import { Badge } from "@repo/ui/atoms";
 
 type LinkedCardProps = {
   title: string;

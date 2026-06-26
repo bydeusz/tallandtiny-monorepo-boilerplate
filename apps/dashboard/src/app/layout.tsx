@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { QueryProvider, AuthProvider } from "@repo/auth";
-import { Toaster } from "@repo/ui/components/ui/toaster";
+import { Toaster } from "@repo/ui/organisms";
 
 const fontSans = Inter({
   subsets: ["latin"],

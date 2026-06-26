@@ -2,7 +2,7 @@
 
 import { Home } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { NavLink } from "@repo/ui/components/ui/nav-link";
+import { NavLink } from "@repo/ui/atoms";
 
 export function DashboardLinks() {
   const t = useTranslations("navigation.navbar");

@@ -541,18 +541,27 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
     devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@tailwindcss/postcss':
         specifier: ^4.0.0
         version: 4.3.1
+      '@turbo/gen':
+        specifier: ^2.5.0
+        version: 2.10.0(@types/node@22.19.21)
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.17
       '@types/react-dom':
         specifier: ^19.0.0
         version: 19.2.3(@types/react@19.2.17)
+      eslint:
+        specifier: ^9.17.0
+        version: 9.39.4(jiti@2.7.0)
       react:
         specifier: ^19.0.0
         version: 19.2.7
@@ -3505,6 +3514,10 @@ packages:
     resolution: {integrity: sha512-9A6TMRq/Ib+QnbhLlgkhOm+624wO4pzSQ/yQviQfWHOlFvaYxdnIAYmu2H6TS6y7kSVL0DvzNe04NbESTOzFVQ==}
     cpu: [arm64]
     os: [darwin]
+
+  '@turbo/gen@2.10.0':
+    resolution: {integrity: sha512-QrnFiSKpKjijnQhde4VgEsg+WA8dQRc6EzO4iLy1+n7R8QZ3BCeVR7NePVOhhYcewoD8GZHnSPwrzu9cOvTdOA==}
+    hasBin: true
 
   '@turbo/linux-64@2.9.18':
     resolution: {integrity: sha512-zCdIDtz69AnbYh913elJRRoF3QY5aa2HNnf+4rAkc7bQ+tWujiDkCNV7stazOUPggaDvhKIf2Z87qHftTeXSkw==}
@@ -10358,6 +10371,13 @@ snapshots:
 
   '@turbo/darwin-arm64@2.9.18':
     optional: true
+
+  '@turbo/gen@2.10.0(@types/node@22.19.21)':
+    dependencies:
+      '@inquirer/prompts': 7.10.1(@types/node@22.19.21)
+      esbuild: 0.28.1
+    transitivePeerDependencies:
+      - '@types/node'
 
   '@turbo/linux-64@2.9.18':
     optional: true

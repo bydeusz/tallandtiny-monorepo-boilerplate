@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 
 import { Header } from "@/components/layout/header";
-import { NavLink } from "@repo/ui/components/ui/nav-link";
+import { NavLink } from "@repo/ui/atoms";
 
 export default async function SettingsLayout({
   children,

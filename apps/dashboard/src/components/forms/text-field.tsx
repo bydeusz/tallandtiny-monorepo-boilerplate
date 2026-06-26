@@ -3,8 +3,7 @@
 import { useState, type ChangeEventHandler } from "react";
 import { useTranslations } from "next-intl";
 import { AlertCircleIcon } from "lucide-react";
-import { Input } from "@repo/ui/components/ui/input";
-import { Label } from "@repo/ui/components/ui/label";
+import { Input, Label } from "@repo/ui/atoms";
 import { cn } from "@repo/ui/lib/utils";
 
 type TextFieldProps = {

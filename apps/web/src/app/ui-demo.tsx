@@ -5,18 +5,9 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@repo/ui/components/ui/accordion';
-import { Alert, AlertDescription, AlertTitle } from '@repo/ui/components/ui/alert';
-import { Avatar, AvatarFallback } from '@repo/ui/components/ui/avatar';
-import { Badge } from '@repo/ui/components/ui/badge';
-import { Button } from '@repo/ui/components/ui/button';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from '@repo/ui/components/ui/carousel';
-import { Checkbox } from '@repo/ui/components/ui/checkbox';
-import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
   Dialog,
   DialogClose,
   DialogContent,
@@ -25,24 +16,35 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@repo/ui/components/ui/dialog';
-import { NavLink } from '@repo/ui/components/ui/nav-link';
-import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@repo/ui/components/ui/select';
-import { Skeleton } from '@repo/ui/components/ui/skeleton';
-import { Switch } from '@repo/ui/components/ui/switch';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@repo/ui/components/ui/tabs';
-import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@repo/ui/components/ui/tooltip';
+} from '@repo/ui/molecules';
+import {
+  Avatar,
+  AvatarFallback,
+  Badge,
+  Button,
+  Checkbox,
+  NavLink,
+  Skeleton,
+  Switch,
+} from '@repo/ui/atoms';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '@repo/ui/organisms';
 
 export function UiDemo() {
   return (

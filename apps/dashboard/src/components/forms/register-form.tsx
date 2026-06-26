@@ -7,12 +7,12 @@ import Link from "next/link";
 import { Loader2 } from "lucide-react";
 
 import { useAuthRegister, extractErrorMessage } from "@repo/queries";
-import { Button } from "@repo/ui/components/ui/button";
+import { Button } from "@repo/ui/atoms";
 import {
   Alert,
   AlertTitle,
   AlertDescription,
-} from "@repo/ui/components/ui/alert";
+} from "@repo/ui/molecules";
 
 import { TextField } from "@/components/forms/text-field";
 import { PasswordField } from "@/components/forms/password-field";
