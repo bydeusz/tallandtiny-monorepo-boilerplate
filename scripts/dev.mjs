@@ -1,5 +1,6 @@
-// Runs `turbo run dev` (keeping its interactive TUI) and opens the dev URLs in
-// the browser once each service is reachable. Invoked via the root `dev` script.
+// Runs `turbo run dev dev:worker` (keeping its interactive TUI) and opens the
+// dev URLs in the browser once each service is reachable. Invoked via the root
+// `dev` script. The api's dev:worker task runs the BullMQ queue worker.
 //
 // Each app's dev task pipes its output through scripts/dev-log.mjs, which tees a
 // clean copy to tmp/<app>-dev.log. We wipe those logs here so every `pnpm dev`
@@ -64,7 +65,7 @@ for (const { url } of TARGETS) {
 }
 
 // Let turbo own the terminal (and Ctrl+C) so its TUI renders normally.
-const turbo = spawn('turbo run dev', { stdio: 'inherit', shell: true });
+const turbo = spawn('turbo run dev dev:worker', { stdio: 'inherit', shell: true });
 
 // Defer shutdown to turbo: ignore signals here and exit when turbo exits.
 process.on('SIGINT', () => {});
