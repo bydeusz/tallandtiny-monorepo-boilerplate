@@ -20,9 +20,9 @@ export function integration(overrides: ViteUserConfig = {}): ViteUserConfig {
           globalSetup: [globalSetupFile],
           testTimeout: 60_000,
           hookTimeout: 120_000,
-          // Vitest 4: singleFork replaced by maxWorkers:1 + isolate:false.
-          // pool:"forks" is stated explicitly so a future default change
-          // cannot silently break process.env.DATABASE_URL inheritance.
+          // One shared fork (pool:forks + maxWorkers:1) with no isolation, so
+          // globalSetup's DATABASE_URL env mutation is inherited and all
+          // integration tests reuse the same container/DB.
           pool: "forks",
           maxWorkers: 1,
           isolate: false,

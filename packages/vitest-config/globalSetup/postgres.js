@@ -10,7 +10,9 @@ export async function setup({ provide }) {
   // Worker processes are forked after globalSetup, inheriting this env var.
   process.env.DATABASE_URL = url;
 
-  // Expose via Vitest's provide() so tests can also inject() it directly.
+  // Integration tests can read this explicitly via:
+  //   import { inject } from "vitest"  →  inject("databaseUrl")
+  // rather than relying on process.env.DATABASE_URL.
   provide("databaseUrl", url);
 
   // Apply migrations to the throwaway database. prisma.config.ts reads
