@@ -226,14 +226,7 @@
       "tabs": {
         "personal": "Persoonlijke gegevens",
         "account": "Account",
-        "subscription": "Abonnement",
         "delete": "Verwijderen"
-      },
-      "subscription": {
-        "title": "Abonnement",
-        "description": "Beheer je abonnement en betaalgegevens.",
-        "comingSoonTitle": "Binnenkort beschikbaar",
-        "comingSoonDescription": "Het beheer van abonnementen en betalingen is nog niet beschikbaar."
       }
     },
     "dashboard": {

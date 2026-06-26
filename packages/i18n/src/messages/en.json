@@ -226,14 +226,7 @@
       "tabs": {
         "personal": "Personal information",
         "account": "Account",
-        "subscription": "Subscription",
         "delete": "Delete"
-      },
-      "subscription": {
-        "title": "Subscription",
-        "description": "Manage your subscription and payment details.",
-        "comingSoonTitle": "Coming soon",
-        "comingSoonDescription": "Subscription and payment management is not available yet."
       }
     },
     "dashboard": {

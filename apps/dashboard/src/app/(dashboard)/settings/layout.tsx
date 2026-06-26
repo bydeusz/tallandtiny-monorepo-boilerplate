@@ -20,9 +20,6 @@ export default async function SettingsLayout({
         <NavLink href="/settings/account">
           {t("tabs.account")}
         </NavLink>
-        <NavLink href="/settings/subscription">
-          {t("tabs.subscription")}
-        </NavLink>
         <NavLink href="/settings/delete">
           {t("tabs.delete")}
         </NavLink>
