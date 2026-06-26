@@ -8,6 +8,7 @@ const TARGETS = [
   { name: 'website', url: 'http://localhost:3003' },
   { name: 'swagger', url: 'http://localhost:3001/api/docs' },
   { name: 'prisma studio', url: 'http://localhost:5555' },
+  { name: 'mailpit', url: 'http://localhost:8025' },
 ];
 
 const READY_TIMEOUT_MS = 60_000;
