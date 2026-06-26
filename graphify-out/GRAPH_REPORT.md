@@ -1,16 +1,16 @@
 # Graph Report - tallandtiny-monorepo-boilerplate  (2026-06-27)
 
 ## Corpus Check
-- 559 files · ~227,886 words
+- 542 files · ~153,270 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3591 nodes · 4097 edges · 407 communities (244 shown, 163 thin omitted)
+- 3810 nodes · 4363 edges · 429 communities (263 shown, 166 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 23 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7537038d`
+- Built from commit: `97ce71ef`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -229,6 +229,7 @@
 - [[_COMMUNITY_Community 236|Community 236]]
 - [[_COMMUNITY_Community 237|Community 237]]
 - [[_COMMUNITY_Community 238|Community 238]]
+- [[_COMMUNITY_Community 239|Community 239]]
 - [[_COMMUNITY_Community 240|Community 240]]
 - [[_COMMUNITY_Community 241|Community 241]]
 - [[_COMMUNITY_Community 242|Community 242]]
@@ -396,9 +397,20 @@
 - [[_COMMUNITY_Community 406|Community 406]]
 - [[_COMMUNITY_Community 407|Community 407]]
 - [[_COMMUNITY_Community 408|Community 408]]
+- [[_COMMUNITY_Community 410|Community 410]]
+- [[_COMMUNITY_Community 415|Community 415]]
+- [[_COMMUNITY_Community 417|Community 417]]
+- [[_COMMUNITY_Community 420|Community 420]]
+- [[_COMMUNITY_Community 421|Community 421]]
+- [[_COMMUNITY_Community 422|Community 422]]
+- [[_COMMUNITY_Community 423|Community 423]]
+- [[_COMMUNITY_Community 424|Community 424]]
+- [[_COMMUNITY_Community 425|Community 425]]
+- [[_COMMUNITY_Community 426|Community 426]]
+- [[_COMMUNITY_Community 428|Community 428]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `cn()` - 111 edges
+1. `cn()` - 138 edges
 2. `AuthService` - 40 edges
 3. `customAxios()` - 30 edges
 4. `useAuth()` - 20 edges
@@ -418,8 +430,8 @@
   apps/dashboard/src/components/user/change-email.tsx → packages/ui/src/hooks/use-toast.ts
 - `ContactForm()` --calls--> `useAuth()`  [EXTRACTED]
   apps/dashboard/src/components/forms/contact-form.tsx → packages/auth/src/auth-provider.tsx
-- `ChangeEmail()` --calls--> `useAuth()`  [EXTRACTED]
-  apps/dashboard/src/components/user/change-email.tsx → packages/auth/src/auth-provider.tsx
+- `LoginForm()` --calls--> `useAuth()`  [EXTRACTED]
+  apps/dashboard/src/components/forms/login-form.tsx → packages/auth/src/auth-provider.tsx
 
 ## Import Cycles
 - None detected.
@@ -428,27 +440,27 @@
 - **Local development infrastructure stack** — _docker_docker_compose_postgres, _docker_docker_compose_redis, _docker_docker_compose_minio, _docker_docker_compose_minio_init, _docker_docker_compose_mailpit [INFERRED 0.85]
 - **Production application stack** — _docker_docker_compose_prod_migrate, _docker_docker_compose_prod_api, _docker_docker_compose_prod_worker, _docker_docker_compose_prod_postgres, _docker_docker_compose_prod_redis, _docker_docker_compose_prod_minio [INFERRED 0.85]
 
-## Communities (407 total, 163 thin omitted)
+## Communities (429 total, 166 thin omitted)
 
 ### Community 0 - "API Auth Endpoints"
 Cohesion: 0.06
-Nodes (16): AuthController, AuthService, TokenUser, ActivateDto, AuthTokensResponseDto, MessageResponseDto, ConfirmEmailChangeDto, LoginDto (+8 more)
+Nodes (13): AuthController, AuthService, ActivateDto, AuthTokensResponseDto, MessageResponseDto, ConfirmEmailChangeDto, LoginDto, RegisterDto (+5 more)
 
 ### Community 1 - "Auth Query Hooks"
 Cohesion: 0.04
-Nodes (65): authActivate(), AuthActivateMutationBody, AuthActivateMutationError, AuthActivateMutationResult, authChangePassword(), AuthChangePasswordMutationBody, AuthChangePasswordMutationError, AuthChangePasswordMutationResult (+57 more)
+Nodes (66): authActivate(), AuthActivateMutationBody, AuthActivateMutationError, AuthActivateMutationResult, authChangePassword(), AuthChangePasswordMutationBody, AuthChangePasswordMutationError, AuthChangePasswordMutationResult (+58 more)
 
 ### Community 2 - "Auth & User DTOs"
-Cohesion: 0.08
-Nodes (16): ActivateDto, AuthTokensResponseDto, ChangePasswordDto, ConfirmEmailChangeDto, LoginDto, PaginatedResponseDto, PaginationMetaDto, RefreshTokenDto (+8 more)
+Cohesion: 0.07
+Nodes (19): ActivateDto, AuthTokensResponseDto, ChangePasswordDto, ConfirmEmailChangeDto, FileListParams, FileListScope, HealthCheck503, HealthCheck503Details (+11 more)
 
 ### Community 3 - "File Query Hooks"
 Cohesion: 0.07
-Nodes (31): FileDeleteMutationError, FileDeleteMutationResult, fileGet(), FileGetQueryError, FileGetQueryResult, fileList(), FileListQueryError, FileListQueryResult (+23 more)
+Nodes (30): FileDeleteMutationError, FileDeleteMutationResult, fileGet(), FileGetQueryError, FileGetQueryResult, fileList(), FileListQueryError, FileListQueryResult (+22 more)
 
 ### Community 4 - "UI Package Dependencies"
-Cohesion: 0.06
-Nodes (33): dependencies, class-variance-authority, clsx, embla-carousel-react, lucide-react, radix-ui, @radix-ui/react-slot, tailwind-merge (+25 more)
+Cohesion: 0.05
+Nodes (41): dependencies, class-variance-authority, clsx, embla-carousel-react, lucide-react, radix-ui, @radix-ui/react-slot, tailwind-merge (+33 more)
 
 ### Community 5 - "API Dependencies"
 Cohesion: 0.06
@@ -464,7 +476,7 @@ Nodes (31): dependencies, flag-icons, lucide-react, next, next-intl, react, reac
 
 ### Community 8 - "UI Card Components"
 Cohesion: 0.08
-Nodes (30): cn(), Avatar(), AvatarFallback(), AvatarImage(), Card(), CardAction(), CardContent(), CardDescription() (+22 more)
+Nodes (32): cn(), AccordionContent(), AccordionItem(), AccordionTrigger(), Avatar(), AvatarFallback(), AvatarImage(), BreadcrumbEllipsis() (+24 more)
 
 ### Community 9 - "Database Package Dependencies"
 Cohesion: 0.07
@@ -479,8 +491,8 @@ Cohesion: 0.13
 Nodes (12): AuthModule, Environment, EnvironmentVariables, LogLevel, validate(), LoggerModule, MailModule, PrismaModule (+4 more)
 
 ### Community 12 - "Toast Notification System"
-Cohesion: 0.12
-Nodes (23): Action, ActionType, actionTypes, addToRemoveQueue(), dispatch(), genId(), listeners, memoryState (+15 more)
+Cohesion: 0.16
+Nodes (15): Action, ActionType, actionTypes, addToRemoveQueue(), dispatch(), genId(), listeners, memoryState (+7 more)
 
 ### Community 13 - "Web App Dependencies"
 Cohesion: 0.07
@@ -492,23 +504,23 @@ Nodes (26): dependencies, next, react, react-dom, @repo/queries, @repo/ui, @tans
 
 ### Community 15 - "API Current User Endpoints"
 Cohesion: 0.23
-Nodes (7): FileListQueryDto, PaginationQueryDto, PaginatedResult, PaginationMeta, UserPublic, buildPaginationMeta(), buildPrismaSkipTake()
+Nodes (7): FileListQueryDto, PaginationQueryDto, FilesModule, PaginatedResult, PaginationMeta, buildPaginationMeta(), buildPrismaSkipTake()
 
 ### Community 16 - "User Query Hooks"
 Cohesion: 0.10
 Nodes (21): UpdateUserDto, getUserGetQueryKey(), getUserGetQueryOptions(), getUserListQueryKey(), getUserListQueryOptions(), SecondParameter, userDelete(), UserDeleteMutationError (+13 more)
 
 ### Community 17 - "API Files Service"
-Cohesion: 0.29
-Nodes (5): LoginForm(), LogoutButton(), Thumbnail(), metadata, useAuth()
+Cohesion: 0.26
+Nodes (9): Toast(), ToastActionElement, ToastClose(), ToastDescription(), ToastProps, ToastProvider(), ToastTitle(), toastVariants (+1 more)
 
 ### Community 18 - "API Dev Dependencies"
 Cohesion: 0.10
 Nodes (21): devDependencies, eslint, jest, @nestjs/cli, @nestjs/schematics, @nestjs/testing, pino-pretty, @repo/eslint-config (+13 more)
 
 ### Community 19 - "UI Form Inputs"
-Cohesion: 0.07
-Nodes (15): Badge(), BadgeProps, badgeVariants, Checkbox(), Input, InputProps, Label(), NavLink() (+7 more)
+Cohesion: 0.08
+Nodes (13): Badge(), BadgeProps, badgeVariants, Checkbox(), Input, InputProps, NavLink(), NavLinkProps (+5 more)
 
 ### Community 20 - "Queries Package (Orval) Deps"
 Cohesion: 0.10
@@ -516,26 +528,26 @@ Nodes (20): dependencies, axios, devDependencies, orval, @repo/typescript-config
 
 ### Community 21 - "API File Upload Endpoints"
 Cohesion: 0.19
-Nodes (8): UploadFileParamsDto, UploadFileQueryDto, FilesController, FilesModule, ALLOWED_UPLOAD_MIME_TYPES, AllowedUploadMimeType, detectMimeFromBuffer(), isAllowedUploadMimeType()
+Nodes (8): FileResponseDto, UploadFileParamsDto, UploadFileQueryDto, FilesController, ALLOWED_UPLOAD_MIME_TYPES, AllowedUploadMimeType, detectMimeFromBuffer(), isAllowedUploadMimeType()
 
 ### Community 22 - "API Request Logging"
-Cohesion: 0.11
-Nodes (9): HttpRequestLike, HttpResponseLike, RequestLoggingInterceptor, HttpRequestLike, HttpResponseLike, TransformInterceptor, UserScopedCacheInterceptor, ApiErrorResponse (+1 more)
+Cohesion: 0.22
+Nodes (5): HttpRequestLike, HttpResponseLike, TransformInterceptor, ApiErrorResponse, ApiResponse
 
 ### Community 23 - "Auth Token Store & Axios"
 Cohesion: 0.24
 Nodes (9): clearAccessToken(), getAccessToken(), setAccessToken(), configureAuthRefresh(), refreshAccessToken(), RefreshConfig, RetriableRequestConfig, setAuthTokenGetter() (+1 more)
 
 ### Community 24 - "API Storage Module"
-Cohesion: 0.13
-Nodes (4): PrismaService, StorageFile, StorageModule, StorageService
+Cohesion: 0.18
+Nodes (3): StorageFile, StorageModule, StorageService
 
 ### Community 25 - "Dashboard Auth Queries"
-Cohesion: 0.20
-Nodes (11): getFileReplaceMutationOptions(), useFileReplace(), useToast(), metadata, Toaster(), ALLOWED_TYPES, UpdateAvatar(), UpdateUserBillingDetails() (+3 more)
+Cohesion: 0.15
+Nodes (15): getFileReplaceMutationOptions(), useFileReplace(), useToast(), metadata, Toaster(), Toaster(), ALLOWED_TYPES, UpdateAvatar() (+7 more)
 
 ### Community 26 - "API Mail Queue Processor"
-Cohesion: 0.16
+Cohesion: 0.18
 Nodes (3): MailProcessor, QueueModuleMode, QueueService
 
 ### Community 27 - "Dashboard shadcn Config"
@@ -567,8 +579,8 @@ Cohesion: 0.27
 Nodes (8): FLAGS, LanguageSwitcher(), isLocale(), Locale, locales, resolveLocale(), setLocaleHandler(), useSetLocale()
 
 ### Community 34 - "API Contact/Mail DTOs"
-Cohesion: 0.17
-Nodes (7): CurrentUser, ContactSupportDto, MailAttachment, SendMailOptions, ALLOWED_ATTACHMENT_TYPES, MailController, SendRawMailOptions
+Cohesion: 0.21
+Nodes (6): ContactSupportDto, MailAttachment, SendMailOptions, ALLOWED_ATTACHMENT_TYPES, MailController, SendRawMailOptions
 
 ### Community 35 - "Dashboard Login Form"
 Cohesion: 0.27
@@ -578,13 +590,9 @@ Nodes (5): getAuthRegisterMutationOptions(), useAuthRegister(), RegisterForm(), 
 Cohesion: 0.26
 Nodes (4): SkipTransform(), HealthController, HealthModule, RedisHealthIndicator
 
-### Community 37 - "API File Response DTOs"
-Cohesion: 0.22
-Nodes (3): BaseEntityDto, FileResponseDto, FilesService
-
 ### Community 38 - "Health Check Queries"
-Cohesion: 0.17
-Nodes (11): getHealthCheckQueryKey(), getHealthCheckQueryOptions(), healthCheck(), HealthCheckQueryError, HealthCheckQueryResult, SecondParameter, useHealthCheck(), HealthCheck200 (+3 more)
+Cohesion: 0.28
+Nodes (8): getHealthCheckQueryKey(), getHealthCheckQueryOptions(), healthCheck(), HealthCheckQueryError, HealthCheckQueryResult, SecondParameter, useHealthCheck(), ErrorType
 
 ### Community 39 - "Auth Middleware (Server)"
 Cohesion: 0.22
@@ -603,24 +611,24 @@ Cohesion: 0.13
 Nodes (14): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+6 more)
 
 ### Community 43 - "UI Button Component"
-Cohesion: 0.14
-Nodes (9): Button, ButtonProps, buttonVariants, DialogContent(), DialogDescription(), DialogFooter(), DialogHeader(), DialogOverlay() (+1 more)
+Cohesion: 0.08
+Nodes (22): Button, ButtonProps, buttonVariants, Carousel(), CarouselApi, CarouselContent(), CarouselContext, CarouselContextProps (+14 more)
 
 ### Community 44 - "Dashboard Layout & Brand"
-Cohesion: 0.21
-Nodes (9): Brand(), BrandProps, Dashboard(), DashboardContent(), DashboardInjectedProps, DashboardNavigation(), DashboardSidebar(), DashboardSidebarProps (+1 more)
+Cohesion: 0.17
+Nodes (12): Brand(), BrandProps, Dashboard(), DashboardContent(), DashboardInjectedProps, DashboardNavigation(), DashboardSidebar(), DashboardSidebarProps (+4 more)
 
 ### Community 45 - "Mail Query Hooks"
-Cohesion: 0.17
-Nodes (9): mailContactSupport(), MailContactSupportMutationBody, MailContactSupportMutationError, MailContactSupportMutationResult, SecondParameter, MailContactSupportBody, MessageResponseDto, BodyType (+1 more)
+Cohesion: 0.18
+Nodes (8): mailContactSupport(), MailContactSupportMutationBody, MailContactSupportMutationError, MailContactSupportMutationResult, SecondParameter, MailContactSupportBody, MessageResponseDto, BodyType
 
 ### Community 46 - "Dev Log Script"
 Cohesion: 0.15
 Nodes (13): argv, BEL, child, CSI, ESC, logDir, logFile, OSC (+5 more)
 
 ### Community 47 - "UI Carousel Component"
-Cohesion: 0.19
-Nodes (13): Carousel(), CarouselApi, CarouselContent(), CarouselContext, CarouselContextProps, CarouselItem(), CarouselNext(), CarouselOptions (+5 more)
+Cohesion: 0.31
+Nodes (5): PaginatedResponseDto, PaginationMetaDto, UserList200, UserList200AllOf, UserResponseDto
 
 ### Community 48 - "Auth Provider & Root Layout"
 Cohesion: 0.21
@@ -651,7 +659,7 @@ Cohesion: 0.05
 Nodes (40): check-types Result, check-types result, check-types result, Commit, Commit, Commit, Commit, Concerns (+32 more)
 
 ### Community 57 - "ESLint Base Config"
-Cohesion: 0.33
+Cohesion: 0.29
 Nodes (3): baseConfig, nestConfig, nextConfig
 
 ### Community 58 - "Dashboard Contact / Logout"
@@ -661,6 +669,10 @@ Nodes (4): ContactForm(), getMailContactSupportMutationOptions(), useMailContact
 ### Community 59 - "Database Seed Script"
 Cohesion: 0.29
 Nodes (7): adapter, main(), pool, prisma, resetDatabase(), SeedUser, seedUsers()
+
+### Community 60 - "API Mail Service"
+Cohesion: 0.05
+Nodes (3): Input, InputProps, NavLinkProps
 
 ### Community 61 - "TS Config: React Library"
 Cohesion: 0.22
@@ -679,8 +691,8 @@ Cohesion: 0.25
 Nodes (7): compilerOptions, baseUrl, outDir, strictPropertyInitialization, exclude, extends, include
 
 ### Community 65 - "API Pagination Decorators"
-Cohesion: 0.29
-Nodes (3): ApiPaginatedResponse(), PaginatedResponseDto, PaginationMetaDto
+Cohesion: 0.15
+Nodes (6): ApiPaginatedResponse(), CurrentUser, BaseEntityDto, PaginatedResponseDto, PaginationMetaDto, UserScopedCacheInterceptor
 
 ### Community 66 - "Dashboard Home Page"
 Cohesion: 0.32
@@ -692,11 +704,11 @@ Nodes (7): compilerOptions, baseUrl, paths, exclude, extends, include, @/*
 
 ### Community 68 - "File List Params (Generated)"
 Cohesion: 0.36
-Nodes (4): FileListParams, FileListScope, Object, UserListParams
+Nodes (8): Toast(), ToastAction(), ToastClose(), ToastDescription(), ToastProvider(), ToastTitle(), toastVariants, ToastViewport()
 
 ### Community 69 - "UI Breadcrumb Component"
-Cohesion: 0.25
-Nodes (6): BreadcrumbEllipsis(), BreadcrumbItem(), BreadcrumbLink(), BreadcrumbList(), BreadcrumbPage(), BreadcrumbSeparator()
+Cohesion: 0.15
+Nodes (5): TokenUser, JwtPayload, PrismaService, UserPublic, assertEmailDomainAllowed()
 
 ### Community 70 - "UI TS Config"
 Cohesion: 0.25
@@ -734,10 +746,6 @@ Nodes (36): `--affected`, Basic Usage, `--cache`, Cache Control, CI Integration 
 Cohesion: 0.33
 Nodes (5): compilerOptions, baseUrl, exclude, extends, include
 
-### Community 82 - "UI Accordion Component"
-Cohesion: 0.40
-Nodes (3): AccordionContent(), AccordionItem(), AccordionTrigger()
-
 ### Community 83 - "UI Alert Component"
 Cohesion: 0.50
 Nodes (4): Alert(), AlertDescription(), AlertTitle(), alertVariants
@@ -747,8 +755,12 @@ Cohesion: 0.06
 Nodes (35): 1. `ChangeMemberRoleDialog`, 1. `/organisation/layout.tsx`, 2. `InviteMemberDialog`, 2. `/organisation/page.tsx` (details tab), 3. `/organisation/branding/page.tsx`, 3. `RemoveMemberDialog`, 4. `/organisation/team/page.tsx`, 4. `OrganisationLogoUpload` (+27 more)
 
 ### Community 85 - "UI Tabs Component"
-Cohesion: 0.06
-Nodes (33): 1. Semantic HTML First, 2. Keyboard Navigation, 3. Screen Reader Support, 4. Visual Accessibility, ARIA Patterns, Color and Contrast, Color Independence, Common ARIA Attributes (+25 more)
+Cohesion: 0.07
+Nodes (28): 1. Semantic HTML First, 2. Keyboard Navigation, 3. Screen Reader Support, 4. Visual Accessibility, ARIA Patterns, Color and Contrast, Color Independence, Common ARIA Attributes (+20 more)
+
+### Community 86 - "UI Tooltip Component"
+Cohesion: 0.36
+Nodes (4): HealthCheck200, HealthCheck200Details, HealthCheck200Error, HealthCheck200Info
 
 ### Community 89 - "TS Config Package"
 Cohesion: 0.50
@@ -923,7 +935,7 @@ Cohesion: 0.14
 Nodes (13): 1. Order matters, 2. Document your variants, 3. Extract repeated patterns, Best practices, Class Variance Authority (CVA), Conditional classes, From CSS Modules, From styled-components (+5 more)
 
 ### Community 167 - "Community 167"
-Cohesion: 0.17
+Cohesion: 0.15
 Nodes (12): 1. Create Vercel Access Token, 2. Add Secrets and Variables, 3. Add to Workflow, Alternative: actions/cache, Basic Workflow Structure, Bun, Complete Example, GitHub Actions (+4 more)
 
 ### Community 168 - "Community 168"
@@ -1043,15 +1055,15 @@ Cohesion: 0.20
 Nodes (9): Sections, 1. Eliminating Waterfalls (async), 2. Bundle Size Optimization (bundle), 3. Server-Side Performance (server), 4. Client-Side Data Fetching (client), 5. Re-render Optimization (rerender), 6. Rendering Performance (rendering), 7. JavaScript Performance (js) (+1 more)
 
 ### Community 198 - "Community 198"
-Cohesion: 0.19
-Nodes (9): getAuthRequestNewPasswordMutationOptions(), useAuthRequestNewPassword(), ResetPasswordForm(), TextField(), TextFieldProps, metadata, BillingFormData, COUNTRIES (+1 more)
+Cohesion: 0.31
+Nodes (4): LoginForm(), TextField(), TextFieldProps, metadata
 
 ### Community 199 - "Community 199"
 Cohesion: 0.20
 Nodes (10): Always Use `turbo run` in CI, CI/CD with Turborepo, Core Principles, Enable Remote Caching, Environment Variables Reference, Fetch Depth, Git History Requirements, See Also (+2 more)
 
 ### Community 200 - "Community 200"
-Cohesion: 0.18
+Cohesion: 0.20
 Nodes (10): Build Command, Environment Variables, How It Works, Installation, Monorepo Root Directory, Options, Remote Cache, Setup in Vercel (+2 more)
 
 ### Community 201 - "Community 201"
@@ -1147,16 +1159,16 @@ Cohesion: 0.22
 Nodes (9): 2.1 Avoid Inline Objects in renderItem, 2.2 Hoist callbacks to the root of lists, 2.3 Keep List Items Lightweight, 2.4 Optimize List Performance with Stable Object References, 2.5 Pass Primitives to List Items for Memoization, 2.6 Use a List Virtualizer for Any List, 2.7 Use Compressed Images in Lists, 2.8 Use Item Types for Heterogeneous Lists (+1 more)
 
 ### Community 224 - "Community 224"
-Cohesion: 0.25
-Nodes (6): Building Components, References, When to use this skill, Controlled State, Merging states, Uncontrolled State
+Cohesion: 0.13
+Nodes (12): Building Components, References, When to use this skill, Accessible by Default, Composability and Reusability, Customizability and Theming, Lightweight and Performant, Transparency and Code Ownership (+4 more)
 
 ### Community 225 - "Community 225"
 Cohesion: 0.25
 Nodes (7): Basic Usage, Package Selection, Passing Arguments to Scripts, Quick Reference, Running Tasks, turbo run, When to Use `turbo run` vs `turbo`
 
 ### Community 226 - "Community 226"
-Cohesion: 0.36
-Nodes (4): HealthCheck503, HealthCheck503Details, HealthCheck503Error, HealthCheck503Info
+Cohesion: 0.25
+Nodes (8): Benefits of data-slot, Component identification with data-slot, Global CSS with data-slot, Naming conventions, The problem with child targeting, The solution: data-slot attributes, Using `[&_]` for descendant targeting, Using `has-[]` for parent-aware styling
 
 ### Community 227 - "Community 227"
 Cohesion: 0.25
@@ -1175,8 +1187,8 @@ Cohesion: 0.25
 Nodes (7): After the plan tasks (controller-run, not plan steps), Dashboard Phase F — Support + Finalization Implementation Plan, File Structure, Global Constraints, Self-Review, Task 1: Contact form + support page, Task 2: Final build + green gate
 
 ### Community 231 - "Community 231"
-Cohesion: 0.25
-Nodes (8): Benefits of data-slot, Component identification with data-slot, Global CSS with data-slot, Naming conventions, The problem with child targeting, The solution: data-slot attributes, Using `[&_]` for descendant targeting, Using `has-[]` for parent-aware styling
+Cohesion: 0.14
+Nodes (12): CarouselApi, CarouselContent(), CarouselContext, CarouselContextProps, CarouselItem(), CarouselNext(), CarouselOptions, CarouselPlugin (+4 more)
 
 ### Community 233 - "Community 233"
 Cohesion: 0.25
@@ -1202,9 +1214,9 @@ Nodes (7): check-types Result, Commit, Concerns, Dashboard Build Result, @repo/i
 Cohesion: 0.29
 Nodes (6): Step 1: Load turborepo skill, Step 2: Identify task type from user request, Step 3: Read relevant reference files, Step 4: Execute task, Step 5: Summarize, Workflow
 
-### Community 240 - "Community 240"
-Cohesion: 0.29
-Nodes (6): Accessible by Default, Composability and Reusability, Customizability and Theming, Lightweight and Performant, Transparency and Code Ownership, Well-documented and DX-Friendly
+### Community 239 - "Community 239"
+Cohesion: 0.12
+Nodes (3): Button, ButtonProps, buttonVariants
 
 ### Community 241 - "Community 241"
 Cohesion: 0.29
@@ -1302,25 +1314,61 @@ Nodes (3): 1.1 Never Use && with Potentially Falsy Values, 1.2 Wrap Strings in T
 Cohesion: 0.67
 Nodes (3): 8.1 Destructure Functions Early in Render (React Compiler), 8.2 Use .get() and .set() for Reanimated Shared Values (not .value), 8. React Compiler
 
+### Community 410 - "Community 410"
+Cohesion: 0.18
+Nodes (6): DrawerContent(), DrawerDescription(), DrawerFooter(), DrawerHeader(), DrawerOverlay(), DrawerTitle()
+
+### Community 415 - "Community 415"
+Cohesion: 0.29
+Nodes (6): Adding a component — use the generator, Categorization quick guide, Conventions, @repo/ui — atomic-design conventions, Rules (enforced by lint — `turbo run lint`), Structure
+
+### Community 420 - "Community 420"
+Cohesion: 0.38
+Nodes (4): getAuthRequestNewPasswordMutationOptions(), useAuthRequestNewPassword(), ResetPasswordForm(), metadata
+
+### Community 421 - "Community 421"
+Cohesion: 0.50
+Nodes (3): Badge(), BadgeProps, badgeVariants
+
+### Community 422 - "Community 422"
+Cohesion: 0.40
+Nodes (5): Component Patterns, Dropdown Menu, Forms, Modal/Dialog, Tabs
+
+### Community 423 - "Community 423"
+Cohesion: 0.33
+Nodes (3): HttpRequestLike, HttpResponseLike, RequestLoggingInterceptor
+
+### Community 424 - "Community 424"
+Cohesion: 0.40
+Nodes (3): here, logFd, logPath
+
+### Community 425 - "Community 425"
+Cohesion: 0.50
+Nodes (3): LAYERS, pkgRoot, problems
+
+### Community 428 - "Community 428"
+Cohesion: 0.40
+Nodes (3): TabsContent(), TabsList(), TabsTrigger()
+
 ## Knowledge Gaps
-- **2084 isolated node(s):** `fontSans`, `metadata`, `LinkedCardProps`, `TextFieldProps`, `VerifyEmailFormProps` (+2079 more)
+- **2116 isolated node(s):** `here`, `logPath`, `logFd`, `fontSans`, `metadata` (+2111 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **163 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **166 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `cn()` connect `UI Card Components` to `Community 193`, `UI Breadcrumb Component`, `Community 198`, `UI Button Component`, `Toast Notification System`, `UI Carousel Component`, `UI Accordion Component`, `UI Alert Component`, `UI Form Inputs`, `UI Sheet Component`, `UI Tooltip Component`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
-- **Why does `TextField()` connect `Community 198` to `Dashboard Login Form`, `UI Card Components`, `Dashboard Delete User`, `API Files Service`, `Dashboard Activate / OTP`, `Dashboard Auth Queries`, `Dashboard Contact / Logout`, `Dashboard Error Page`?**
-  _High betweenness centrality (0.010) - this node is a cross-community bridge._
-- **Why does `useAuth()` connect `API Files Service` to `Community 198`, `Dashboard Delete User`, `Auth Provider & Root Layout`, `Dashboard Auth Queries`, `Dashboard Contact / Logout`, `Dashboard Error Page`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **What connects `fontSans`, `metadata`, `LinkedCardProps` to the rest of the system?**
-  _2084 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `cn()` connect `UI Card Components` to `API Files Service`, `UI Form Inputs`, `Community 409`, `Community 410`, `Community 411`, `Community 412`, `Community 413`, `Community 414`, `Community 416`, `Community 417`, `Community 418`, `Community 419`, `Community 421`, `Community 426`, `UI Button Component`, `Community 428`, `UI Sheet Component`, `API Mail Service`, `Community 193`, `File List Params (Generated)`, `Community 198`, `UI Alert Component`, `Community 231`, `Community 239`, `Community 240`, `Community 247`?**
+  _High betweenness centrality (0.020) - this node is a cross-community bridge._
+- **Why does `TextField()` connect `Community 198` to `Dashboard Login Form`, `Community 420`, `UI Card Components`, `Dashboard Delete User`, `Dashboard Activate / OTP`, `Dashboard Auth Queries`, `Dashboard Contact / Logout`, `Dashboard Error Page`?**
+  _High betweenness centrality (0.013) - this node is a cross-community bridge._
+- **Why does `useAuth()` connect `Dashboard Layout & Brand` to `Community 198`, `Dashboard Delete User`, `Auth Provider & Root Layout`, `Dashboard Auth Queries`, `Dashboard Contact / Logout`, `Dashboard Error Page`?**
+  _High betweenness centrality (0.003) - this node is a cross-community bridge._
+- **What connects `here`, `logPath`, `logFd` to the rest of the system?**
+  _2116 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `API Auth Endpoints` be split into smaller, more focused modules?**
-  _Cohesion score 0.05981981981981982 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06351236146632566 - nodes in this community are weakly interconnected._
 - **Should `Auth Query Hooks` be split into smaller, more focused modules?**
-  _Cohesion score 0.039160839160839164 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.03844414292175486 - nodes in this community are weakly interconnected._
 - **Should `Auth & User DTOs` be split into smaller, more focused modules?**
-  _Cohesion score 0.07765151515151515 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06747638326585695 - nodes in this community are weakly interconnected._
