@@ -16,7 +16,7 @@ export async function setup() {
   [postgres, redis, minio] = await Promise.all([
     new PostgreSqlContainer("postgres:16-alpine").start(),
     new GenericContainer("redis:7-alpine").withExposedPorts(6379).start(),
-    new GenericContainer("minio/minio")
+    new GenericContainer("minio/minio:RELEASE.2024-12-18T13-15-44Z")
       .withExposedPorts(9000)
       .withEnvironment({
         MINIO_ROOT_USER: MINIO_USER,
@@ -58,9 +58,11 @@ export async function setup() {
       env: { ...process.env, DATABASE_URL: url },
     });
   } catch (err) {
-    await postgres?.stop();
-    await redis?.stop();
-    await minio?.stop();
+    await Promise.allSettled([
+      postgres?.stop(),
+      redis?.stop(),
+      minio?.stop(),
+    ]);
     postgres = undefined;
     redis = undefined;
     minio = undefined;
@@ -69,7 +71,9 @@ export async function setup() {
 }
 
 export async function teardown() {
-  await postgres?.stop();
-  await redis?.stop();
-  await minio?.stop();
+  await Promise.allSettled([
+    postgres?.stop(),
+    redis?.stop(),
+    minio?.stop(),
+  ]);
 }

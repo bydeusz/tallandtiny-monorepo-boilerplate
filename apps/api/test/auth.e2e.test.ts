@@ -4,8 +4,10 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { spawn } from "node:child_process";
 import type { ChildProcess } from "node:child_process";
+import { openSync, readFileSync, closeSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
-import { dirname, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -31,6 +33,9 @@ async function waitForServer(url: string, timeoutMs: number): Promise<void> {
   );
 }
 
+const logPath = join(tmpdir(), "api-e2e-server.log");
+const logFd = openSync(logPath, "w");
+
 describe("Auth (e2e)", () => {
   let serverProcess: ChildProcess;
 
@@ -40,12 +45,24 @@ describe("Auth (e2e)", () => {
     serverProcess = spawn(process.execPath, [distMain], {
       env: { ...process.env },
       cwd: resolve(here, ".."),
-      // Discard all I/O at OS level — avoids pipe-buffer backpressure from
-      // NestJS's verbose JSON log output blocking the child process startup.
-      stdio: ["ignore", "ignore", "ignore"],
+      // Use a file fd for stdout/stderr — avoids pipe-buffer backpressure from
+      // NestJS's verbose JSON log output while preserving logs for diagnostics.
+      stdio: ["ignore", logFd, logFd],
     });
 
-    await waitForServer(HEALTH_URL, SERVER_STARTUP_TIMEOUT_MS);
+    try {
+      await waitForServer(HEALTH_URL, SERVER_STARTUP_TIMEOUT_MS);
+    } catch (err) {
+      let serverLog = "";
+      try {
+        serverLog = readFileSync(logPath, "utf8");
+      } catch {
+        // ignore read errors
+      }
+      throw new Error(
+        `${(err as Error).message}\n\n--- Server log (${logPath}) ---\n${serverLog || "(empty)"}`,
+      );
+    }
   }, SERVER_STARTUP_TIMEOUT_MS + 5_000);
 
   afterAll(async () => {
@@ -58,6 +75,11 @@ describe("Auth (e2e)", () => {
           resolve();
         }, 5_000);
       });
+    }
+    try {
+      closeSync(logFd);
+    } catch {
+      // ignore
     }
   });
 
