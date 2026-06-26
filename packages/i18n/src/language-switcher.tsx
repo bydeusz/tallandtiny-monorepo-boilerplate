@@ -39,7 +39,7 @@ export function LanguageSwitcher() {
   }
 
   return (
-    <div className="relative text-sm" ref={ref}>
+    <div className="relative text-xs" ref={ref}>
       <button
         type="button"
         onClick={() => setIsOpen((open) => !open)}
