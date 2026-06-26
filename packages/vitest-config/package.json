@@ -7,7 +7,8 @@
     "./node": "./src/node.ts",
     "./react": "./src/react.ts",
     "./nest": "./src/nest.ts",
-    "./integration": "./src/integration.ts"
+    "./integration": "./src/integration.ts",
+    "./e2e": "./src/e2e.ts"
   },
   "scripts": {
     "check-types": "tsc --noEmit"

@@ -6,12 +6,13 @@ export const unitInclude = [
   "test/**/*.test.{ts,tsx}",
 ];
 
-/** Paths never collected as unit tests. Integration tests are excluded here. */
+/** Paths never collected as unit tests. Integration and e2e tests are excluded here. */
 export const unitExclude = [
   "**/node_modules/**",
   "**/dist/**",
   "**/.next/**",
   "**/*.integration.test.*",
+  "**/*.e2e.test.*",
 ];
 
 /** Defaults shared by every preset. Coverage is configured but only loaded
