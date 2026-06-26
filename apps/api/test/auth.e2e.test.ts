@@ -14,7 +14,9 @@ const here = dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT ?? "3001";
 const BASE_URL = `http://localhost:${PORT}`;
 const HEALTH_URL = `${BASE_URL}/api/v1/health`;
-const SERVER_STARTUP_TIMEOUT_MS = 20_000;
+// Generous margin: the server connects to 3 containers (pg/redis/minio) on
+// boot, which can be slow under CI/container contention.
+const SERVER_STARTUP_TIMEOUT_MS = 40_000;
 const SERVER_POLL_INTERVAL_MS = 200;
 
 async function waitForServer(url: string, timeoutMs: number): Promise<void> {
