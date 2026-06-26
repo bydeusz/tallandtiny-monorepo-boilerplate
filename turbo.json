@@ -22,8 +22,7 @@
       "dependsOn": ["^build"]
     },
     "test": {
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": ["coverage/**"]
+      "inputs": ["$TURBO_DEFAULT$", ".env*"]
     },
     "test:watch": {
       "cache": false,
