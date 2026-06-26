@@ -255,5 +255,7 @@
       "url": "Please enter a valid URL.",
       "tel": "Please enter a valid phone number."
     }
-  }
+  },
+  "banners": {},
+  "tables": {}
 }

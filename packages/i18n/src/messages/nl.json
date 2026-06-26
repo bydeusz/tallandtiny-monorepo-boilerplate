@@ -255,5 +255,7 @@
       "url": "Vul een geldige URL in.",
       "tel": "Vul een geldig telefoonnummer in."
     }
-  }
+  },
+  "banners": {},
+  "tables": {}
 }
