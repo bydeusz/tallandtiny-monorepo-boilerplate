@@ -1,0 +1,24 @@
+{
+  "name": "@repo/vitest-config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./node": "./src/node.ts",
+    "./react": "./src/react.ts",
+    "./nest": "./src/nest.ts",
+    "./integration": "./src/integration.ts"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "vitest": "^4.1.9"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^26.0.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.9"
+  }
+}

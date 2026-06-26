@@ -1,8 +1,3 @@
-import { defineConfig } from "vitest/config";
+import { node } from "@repo/vitest-config/node";
 
-export default defineConfig({
-  test: {
-    environment: "node",
-    include: ["src/**/*.test.ts"],
-  },
-});
+export default node();

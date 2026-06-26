@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
+    "@repo/vitest-config": "workspace:*",
     "@tanstack/react-query": "^5.62.0",
     "@types/node": "^22.0.0",
     "orval": "^7.3.0",
