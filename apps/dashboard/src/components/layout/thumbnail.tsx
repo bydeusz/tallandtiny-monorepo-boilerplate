@@ -6,7 +6,7 @@ import {
   Avatar,
   AvatarImage,
   AvatarFallback,
-} from "@repo/ui/components/ui/avatar";
+} from "@repo/ui/atoms";
 
 export function Thumbnail() {
   const { user } = useAuth();

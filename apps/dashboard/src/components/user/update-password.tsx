@@ -5,17 +5,15 @@ import { useTranslations } from "next-intl";
 import { useAuth } from "@repo/auth";
 import { useAuthChangePassword, extractErrorMessage } from "@repo/queries";
 import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@repo/ui/components/ui/card";
-import { Button } from "@repo/ui/components/ui/button";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@repo/ui/components/ui/alert";
+} from "@repo/ui/molecules";
+import { Button } from "@repo/ui/atoms";
 import { PasswordField } from "@/components/forms/password-field";
 
 export function UpdatePassword() {

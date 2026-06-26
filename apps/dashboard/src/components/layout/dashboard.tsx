@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { X, Menu, Settings, LifeBuoy } from "lucide-react";
-import { NavLink } from "@repo/ui/components/ui/nav-link";
+import { NavLink } from "@repo/ui/atoms";
 import { LanguageSwitcher } from "@repo/i18n";
 import { Brand } from "./brand";
 import { LogoutButton } from "./logout-button";

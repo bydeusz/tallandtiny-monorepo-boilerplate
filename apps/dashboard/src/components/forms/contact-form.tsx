@@ -12,10 +12,8 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@repo/ui/components/ui/card";
-import { Button } from "@repo/ui/components/ui/button";
-import { Textarea } from "@repo/ui/components/ui/textarea";
-import { Label } from "@repo/ui/components/ui/label";
+} from "@repo/ui/molecules";
+import { Button, Label, Textarea } from "@repo/ui/atoms";
 import { useToast } from "@repo/ui/hooks/use-toast";
 
 import { TextField } from "@/components/forms/text-field";

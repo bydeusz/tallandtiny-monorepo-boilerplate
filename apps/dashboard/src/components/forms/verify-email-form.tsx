@@ -6,12 +6,12 @@ import { useTranslations } from "next-intl";
 import { Loader2 } from "lucide-react";
 
 import { useAuthActivate, extractErrorMessage } from "@repo/queries";
-import { Button } from "@repo/ui/components/ui/button";
+import { Button } from "@repo/ui/atoms";
 import {
   Alert,
   AlertTitle,
   AlertDescription,
-} from "@repo/ui/components/ui/alert";
+} from "@repo/ui/molecules";
 
 import { TextField } from "@/components/forms/text-field";
 import { OtpField } from "@/components/forms/otp-field";

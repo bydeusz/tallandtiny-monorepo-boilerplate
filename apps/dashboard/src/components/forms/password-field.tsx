@@ -3,8 +3,7 @@
 import { useState, type ChangeEventHandler } from "react";
 import { useTranslations } from "next-intl";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
-import { Input } from "@repo/ui/components/ui/input";
-import { Label } from "@repo/ui/components/ui/label";
+import { Input, Label } from "@repo/ui/atoms";
 
 type PasswordFieldProps = {
   label: string;

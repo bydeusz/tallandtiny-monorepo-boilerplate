@@ -8,27 +8,25 @@ import { useAuth } from "@repo/auth";
 import { useUserDelete, extractErrorMessage } from "@repo/queries";
 
 import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@repo/ui/components/ui/card";
-import { Button } from "@repo/ui/components/ui/button";
-import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@repo/ui/components/ui/dialog";
-import { Skeleton } from "@repo/ui/components/ui/skeleton";
+} from "@repo/ui/molecules";
 import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@repo/ui/components/ui/alert";
+  Button,
+  Skeleton,
+} from "@repo/ui/atoms";
 
 import { TextField } from "@/components/forms/text-field";
 

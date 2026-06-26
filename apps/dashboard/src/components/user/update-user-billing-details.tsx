@@ -18,16 +18,16 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@repo/ui/components/ui/card";
-import { Button } from "@repo/ui/components/ui/button";
-import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@repo/ui/components/ui/select";
-import { Label } from "@repo/ui/components/ui/label";
+} from "@repo/ui/molecules";
+import {
+  Button,
+  Label,
+} from "@repo/ui/atoms";
 import { TextField } from "@/components/forms/text-field";
 
 const COUNTRIES = ["NL", "BE", "DE"] as const;
