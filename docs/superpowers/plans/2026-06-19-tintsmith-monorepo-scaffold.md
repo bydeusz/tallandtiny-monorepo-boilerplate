@@ -1,8 +1,8 @@
-# Tintsmith Monorepo Scaffold — Implementation Plan
+# Tall & Tiny Monorepo Scaffold — Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Scaffold a working Turborepo monorepo (`tintsmith`) with a Next.js frontend and NestJS backend, the full shared-package stack wired end-to-end, and one vertical example slice (`Mini`) that proves Prisma → NestJS → Swagger → Orval → TanStack Query → Next.js works.
+**Goal:** Scaffold a working Turborepo monorepo (`tallandtiny`) with a Next.js frontend and NestJS backend, the full shared-package stack wired end-to-end, and one vertical example slice (`Mini`) that proves Prisma → NestJS → Swagger → Orval → TanStack Query → Next.js works.
 
 **Architecture:** pnpm workspace managed by Turborepo. `apps/web` (Next.js) and `apps/api` (NestJS) consume shared `packages/*`. `packages/database` is a **compiled** (tsc→dist, ESM) Prisma 7 package; `packages/ui` and `packages/queries` are **just-in-time** raw-TS packages transpiled by Next.js. The codegen pipeline regenerates typed React Query hooks from the live NestJS OpenAPI document.
 
@@ -29,7 +29,7 @@ These apply to **every** task. Copy values verbatim.
 ## File Structure
 
 ```
-tintsmith/
+tallandtiny/
 ├── package.json                      # root: private, packageManager, turbo, prettier, scripts
 ├── pnpm-workspace.yaml               # workspace globs
 ├── turbo.json                        # task pipeline
@@ -75,7 +75,7 @@ packages:
 
 ```json
 {
-  "name": "tintsmith",
+  "name": "tallandtiny",
   "private": true,
   "packageManager": "pnpm@10.28.2",
   "scripts": {
@@ -160,16 +160,16 @@ Ref: `.docs/turborepo/reference/configuration.mdx` + `.docs/prisma/docs/guides/d
 
 ```bash
 # Postgres (matches _docker/docker-compose.yml)
-DATABASE_URL="postgresql://tintsmith:tintsmith@localhost:5432/tintsmith?schema=public"
+DATABASE_URL="postgresql://tallandtiny:tallandtiny@localhost:5432/tallandtiny?schema=public"
 
 # Frontend → backend base URL
 NEXT_PUBLIC_API_URL="http://localhost:3001"
 
 # MinIO / S3 (infra ready; app integration is a later slice)
 S3_ENDPOINT="http://localhost:9000"
-S3_ACCESS_KEY="tintsmith"
-S3_SECRET_KEY="tintsmith-secret"
-S3_BUCKET="tintsmith"
+S3_ACCESS_KEY="tallandtiny"
+S3_SECRET_KEY="tallandtiny-secret"
+S3_BUCKET="tallandtiny"
 ```
 
 - [ ] **Step 6: Append to `.gitignore`**
@@ -489,13 +489,13 @@ git commit -m "feat: add shared @repo/eslint-config (flat config)"
 - [ ] **Step 1: Create `_docker/.env.example`**
 
 ```bash
-POSTGRES_USER=tintsmith
-POSTGRES_PASSWORD=tintsmith
-POSTGRES_DB=tintsmith
+POSTGRES_USER=tallandtiny
+POSTGRES_PASSWORD=tallandtiny
+POSTGRES_DB=tallandtiny
 
-MINIO_ROOT_USER=tintsmith
-MINIO_ROOT_PASSWORD=tintsmith-secret
-MINIO_BUCKET=tintsmith
+MINIO_ROOT_USER=tallandtiny
+MINIO_ROOT_PASSWORD=tallandtiny-secret
+MINIO_BUCKET=tallandtiny
 ```
 
 - [ ] **Step 2: Create `_docker/docker-compose.yml`**
@@ -698,7 +698,7 @@ export default defineConfig({
 - [ ] **Step 5: Create `packages/database/.env`** (git-ignored)
 
 ```bash
-DATABASE_URL="postgresql://tintsmith:tintsmith@localhost:5432/tintsmith?schema=public"
+DATABASE_URL="postgresql://tallandtiny:tallandtiny@localhost:5432/tallandtiny?schema=public"
 ```
 
 - [ ] **Step 6: Install deps and generate the client**
@@ -742,7 +742,7 @@ Run: `pnpm --filter @repo/database db:migrate -- --name init`
 Expected: a migration is created under `packages/database/prisma/migrations/<timestamp>_init/` and applied; output ends with `Your database is now in sync with your schema.`
 
 Verify the table exists:
-Run: `docker compose -f _docker/docker-compose.yml exec -T postgres psql -U tintsmith -d tintsmith -c "\dt"`
+Run: `docker compose -f _docker/docker-compose.yml exec -T postgres psql -U tallandtiny -d tallandtiny -c "\dt"`
 Expected: lists a `Mini` table (and `_prisma_migrations`).
 
 - [ ] **Step 10: Build the compiled package**
@@ -865,7 +865,7 @@ export default nestConfig;
 - [ ] **Step 6: Create `apps/api/.env`** (git-ignored)
 
 ```bash
-DATABASE_URL="postgresql://tintsmith:tintsmith@localhost:5432/tintsmith?schema=public"
+DATABASE_URL="postgresql://tallandtiny:tallandtiny@localhost:5432/tallandtiny?schema=public"
 PORT=3001
 ```
 
@@ -942,8 +942,8 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle('Tintsmith API')
-    .setDescription('API for tintsmith — a tool for miniature painters')
+    .setTitle('Tall & Tiny API')
+    .setDescription('API for tallandtiny — a tool for miniature painters')
     .setVersion('1.0')
     .build();
 
@@ -1315,7 +1315,7 @@ export type BodyType<BodyData> = BodyData;
 import { defineConfig } from 'orval';
 
 export default defineConfig({
-  tintsmith: {
+  tallandtiny: {
     input: {
       target: 'http://localhost:3001/api/docs-json',
     },
@@ -1652,7 +1652,7 @@ import type { Metadata } from 'next';
 import { Providers } from './providers';
 
 export const metadata: Metadata = {
-  title: 'Tintsmith',
+  title: 'Tall & Tiny',
   description: 'A tool for miniature painters',
 };
 
@@ -1827,7 +1827,7 @@ Boot API (`pnpm --filter api start`) and web (`pnpm --filter web dev`).
 
 ```bash
 git add -A
-git commit -m "chore: finalize tintsmith monorepo scaffold"
+git commit -m "chore: finalize tallandtiny monorepo scaffold"
 ```
 
 Then invoke the **superpowers:finishing-a-development-branch** skill to choose how to integrate (`scaffold/monorepo` → merge/PR/cleanup).

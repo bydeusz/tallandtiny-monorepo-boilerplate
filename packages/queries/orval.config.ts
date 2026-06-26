@@ -1,7 +1,7 @@
 import { defineConfig } from 'orval';
 
 export default defineConfig({
-  tintsmith: {
+  tallandtiny: {
     input: {
       target: 'http://localhost:3001/api/docs-json',
     },

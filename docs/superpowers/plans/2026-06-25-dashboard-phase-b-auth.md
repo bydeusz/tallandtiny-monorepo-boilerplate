@@ -387,7 +387,7 @@ git commit -m "feat(dashboard): token-normalized (auth) layout + background"
 import type { Metadata } from "next";
 import { LoginForm } from "@/components/forms/login-form";
 
-export const metadata: Metadata = { title: "Sign in — Tintsmith" };
+export const metadata: Metadata = { title: "Sign in — Tall & Tiny" };
 
 export default function LoginPage() {
   return <LoginForm />;
@@ -425,8 +425,8 @@ export default function LoginPage() {
 - Button (`t("button")`) → `router.push("/login")`.
 
 **pages (server):**
-- `register/page.tsx` → renders `<RegisterForm />`, metadata title "Create account — Tintsmith".
-- `register/confirm/page.tsx` → renders `<RegisterConfirmForm />`, metadata title "Confirm your email — Tintsmith".
+- `register/page.tsx` → renders `<RegisterForm />`, metadata title "Create account — Tall & Tiny".
+- `register/confirm/page.tsx` → renders `<RegisterConfirmForm />`, metadata title "Confirm your email — Tall & Tiny".
 
 - [ ] **Step 1: Create the two form components** per rules.
 - [ ] **Step 2: Create the two pages.**
@@ -458,7 +458,7 @@ export default function LoginPage() {
 - Errors: special-case the backend message `"Temporary password has expired."` → `t("errors.expired")`; otherwise `extractErrorMessage` → `Alert variant="destructive"`.
 
 **pages:**
-- `reset-password/page.tsx` (server) → `<ResetPasswordForm />`, title "Reset password — Tintsmith".
+- `reset-password/page.tsx` (server) → `<ResetPasswordForm />`, title "Reset password — Tall & Tiny".
 - `reset-password/confirm/page.tsx` (**async server**) → `await searchParams`; if no `email`, `redirect("/reset-password")` (from `next/navigation`); else `<PasswordForm email={email} />`. Signature: `export default async function Page({ searchParams }: { searchParams: Promise<{ email?: string }> })`.
 
 - [ ] **Step 1: Create the two form components** per rules.
@@ -488,7 +488,7 @@ export default function LoginPage() {
 import type { Metadata } from "next";
 import { VerifyEmailForm } from "@/components/forms/verify-email-form";
 
-export const metadata: Metadata = { title: "Verify email — Tintsmith" };
+export const metadata: Metadata = { title: "Verify email — Tall & Tiny" };
 
 export default async function VerifyPage({
   searchParams,

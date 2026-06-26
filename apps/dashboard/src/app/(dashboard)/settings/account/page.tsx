@@ -4,7 +4,7 @@ import { ChangeEmail } from "@/components/user/change-email";
 import { UpdatePassword } from "@/components/user/update-password";
 
 export const metadata: Metadata = {
-  title: "Account — Tintsmith",
+  title: "Account — Tall & Tiny",
 };
 
 export default function Page() {

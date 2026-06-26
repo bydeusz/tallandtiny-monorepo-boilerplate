@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { DeleteUser } from "@/components/user/delete-user";
 
 export const metadata: Metadata = {
-  title: "Delete account — Tintsmith",
+  title: "Delete account — Tall & Tiny",
 };
 
 export default function Page() {

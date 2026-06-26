@@ -41,8 +41,8 @@ async function bootstrap() {
 
   if (!isProduction) {
     const swaggerConfig = new DocumentBuilder()
-      .setTitle('Tintsmith API')
-      .setDescription('API for tintsmith — a tool for miniature painters')
+      .setTitle('Tall & Tiny API')
+      .setDescription('API for Tall & Tiny — a tool for miniature painters')
       .setVersion('1.0')
       .addBearerAuth()
       .build();
@@ -57,7 +57,7 @@ async function bootstrap() {
 
   const logger = app.get(Logger);
   const base = `http://localhost:${port}`;
-  logger.log('🎨 Tintsmith API ready');
+  logger.log('🎨 Tall & Tiny API ready');
   logger.log(`├─ API:        ${base}/${apiPrefix}/v1`);
   logger.log(`├─ Swagger UI: ${base}/${apiPrefix}/docs`);
   logger.log(`└─ OpenAPI:    ${base}/${apiPrefix}/docs-json`);

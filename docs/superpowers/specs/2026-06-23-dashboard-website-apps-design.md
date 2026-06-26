@@ -6,7 +6,7 @@
 
 ## 1. Purpose
 
-Extend the existing tintsmith monorepo with two new Next.js applications so the workspace
+Extend the existing tallandtiny monorepo with two new Next.js applications so the workspace
 holds four apps in total, all sourcing their data from the single NestJS backend:
 
 1. `apps/api` — NestJS backend (existing)

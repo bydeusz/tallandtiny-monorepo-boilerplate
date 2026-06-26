@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { PasswordForm } from "@/components/forms/password-form";
 
-export const metadata: Metadata = { title: "Set new password — Tintsmith" };
+export const metadata: Metadata = { title: "Set new password — Tall & Tiny" };
 
 export default async function Page({
   searchParams,

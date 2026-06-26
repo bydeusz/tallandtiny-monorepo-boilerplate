@@ -133,8 +133,8 @@ const fontSans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Tintsmith Dashboard",
-  description: "CMS for tintsmith",
+  title: "Tall & Tiny Dashboard",
+  description: "CMS for tallandtiny",
 };
 
 export default async function RootLayout({

@@ -1,4 +1,4 @@
-name: tintsmith-prod
+name: tallandtiny-prod
 
 services:
   postgres:

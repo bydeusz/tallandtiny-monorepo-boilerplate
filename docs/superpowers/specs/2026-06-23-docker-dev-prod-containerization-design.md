@@ -7,12 +7,12 @@
 ## 1. Purpose
 
 Adapt the `_docker` setup from the standalone `nestjs-boilerplate` into the
-tintsmith Turborepo/pnpm monorepo. Two outcomes:
+tallandtiny Turborepo/pnpm monorepo. Two outcomes:
 
 1. **Richer dev infra** — extend the existing dev compose with the supporting
    services the boilerplate provides (`redis`, `mailpit`), alongside the
    current `postgres` + `minio` (+ bucket bootstrap).
-2. **Production containerization** — add what tintsmith lacks today: a
+2. **Production containerization** — add what tallandtiny lacks today: a
    monorepo-aware `Dockerfile` and a `docker-compose.prod.yml` that builds and
    runs `apps/api` in a container, with a one-shot Prisma migrate step.
 
@@ -23,15 +23,15 @@ future, without building speculative parts now (YAGNI).
 
 The boilerplate's `_docker` cannot be copied verbatim: it assumes a single-app
 **npm** project at the repo root (`npm ci`, `npm run build`, `dist/src/main.js`,
-port 3010). tintsmith is **pnpm + Turborepo**, the NestJS app lives at
+port 3010). tallandtiny is **pnpm + Turborepo**, the NestJS app lives at
 `apps/api` (builds to `apps/api/dist/main.js`, port 3001, `/api` prefix), and
 Prisma lives in `packages/database` (`@repo/database`, Prisma 7).
 
 ## 1a. Current state (verified)
 
-| Aspect | tintsmith today |
+| Aspect | tallandtiny today |
 |---|---|
-| Existing `_docker` | `docker-compose.yml` (dev infra only): `postgres:16`, `minio`, `minio-init` (auto-creates bucket). `name: tintsmith`. Reads `_docker/.env`. No Dockerfile, no prod compose. |
+| Existing `_docker` | `docker-compose.yml` (dev infra only): `postgres:16`, `minio`, `minio-init` (auto-creates bucket). `name: tallandtiny`. Reads `_docker/.env`. No Dockerfile, no prod compose. |
 | API | `apps/api`, NestJS 11, port 3001, global prefix `api`, Swagger at `/api/docs`. Build: `nest build` → `apps/api/dist/main.js`. Run: `node dist/main.js`. **No health endpoint.** No worker entrypoint (only `src/main.ts`). |
 | Database | `packages/database` = `@repo/database`. Prisma 7, schema at `packages/database/prisma/schema.prisma` (`prisma-client` generator → `src/generated/prisma`), `@prisma/adapter-pg` + `pg`. Compiled package (`build: tsc` → `dist/index.js`). Migrations exist (`prisma/migrations/20260618231838_init`). `db:deploy` = `prisma migrate deploy`. |
 | Env split | `_docker/.env(.example)` = infra creds (`POSTGRES_*`, `MINIO_*`). Root `.env(.example)` = app runtime (`DATABASE_URL`, `NEXT_PUBLIC_API_URL`, `S3_*`). |
@@ -50,14 +50,14 @@ Prisma lives in `packages/database` (`@repo/database`, Prisma 7).
 | API healthcheck | **Add minimal `GET /api/health`** + compose healthcheck | Real readiness signal; lets other containers wait on it. A few lines of NestJS code. |
 | Dockerfile build strategy | **`turbo prune api --docker`** multi-stage | Official Turborepo Docker approach (`./.docs/turborepo/guides/tools/docker.mdx`): small, cache-friendly, stable as the repo grows. |
 | Prisma engine handling | **No `binaryTargets` / openssl work** | Prisma 7 + `prisma-client` generator + `@prisma/adapter-pg` runs without a Rust query engine binary, so Alpine stays simple. |
-| Compose conventions | **Follow tintsmith's existing style** (`name: tintsmith`, `_docker/.env`, healthchecks) | Consistency with the working dev compose over the boilerplate's `${COMPOSE_PROJECT_NAME}`/`--env-file` style. |
+| Compose conventions | **Follow tallandtiny's existing style** (`name: tallandtiny`, `_docker/.env`, healthchecks) | Consistency with the working dev compose over the boilerplate's `${COMPOSE_PROJECT_NAME}`/`--env-file` style. |
 | Base image | `node:22-alpine` | Matches engines `>=22.12`; small. |
 
 ## 3. Deliverables
 
 ### 3.1 `_docker/docker-compose.yml` (modify — extend dev infra)
 
-Keep existing `postgres`, `minio`, `minio-init`, named volumes, `name: tintsmith`.
+Keep existing `postgres`, `minio`, `minio-init`, named volumes, `name: tallandtiny`.
 Add two services in the same style (healthchecks, `restart: unless-stopped`,
 reading vars from `_docker/.env`):
 

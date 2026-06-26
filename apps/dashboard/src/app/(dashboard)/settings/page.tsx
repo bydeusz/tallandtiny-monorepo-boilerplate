@@ -5,7 +5,7 @@ import { UpdateUser } from "@/components/user/update-user";
 import { UpdateUserBillingDetails } from "@/components/user/update-user-billing-details";
 
 export const metadata: Metadata = {
-  title: "Settings — Tintsmith",
+  title: "Settings — Tall & Tiny",
 };
 
 export default function Page() {

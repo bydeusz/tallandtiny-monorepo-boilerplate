@@ -96,7 +96,7 @@
 
 **Rules:**
 - `settings/layout.tsx` (server, async): `getTranslations("pages.settings")`; the app `Header` (title `t("title")`, description `t("description")` if present) + a 4-tab `NavLink` nav (`@repo/ui` nav-link): `/settings` (`exact`) → `t("tabs.personal")`, `/settings/account` → `t("tabs.account")`, `/settings/subscription` → `t("tabs.subscription")`, `/settings/delete` → `t("tabs.delete")`. Then `{children}`. (Mirror `organisation/layout.tsx`.)
-- `settings/page.tsx` (server): `<div className="flex flex-col gap-6">` with `<UpdateAvatar />` + `<UpdateUser />` + `<UpdateUserBillingDetails />`. metadata "Settings — Tintsmith".
+- `settings/page.tsx` (server): `<div className="flex flex-col gap-6">` with `<UpdateAvatar />` + `<UpdateUser />` + `<UpdateUserBillingDetails />`. metadata "Settings — Tall & Tiny".
 - `settings/account/page.tsx` (server): `<ChangeEmail />` + `<UpdatePassword />`. metadata.
 - `settings/delete/page.tsx` (server): `<DeleteUser />`. metadata.
 - `settings/subscription/page.tsx` (server, async): a static "coming soon" `@repo/ui` `Card` (lucide `Sparkles`) using `pages.settings.subscription.{title,description,comingSoonTitle,comingSoonDescription}`. Token-only (no `gray-*`).

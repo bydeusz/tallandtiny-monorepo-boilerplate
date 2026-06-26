@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Fold the full standalone `nestjs-boilerplate` into the tintsmith monorepo as `apps/api` — all endpoints, security, mailers, queues and the worker — with models in `@repo/database` and the API consumable through the existing orval → `@repo/queries` pipeline.
+**Goal:** Fold the full standalone `nestjs-boilerplate` into the tallandtiny monorepo as `apps/api` — all endpoints, security, mailers, queues and the worker — with models in `@repo/database` and the API consumable through the existing orval → `@repo/queries` pipeline.
 
 **Architecture:** This is a faithful **copy-and-adapt port**, not a rewrite. The boilerplate already compiles and runs as a unit; the work is (1) moving its Prisma models into `@repo/database`, (2) copying its `src/common`, `src/config`, `src/modules` and entrypoints into `apps/api`, (3) re-pointing the ~11 `…/generated/prisma/client` imports to `@repo/database` (the ~55 `this.prisma.*` calls port verbatim because `PrismaService extends PrismaClient`), and (4) wiring consumability + Docker. Because the modules are interdependent (auth↔users, files↔org-access, app.module imports them all), the unit of verification is **type-check / build / boot / e2e**, not per-file unit tests. One real e2e smoke test closes the plan.
 
@@ -471,7 +471,7 @@ Run:
 pnpm --filter @repo/database exec prisma studio --browser none --port 5599 &
 sleep 2 && kill %1
 # Or a quick check:
-docker compose -f _docker/docker-compose.yml exec -T postgres psql -U tintsmith -d tintsmith -c "select email, \"isActive\" from \"User\";"
+docker compose -f _docker/docker-compose.yml exec -T postgres psql -U tallandtiny -d tallandtiny -c "select email, \"isActive\" from \"User\";"
 ```
 Expected: two users (`john.doe@bydeusz.com`, `lisa.visser@bydeusz.com`), both `isActive = t`.
 
@@ -624,7 +624,7 @@ JWT_REFRESH_SECRET=<paste from `pnpm --filter api secrets`>
 JWT_EXPIRATION=1h
 JWT_REFRESH_EXPIRATION=7d
 
-DATABASE_URL=postgresql://tintsmith:tintsmith@localhost:5432/tintsmith?schema=public
+DATABASE_URL=postgresql://tallandtiny:tallandtiny@localhost:5432/tallandtiny?schema=public
 REDIS_HOST=localhost
 REDIS_PORT=6379
 
@@ -633,13 +633,13 @@ SMTP_PORT=1025
 SMTP_SECURE=false
 SMTP_USER=
 SMTP_PASSWORD=
-MAIL_FROM="Tintsmith <noreply@tintsmith.app>"
-SUPPORT_EMAIL=support@tintsmith.app
+MAIL_FROM="Tall & Tiny <noreply@tallandtiny.app>"
+SUPPORT_EMAIL=support@tallandtiny.app
 
 S3_ENDPOINT=http://localhost:9000
-S3_ACCESS_KEY=tintsmith
-S3_SECRET_KEY=tintsmith-secret
-S3_BUCKET=tintsmith
+S3_ACCESS_KEY=tallandtiny
+S3_SECRET_KEY=tallandtiny-secret
+S3_BUCKET=tallandtiny
 ```
 
 - [ ] **Step 6: Create `apps/api/.env.example`** — identical to `.env` but with the two JWT secrets blanked:
@@ -690,7 +690,7 @@ sed -i '' -E "s#['\"][./]+generated/prisma/client['\"]#'@repo/database'#g" "$API
 ```
 Verify: `grep -n "@repo/database" "$API/src/common/filters/all-exceptions.filter.ts"` shows `import { Prisma } from '@repo/database';`.
 
-- [ ] **Step 3: Adjust config defaults to tintsmith (port 3001)**
+- [ ] **Step 3: Adjust config defaults to tallandtiny (port 3001)**
 
 In `$API/src/config/configuration.ts`, change the port default:
 ```ts
@@ -791,7 +791,7 @@ git commit -m "feat(api): port config, common, and Prisma service from boilerpla
 
 - [ ] **Step 0: Relax `strictPropertyInitialization` (class-validator DTOs need it)**
 
-The boilerplate's DTOs and `env.validation.ts` declare required fields without initializers (`field: string;`). tintsmith's base config is `strict: true`, which turns on `strictPropertyInitialization`. Add the standard NestJS override so the ported code compiles unchanged — write `apps/api/tsconfig.json`:
+The boilerplate's DTOs and `env.validation.ts` declare required fields without initializers (`field: string;`). tallandtiny's base config is `strict: true`, which turns on `strictPropertyInitialization`. Add the standard NestJS override so the ported code compiles unchanged — write `apps/api/tsconfig.json`:
 
 ```json
 {
@@ -856,7 +856,7 @@ git commit -m "feat(api): port auth, users, organisations, files, mail, queue, r
 ### Task 1.4: Bootstrap, worker, nest-cli assets — make it compile, build, and boot
 
 **Files:**
-- Create: `$API/src/main.ts` (replace — tintsmith adaptations)
+- Create: `$API/src/main.ts` (replace — tallandtiny adaptations)
 - Copy: `$BP/src/app.module.ts` → `$API/src/app.module.ts` (replace; no edits needed)
 - Copy: `$BP/src/worker.module.ts` → `$API/src/worker.module.ts`
 - Copy: `$BP/src/main-worker.ts` → `$API/src/main-worker.ts`
@@ -878,7 +878,7 @@ cp "$BP/src/main-worker.ts" "$API/src/main-worker.ts"
 ```
 (These import only `./config`, `./common`, `./modules/*`, `./prisma/*` — all present, no generated-client imports.)
 
-- [ ] **Step 2: Write `$API/src/main.ts`** (tintsmith: port 3001, Swagger at `/api/docs`, banner)
+- [ ] **Step 2: Write `$API/src/main.ts`** (tallandtiny: port 3001, Swagger at `/api/docs`, banner)
 
 ```ts
 import 'dotenv/config';
@@ -924,8 +924,8 @@ async function bootstrap() {
 
   if (!isProduction) {
     const swaggerConfig = new DocumentBuilder()
-      .setTitle('Tintsmith API')
-      .setDescription('API for tintsmith — a tool for miniature painters')
+      .setTitle('Tall & Tiny API')
+      .setDescription('API for tallandtiny — a tool for miniature painters')
       .setVersion('1.0')
       .addBearerAuth()
       .build();
@@ -940,7 +940,7 @@ async function bootstrap() {
 
   const logger = app.get(Logger);
   const base = `http://localhost:${port}`;
-  logger.log('🎨 Tintsmith API ready');
+  logger.log('🎨 Tall & Tiny API ready');
   logger.log(`├─ API:        ${base}/${apiPrefix}/v1`);
   logger.log(`├─ Swagger UI: ${base}/${apiPrefix}/docs`);
   logger.log(`└─ OpenAPI:    ${base}/${apiPrefix}/docs-json`);
@@ -1196,8 +1196,8 @@ SMTP_PORT=587
 SMTP_SECURE=true
 SMTP_USER=
 SMTP_PASSWORD=
-MAIL_FROM="Tintsmith <noreply@tintsmith.app>"
-SUPPORT_EMAIL=support@tintsmith.app
+MAIL_FROM="Tall & Tiny <noreply@tallandtiny.app>"
+SUPPORT_EMAIL=support@tallandtiny.app
 ```
 
 - [ ] **Step 2: Mirror into `_docker/.env.example`** with `JWT_SECRET=` / `JWT_REFRESH_SECRET=` blank and `SMTP_*` blank.

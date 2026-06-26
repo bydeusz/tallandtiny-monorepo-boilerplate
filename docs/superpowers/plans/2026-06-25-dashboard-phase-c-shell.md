@@ -435,7 +435,7 @@ import { getTranslations } from "next-intl/server";
 import { Header } from "@/components/layout/header";
 import { LinkedCard } from "@/components/cards/linked-card";
 
-export const metadata: Metadata = { title: "Dashboard — Tintsmith" };
+export const metadata: Metadata = { title: "Dashboard — Tall & Tiny" };
 
 export default async function DashboardHomePage() {
   const t = await getTranslations("pages.dashboard");

@@ -7,7 +7,7 @@
 ## 1. Purpose
 
 Fold the full standalone `nestjs-boilerplate` (`~/dev/boilerplate/nestjs-boilerplate`)
-into the tintsmith Turborepo/pnpm monorepo as `apps/api`, **faithfully**: all
+into the tallandtiny Turborepo/pnpm monorepo as `apps/api`, **faithfully**: all
 endpoints, all security measures, all mailers, plus the BullMQ queues and the
 separate worker process. The result must be wired into the monorepo the way the
 monorepo already works:
@@ -43,7 +43,7 @@ a mutator that is ready for a bearer token).
 
 ## 3. Current state (verified)
 
-### tintsmith (`apps/api` today)
+### tallandtiny (`apps/api` today)
 - NestJS 11, port **3001**, global prefix `api`, Swagger at `/api/docs`
   (orval reads `/api/docs-json`). Builds with `nest build` → `apps/api/dist/main.js`.
 - Modules: minimal `health` (`GET /api/health`), sample `minis`, thin `prisma`
@@ -77,7 +77,7 @@ a mutator that is ready for a bearer token).
 - **Two entrypoints**: `main.ts` (HTTP → `AppModule`) and `main-worker.ts`
   (headless `createApplicationContext` → `WorkerModule`).
 - `PrismaService extends PrismaClient` with `super({ adapter })` (constructs its
-  own `PrismaPg` from `database.url`). **This compiles** — the tintsmith
+  own `PrismaPg` from `database.url`). **This compiles** — the tallandtiny
   "extends fails" note only applied to a *bare* `super()`.
 - ~55 `this.prisma.<model>.…` calls (port verbatim once `PrismaService`
   subclasses the client) and ~11 `…/generated/prisma/client` type imports
@@ -149,7 +149,7 @@ Builds to `apps/api/dist/main.js` **and** `apps/api/dist/main-worker.js`
   `cors.{origins,methods,maxAge}`, `log.{level,fileEnabled}`,
   `shutdown.forceExitTimeoutMs`, `jwt.{secret,expiration,refreshSecret,refreshExpiration}`,
   `throttle.{ttl,limit}`, `auth.{allowedEmailDomains,registrationEnabled,frontendUrl}`,
-  `mail.*`, `storage.*`) and `env.validation.ts`. Adjust defaults to tintsmith:
+  `mail.*`, `storage.*`) and `env.validation.ts`. Adjust defaults to tallandtiny:
   `PORT=3001`, `apiPrefix='api'`, default CORS origins `:3000,:3002,:3003`.
 - **`common/`:** port the whole tree. Re-point `all-exceptions.filter.ts`'s
   `Prisma` import to `@repo/database`. Keep `UserScopedCacheInterceptor`

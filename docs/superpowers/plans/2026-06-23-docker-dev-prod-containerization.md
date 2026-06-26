@@ -257,7 +257,7 @@ Append the identical three lines to `_docker/.env.example`.
 - [ ] **Step 3: Replace `_docker/docker-compose.yml` with the extended dev stack**
 
 ```yaml
-name: tintsmith
+name: tallandtiny
 
 services:
   postgres:
@@ -474,17 +474,17 @@ CMD ["node", "dist/main.js"]
 
 - [ ] **Step 3: Build the `runner` target**
 
-Run (from the repo root): `docker build -f _docker/Dockerfile --target runner -t tintsmith-api:test .`
-Expected: build succeeds through all stages and tags `tintsmith-api:test`. The slow stage is `pnpm install` + `pnpm turbo build`; allow several minutes on a cold cache.
+Run (from the repo root): `docker build -f _docker/Dockerfile --target runner -t tallandtiny-api:test .`
+Expected: build succeeds through all stages and tags `tallandtiny-api:test`. The slow stage is `pnpm install` + `pnpm turbo build`; allow several minutes on a cold cache.
 
 - [ ] **Step 4: Build the `migrator` target**
 
-Run: `docker build -f _docker/Dockerfile --target migrator -t tintsmith-migrate:test .`
-Expected: build succeeds and tags `tintsmith-migrate:test`.
+Run: `docker build -f _docker/Dockerfile --target migrator -t tallandtiny-migrate:test .`
+Expected: build succeeds and tags `tallandtiny-migrate:test`.
 
 - [ ] **Step 5: Sanity-check the runner image contents**
 
-Run: `docker run --rm --entrypoint sh tintsmith-api:test -c "node -v && ls dist/main.js && ls ../../packages/database/dist/index.js"`
+Run: `docker run --rm --entrypoint sh tallandtiny-api:test -c "node -v && ls dist/main.js && ls ../../packages/database/dist/index.js"`
 Expected: prints the Node version (`v22.x`), `dist/main.js`, and `../../packages/database/dist/index.js` — confirming the api build and the linked `@repo/database` are present. (The api itself won't fully boot here without a database; this only checks artifacts.)
 
 > If the Docker daemon is unavailable, report that Steps 3–5 need it; do not mark the task verified without them.
@@ -535,7 +535,7 @@ Append the identical `PORT=3001` line to `_docker/.env.example`.
 - [ ] **Step 3: Create `_docker/docker-compose.prod.yml`**
 
 ```yaml
-name: tintsmith-prod
+name: tallandtiny-prod
 
 services:
   postgres:
@@ -713,7 +713,7 @@ Expected: `200` (Swagger UI served).
 - [ ] **Step 8: Tear the stack down**
 
 Run: `pnpm docker:prod:down -v`
-Expected: containers + the prod named volumes (`tintsmith-prod_*`) are removed. (Volumes are namespaced by the `tintsmith-prod` project, so this does not touch the dev `tintsmith` stack's data.)
+Expected: containers + the prod named volumes (`tallandtiny-prod_*`) are removed. (Volumes are namespaced by the `tallandtiny-prod` project, so this does not touch the dev `tallandtiny` stack's data.)
 
 > If the Docker daemon is unavailable, Step 5 (`config`) is the syntax gate; report that Steps 6–8 need the daemon.
 

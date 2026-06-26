@@ -44,7 +44,7 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/forms/contact-form";
 
-export const metadata: Metadata = { title: "Support — Tintsmith" };
+export const metadata: Metadata = { title: "Support — Tall & Tiny" };
 
 export default function SupportPage() {
   return (

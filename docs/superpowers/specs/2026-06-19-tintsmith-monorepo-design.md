@@ -1,4 +1,4 @@
-# Tintsmith Monorepo Scaffold — Design
+# Tall & Tiny Monorepo Scaffold — Design
 
 **Date:** 2026-06-19
 **Status:** Approved
@@ -6,7 +6,7 @@
 
 ## 1. Purpose
 
-Scaffold a Turborepo monorepo for **tintsmith** (a tool for miniature painters). This is a
+Scaffold a Turborepo monorepo for **tallandtiny** (a tool for miniature painters). This is a
 first setup: a clean, correct foundation with the full stack wired end-to-end, plus one thin
 vertical example slice that proves the whole pipeline works.
 
@@ -30,7 +30,7 @@ Docker (Postgres + MinIO).
 ## 3. Repository layout
 
 ```
-tintsmith/
+tallandtiny/
 ├── apps/
 │   ├── web/                 # Next.js (App Router), Tailwind, TanStack Query, consumes @repo/*
 │   └── api/                 # NestJS, Swagger, consumes @repo/database

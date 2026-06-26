@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Providers } from './providers';
 
 export const metadata: Metadata = {
-  title: 'Tintsmith',
+  title: 'Tall & Tiny',
   description: 'A tool for miniature painters',
 };
 

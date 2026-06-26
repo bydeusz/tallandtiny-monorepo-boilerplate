@@ -162,8 +162,8 @@ import type { Metadata } from 'next';
 import { Providers } from './providers';
 
 export const metadata: Metadata = {
-  title: 'Tintsmith Dashboard',
-  description: 'CMS for tintsmith',
+  title: 'Tall & Tiny Dashboard',
+  description: 'CMS for tallandtiny',
 };
 
 export default function RootLayout({
@@ -187,7 +187,7 @@ export default function RootLayout({
 export default function Page() {
   return (
     <main className="p-8">
-      <h1 className="text-2xl font-semibold">Tintsmith Dashboard</h1>
+      <h1 className="text-2xl font-semibold">Tall & Tiny Dashboard</h1>
       <p className="text-muted-foreground">CMS — coming soon.</p>
     </main>
   );
@@ -377,7 +377,7 @@ import type { Metadata } from 'next';
 import { Providers } from './providers';
 
 export const metadata: Metadata = {
-  title: 'Tintsmith',
+  title: 'Tall & Tiny',
   description: 'A tool for miniature painters',
 };
 
@@ -402,7 +402,7 @@ export default function RootLayout({
 export default function Page() {
   return (
     <main className="p-8">
-      <h1 className="text-2xl font-semibold">Tintsmith</h1>
+      <h1 className="text-2xl font-semibold">Tall & Tiny</h1>
       <p className="text-muted-foreground">Website — coming soon.</p>
     </main>
   );
@@ -511,7 +511,7 @@ Expected: PASS, exit 0.
 
 - [ ] **Step 4: Verify the CORS preflight allows the new origin**
 
-Start the API: `pnpm --filter api dev` (second shell; wait for "Tintsmith API ready").
+Start the API: `pnpm --filter api dev` (second shell; wait for "Tall & Tiny API ready").
 Then run a preflight probe for the dashboard origin:
 
 ```bash
