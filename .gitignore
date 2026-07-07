@@ -162,5 +162,5 @@ packages/database/src/generated/
 !_docker/.env.example
 
 # Superpowers
-docs/
+docs/superpowers/
 .superpowers/

@@ -1,0 +1,5 @@
+{
+  "name": "project",
+  "description": "Project workflow skills: create Trello story/bug tickets and start TDD development from them",
+  "version": "1.0.0"
+}

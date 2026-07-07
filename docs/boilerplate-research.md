@@ -1,0 +1,190 @@
+# What Production-Grade Full-Stack TypeScript SaaS Boilerplates Include: A Broad, Balanced Survey
+
+## TL;DR
+- The well-regarded boilerplates (next-forge, Makerkit, supastarter, BoxyHQ, ixartz, Open SaaS, the T3 family, plus reference apps like Cal.com, Dub and Midday) converge on a common menu of ~25 capability areas; your existing stack already nails the foundations, so the value-add is in layering organizations/RBAC, auth extras, billing, jobs, notifications, observability, search, storage, and DX tooling on top.
+- There is no single "right" choice in any category — each area has a self-hostable/Docker-friendly option (good for Coolify) and a managed option; pick based on whether you want to own the data/ops or move fast.
+- For a shareable template, the differentiator is DX and documentation: typed env validation, shared config packages, code generation, conventional commits, Storybook, AGENTS.md/agent rules, and a one-command setup matter as much as the features themselves.
+
+## Key Findings
+- **The category list is remarkably stable across kits.** Multi-tenancy, RBAC, auth extras, billing, email, jobs, observability, testing, CI/CD, i18n, analytics, admin tooling, security, SEO, search, storage, and docs appear in nearly every serious boilerplate. The differences are which library each kit picks and how deeply it's wired.
+- **Two clusters of philosophy.** "Indie/speed" kits (ShipFast, Open SaaS) optimize for launching this weekend with managed services; "B2B/enterprise" kits (Makerkit, BoxyHQ, supastarter, ixartz) ship multi-tenancy, RBAC, SSO/SCIM, audit logs, and super-admin panels. Your "own projects + shareable template" goal sits in the B2B/enterprise camp but with self-hostable bias.
+- **NestJS changes some defaults.** Most Next.js-only kits use Server Actions or tRPC; with a NestJS backend the idiomatic path is REST + OpenAPI (`@nestjs/swagger`) with generated typed clients, or the newer ts-rest/oRPC contract-first approaches. tRPC is awkward with NestJS because its maintainers don't support Nest — in GitHub Discussion #1504 they state: "None of the maintainers of tRPC are users of nestjs. Therefore, we have no plans on putting in more unpaid work to support nestjs when we have no use of it ourselves - this has to come from the community or through paid consulting."
+- **Self-hostable equivalents exist for almost everything**, which suits Coolify: GlitchTip (Sentry), Novu (notifications), Unleash/Flagsmith (flags), Meilisearch/Typesense (search), MinIO (storage), Plausible/Umami (analytics), Bull Board (queues).
+
+## Details
+
+Below is the full menu, one section per category, each with why it's included, common tool choices, notable patterns/tradeoffs, and real repos to study. Self-hostable/Docker-friendly options are flagged for Coolify but treated as a secondary lens.
+
+### Reference boilerplates to study (the landscape)
+- **next-forge** (Vercel/Hayden Bleasel) — production-grade Turborepo template; separate web/app/api/docs/email/storybook apps. Clerk auth, Prisma + Neon, Stripe, Resend + React Email, Sentry + BetterStack, PostHog + Google Analytics, Arcjet security, feature flags, Mintlify docs, Storybook, typed env per-package (`keys.ts`). Notably uses Next.js Server Actions instead of tRPC.
+- **Makerkit** — B2B-focused (Next.js 16 + Supabase or Drizzle/Prisma + Better Auth in its newer self-hosted kits). Multi-tenancy, RBAC, Stripe/Lemon Squeezy/Paddle billing, super-admin with impersonation, in-app notifications, i18n, "400+ pages of documentation covering every feature" (tutorials, guides, API references), MCP server + Cursor/Claude/Codex agent rules, Figma kit.
+- **supastarter** — Next.js/Nuxt + Prisma/Drizzle, organizations, 2FA, magic links, Stripe/Lemon Squeezy, S3-compatible storage with presigned URLs, i18n.
+- **BoxyHQ Enterprise SaaS Starter Kit** — the enterprise-auth reference: SAML SSO + SCIM directory sync (SAML Jackson), Svix webhooks, Retraced audit logs, teams, roles, NextAuth, Prisma/Postgres, Docker Compose.
+- **ixartz SaaS-Boilerplate** — Next.js + Drizzle + Clerk, multi-tenancy/teams, roles/permissions, i18n (next-intl + Crowdin), Sentry, Vitest + Playwright, user impersonation; Pro tier moves to oRPC for end-to-end type safety.
+- **Open SaaS (Wasp)** — 100% free/OSS; auth (email + Google/GitHub/Slack/MS), Stripe/Polar/Lemon Squeezy, background jobs/cron, S3 uploads, admin dashboard, Astro Starlight blog/docs, AGENTS.md + Claude plugin.
+- **create-t3-app / create-t3-turbo** — the type-safety reference: tRPC + Prisma/Drizzle + Tailwind + (NextAuth/Better Auth); create-t3-turbo demonstrates the monorepo shared-package pattern (api/auth/db/validators packages) consumed by Next.js + Expo.
+- **brocoders/nestjs-boilerplate** — the closest to your backend: NestJS + TypeORM/Mongoose, hexagonal architecture, auth (email + social), nodemailer mailing, nestjs-i18n, S3/local file uploads, e2e + unit tests, GitHub Actions, Docker; has a companion Extensive React Boilerplate.
+- **Reference production apps**: Cal.com (scheduling, enterprise auth patterns), Dub (link attribution, AGPLv3 + EE open-core, edge-optimized), Midday (Turborepo + Supabase + Hono + tRPC + Trigger.dev + Typesense + Sentry; its open "v1" starter is widely forked), Taxonomy (shadcn App Router patterns), Refine (internal-tools framework).
+
+### Multi-tenancy & organizations/teams
+- **Why:** B2B SaaS needs workspaces, member roles, invitations, and data isolation per tenant.
+- **Tools/patterns:** Org/team tables with membership join tables and role columns (Makerkit, BoxyHQ, ixartz, supastarter all do this). Supabase-based kits lean on Row-Level Security; Prisma-based kits scope every query by `organizationId`. Workspace switching, invitation flows (email + token), and per-seat billing tie in here.
+- **Tradeoffs:** Shared-schema-with-tenant-column (simplest, what most kits use) vs schema-per-tenant vs database-per-tenant (strongest isolation, heaviest ops). For most SaaS, a tenant column + enforced query scoping + (optionally) Postgres RLS is the pragmatic choice.
+
+### Authentication extras
+- **Why:** You have custom auth; the value-add is the long tail enterprise buyers expect.
+- **Tools/patterns:** OAuth/social (Google/GitHub/Apple), magic links, passkeys/WebAuthn, TOTP 2FA/MFA, SSO/SAML + SCIM provisioning (BoxyHQ's SAML Jackson is the OSS reference; it's self-hostable), session management, admin impersonation (Makerkit, ixartz), and audit logs (BoxyHQ uses Retraced). Better Auth has become a popular self-hostable library that bundles many of these (2FA, organizations, admin/impersonation plugins) and is used by create-t3-turbo and Makerkit's newer kits.
+- **Tradeoffs:** SAML/SCIM are enterprise-deal unlockers but heavy; gate them behind a higher tier. Impersonation needs safeguards (no impersonating admins/banned users) and must be audit-logged.
+
+### Authorization / permission systems
+- **Why:** Roles alone (RBAC) break down once you need "editor in Team A can't touch Team B."
+- **Tools/patterns:** Simple RBAC via NestJS guards + a `@Roles()` decorator is the baseline. For finer control, **CASL** is the dominant JS library — it does RBAC and ABAC (attribute/condition-based), integrates with Prisma via `@casl/prisma` for query-level filtering, and supports DB-persisted permissions (roles↔permissions tables). NestJS docs document a `PoliciesGuard` + `@CheckPolicies()` pattern around CASL. Commercial: Permit.io, Oso.
+- **Tradeoffs:** CASL/ABAC is flexible but adds complexity and runtime overhead; a common pattern is RBAC guard as a first coarse layer, then CASL/ABAC at the service/data layer for row-level checks.
+
+### API layer & end-to-end type safety
+- **Why:** A monorepo wants types to flow from DB → API → frontend without drift.
+- **Tools/patterns (NestJS-specific):**
+  - **REST + OpenAPI** via `@nestjs/swagger`: decorate controllers/DTOs, emit an OpenAPI manifest, generate a typed client SDK with **orval** or **@hey-api/openapi-ts**. Platform-agnostic, supports public APIs and versioning.
+  - **tRPC**: zero-codegen end-to-end types via the shared `AppRouter` type, but its maintainers explicitly don't support NestJS (see Key Findings quote); bridges like `nestjs-trpc` exist but lose some of tRPC's editor "go-to-definition" benefit. Best when one team owns TS frontend+backend (the T3 stack's whole premise).
+  - **oRPC**: the newer "tRPC younger sibling" — same type safety plus first-class OpenAPI, Standard Schema support (Zod/Valibot/ArkType), and native handling of complex types (Date, File). It **released v1.0 on December 19, 2025**, marking a stable production-ready milestone, and is now the type-safety layer in ixartz's Pro kit.
+  - **ts-rest**: contract-first REST with full type safety, no codegen, OpenAPI generation, and a `@ts-rest/nest` integration that coexists with Nest decorators/DI.
+  - **GraphQL**: `@nestjs/graphql` + Apollo, code-first (TS classes/decorators) or schema-first.
+- **Validation:** **class-validator + class-transformer** is idiomatic at the NestJS HTTP/DTO boundary; **Zod** (via `nestjs-zod`) wins for shared client/server schemas, env validation, and inferred types. A pragmatic split: class-validator at the request edge, Zod everywhere else.
+- **Rate limiting:** `@nestjs/throttler` (in-memory by default → swap to Redis/Upstash storage for multi-instance); `@upstash/ratelimit` for edge/Next.js routes; Arcjet as an all-in-one.
+- **Tradeoffs:** For your NestJS backend, REST+OpenAPI or oRPC/ts-rest give type safety without fighting the framework; tRPC is the odd one out.
+
+### Email — transactional, templating, deliverability
+- **Why:** Every SaaS sends password resets, invites, receipts, notifications.
+- **Tools/patterns:** You use Nodemailer (fine, provider-agnostic). Common upgrades: **Resend** (best DX for React/Next, built by the React Email team), **Postmark** (deliverability-focused), **Amazon SES** (cheapest at scale). **React Email** (JSX → email-safe HTML) is the de-facto templating choice; MJML is the older alternative. Delivery webhooks (bounces/complaints) feed suppression lists. Makerkit notably supports React Email with Nodemailer or Resend.
+- **Tradeoffs:** Keep transactional and marketing email on separate providers/streams. Resend's pricing curve steepens past ~500K/month vs SES.
+
+### In-app & push notifications, customer-facing webhooks
+- **Why:** Users expect a notification inbox; customers expect to subscribe to your events.
+- **Tools/patterns:** **Novu** is the OSS, self-hostable (Docker Compose; MongoDB + Redis) notification infrastructure — unified email/SMS/push/in-app, a drop-in `<Inbox />`, digests, preferences; used by Midday. Knock and Courier are managed alternatives. DB-backed in-app notifications with Supabase Realtime is Makerkit's lighter approach. For outbound customer webhooks, **Svix** (used by BoxyHQ) handles signing, retries, and a dead-letter/replay UI.
+- **Tradeoffs:** Rolling your own notification table is easy; multi-channel orchestration (digests, throttling, fan-out) is where Novu/Svix earn their keep.
+
+### Background jobs / queues
+- **Why:** Offload email, exports, syncs, and scheduled work off the request path; you already have a worker.
+- **Tools/patterns:** **BullMQ** (Redis-backed) is the Node standard, with `@nestjs/bullmq` integration; **Bull Board** (`@bull-board/nestjs`) gives a queue dashboard for retrying/inspecting jobs. Patterns: retries with exponential backoff, rate limiting, repeatable/cron jobs, parent-child flows, and an explicit **dead-letter queue** for poison jobs. Run API and workers as separate processes/deployments and scale workers on queue depth. Managed alternatives: **Trigger.dev** (used by Midday — durable tasks, retries, observability), Inngest.
+- **Tradeoffs:** Self-hosted BullMQ + Bull Board is Coolify-friendly and free but you own Redis HA, DLQ policy, and dashboard auth. Cron in multi-instance setups needs a single scheduler to avoid N-fold execution.
+
+### Database extras
+- **Why:** Production needs migrations, seeding, pooling, caching, and auditability.
+- **Tools/patterns:** Prisma migrations + seed scripts (you have Prisma). Connection pooling (PgBouncer, or Prisma Accelerate/Neon pooler). **Redis** for caching/sessions/rate-limit/queues. Soft deletes (`deletedAt`), audit columns (`createdAt`/`updatedAt`/`createdBy`), and multi-tenant scoping. Prisma Studio for DB visualization ships in next-forge.
+- **Tradeoffs:** Soft deletes complicate unique constraints and queries; decide early. Multi-tenant DB strategy (column vs schema vs DB) interacts with pooling.
+
+### Payments / billing
+- **Why:** Monetization — subscriptions, seats, usage, trials.
+- **Tools/patterns:** **Stripe** is the default processor (best API; add Stripe Tax/Billing). **Merchant-of-record** options remove global tax/VAT burden: **Lemon Squeezy** (acquired by Stripe on July 26, 2024 — great for simple self-serve, license keys), **Paddle** (enterprise-grade MoR, B2B invoicing), **Polar** (developer-focused, built on Stripe, low fees, popular for usage-based). Stripe has since launched its own MoR product, **Stripe Managed Payments** (announced February 2026), enabled via a single Stripe Checkout API parameter at **5% + $0.50 per transaction** — the same headline rate Paddle and Lemon Squeezy charge. Boilerplates often abstract a billing layer supporting multiple providers (Makerkit supports Stripe/Lemon Squeezy/Paddle; Open SaaS supports Stripe/Polar/Lemon Squeezy). Webhooks drive subscription state; patterns include flat-rate, tiered, per-seat, and usage-based.
+- **Tradeoffs:** Stripe (raw processing) = lowest fees but you handle tax compliance; MoRs charge ~5% + $0.50 but absorb tax/VAT and chargebacks. Crossover favors MoR when you sell internationally and can't staff compliance.
+
+### Observability
+- **Why:** Find and fix errors, trace slow paths, know when you're down.
+- **Tools/patterns:** Error tracking: **Sentry** (the standard) or **GlitchTip** (Sentry-SDK-compatible, lightweight, self-hostable — Coolify-friendly). GlitchTip runs on as little as 256 MB of RAM (512 MB recommended for v6), whereas self-hosted Sentry requires a minimum of 16 GB and 40+ containers to operate its distributed data pipeline. Logging: **Pino** (fast, NestJS-friendly) or Winston. Tracing/metrics: **OpenTelemetry** → Grafana/Tempo/Prometheus or Uptrace. Uptime: BetterStack (used by next-forge), or self-hosted (OneUptime, Uptime Kuma).
+- **Tradeoffs:** GlitchTip gives you drop-in Sentry compatibility (swap the DSN) and predictable flat cost, but lacks session replay/deep APM/native mobile symbolication.
+
+### Testing
+- **Why:** A shareable template needs confidence and example tests.
+- **Tools/patterns:** **Vitest** (fast, Jest-compatible; favored by newer kits) or **Jest** (NestJS default) for unit/integration; **Playwright** (most common now) or Cypress for e2e. ixartz and next-forge pair Vitest + Playwright. Monorepo setup: per-package test config orchestrated by Turborepo, with shared test utilities.
+- **Tradeoffs:** Keep e2e in a dedicated app/package; use Testcontainers or a Docker Postgres for integration tests.
+
+### CI/CD
+- **Why:** Automated lint/test/build/deploy and dependency hygiene.
+- **Tools/patterns:** **GitHub Actions** with Turborepo remote caching (cache shared between CI and local). Dependency updates: **Renovate** or **Dependabot**. Release automation: **changesets** (monorepo-friendly versioning/changelogs) or semantic-release. Dependency/security scanning in the pipeline. Deploy hooks to Coolify.
+- **Tradeoffs:** changesets is the monorepo standard for versioning multiple packages; semantic-release suits single-package repos.
+
+### Internationalization (i18n)
+- **Why:** Reach global users; enterprise buyers may require it.
+- **Tools/patterns:** **next-intl** (built for Next.js App Router, native RSC support, ICU syntax) is the modern default for the frontends; **react-i18next/i18next** if sharing config across non-Next apps; **nestjs-i18n** on the backend (brocoders uses it). Translation management via Crowdin (ixartz), Languine (next-forge), or Tolgee. React Email + next-intl works for localized emails.
+- **Tradeoffs:** next-intl is leanest for App Router; i18next has the largest ecosystem. Watch bundle size (loading all locales).
+
+### Feature flags
+- **Why:** Gradual rollouts, kill switches, A/B tests, per-plan gating.
+- **Tools/patterns:** Self-hostable OSS: **Unleash** (most established, Postgres-backed, strong governance — note its OSS edition is being repositioned), **Flagsmith** (flags + remote config + identity, BSD-licensed, self-host free), **Flipt** (GitOps, single binary, simplest ops), **GrowthBook** (flags + experimentation, warehouse-native). **PostHog** bundles flags with analytics. next-forge ships a built-in flag system.
+- **Tradeoffs:** For Coolify, Flipt (single binary) or Flagsmith (Docker + Postgres) are the easiest self-hosts. Add stale-flag cleanup discipline.
+
+### Analytics
+- **Why:** Understand product usage and acquisition.
+- **Tools/patterns:** Product analytics: **PostHog** (events, funnels, session replay, flags, experiments — self-hostable). Privacy-friendly web analytics: **Plausible** or **Umami** (both self-hostable, Coolify-friendly). Open SaaS pulls Plausible/Google + Stripe data into its admin dashboard via cron jobs. Makerkit supports GA/PostHog/Umami via a provider abstraction.
+- **Tradeoffs:** Self-hosted PostHog OSS struggles past a few hundred thousand events/month; Plausible/Umami are lightweight for web stats only.
+
+### Admin / back-office tooling
+- **Why:** Support and ops need to manage users, orgs, subscriptions.
+- **Tools/patterns:** Two approaches. (1) **Boilerplate-native super-admin** — a role-gated `/admin` route with user management, ban/disable, and impersonation (Makerkit's Super Admin, ixartz's impersonation), often leveraging the auth library's primitives. (2) **Admin frameworks** — **Refine** (headless React, REST/GraphQL data providers, RBAC/audit/realtime open-source), **React-Admin** (Material UI, mature, advanced features paywalled), **AdminJS** (auto-generates CRUD from your ORM; has Prisma and NestJS adapters). Commercial internal-tools: Forest Admin, Retool.
+- **Tradeoffs:** For a shared template, a lightweight custom super-admin route is more cohesive; AdminJS (with its Prisma + NestJS adapters) is the fastest way to get a full CRUD back office if you want one.
+
+### Developer experience (DX)
+- **Why:** This is the differentiator for a shareable template — and explicitly part of your goal.
+- **Tools/patterns:** Linting/formatting: **ESLint + Prettier**, or **Biome** (single fast Rust toolchain replacing both; has a `--staged` mode that can drop lint-staged). Commit hooks: **Husky + lint-staged** (install at monorepo root; per-package configs) + **commitlint** for conventional commits. Typed env validation: **@t3-oss/env-nextjs** (T3 Env) with per-app composition. Shared `tsconfig`/config packages and a `turbo gen` generator for scaffolding new packages (create-t3-turbo pattern). **Storybook** for the design system. **AGENTS.md / Cursor rules / MCP server** for AI-assisted coding — now a real differentiator (Makerkit, Open SaaS, Midday's packrun all invest here).
+- **Tradeoffs:** Biome is faster and simpler but has a smaller plugin ecosystem than ESLint; many teams keep ESLint for niche plugins.
+
+### Security
+- **Why:** Protect against abuse, injection, and leaked secrets.
+- **Tools/patterns:** Security headers via **helmet** (NestJS) or Arcjet Nosecone (Next.js); CSRF protection; rate limiting (above); secrets management (Coolify env vars, Doppler, or Infisical — self-hostable); **Arcjet** as an all-in-one (bot protection, rate limiting, WAF "Shield" for SQLi/XSS, email validation, signup protection, PII redaction; NestJS + Next.js SDKs, used by next-forge); dependency scanning (Dependabot/Renovate, Snyk).
+- **Tradeoffs:** Arcjet bundles many protections with minimal code but is a managed dependency (local + cloud decisions); helmet + throttler + a CSRF lib is the fully self-hosted path.
+
+### SEO / metadata / sitemaps / Open Graph
+- **Why:** The marketing site and shareable links need discoverability.
+- **Tools/patterns:** Next.js Metadata API for titles/descriptions/OG tags, dynamic OG image generation (`@vercel/og`/Satori), `sitemap.xml` and `robots.ts` generation, JSON-LD structured data. next-forge ships "bulletproof SEO" + a type-safe blog; ixartz includes SEO optimization.
+- **Tradeoffs:** Keep SEO concerns in the marketing app; the webapp/manager apps usually `noindex`.
+
+### Onboarding flows
+- **Why:** Convert signups into activated users; collect workspace/team setup.
+- **Tools/patterns:** Multi-step wizards (workspace creation → invite team → connect integrations), often a dedicated onboarding route gated until complete. Makerkit and supastarter ship configurable onboarding flows.
+- **Tradeoffs:** Store onboarding state on the user/org so it's resumable.
+
+### Search
+- **Why:** Once you have meaningful data, users expect fast, typo-tolerant search.
+- **Tools/patterns:** **Postgres FTS** (no extra infra, consistent with your DB — good for MVP/simple cases; `pg_trgm` for fuzzy) vs dedicated engines: **Meilisearch** (fast, typo-tolerant, easy to self-host, great DX), **Typesense** (similar; used by Midday for bank search), **Algolia** (managed, premium). Self-hosted Meilisearch/Typesense run well on Docker/Coolify.
+- **Tradeoffs:** Start with Postgres FTS; graduate to Meilisearch/Typesense when search-as-you-type, faceting, typo tolerance, or sub-50ms latency become growth levers (Postgres struggles with misspellings and large-dataset count/pagination).
+
+### File uploads / storage
+- **Why:** Avatars, org logos, documents, attachments.
+- **Tools/patterns:** **S3-compatible storage** is the standard: AWS S3, **Cloudflare R2** (zero egress), DigitalOcean Spaces, or **MinIO** (self-hostable, Coolify-friendly). The key pattern is **presigned URLs** — client requests a short-lived signed URL from your API, then uploads directly to storage (avoids serverless payload/time limits and keeps credentials server-side). supastarter and brocoders both implement this; **UploadThing** is the managed shortcut for Next.js.
+- **Tradeoffs:** Presigned URLs need CORS config on the bucket. MinIO presigned URLs need matching internal/external hostnames in Docker.
+
+### Landing page / marketing components, blog, waitlist
+- **Why:** The marketing site needs to convert; content drives SEO.
+- **Tools/patterns:** Hero/features/pricing/testimonials/FAQ components (shadcn/ui + Tailwind, Magic UI). Blog via **MDX** + a content layer (**Velite** — the maintained Contentlayer replacement, Zod-typed; or Content Collections), or a headless CMS (Sanity, BaseHub — used by next-forge, Keystatic, Payload). Waitlist with email capture for pre-launch.
+- **Tradeoffs:** Contentlayer is effectively abandoned — prefer Velite or Content Collections. Headless CMS adds a dependency but lets non-devs publish.
+
+### Legal — cookie consent, GDPR, terms/privacy
+- **Why:** Compliance and trust, especially for EU users.
+- **Tools/patterns:** Pre-built legal pages (terms, privacy, cookie policy — next-forge ships these), a cookie-consent banner (e.g., CookieYes, or a custom Tailwind banner gating analytics), GDPR data-export/delete endpoints. Self-hosting analytics (Plausible/Umami) reduces consent burden.
+- **Tradeoffs:** Consent management interacts with analytics/feature-flag loading order.
+
+### Documentation sites
+- **Why:** Your template is meant to be shared — docs are essential.
+- **Tools/patterns:** **Nextra** (Next.js, opinionated MDX theme — used by SWR/shadcn/Vercel docs), **Docusaurus** (Meta; most mature, native versioning/i18n — used by React/Jest/Prettier), **Mintlify** (hosted, AI-native, great OpenAPI playgrounds — used by next-forge), **Starlight** (Astro, static/fast, built-in search/i18n — used by Open SaaS and Arcjet), **Fumadocs** (Next.js, headless/composable, OpenAPI rendering — best when docs live inside a Next.js product).
+- **Tradeoffs:** Mintlify is fastest to a polished API-docs experience but is a hosted service; Nextra/Starlight/Fumadocs are fully self-hosted/OSS.
+
+### Changelog & status pages
+- **Why:** Communicate updates and incidents; build trust.
+- **Tools/patterns:** Changelog via MDX/CMS pages or managed (Makerkit ships a changelog plugin). Status page: self-hostable **OneUptime** or **Uptime Kuma** (Coolify-friendly), or managed BetterStack/Instatus. Tie status to your uptime monitoring.
+- **Tradeoffs:** A self-hosted status page should run on separate infra from the app it monitors.
+
+### Anything else commonly found
+- **Theming/dark mode** (next-themes), **shared UI/design system** (you have this; Storybook + shadcn registry pattern is common), **PWA/offline**, **AI features** (Vercel AI SDK, OpenAI integration — Open SaaS, Midday), **link shortening/attribution** (Dub, self-hostable), **API key management** for customer-facing APIs (Unkey — used by Midday), and **idempotency keys** for billing/webhooks.
+
+## Recommendations
+
+Staged plan, ordered by leverage for a NestJS + Next.js + Prisma + Coolify monorepo that's both your own foundation and a shareable template:
+
+1. **Lock the foundations first (week 1–2).** Add typed env validation (T3 Env) across every app, a shared `tsconfig`/config package, Biome or ESLint+Prettier, Husky + lint-staged + commitlint, and a `turbo gen` scaffold. These are cheap and define the DX that makes a template adoptable. *Benchmark to proceed:* a new contributor can clone, run one setup command, and get all apps running.
+2. **Pick your API contract (week 2).** Since you're on NestJS, standardize on **REST + `@nestjs/swagger`** with a generated typed client (orval/hey-api), or adopt **ts-rest/oRPC** for contract-first type safety. Avoid tRPC here. Add Zod (`nestjs-zod`) for shared schemas + class-validator at the DTO edge, and `@nestjs/throttler`.
+3. **Layer the B2B core (week 3–5).** Organizations/teams + invitations, RBAC via NestJS guards, then CASL for row-level ABAC. Add auth extras incrementally: social + magic links first, then 2FA, then SAML/SCIM (BoxyHQ's SAML Jackson) gated behind an enterprise tier. Wire audit logs and admin impersonation early — they're painful to retrofit.
+4. **Wire the operational plumbing (week 4–6).** BullMQ + Bull Board on your existing worker (with DLQ + backoff + a single cron scheduler); Redis for cache/sessions/queues; GlitchTip for errors + Pino logging (both self-hosted on Coolify); a notification layer (Novu self-hosted, or DB-backed in-app to start).
+5. **Add monetization and growth (week 6–8).** Abstract a billing layer over Stripe with a clean webhook→subscription-state flow; design it so a merchant-of-record (Polar/Lemon Squeezy/Paddle, or Stripe Managed Payments) can be swapped in. Add PostHog (analytics + flags) or self-hosted Flagsmith/Plausible.
+6. **Polish for sharing (ongoing).** Storybook for the design system, a docs site (Starlight or Fumadocs for self-hosting; Mintlify if you want hosted API docs), AGENTS.md + Cursor rules, example tests (Vitest + Playwright), GitHub Actions with Turborepo caching + Renovate + changesets, and pre-built marketing/legal/onboarding pages.
+
+**Thresholds that change the plan:**
+- *Selling internationally with no compliance staff* → move billing to a merchant-of-record sooner.
+- *Search-as-you-type or faceting needed* → graduate from Postgres FTS to self-hosted Meilisearch/Typesense.
+- *Enterprise deals in the pipeline* → prioritize SAML/SCIM, audit logs, and a status page.
+- *Event volume > a few hundred K/month* → don't self-host PostHog OSS; use managed or split web analytics (Plausible) from product analytics.
+
+## Caveats
+- **Source quality:** Much of the comparative "best boilerplate 2026" content online is SEO/aggregator material rather than primary sources; I prioritized official docs and GitHub repos for specifics (e.g., ixartz→oRPC, next-forge→Mintlify, Makerkit super-admin, AdminJS adapters, @nestjs/throttler). Star counts, download numbers, and pricing are time-sensitive and approximate.
+- **Stack fit:** Most marquee Next.js kits (next-forge, Makerkit, ixartz) are Next.js-only or Supabase/Drizzle-based; their feature lists transfer, but their auth/API/ORM choices differ from your NestJS + Prisma + custom-auth stack. The closest direct references for your backend are brocoders/nestjs-boilerplate and Midday (Hono, not Nest, but a clean Turborepo + jobs + tRPC example).
+- **Moving targets:** Several tools are mid-transition — Better Auth is rapidly maturing, Unleash's OSS edition is being repositioned, Contentlayer is abandoned (use Velite), Lemon Squeezy is now Stripe-owned (with Stripe Managed Payments launched Feb 2026), and oRPC just hit v1.0 (Dec 19, 2025). Re-verify before committing.
+- **Don't over-adopt:** This is a menu, not a checklist. The best-regarded templates are opinionated and resist bloat; pick one option per category, wire it deeply, and document it well rather than shipping shallow integrations of everything.
