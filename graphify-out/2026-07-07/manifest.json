@@ -2215,8 +2215,8 @@
     "semantic_hash": ""
   },
   ".claude/CLAUDE.md": {
-    "mtime": 1783460631.9052312,
-    "ast_hash": "4ffb5b648b37df7fd0a6b2a37da02cdc",
+    "mtime": 1782504613.2110963,
+    "ast_hash": "db73b0edd7ffbc61ceac177130730865",
     "semantic_hash": ""
   },
   ".claude/skills/graphify/SKILL.md": {
@@ -2520,8 +2520,8 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1783460664.4199772,
-    "ast_hash": "a06b01acb9615a7d02f09f450cc027ab",
+    "mtime": 1782504613.2118294,
+    "ast_hash": "82efb97a359f5c7290bf2513d14686be",
     "semantic_hash": ""
   },
   "README.md": {
@@ -3097,41 +3097,6 @@
   "packages/ui/CLAUDE.md": {
     "mtime": 1782511973.4801571,
     "ast_hash": "e811cab165333bdb7b4fd365f6322b04",
-    "semantic_hash": ""
-  },
-  ".claude/skills/project/.claude-plugin/plugin.json": {
-    "mtime": 1783460566.384317,
-    "ast_hash": "45f2104ff7f0d34a38a7c5436469d95f",
-    "semantic_hash": ""
-  },
-  ".claude/skills/project/skills/create-story/SKILL.md": {
-    "mtime": 1783460599.942168,
-    "ast_hash": "2baccc3b97dba66791550ac1315e04be",
-    "semantic_hash": ""
-  },
-  ".claude/skills/project/skills/start-ticket/SKILL.md": {
-    "mtime": 1783460617.5024486,
-    "ast_hash": "e18e8165fe783e7a00adf01abbce80cb",
-    "semantic_hash": ""
-  },
-  "docs/boilerplate-research.md": {
-    "mtime": 1782939560.772421,
-    "ast_hash": "6254c9cd6aa2261ec5f83c438a56205e",
-    "semantic_hash": ""
-  },
-  "docs/boilerplate-todo.md": {
-    "mtime": 1782941151.83176,
-    "ast_hash": "b8813d052cf2d72818e2f1e0d337a902",
-    "semantic_hash": ""
-  },
-  "docs/testing.md": {
-    "mtime": 1782513591.581738,
-    "ast_hash": "e38b6b4aa64748bd24b517e52fa1a259",
-    "semantic_hash": ""
-  },
-  "docs/trello-workflow.md": {
-    "mtime": 1783460644.7535877,
-    "ast_hash": "fecaa2c8134d3c08a3af46551ac61bb5",
     "semantic_hash": ""
   }
 }
