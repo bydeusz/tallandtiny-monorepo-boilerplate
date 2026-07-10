@@ -7,5 +7,5 @@ When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` 
 When the user types `/project:create-story`, invoke the Skill tool with `skill: "project:create-story"` before doing anything else.
 
 # project:start-ticket
-- **start-ticket** (`.claude/skills/project/skills/start-ticket/SKILL.md`) - pull a ticket from Trello, move it to To Do, stamp this chat on the card, and start TDD development. Trigger: `/project:start-ticket`
+- **start-ticket** (`.claude/skills/project/skills/start-ticket/SKILL.md`) - pull a named ticket from Trello, move it to To Do, stamp this chat on the card, and set up an isolated workspace (worktree or branch) before handing off to development. Trigger: `/project:start-ticket`
 When the user types `/project:start-ticket`, invoke the Skill tool with `skill: "project:start-ticket"` before doing anything else.
