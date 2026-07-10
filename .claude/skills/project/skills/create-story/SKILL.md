@@ -9,7 +9,7 @@ Turn a feature or bug the user describes in chat into a well-formed Trello ticke
 
 ## Core principle
 
-**A ticket is only as good as the research behind it.** Before writing, you ALWAYS research three things and fold each into the ticket: (1) **what already exists**, so you reuse before building; (2) **the right technical choice**, grounded in current documentation, not memory; and (3) **the security & AVG (GDPR) impact**. Never write a ticket from the chat description alone.
+**A ticket is only as good as the research behind it.** You never research from the chat description alone, and you never research in your own context. Instead you **dispatch a small team of subagents**: three research agents run in parallel (one hunts existing code to reuse, one verifies the right technical choice against current docs, one gives the security & AVG (GDPR) verdict), you write the ticket from their findings, and then a fourth agent reviews the draft against the real codebase to catch anything wrong or **duplicate** before you show it. Only then do you preview and post.
 
 ## Two ticket types
 
@@ -26,50 +26,49 @@ Write the entire ticket (title, description, criteria, steps) in the **same lang
 
 ## Workflow
 
-Do these in order. Never skip step 2, and never create the card until the user approves the preview in step 5.
+Do these in order. Two steps are **REQUIRED and non-negotiable**: step 2 (three research agents) and step 5 (review agent). Never write the ticket without the three research agents' findings; never preview it without the review agent's pass; never create the card until the user approves the preview in step 7.
 
 ### 1. Determine the type
 Story or bug, per the signals above. Ask only if unclear.
 
-### 2. Research — REQUIRED
+### 2. Research — dispatch THREE agents in parallel — REQUIRED
 
-Research has three lenses. Do **all three** every time and fold each into the ticket. Never write from the chat description alone.
+**Do not do this research in your own context.** Dispatch three read-only subagents in a **single message** so they run concurrently, then wait for all three and synthesize their findings. Each agent owns ONE lens and returns findings only — **no agent edits code, writes the ticket, or creates a Trello card.**
 
-#### 2a. What already exists — reuse before building
-This project has a graphify knowledge graph. Follow the project rule, but don't over-trust it:
-- Run `graphify query "<the feature or bug>"` first (scoped subgraph). Use `graphify explain "<concept>"` or `graphify path "<A>" "<B>"` when useful.
-- `graphify query` can be noisy or off-target — **always confirm the exact files, functions, and current behaviour with `Grep`/`Read`.** Grep/Read are first-class here, not a fallback.
-- **Mine prior art:** search git history and Prisma migrations for related, removed, or half-built features before assuming anything must be built new.
+Give every agent the feature/bug description and the repo context, plus its brief:
 
-**Default to reuse.** Hunt for an existing endpoint, flow, or mechanism you can extend or unlock — e.g. relax a self-only guard for an admin, or reuse the existing user-creation / temp-password flow — *before* proposing anything new. Propose new code only after you can show why the existing pieces can't be reused, and say so explicitly in the ticket.
+**Agent 1 — Codebase: what already exists, reuse before building.**
+This project has a graphify knowledge graph. Have the agent run `graphify query "<the feature or bug>"` first for a scoped subgraph (use `graphify explain "<concept>"` / `graphify path "<A>" "<B>"` when useful), but **not over-trust it** — graphify can be noisy, so confirm exact files, functions, and current behaviour with `Grep`/`Read`. Mine prior art: search **git history and Prisma migrations** for related, removed, or half-built features before assuming anything must be built new. The mandate is **reuse**: hunt for an existing endpoint, flow, or mechanism to extend or unlock (e.g. relax a self-only guard for an admin, reuse the existing user-creation / temp-password flow) before proposing anything new.
+*Returns:* affected files/modules as `path/to/file.ts:line`, how it currently works, **what can be reused**, constraints/edge cases, and whether new code is genuinely needed (with the reason).
 
-Capture: which files/modules are affected (`path/to/file.ts:line`), how it currently works, **what can be reused**, and any constraints or edge cases. This is what makes the ticket concrete — reference it in the ticket body.
+**Agent 2 — Documentation: the right technical choice.**
+When the ticket touches a library, framework, API, CLI, or cloud service, verify current best practice instead of relying on memory. Use **context7 first**: `mcp__plugin_context7_context7__resolve-library-id` → `mcp__plugin_context7_context7__query-docs`. **context7 runs on a free account and often hits rate limits** — if it is rate-limited, errors, or returns nothing useful, the agent must **fall back to a web search** (`WebSearch`, plus `WebFetch` on a specific page) on the same topic to reach the same answer. Reading the installed version from `package.json` is *not* research — that says what is installed, not how to use it well.
+*Returns:* the verified approach / version / config / migration path / known pitfalls, with the source (context7 or the URLs used). If the ticket involves no external tech at all, it says so.
 
-#### 2b. Documentation & external choices — verify, don't guess
-When the ticket touches a library, framework, API, CLI, or cloud service, confirm current best practice instead of relying on memory:
-- Use **context7 first**: `mcp__plugin_context7_context7__resolve-library-id` → `mcp__plugin_context7_context7__query-docs`.
-- If context7 has no matching library, or the answer isn't there, fall back to a **web search** (`WebSearch`, plus `WebFetch` for a specific page).
-- Fold the informed choice into the ticket: name the approach / version / config you verified, so whoever picks up the ticket isn't left guessing. Skip this lens only when the ticket involves no external tech at all.
+**Agent 3 — Security & AVG (GDPR).**
+Give an explicit security and privacy verdict. Reason about **AVG / privacy** (which personal data is touched, retention, consent, any exposure or leakage) and **security** (authn/authz — who is allowed to do this, account-takeover paths, bypassed confirmation flows such as changing an email without re-confirmation, and destructive vs reversible actions). **Prefer reversible over destructive** (disable over hard-delete) and flag risky capabilities.
+*Returns:* the security & AVG assessment for the ticket's **Security & AVG** section — if genuinely nothing applies, it says so explicitly with a reason.
 
-Reading the installed version from `package.json` is *not* this step: that tells you what is installed, not how to use it well. Look up the actual approach you'd recommend — config, storage/adapter choice, migration path, known pitfalls — so the ticket points at a verified path, not a guess.
-
-#### 2c. Security & AVG (GDPR) — always
-Every ticket gets an explicit security and privacy pass. Reason about:
-- **AVG / privacy:** which personal data is touched, retention, consent, and any data exposure or leakage.
-- **Security:** authn/authz (who is allowed to do this), account-takeover paths, bypassed confirmation flows (e.g. changing an email without re-confirmation), and destructive vs reversible actions.
-
-**Prefer reversible over destructive** (disable over hard-delete). Flag risky capabilities. Record the outcome in the ticket's **Security & AVG** section — if genuinely nothing applies, say so explicitly rather than dropping the section.
-
-**Reconcile research with the request before writing.** Research exists precisely to catch these — do not march straight to writing:
+### 3. Reconcile research with the request — before writing
+The three agents exist precisely to catch these; do not march straight to writing:
 - **Already implemented (fully or partly):** say so and show the code. Ask whether to skip, or reframe the ticket to the remaining gap.
 - **A reusable path exists:** if an existing endpoint/flow covers most of it, reframe the ticket around extending that instead of building new.
 - **Reality differs from the description:** if what the user described partly exists but behaves differently, surface the delta and confirm what to file (the delta as a story, or a bug if current behaviour is wrong) before writing.
 - **Turns out to be a bug, not a story (or vice versa):** switch type and use the matching template.
 
-### 3. Write the ticket
-Use the matching template below. Fill the **Context** / **Betrokken code** parts from step 2a with real file references (`path/to/file.ts:line`), the **reuse** note from step 2a, and the **Security & AVG** section from step 2c. Every ticket carries the Security & AVG section — it is not optional.
+### 4. Write the ticket
+Use the matching template below. Fill the **Context** / **Betrokken code** from Agent 1 with real file references (`path/to/file.ts:line`), the **reuse** note from Agent 1, the informed technical choice from Agent 2, and the **Security & AVG** section from Agent 3. Every ticket carries the Security & AVG section — it is not optional.
 
-### 4. Resolve the target board, Backlog list, and label
+### 5. Review the draft — dispatch a review agent — REQUIRED
+
+Before previewing, dispatch **one** read-only subagent to review the **drafted ticket** against the actual codebase. Give it the full draft plus Agent 1's findings. It must NOT edit the ticket or create the card — it reports back. It checks:
+- **Duplication — the primary job.** Are we about to build something that already exists? e.g. a new API route, endpoint, service, hook, or util proposed when one already exists and only needs extending. Call it out with the existing code's `path/to/file.ts:line`.
+- **Reuse:** is there an existing flow the ticket should extend instead of adding new code?
+- **Correctness:** do the file references, current-behaviour claims, and acceptance criteria actually match the code?
+
+*Returns:* a list of issues (each with the offending part of the draft + the real code) or an explicit "no issues". If it finds issues, **fix the draft** — reframe around reuse, correct the references — and if the changes are substantial, run the review agent once more. Only proceed once the draft is clean.
+
+### 6. Resolve the target board, Backlog list, and label
 - Read the board name from `CLAUDE.md`, from the line under the `## trello` section formatted `trello: <bordnaam>`.
 - If it is still the placeholder `<bordnaam>` or missing: ask the user which board to use, and offer to save it into `CLAUDE.md` so it's set for next time.
 - `mcp__trello__list_boards` (filter `open`) → find the board whose `name` matches the configured name (case-insensitive). Keep its `id`.
@@ -77,15 +76,15 @@ Use the matching template below. Fill the **Context** / **Betrokken code** parts
 - If no "Backlog" list exists, show the available lists and ask which column to use.
 - `mcp__trello__trello_get_board_labels` with that `boardId` → pick the label by **colour**: `blue` for a story, `red` for a bug. Keep its `id`. If several share that colour, prefer one whose name matches ("story"/"bug"); otherwise take the first. If no label of that colour exists, mention it in the preview and ask whether to post without a label.
 
-### 5. Preview + confirm — do NOT post yet
+### 7. Preview + confirm — do NOT post yet
 Show the full ticket in the chat: **title**, **body (rendered)**, **target board**, **target list (Backlog)**, and **label** (blue = story, red = bug). Ask the user to approve or edit. Only continue once they explicitly approve.
 
-### 6. Create the card
+### 8. Create the card
 `mcp__trello__create_card` with:
 - `name` = ticket title
-- `idList` = the Backlog list `id` from step 4
+- `idList` = the Backlog list `id` from step 6
 - `desc` = the markdown body
-- `idLabels` = `[<label id>]` — the blue label for a story, the red label for a bug (from step 4). Omit only if no matching colour exists and the user approved posting without one.
+- `idLabels` = `[<label id>]` — the blue label for a story, the red label for a bug (from step 6). Omit only if no matching colour exists and the user approved posting without one.
 - `pos` = `"top"` (newest on top of the backlog)
 
 Report back the created card's URL.
@@ -137,6 +136,15 @@ Betrokken code: `apps/web/src/....tsx:88`.
 - <lekt of misbruikt deze bug persoonsgegevens of een autorisatie? — of "Geen bijzondere impact" met reden>
 ```
 
+## Subagent dispatch — quick reference
+
+| Step | Agents | Runs | Must NOT |
+|------|--------|------|----------|
+| 2. Research | 3 (codebase · docs · security/AVG) | in parallel, single message | edit code, write the ticket, create a card |
+| 5. Review | 1 (duplication + correctness) | after the draft, before preview | edit the ticket, create a card |
+
+Dispatch read-only agents. All four research/review agents report findings back to you; **you** write the ticket and (after approval) create the card. Note for code-exploring agents: graphify is mandatory in this repo — tell each of them to run `graphify query`/`explain`/`path` before reading raw source.
+
 ## Trello tools quick reference
 
 | Step | Tool | Key args |
@@ -150,11 +158,14 @@ Betrokken code: `apps/web/src/....tsx:88`.
 
 ## Common mistakes
 
-- **Writing the ticket before researching the code.** Step 2 is mandatory; a ticket without real file references is incomplete.
-- **Reaching for new code first.** Default to reusing/extending existing endpoints and flows (step 2a); propose new code only after showing why reuse won't work.
-- **Skipping the security/AVG pass.** Every ticket carries the **Beveiliging & AVG** section (step 2c) — even when the conclusion is "no special impact".
-- **Guessing external tech instead of checking docs.** Verify library/API/framework choices via context7, then web search (step 2b), before baking them into the ticket.
-- **Posting before confirmation.** Always preview and wait for approval (step 5).
+- **Researching in your own context instead of dispatching the three agents.** Step 2 fans out to three read-only subagents in parallel; doing it inline defeats the point and produces shallower research.
+- **Skipping the review agent.** Step 5 is mandatory — it is what catches duplicate work (a new route/service when one already exists) before it reaches the board.
+- **Letting a subagent create the card or edit the ticket.** Research and review agents only report back. You write the ticket; you post it after approval.
+- **Writing the ticket before the agents return.** A ticket without real file references from Agent 1 is incomplete.
+- **Reaching for new code first.** Default to reusing/extending existing endpoints and flows; propose new code only after Agent 1 shows why reuse won't work.
+- **Skipping the security/AVG pass.** Every ticket carries the **Beveiliging & AVG** section (Agent 3) — even when the conclusion is "no special impact".
+- **Guessing external tech instead of checking docs.** Agent 2 verifies via context7, then web search on a free-account limit — before the choice is baked into the ticket.
+- **Posting before confirmation.** Always preview and wait for approval (step 7).
 - **Wrong language.** Match the user's language exactly; don't translate to English.
 - **Guessing the board or list.** The board comes from `CLAUDE.md` `trello:`; the list must be the real "Backlog". Ask if either is missing.
 - **Using board id where a list id is needed.** `create_card` needs `idList` (the Backlog list), not the board id.
