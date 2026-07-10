@@ -15,8 +15,8 @@
     "semantic_hash": ""
   },
   ".claude/settings.json": {
-    "mtime": 1782511973.4734356,
-    "ast_hash": "93ab4ab60143b097a4d1a9068d34f841",
+    "mtime": 1783716984.4473746,
+    "ast_hash": "4f15ad7bf3e4ec300ceba05665228f6e",
     "semantic_hash": ""
   },
   "apps/api/eslint.config.mjs": {
@@ -2215,8 +2215,8 @@
     "semantic_hash": ""
   },
   ".claude/CLAUDE.md": {
-    "mtime": 1783460631.9052312,
-    "ast_hash": "4ffb5b648b37df7fd0a6b2a37da02cdc",
+    "mtime": 1783720863.45943,
+    "ast_hash": "c5e7da3589d480b8a479e3c8b55eebb9",
     "semantic_hash": ""
   },
   ".claude/skills/graphify/SKILL.md": {
@@ -3105,13 +3105,13 @@
     "semantic_hash": ""
   },
   ".claude/skills/project/skills/create-story/SKILL.md": {
-    "mtime": 1783460599.942168,
-    "ast_hash": "2baccc3b97dba66791550ac1315e04be",
+    "mtime": 1783715491.4456224,
+    "ast_hash": "f79f55bc22300debf8e90790af25347c",
     "semantic_hash": ""
   },
   ".claude/skills/project/skills/start-ticket/SKILL.md": {
-    "mtime": 1783460617.5024486,
-    "ast_hash": "e18e8165fe783e7a00adf01abbce80cb",
+    "mtime": 1783720863.4599125,
+    "ast_hash": "1b2f75b9553fead431978e40300c1472",
     "semantic_hash": ""
   },
   "docs/boilerplate-research.md": {
@@ -3137,6 +3137,11 @@
   "docs/graphify.md": {
     "mtime": 1783525465.6670856,
     "ast_hash": "16d8512f70334d0726277c4423067fab",
+    "semantic_hash": ""
+  },
+  ".claude/skills/project/skills/test-ticket/SKILL.md": {
+    "mtime": 1783720863.46024,
+    "ast_hash": "4e32f314874b337a6db0924a1bc15001",
     "semantic_hash": ""
   }
 }
