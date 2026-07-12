@@ -164,3 +164,6 @@ packages/database/src/generated/
 # Superpowers
 docs/superpowers/
 .superpowers/
+
+# Claude stuff
+.claude/worktrees/
