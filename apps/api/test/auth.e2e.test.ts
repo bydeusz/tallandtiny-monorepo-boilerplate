@@ -120,6 +120,33 @@ describe("Auth (e2e)", () => {
     expect(meBody.data.role).toBe("USER");
   });
 
+  it("logs in the seeded super admin and /me reports SUPER_ADMIN", async () => {
+    const loginRes = await fetch(`${BASE_URL}/api/v1/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: "superadmin@bydeusz.com",
+        password: "Admin123!",
+      }),
+    });
+    expect(loginRes.status).toBe(200);
+
+    const loginBody = (await loginRes.json()) as {
+      data: { access_token: string };
+    };
+
+    const meRes = await fetch(`${BASE_URL}/api/v1/auth/me`, {
+      headers: { Authorization: `Bearer ${loginBody.data.access_token}` },
+    });
+    expect(meRes.status).toBe(200);
+
+    const meBody = (await meRes.json()) as {
+      data: { email: string; role: string };
+    };
+    expect(meBody.data.email).toBe("superadmin@bydeusz.com");
+    expect(meBody.data.role).toBe("SUPER_ADMIN");
+  });
+
   it("rejects /me without a token → 401", async () => {
     const res = await fetch(`${BASE_URL}/api/v1/auth/me`);
     expect(res.status).toBe(401);
