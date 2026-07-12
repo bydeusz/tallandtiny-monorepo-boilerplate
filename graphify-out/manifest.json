@@ -820,8 +820,8 @@
     "semantic_hash": "c5a1e07de818516643dff04d0b69e4a4"
   },
   "package.json": {
-    "mtime": 1783896460.6186635,
-    "ast_hash": "f43c42d58556150cf08e40b51b8e51ef",
+    "mtime": 1783897973.5780392,
+    "ast_hash": "aacc5e8883ee9e9e08170cf0b879549f",
     "semantic_hash": ""
   },
   "packages/auth/package.json": {
@@ -865,8 +865,8 @@
     "semantic_hash": ""
   },
   "packages/database/package.json": {
-    "mtime": 1783896453.4520924,
-    "ast_hash": "d30b70deb8b815b0d704f037bb243c2a",
+    "mtime": 1783897971.724439,
+    "ast_hash": "e27248aa1d6438ba520a423f894e5483",
     "semantic_hash": ""
   },
   "packages/database/prisma.config.ts": {
@@ -1355,8 +1355,8 @@
     "semantic_hash": ""
   },
   "turbo.json": {
-    "mtime": 1783896646.861866,
-    "ast_hash": "cc56ef2117e880b7fc5b9febf524105e",
+    "mtime": 1783897976.0149422,
+    "ast_hash": "9a6f6537bc4f936e6bc6218896d2aaef",
     "semantic_hash": ""
   },
   ".agents/skills/building-components/SKILL.md": {
@@ -2929,11 +2929,6 @@
     "ast_hash": "9ab2316adfab459cf157e1f3070ef1a8",
     "semantic_hash": ""
   },
-  "packages/database/prisma/seed-super-admin.ts": {
-    "mtime": 1783896633.452339,
-    "ast_hash": "1f269ae83edb7ea1f45a726d199018ab",
-    "semantic_hash": ""
-  },
   "packages/database/src/seed-super-admin.test.ts": {
     "mtime": 1783896504.3997467,
     "ast_hash": "ad5da468749277a31b74c49d71d63916",
@@ -2947,6 +2942,11 @@
   "packages/database/vitest.config.ts": {
     "mtime": 1783896456.8243282,
     "ast_hash": "c3315d306418020a7c66bea9ad028665",
+    "semantic_hash": ""
+  },
+  "packages/database/prisma/create-superadmin.ts": {
+    "mtime": 1783897952.856701,
+    "ast_hash": "64fda6d356fb88c12e7c58f210bf5975",
     "semantic_hash": ""
   }
 }

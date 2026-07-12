@@ -38,14 +38,1244 @@
   },
   "nodes": [
     {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "package",
+      "community": 36,
+      "norm_label": "package.json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "package_name",
+      "community": 36,
+      "norm_label": "name"
+    },
+    {
+      "label": "private",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "package_private",
+      "community": 36,
+      "norm_label": "private"
+    },
+    {
+      "label": "packageManager",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "package_packagemanager",
+      "community": 36,
+      "norm_label": "packagemanager"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "package_scripts",
+      "community": 36,
+      "norm_label": "scripts"
+    },
+    {
+      "label": "build",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "package_scripts_build",
+      "community": 36,
+      "norm_label": "build"
+    },
+    {
+      "label": "dev",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "package_scripts_dev",
+      "community": 36,
+      "norm_label": "dev"
+    },
+    {
+      "label": "lint",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "package_scripts_lint",
+      "community": 36,
+      "norm_label": "lint"
+    },
+    {
+      "label": "check-types",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "package_scripts_check_types",
+      "community": 36,
+      "norm_label": "check-types"
+    },
+    {
+      "label": "test",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "package_scripts_test",
+      "community": 36,
+      "norm_label": "test"
+    },
+    {
+      "label": "test:watch",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "package_scripts_test_watch",
+      "community": 36,
+      "norm_label": "test:watch"
+    },
+    {
+      "label": "test:integration",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "package_scripts_test_integration",
+      "community": 36,
+      "norm_label": "test:integration"
+    },
+    {
+      "label": "test:e2e",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "package_scripts_test_e2e",
+      "community": 36,
+      "norm_label": "test:e2e"
+    },
+    {
+      "label": "format",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "package_scripts_format",
+      "community": 36,
+      "norm_label": "format"
+    },
+    {
+      "label": "db:generate",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "package_scripts_db_generate",
+      "community": 36,
+      "norm_label": "db:generate"
+    },
+    {
+      "label": "db:migrate",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "package_scripts_db_migrate",
+      "community": 36,
+      "norm_label": "db:migrate"
+    },
+    {
+      "label": "db:deploy",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "package_scripts_db_deploy",
+      "community": 36,
+      "norm_label": "db:deploy"
+    },
+    {
+      "label": "db:seed",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "package_scripts_db_seed",
+      "community": 36,
+      "norm_label": "db:seed"
+    },
+    {
+      "label": "create:superadmin",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "package_scripts_create_superadmin",
+      "community": 36,
+      "norm_label": "create:superadmin"
+    },
+    {
+      "label": "gen:queries",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "package_scripts_gen_queries",
+      "community": 36,
+      "norm_label": "gen:queries"
+    },
+    {
+      "label": "docker:up",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "package_scripts_docker_up",
+      "community": 36,
+      "norm_label": "docker:up"
+    },
+    {
+      "label": "docker:down",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "package_scripts_docker_down",
+      "community": 36,
+      "norm_label": "docker:down"
+    },
+    {
+      "label": "docker:reset",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "package_scripts_docker_reset",
+      "community": 36,
+      "norm_label": "docker:reset"
+    },
+    {
+      "label": "docker:prod:build",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "package_scripts_docker_prod_build",
+      "community": 36,
+      "norm_label": "docker:prod:build"
+    },
+    {
+      "label": "docker:prod:up",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "package_scripts_docker_prod_up",
+      "community": 36,
+      "norm_label": "docker:prod:up"
+    },
+    {
+      "label": "docker:prod:down",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "package_scripts_docker_prod_down",
+      "community": 36,
+      "norm_label": "docker:prod:down"
+    },
+    {
+      "label": "docker:prod:logs",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "package_scripts_docker_prod_logs",
+      "community": 36,
+      "norm_label": "docker:prod:logs"
+    },
+    {
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "package_devdependencies",
+      "community": 36,
+      "norm_label": "devdependencies"
+    },
+    {
+      "label": "prettier",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "package_devdependencies_prettier",
+      "community": 36,
+      "norm_label": "prettier"
+    },
+    {
+      "label": "turbo",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "package_devdependencies_turbo",
+      "community": 36,
+      "norm_label": "turbo"
+    },
+    {
+      "label": "typescript",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "package_devdependencies_typescript",
+      "community": 36,
+      "norm_label": "typescript"
+    },
+    {
+      "label": "engines",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "package_engines",
+      "community": 36,
+      "norm_label": "engines"
+    },
+    {
+      "label": "node",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "package_engines_node",
+      "community": 36,
+      "norm_label": "node"
+    },
+    {
+      "label": "pnpm",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "package_pnpm",
+      "community": 36,
+      "norm_label": "pnpm"
+    },
+    {
+      "label": "onlyBuiltDependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "package_pnpm_onlybuiltdependencies",
+      "community": 36,
+      "norm_label": "onlybuiltdependencies"
+    },
+    {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "database_package",
+      "community": 9,
+      "norm_label": "package.json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "database_package_name",
+      "community": 9,
+      "norm_label": "name"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "database_package_version",
+      "community": 9,
+      "norm_label": "version"
+    },
+    {
+      "label": "private",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "database_package_private",
+      "community": 9,
+      "norm_label": "private"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "database_package_type",
+      "community": 9,
+      "norm_label": "type"
+    },
+    {
+      "label": "exports",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "database_package_exports",
+      "community": 9,
+      "norm_label": "exports"
+    },
+    {
+      "label": "types",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "database_package_types",
+      "community": 9,
+      "norm_label": "types"
+    },
+    {
+      "label": "default",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "database_package_default",
+      "community": 9,
+      "norm_label": "default"
+    },
+    {
+      "label": "main",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "database_package_main",
+      "community": 9,
+      "norm_label": "main"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "database_package_scripts",
+      "community": 9,
+      "norm_label": "scripts"
+    },
+    {
+      "label": "db:generate",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "database_package_scripts_db_generate",
+      "community": 9,
+      "norm_label": "db:generate"
+    },
+    {
+      "label": "db:migrate",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "database_package_scripts_db_migrate",
+      "community": 9,
+      "norm_label": "db:migrate"
+    },
+    {
+      "label": "db:deploy",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "database_package_scripts_db_deploy",
+      "community": 9,
+      "norm_label": "db:deploy"
+    },
+    {
+      "label": "db:seed",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "database_package_scripts_db_seed",
+      "community": 9,
+      "norm_label": "db:seed"
+    },
+    {
+      "label": "create:superadmin",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "database_package_scripts_create_superadmin",
+      "community": 9,
+      "norm_label": "create:superadmin"
+    },
+    {
+      "label": "db:studio",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "database_package_scripts_db_studio",
+      "community": 9,
+      "norm_label": "db:studio"
+    },
+    {
+      "label": "dev",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "database_package_scripts_dev",
+      "community": 9,
+      "norm_label": "dev"
+    },
+    {
+      "label": "build",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "database_package_scripts_build",
+      "community": 9,
+      "norm_label": "build"
+    },
+    {
+      "label": "check-types",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "database_package_scripts_check_types",
+      "community": 9,
+      "norm_label": "check-types"
+    },
+    {
+      "label": "test",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "database_package_scripts_test",
+      "community": 9,
+      "norm_label": "test"
+    },
+    {
+      "label": "dependencies",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "database_package_dependencies",
+      "community": 9,
+      "norm_label": "dependencies"
+    },
+    {
+      "label": "@prisma/adapter-pg",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "database_package_dependencies_prisma_adapter_pg",
+      "community": 9,
+      "norm_label": "@prisma/adapter-pg"
+    },
+    {
+      "label": "@prisma/client",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "database_package_dependencies_prisma_client",
+      "community": 9,
+      "norm_label": "@prisma/client"
+    },
+    {
+      "label": "pg",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "database_package_dependencies_pg",
+      "community": 9,
+      "norm_label": "pg"
+    },
+    {
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "database_package_devdependencies",
+      "community": 9,
+      "norm_label": "devdependencies"
+    },
+    {
+      "label": "@repo/typescript-config",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "database_package_devdependencies_repo_typescript_config",
+      "community": 9,
+      "norm_label": "@repo/typescript-config"
+    },
+    {
+      "label": "@repo/vitest-config",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "database_package_devdependencies_repo_vitest_config",
+      "community": 9,
+      "norm_label": "@repo/vitest-config"
+    },
+    {
+      "label": "@types/bcrypt",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "database_package_devdependencies_types_bcrypt",
+      "community": 9,
+      "norm_label": "@types/bcrypt"
+    },
+    {
+      "label": "@types/pg",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "database_package_devdependencies_types_pg",
+      "community": 9,
+      "norm_label": "@types/pg"
+    },
+    {
+      "label": "bcrypt",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "database_package_devdependencies_bcrypt",
+      "community": 9,
+      "norm_label": "bcrypt"
+    },
+    {
+      "label": "dotenv",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "database_package_devdependencies_dotenv",
+      "community": 9,
+      "norm_label": "dotenv"
+    },
+    {
+      "label": "prisma",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "database_package_devdependencies_prisma",
+      "community": 9,
+      "norm_label": "prisma"
+    },
+    {
+      "label": "tsx",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "database_package_devdependencies_tsx",
+      "community": 9,
+      "norm_label": "tsx"
+    },
+    {
+      "label": "typescript",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L40",
+      "_origin": "ast",
+      "id": "database_package_devdependencies_typescript",
+      "community": 9,
+      "norm_label": "typescript"
+    },
+    {
+      "label": "vitest",
+      "file_type": "code",
+      "source_file": "packages/database/package.json",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "database_package_devdependencies_vitest",
+      "community": 9,
+      "norm_label": "vitest"
+    },
+    {
+      "label": "create-superadmin.ts",
+      "file_type": "code",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "prisma_create_superadmin",
+      "community": 88,
+      "norm_label": "create-superadmin.ts"
+    },
+    {
+      "label": "Credentials",
+      "file_type": "code",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "prisma_create_superadmin_credentials",
+      "community": 88,
+      "norm_label": "credentials"
+    },
+    {
+      "label": "readFromTty()",
+      "file_type": "code",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "prisma_create_superadmin_readfromtty",
+      "community": 88,
+      "norm_label": "readfromtty()"
+    },
+    {
+      "label": "promptInteractive()",
+      "file_type": "code",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L76",
+      "_origin": "ast",
+      "id": "prisma_create_superadmin_promptinteractive",
+      "community": 88,
+      "norm_label": "promptinteractive()"
+    },
+    {
+      "label": "readFromPipe()",
+      "file_type": "code",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L99",
+      "_origin": "ast",
+      "id": "prisma_create_superadmin_readfrompipe",
+      "community": 88,
+      "norm_label": "readfrompipe()"
+    },
+    {
+      "label": "resolveCredentials()",
+      "file_type": "code",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L116",
+      "_origin": "ast",
+      "id": "prisma_create_superadmin_resolvecredentials",
+      "community": 88,
+      "norm_label": "resolvecredentials()"
+    },
+    {
+      "label": "pool",
+      "file_type": "code",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L125",
+      "_origin": "ast",
+      "id": "prisma_create_superadmin_pool",
+      "community": 88,
+      "norm_label": "pool"
+    },
+    {
+      "label": "adapter",
+      "file_type": "code",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L126",
+      "_origin": "ast",
+      "id": "prisma_create_superadmin_adapter",
+      "community": 88,
+      "norm_label": "adapter"
+    },
+    {
+      "label": "prisma",
+      "file_type": "code",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L127",
+      "_origin": "ast",
+      "id": "prisma_create_superadmin_prisma",
+      "community": 88,
+      "norm_label": "prisma"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L129",
+      "_origin": "ast",
+      "id": "prisma_create_superadmin_main",
+      "community": 88,
+      "norm_label": "main()"
+    },
+    {
+      "label": "turbo.json",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "users_tadeuszderuijter_dev_tallandtiny_monorepo_boilerplate_turbo_json",
+      "community": 68,
+      "norm_label": "turbo.json"
+    },
+    {
+      "label": "$schema",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_schema",
+      "community": 68,
+      "norm_label": "$schema"
+    },
+    {
+      "label": "ui",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_ui",
+      "community": 68,
+      "norm_label": "ui"
+    },
+    {
+      "label": "globalEnv",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_globalenv",
+      "community": 68,
+      "norm_label": "globalenv"
+    },
+    {
+      "label": "tasks",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_tasks",
+      "community": 68,
+      "norm_label": "tasks"
+    },
+    {
+      "label": "build",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_tasks_build",
+      "community": 68,
+      "norm_label": "build"
+    },
+    {
+      "label": "dependsOn",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_build_dependson",
+      "community": 68,
+      "norm_label": "dependson"
+    },
+    {
+      "label": "inputs",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_build_inputs",
+      "community": 68,
+      "norm_label": "inputs"
+    },
+    {
+      "label": "outputs",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_build_outputs",
+      "community": 68,
+      "norm_label": "outputs"
+    },
+    {
+      "label": "dev",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_tasks_dev",
+      "community": 68,
+      "norm_label": "dev"
+    },
+    {
+      "label": "dependsOn",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_dev_dependson",
+      "community": 68,
+      "norm_label": "dependson"
+    },
+    {
+      "label": "cache",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_dev_cache",
+      "community": 68,
+      "norm_label": "cache"
+    },
+    {
+      "label": "persistent",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_dev_persistent",
+      "community": 68,
+      "norm_label": "persistent"
+    },
+    {
+      "label": "dev:worker",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_tasks_dev_worker",
+      "community": 68,
+      "norm_label": "dev:worker"
+    },
+    {
+      "label": "dependsOn",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_dev_worker_dependson",
+      "community": 68,
+      "norm_label": "dependson"
+    },
+    {
+      "label": "cache",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_dev_worker_cache",
+      "community": 68,
+      "norm_label": "cache"
+    },
+    {
+      "label": "persistent",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_dev_worker_persistent",
+      "community": 68,
+      "norm_label": "persistent"
+    },
+    {
+      "label": "lint",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_tasks_lint",
+      "community": 68,
+      "norm_label": "lint"
+    },
+    {
+      "label": "dependsOn",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_lint_dependson",
+      "community": 68,
+      "norm_label": "dependson"
+    },
+    {
+      "label": "test",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_tasks_test",
+      "community": 68,
+      "norm_label": "test"
+    },
+    {
+      "label": "inputs",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_test_inputs",
+      "community": 68,
+      "norm_label": "inputs"
+    },
+    {
+      "label": "test:watch",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_tasks_test_watch",
+      "community": 68,
+      "norm_label": "test:watch"
+    },
+    {
+      "label": "cache",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_test_watch_cache",
+      "community": 68,
+      "norm_label": "cache"
+    },
+    {
+      "label": "persistent",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_test_watch_persistent",
+      "community": 68,
+      "norm_label": "persistent"
+    },
+    {
+      "label": "test:integration",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_tasks_test_integration",
+      "community": 68,
+      "norm_label": "test:integration"
+    },
+    {
+      "label": "dependsOn",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_test_integration_dependson",
+      "community": 68,
+      "norm_label": "dependson"
+    },
+    {
+      "label": "cache",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_test_integration_cache",
+      "community": 68,
+      "norm_label": "cache"
+    },
+    {
+      "label": "test:e2e",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_tasks_test_e2e",
+      "community": 68,
+      "norm_label": "test:e2e"
+    },
+    {
+      "label": "dependsOn",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_test_e2e_dependson",
+      "community": 68,
+      "norm_label": "dependson"
+    },
+    {
+      "label": "cache",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_test_e2e_cache",
+      "community": 68,
+      "norm_label": "cache"
+    },
+    {
+      "label": "check-types",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_tasks_check_types",
+      "community": 68,
+      "norm_label": "check-types"
+    },
+    {
+      "label": "dependsOn",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L40",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_check_types_dependson",
+      "community": 68,
+      "norm_label": "dependson"
+    },
+    {
+      "label": "db:generate",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_tasks_db_generate",
+      "community": 68,
+      "norm_label": "db:generate"
+    },
+    {
+      "label": "cache",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_db_generate_cache",
+      "community": 68,
+      "norm_label": "cache"
+    },
+    {
+      "label": "db:migrate",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_tasks_db_migrate",
+      "community": 68,
+      "norm_label": "db:migrate"
+    },
+    {
+      "label": "cache",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_db_migrate_cache",
+      "community": 68,
+      "norm_label": "cache"
+    },
+    {
+      "label": "db:deploy",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_tasks_db_deploy",
+      "community": 68,
+      "norm_label": "db:deploy"
+    },
+    {
+      "label": "cache",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_db_deploy_cache",
+      "community": 68,
+      "norm_label": "cache"
+    },
+    {
+      "label": "db:seed",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_tasks_db_seed",
+      "community": 68,
+      "norm_label": "db:seed"
+    },
+    {
+      "label": "dependsOn",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_db_seed_dependson",
+      "community": 68,
+      "norm_label": "dependson"
+    },
+    {
+      "label": "cache",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_db_seed_cache",
+      "community": 68,
+      "norm_label": "cache"
+    },
+    {
+      "label": "gen:queries",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L55",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_tasks_gen_queries",
+      "community": 68,
+      "norm_label": "gen:queries"
+    },
+    {
+      "label": "cache",
+      "file_type": "code",
+      "source_file": "turbo.json",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "tallandtiny_monorepo_boilerplate_turbo_gen_queries_cache",
+      "community": 68,
+      "norm_label": "cache"
+    },
+    {
       "label": "auth.e2e.test.ts",
       "file_type": "code",
       "source_file": "apps/api/test/auth.e2e.test.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "test_auth_e2e_test",
       "community": 424,
-      "norm_label": "auth.e2e.test.ts"
+      "norm_label": "auth.e2e.test.ts",
+      "id": "test_auth_e2e_test"
     },
     {
       "label": "here",
@@ -53,9 +1283,9 @@
       "source_file": "apps/api/test/auth.e2e.test.ts",
       "source_location": "L12",
       "_origin": "ast",
-      "id": "test_auth_e2e_test_here",
       "community": 424,
-      "norm_label": "here"
+      "norm_label": "here",
+      "id": "test_auth_e2e_test_here"
     },
     {
       "label": "waitForServer()",
@@ -63,9 +1293,9 @@
       "source_file": "apps/api/test/auth.e2e.test.ts",
       "source_location": "L22",
       "_origin": "ast",
-      "id": "test_auth_e2e_test_waitforserver",
       "community": 424,
-      "norm_label": "waitforserver()"
+      "norm_label": "waitforserver()",
+      "id": "test_auth_e2e_test_waitforserver"
     },
     {
       "label": "logPath",
@@ -73,9 +1303,9 @@
       "source_file": "apps/api/test/auth.e2e.test.ts",
       "source_location": "L38",
       "_origin": "ast",
-      "id": "test_auth_e2e_test_logpath",
       "community": 424,
-      "norm_label": "logpath"
+      "norm_label": "logpath",
+      "id": "test_auth_e2e_test_logpath"
     },
     {
       "label": "logFd",
@@ -83,9 +1313,9 @@
       "source_file": "apps/api/test/auth.e2e.test.ts",
       "source_location": "L39",
       "_origin": "ast",
-      "id": "test_auth_e2e_test_logfd",
       "community": 424,
-      "norm_label": "logfd"
+      "norm_label": "logfd",
+      "id": "test_auth_e2e_test_logfd"
     },
     {
       "label": "seed.ts",
@@ -93,9 +1323,9 @@
       "source_file": "packages/database/prisma/seed.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "prisma_seed",
       "community": 88,
-      "norm_label": "seed.ts"
+      "norm_label": "seed.ts",
+      "id": "prisma_seed"
     },
     {
       "label": "DEV_SUPER_ADMIN",
@@ -103,9 +1333,9 @@
       "source_file": "packages/database/prisma/seed.ts",
       "source_location": "L12",
       "_origin": "ast",
-      "id": "prisma_seed_dev_super_admin",
       "community": 88,
-      "norm_label": "dev_super_admin"
+      "norm_label": "dev_super_admin",
+      "id": "prisma_seed_dev_super_admin"
     },
     {
       "label": "pool",
@@ -113,9 +1343,9 @@
       "source_file": "packages/database/prisma/seed.ts",
       "source_location": "L24",
       "_origin": "ast",
-      "id": "prisma_seed_pool",
       "community": 88,
-      "norm_label": "pool"
+      "norm_label": "pool",
+      "id": "prisma_seed_pool"
     },
     {
       "label": "adapter",
@@ -123,9 +1353,9 @@
       "source_file": "packages/database/prisma/seed.ts",
       "source_location": "L25",
       "_origin": "ast",
-      "id": "prisma_seed_adapter",
       "community": 88,
-      "norm_label": "adapter"
+      "norm_label": "adapter",
+      "id": "prisma_seed_adapter"
     },
     {
       "label": "prisma",
@@ -133,9 +1363,9 @@
       "source_file": "packages/database/prisma/seed.ts",
       "source_location": "L26",
       "_origin": "ast",
-      "id": "prisma_seed_prisma",
       "community": 88,
-      "norm_label": "prisma"
+      "norm_label": "prisma",
+      "id": "prisma_seed_prisma"
     },
     {
       "label": "main()",
@@ -143,9 +1373,9 @@
       "source_file": "packages/database/prisma/seed.ts",
       "source_location": "L28",
       "_origin": "ast",
-      "id": "prisma_seed_main",
       "community": 88,
-      "norm_label": "main()"
+      "norm_label": "main()",
+      "id": "prisma_seed_main"
     },
     {
       "label": "eslint.config.mjs",
@@ -983,7 +2213,7 @@
       "source_file": "apps/api/src/common/decorators/current-user.decorator.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 84,
+      "community": 65,
       "norm_label": "current-user.decorator.ts",
       "id": "decorators_current_user_decorator"
     },
@@ -993,7 +2223,7 @@
       "source_file": "apps/api/src/common/decorators/current-user.decorator.ts",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 84,
+      "community": 65,
       "norm_label": "currentuser",
       "id": "decorators_current_user_decorator_currentuser"
     },
@@ -1003,7 +2233,7 @@
       "source_file": "apps/api/src/common/decorators/index.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 84,
+      "community": 65,
       "norm_label": "index.ts",
       "id": "decorators_index"
     },
@@ -1013,7 +2243,7 @@
       "source_file": "apps/api/src/common/decorators/public.decorator.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 84,
+      "community": 65,
       "norm_label": "public.decorator.ts",
       "id": "decorators_public_decorator"
     },
@@ -1023,7 +2253,7 @@
       "source_file": "apps/api/src/common/decorators/public.decorator.ts",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 84,
+      "community": 65,
       "norm_label": "public()",
       "id": "decorators_public_decorator_public"
     },
@@ -1053,7 +2283,7 @@
       "source_file": "apps/api/src/common/decorators/skip-transform.decorator.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 84,
+      "community": 65,
       "norm_label": "skip-transform.decorator.ts",
       "id": "decorators_skip_transform_decorator"
     },
@@ -1063,7 +2293,7 @@
       "source_file": "apps/api/src/common/decorators/skip-transform.decorator.ts",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 84,
+      "community": 65,
       "norm_label": "skiptransform()",
       "id": "decorators_skip_transform_decorator_skiptransform"
     },
@@ -1143,7 +2373,7 @@
       "source_file": "apps/api/src/common/dto/pagination-query.dto.ts",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 149,
+      "community": 15,
       "norm_label": "paginationquerydto",
       "id": "dto_pagination_query_dto_paginationquerydto"
     },
@@ -1283,7 +2513,7 @@
       "source_file": "apps/api/src/common/guards/index.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 79,
+      "community": 65,
       "norm_label": "index.ts",
       "id": "guards_index"
     },
@@ -1293,7 +2523,7 @@
       "source_file": "apps/api/src/common/guards/jwt-auth.guard.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 79,
+      "community": 65,
       "norm_label": "jwt-auth.guard.ts",
       "id": "guards_jwt_auth_guard"
     },
@@ -1453,7 +2683,7 @@
       "source_file": "apps/api/src/common/interceptors/index.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 22,
+      "community": 65,
       "norm_label": "index.ts",
       "id": "interceptors_index"
     },
@@ -1463,7 +2693,7 @@
       "source_file": "apps/api/src/common/interceptors/request-logging.interceptor.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 22,
+      "community": 156,
       "norm_label": "request-logging.interceptor.ts",
       "id": "interceptors_request_logging_interceptor"
     },
@@ -1473,7 +2703,7 @@
       "source_file": "apps/api/src/common/interceptors/request-logging.interceptor.ts",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 22,
+      "community": 156,
       "norm_label": "httprequestlike",
       "id": "interceptors_request_logging_interceptor_httprequestlike"
     },
@@ -1483,7 +2713,7 @@
       "source_file": "apps/api/src/common/interceptors/request-logging.interceptor.ts",
       "source_location": "L18",
       "_origin": "ast",
-      "community": 22,
+      "community": 156,
       "norm_label": "httpresponselike",
       "id": "interceptors_request_logging_interceptor_httpresponselike"
     },
@@ -1493,7 +2723,7 @@
       "source_file": "apps/api/src/common/interceptors/request-logging.interceptor.ts",
       "source_location": "L23",
       "_origin": "ast",
-      "community": 22,
+      "community": 156,
       "norm_label": "requestlogginginterceptor",
       "id": "interceptors_request_logging_interceptor_requestlogginginterceptor"
     },
@@ -1503,7 +2733,7 @@
       "source_file": "apps/api/src/common/interceptors/request-logging.interceptor.ts",
       "source_location": "L24",
       "_origin": "ast",
-      "community": 22,
+      "community": 156,
       "norm_label": ".constructor()",
       "id": "interceptors_request_logging_interceptor_requestlogginginterceptor_constructor"
     },
@@ -1513,7 +2743,7 @@
       "source_file": "apps/api/src/common/interceptors/request-logging.interceptor.ts",
       "source_location": "L28",
       "_origin": "ast",
-      "community": 22,
+      "community": 156,
       "norm_label": ".intercept()",
       "id": "interceptors_request_logging_interceptor_requestlogginginterceptor_intercept"
     },
@@ -1593,7 +2823,7 @@
       "source_file": "apps/api/src/common/interceptors/user-scoped-cache.interceptor.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 22,
+      "community": 65,
       "norm_label": "user-scoped-cache.interceptor.ts",
       "id": "interceptors_user_scoped_cache_interceptor"
     },
@@ -1603,7 +2833,7 @@
       "source_file": "apps/api/src/common/interceptors/user-scoped-cache.interceptor.ts",
       "source_location": "L17",
       "_origin": "ast",
-      "community": 22,
+      "community": 65,
       "norm_label": "userscopedcacheinterceptor",
       "id": "interceptors_user_scoped_cache_interceptor_userscopedcacheinterceptor"
     },
@@ -1613,7 +2843,7 @@
       "source_file": "apps/api/src/common/interceptors/user-scoped-cache.interceptor.ts",
       "source_location": "L18",
       "_origin": "ast",
-      "community": 22,
+      "community": 65,
       "norm_label": ".trackby()",
       "id": "interceptors_user_scoped_cache_interceptor_userscopedcacheinterceptor_trackby"
     },
@@ -1683,7 +2913,7 @@
       "source_file": "apps/api/src/common/interfaces/paginated-result.interface.ts",
       "source_location": "L10",
       "_origin": "ast",
-      "community": 149,
+      "community": 15,
       "norm_label": "paginatedresult",
       "id": "interfaces_paginated_result_interface_paginatedresult"
     },
@@ -1863,7 +3093,7 @@
       "source_file": "apps/api/src/common/utils/index.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 59,
+      "community": 15,
       "norm_label": "index.ts",
       "id": "utils_index"
     },
@@ -2013,7 +3243,7 @@
       "source_file": "apps/api/src/modules/auth/auth.controller.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 0,
+      "community": 65,
       "norm_label": "auth.controller.ts",
       "id": "auth_auth_controller"
     },
@@ -2823,7 +4053,7 @@
       "source_file": "apps/api/src/modules/files/dto/file-list-query.dto.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 149,
+      "community": 15,
       "norm_label": "file-list-query.dto.ts",
       "id": "dto_file_list_query_dto"
     },
@@ -2833,7 +4063,7 @@
       "source_file": "apps/api/src/modules/files/dto/file-list-query.dto.ts",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 149,
+      "community": 15,
       "norm_label": "filelistquerydto",
       "id": "dto_file_list_query_dto_filelistquerydto"
     },
@@ -2933,7 +4163,7 @@
       "source_file": "apps/api/src/modules/files/files.controller.ts",
       "source_location": "L47",
       "_origin": "ast",
-      "community": 37,
+      "community": 21,
       "norm_label": ".constructor()",
       "id": "files_files_controller_filescontroller_constructor"
     },
@@ -2963,7 +4193,7 @@
       "source_file": "apps/api/src/modules/files/files.controller.ts",
       "source_location": "L134",
       "_origin": "ast",
-      "community": 149,
+      "community": 15,
       "norm_label": ".findall()",
       "id": "files_files_controller_filescontroller_findall"
     },
@@ -3023,7 +4253,7 @@
       "source_file": "apps/api/src/modules/files/files.module.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 15,
+      "community": 21,
       "norm_label": "files.module.ts",
       "id": "files_files_module"
     },
@@ -3033,7 +4263,7 @@
       "source_file": "apps/api/src/modules/files/files.module.ts",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 15,
+      "community": 21,
       "norm_label": "filesmodule",
       "id": "files_files_module_filesmodule"
     },
@@ -3173,7 +4403,7 @@
       "source_file": "apps/api/src/modules/files/index.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 15,
+      "community": 21,
       "norm_label": "index.ts",
       "id": "files_index"
     },
@@ -3233,7 +4463,7 @@
       "source_file": "apps/api/src/modules/health/health.controller.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 84,
+      "community": 65,
       "norm_label": "health.controller.ts",
       "id": "health_health_controller"
     },
@@ -3603,7 +4833,7 @@
       "source_file": "apps/api/src/modules/queue/constants/queue.constants.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 34,
+      "community": 26,
       "norm_label": "queue.constants.ts",
       "id": "constants_queue_constants"
     },
@@ -3613,7 +4843,7 @@
       "source_file": "apps/api/src/modules/queue/index.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 34,
+      "community": 26,
       "norm_label": "index.ts",
       "id": "queue_index"
     },
@@ -3623,7 +4853,7 @@
       "source_file": "apps/api/src/modules/queue/processors/mail.processor.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 34,
+      "community": 26,
       "norm_label": "mail.processor.ts",
       "id": "processors_mail_processor"
     },
@@ -3703,7 +4933,7 @@
       "source_file": "apps/api/src/modules/queue/queue.module.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 34,
+      "community": 26,
       "norm_label": "queue.module.ts",
       "id": "queue_queue_module"
     },
@@ -3713,7 +4943,7 @@
       "source_file": "apps/api/src/modules/queue/queue.module.ts",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 34,
+      "community": 26,
       "norm_label": "queuemodulemode",
       "id": "queue_queue_module_queuemodulemode"
     },
@@ -3743,7 +4973,7 @@
       "source_file": "apps/api/src/modules/queue/queue.service.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 34,
+      "community": 26,
       "norm_label": "queue.service.ts",
       "id": "queue_queue_service"
     },
@@ -4113,7 +5343,7 @@
       "source_file": "apps/api/src/modules/users/dto/index.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 149,
+      "community": 194,
       "norm_label": "index.ts",
       "id": "apps_api_src_modules_users_dto_index_ts_dto_index"
     },
@@ -4123,7 +5353,7 @@
       "source_file": "apps/api/src/modules/users/dto/update-user.dto.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 149,
+      "community": 194,
       "norm_label": "update-user.dto.ts",
       "id": "dto_update_user_dto"
     },
@@ -4133,7 +5363,7 @@
       "source_file": "apps/api/src/modules/users/dto/update-user.dto.ts",
       "source_location": "L3",
       "_origin": "ast",
-      "community": 149,
+      "community": 194,
       "norm_label": "updateuserdto",
       "id": "dto_update_user_dto_updateuserdto"
     },
@@ -4143,7 +5373,7 @@
       "source_file": "apps/api/src/modules/users/dto/user-response.dto.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 149,
+      "community": 194,
       "norm_label": "user-response.dto.ts",
       "id": "dto_user_response_dto"
     },
@@ -4153,7 +5383,7 @@
       "source_file": "apps/api/src/modules/users/dto/user-response.dto.ts",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 149,
+      "community": 194,
       "norm_label": "userresponsedto",
       "id": "dto_user_response_dto_userresponsedto"
     },
@@ -4163,7 +5393,7 @@
       "source_file": "apps/api/src/modules/users/users.controller.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 149,
+      "community": 65,
       "norm_label": "users.controller.ts",
       "id": "users_users_controller"
     },
@@ -4173,7 +5403,7 @@
       "source_file": "apps/api/src/modules/users/users.controller.ts",
       "source_location": "L31",
       "_origin": "ast",
-      "community": 149,
+      "community": 194,
       "norm_label": "userscontroller",
       "id": "users_users_controller_userscontroller"
     },
@@ -4193,7 +5423,7 @@
       "source_file": "apps/api/src/modules/users/users.controller.ts",
       "source_location": "L38",
       "_origin": "ast",
-      "community": 149,
+      "community": 15,
       "norm_label": ".findall()",
       "id": "users_users_controller_userscontroller_findall"
     },
@@ -4203,7 +5433,7 @@
       "source_file": "apps/api/src/modules/users/users.controller.ts",
       "source_location": "L48",
       "_origin": "ast",
-      "community": 149,
+      "community": 194,
       "norm_label": ".findone()",
       "id": "users_users_controller_userscontroller_findone"
     },
@@ -4213,7 +5443,7 @@
       "source_file": "apps/api/src/modules/users/users.controller.ts",
       "source_location": "L57",
       "_origin": "ast",
-      "community": 149,
+      "community": 194,
       "norm_label": ".update()",
       "id": "users_users_controller_userscontroller_update"
     },
@@ -4223,7 +5453,7 @@
       "source_file": "apps/api/src/modules/users/users.controller.ts",
       "source_location": "L74",
       "_origin": "ast",
-      "community": 149,
+      "community": 194,
       "norm_label": ".remove()",
       "id": "users_users_controller_userscontroller_remove"
     },
@@ -4253,7 +5483,7 @@
       "source_file": "apps/api/src/modules/users/users.service.test.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 194,
+      "community": 181,
       "norm_label": "users.service.test.ts",
       "id": "users_users_service_test"
     },
@@ -4263,7 +5493,7 @@
       "source_file": "apps/api/src/modules/users/users.service.test.ts",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 194,
+      "community": 181,
       "norm_label": "fulluser",
       "id": "users_users_service_test_fulluser"
     },
@@ -4273,7 +5503,7 @@
       "source_file": "apps/api/src/modules/users/users.service.test.ts",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 194,
+      "community": 181,
       "norm_label": "projectbyselect()",
       "id": "users_users_service_test_projectbyselect"
     },
@@ -4283,7 +5513,7 @@
       "source_file": "apps/api/src/modules/users/users.service.test.ts",
       "source_location": "L37",
       "_origin": "ast",
-      "community": 194,
+      "community": 181,
       "norm_label": "buildservice()",
       "id": "users_users_service_test_buildservice"
     },
@@ -4293,7 +5523,7 @@
       "source_file": "apps/api/src/modules/users/users.service.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 59,
+      "community": 15,
       "norm_label": "users.service.ts",
       "id": "users_users_service"
     },
@@ -4303,7 +5533,7 @@
       "source_file": "apps/api/src/modules/users/users.service.ts",
       "source_location": "L29",
       "_origin": "ast",
-      "community": 59,
+      "community": 15,
       "norm_label": "userpublic",
       "id": "users_users_service_userpublic"
     },
@@ -4343,7 +5573,7 @@
       "source_file": "apps/api/src/modules/users/users.service.ts",
       "source_location": "L43",
       "_origin": "ast",
-      "community": 149,
+      "community": 15,
       "norm_label": ".findall()",
       "id": "users_users_service_usersservice_findall"
     },
@@ -4453,7 +5683,7 @@
       "source_file": "apps/api/src/prisma/prisma.service.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 59,
+      "community": 15,
       "norm_label": "prisma.service.ts",
       "id": "prisma_prisma_service"
     },
@@ -5253,7 +6483,7 @@
       "source_file": "apps/dashboard/src/app/(auth)/login/page.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 153,
+      "community": 198,
       "norm_label": "page.tsx",
       "id": "login_page"
     },
@@ -5263,7 +6493,7 @@
       "source_file": "apps/dashboard/src/app/(auth)/login/page.tsx",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 153,
+      "community": 198,
       "norm_label": "metadata",
       "id": "login_page_metadata"
     },
@@ -5273,7 +6503,7 @@
       "source_file": "apps/dashboard/src/app/(auth)/login/page.tsx",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 153,
+      "community": 198,
       "norm_label": "loginpage()",
       "id": "login_page_loginpage"
     },
@@ -5753,7 +6983,7 @@
       "source_file": "apps/dashboard/src/components/forms/login-form.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 153,
+      "community": 198,
       "norm_label": "login-form.tsx",
       "id": "forms_login_form"
     },
@@ -5763,7 +6993,7 @@
       "source_file": "apps/dashboard/src/components/forms/login-form.tsx",
       "source_location": "L20",
       "_origin": "ast",
-      "community": 153,
+      "community": 198,
       "norm_label": "loginform()",
       "id": "forms_login_form_loginform"
     },
@@ -5863,7 +7093,7 @@
       "source_file": "apps/dashboard/src/components/forms/text-field.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 191,
+      "community": 198,
       "norm_label": "text-field.tsx",
       "id": "forms_text_field"
     },
@@ -5873,7 +7103,7 @@
       "source_file": "apps/dashboard/src/components/forms/text-field.tsx",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 191,
+      "community": 198,
       "norm_label": "textfieldprops",
       "id": "forms_text_field_textfieldprops"
     },
@@ -5883,7 +7113,7 @@
       "source_file": "apps/dashboard/src/components/forms/text-field.tsx",
       "source_location": "L21",
       "_origin": "ast",
-      "community": 191,
+      "community": 198,
       "norm_label": "textfield()",
       "id": "forms_text_field_textfield"
     },
@@ -6073,7 +7303,7 @@
       "source_file": "apps/dashboard/src/components/layout/logout-button.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 153,
+      "community": 44,
       "norm_label": "logout-button.tsx",
       "id": "layout_logout_button"
     },
@@ -6083,7 +7313,7 @@
       "source_file": "apps/dashboard/src/components/layout/logout-button.tsx",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 153,
+      "community": 44,
       "norm_label": "logoutbutton()",
       "id": "layout_logout_button_logoutbutton"
     },
@@ -6093,7 +7323,7 @@
       "source_file": "apps/dashboard/src/components/layout/thumbnail.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 153,
+      "community": 25,
       "norm_label": "thumbnail.tsx",
       "id": "layout_thumbnail"
     },
@@ -6103,7 +7333,7 @@
       "source_file": "apps/dashboard/src/components/layout/thumbnail.tsx",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 153,
+      "community": 25,
       "norm_label": "thumbnail()",
       "id": "layout_thumbnail_thumbnail"
     },
@@ -6183,7 +7413,7 @@
       "source_file": "apps/dashboard/src/components/user/update-user-billing-details.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 191,
+      "community": 25,
       "norm_label": "update-user-billing-details.tsx",
       "id": "user_update_user_billing_details"
     },
@@ -6193,7 +7423,7 @@
       "source_file": "apps/dashboard/src/components/user/update-user-billing-details.tsx",
       "source_location": "L33",
       "_origin": "ast",
-      "community": 191,
+      "community": 25,
       "norm_label": "countries",
       "id": "user_update_user_billing_details_countries"
     },
@@ -6203,7 +7433,7 @@
       "source_file": "apps/dashboard/src/components/user/update-user-billing-details.tsx",
       "source_location": "L35",
       "_origin": "ast",
-      "community": 191,
+      "community": 25,
       "norm_label": "billingformdata",
       "id": "user_update_user_billing_details_billingformdata"
     },
@@ -6213,7 +7443,7 @@
       "source_file": "apps/dashboard/src/components/user/update-user-billing-details.tsx",
       "source_location": "L44",
       "_origin": "ast",
-      "community": 191,
+      "community": 25,
       "norm_label": "empty_form",
       "id": "user_update_user_billing_details_empty_form"
     },
@@ -6233,7 +7463,7 @@
       "source_file": "apps/dashboard/src/components/user/update-user.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 191,
+      "community": 25,
       "norm_label": "update-user.tsx",
       "id": "user_update_user"
     },
@@ -7690,356 +8920,6 @@
     {
       "label": "package.json",
       "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 159,
-      "norm_label": "package.json",
-      "id": "package"
-    },
-    {
-      "label": "name",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L2",
-      "_origin": "ast",
-      "community": 159,
-      "norm_label": "name",
-      "id": "package_name"
-    },
-    {
-      "label": "private",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L3",
-      "_origin": "ast",
-      "community": 159,
-      "norm_label": "private",
-      "id": "package_private"
-    },
-    {
-      "label": "packageManager",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L4",
-      "_origin": "ast",
-      "community": 159,
-      "norm_label": "packagemanager",
-      "id": "package_packagemanager"
-    },
-    {
-      "label": "scripts",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "scripts",
-      "id": "package_scripts"
-    },
-    {
-      "label": "build",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L6",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "build",
-      "id": "package_scripts_build"
-    },
-    {
-      "label": "dev",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L7",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "dev",
-      "id": "package_scripts_dev"
-    },
-    {
-      "label": "lint",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L8",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "lint",
-      "id": "package_scripts_lint"
-    },
-    {
-      "label": "check-types",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L9",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "check-types",
-      "id": "package_scripts_check_types"
-    },
-    {
-      "label": "test",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L10",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "test",
-      "id": "package_scripts_test"
-    },
-    {
-      "label": "test:watch",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L11",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "test:watch",
-      "id": "package_scripts_test_watch"
-    },
-    {
-      "label": "test:integration",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L12",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "test:integration",
-      "id": "package_scripts_test_integration"
-    },
-    {
-      "label": "test:e2e",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L13",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "test:e2e",
-      "id": "package_scripts_test_e2e"
-    },
-    {
-      "label": "format",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L14",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "format",
-      "id": "package_scripts_format"
-    },
-    {
-      "label": "db:generate",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L15",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "db:generate",
-      "id": "package_scripts_db_generate"
-    },
-    {
-      "label": "db:migrate",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L16",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "db:migrate",
-      "id": "package_scripts_db_migrate"
-    },
-    {
-      "label": "db:deploy",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L17",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "db:deploy",
-      "id": "package_scripts_db_deploy"
-    },
-    {
-      "label": "db:seed",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L18",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "db:seed",
-      "id": "package_scripts_db_seed"
-    },
-    {
-      "label": "db:seed:super-admin",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L19",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "db:seed:super-admin",
-      "id": "package_scripts_db_seed_super_admin"
-    },
-    {
-      "label": "gen:queries",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L20",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "gen:queries",
-      "id": "package_scripts_gen_queries"
-    },
-    {
-      "label": "docker:up",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L21",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "docker:up",
-      "id": "package_scripts_docker_up"
-    },
-    {
-      "label": "docker:down",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L22",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "docker:down",
-      "id": "package_scripts_docker_down"
-    },
-    {
-      "label": "docker:reset",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L23",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "docker:reset",
-      "id": "package_scripts_docker_reset"
-    },
-    {
-      "label": "docker:prod:build",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L24",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "docker:prod:build",
-      "id": "package_scripts_docker_prod_build"
-    },
-    {
-      "label": "docker:prod:up",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L25",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "docker:prod:up",
-      "id": "package_scripts_docker_prod_up"
-    },
-    {
-      "label": "docker:prod:down",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L26",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "docker:prod:down",
-      "id": "package_scripts_docker_prod_down"
-    },
-    {
-      "label": "docker:prod:logs",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L27",
-      "_origin": "ast",
-      "community": 36,
-      "norm_label": "docker:prod:logs",
-      "id": "package_scripts_docker_prod_logs"
-    },
-    {
-      "label": "devDependencies",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L29",
-      "_origin": "ast",
-      "community": 169,
-      "norm_label": "devdependencies",
-      "id": "package_devdependencies"
-    },
-    {
-      "label": "prettier",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L30",
-      "_origin": "ast",
-      "community": 169,
-      "norm_label": "prettier",
-      "id": "package_devdependencies_prettier"
-    },
-    {
-      "label": "turbo",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L31",
-      "_origin": "ast",
-      "community": 169,
-      "norm_label": "turbo",
-      "id": "package_devdependencies_turbo"
-    },
-    {
-      "label": "typescript",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L32",
-      "_origin": "ast",
-      "community": 169,
-      "norm_label": "typescript",
-      "id": "package_devdependencies_typescript"
-    },
-    {
-      "label": "engines",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L34",
-      "_origin": "ast",
-      "community": 159,
-      "norm_label": "engines",
-      "id": "package_engines"
-    },
-    {
-      "label": "node",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L35",
-      "_origin": "ast",
-      "community": 159,
-      "norm_label": "node",
-      "id": "package_engines_node"
-    },
-    {
-      "label": "pnpm",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L37",
-      "_origin": "ast",
-      "community": 159,
-      "norm_label": "pnpm",
-      "id": "package_pnpm"
-    },
-    {
-      "label": "onlyBuiltDependencies",
-      "file_type": "code",
-      "source_file": "package.json",
-      "source_location": "L38",
-      "_origin": "ast",
-      "community": 159,
-      "norm_label": "onlybuiltdependencies",
-      "id": "package_pnpm_onlybuiltdependencies"
-    },
-    {
-      "label": "package.json",
-      "file_type": "code",
       "source_file": "packages/auth/package.json",
       "source_location": "L1",
       "_origin": "ast",
@@ -8433,7 +9313,7 @@
       "source_file": "packages/auth/src/auth-provider.tsx",
       "source_location": "L142",
       "_origin": "ast",
-      "community": 153,
+      "community": 25,
       "norm_label": "useauth()",
       "id": "src_auth_provider_useauth"
     },
@@ -8698,356 +9578,6 @@
       "id": "auth_vitest_config"
     },
     {
-      "label": "package.json",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "package.json",
-      "id": "database_package"
-    },
-    {
-      "label": "name",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L2",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "name",
-      "id": "database_package_name"
-    },
-    {
-      "label": "version",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L3",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "version",
-      "id": "database_package_version"
-    },
-    {
-      "label": "private",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L4",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "private",
-      "id": "database_package_private"
-    },
-    {
-      "label": "type",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "type",
-      "id": "database_package_type"
-    },
-    {
-      "label": "exports",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L6",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "exports",
-      "id": "database_package_exports"
-    },
-    {
-      "label": "types",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L8",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "types",
-      "id": "database_package_types"
-    },
-    {
-      "label": "default",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L9",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "default",
-      "id": "database_package_default"
-    },
-    {
-      "label": "main",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L12",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "main",
-      "id": "database_package_main"
-    },
-    {
-      "label": "scripts",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L14",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "scripts",
-      "id": "database_package_scripts"
-    },
-    {
-      "label": "db:generate",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L15",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "db:generate",
-      "id": "database_package_scripts_db_generate"
-    },
-    {
-      "label": "db:migrate",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L16",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "db:migrate",
-      "id": "database_package_scripts_db_migrate"
-    },
-    {
-      "label": "db:deploy",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L17",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "db:deploy",
-      "id": "database_package_scripts_db_deploy"
-    },
-    {
-      "label": "db:seed",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L18",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "db:seed",
-      "id": "database_package_scripts_db_seed"
-    },
-    {
-      "label": "db:seed:super-admin",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L19",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "db:seed:super-admin",
-      "id": "database_package_scripts_db_seed_super_admin"
-    },
-    {
-      "label": "db:studio",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L20",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "db:studio",
-      "id": "database_package_scripts_db_studio"
-    },
-    {
-      "label": "dev",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L21",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "dev",
-      "id": "database_package_scripts_dev"
-    },
-    {
-      "label": "build",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L22",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "build",
-      "id": "database_package_scripts_build"
-    },
-    {
-      "label": "check-types",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L23",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "check-types",
-      "id": "database_package_scripts_check_types"
-    },
-    {
-      "label": "test",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L24",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "test",
-      "id": "database_package_scripts_test"
-    },
-    {
-      "label": "dependencies",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L26",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "dependencies",
-      "id": "database_package_dependencies"
-    },
-    {
-      "label": "@prisma/adapter-pg",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L27",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "@prisma/adapter-pg",
-      "id": "database_package_dependencies_prisma_adapter_pg"
-    },
-    {
-      "label": "@prisma/client",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L28",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "@prisma/client",
-      "id": "database_package_dependencies_prisma_client"
-    },
-    {
-      "label": "pg",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L29",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "pg",
-      "id": "database_package_dependencies_pg"
-    },
-    {
-      "label": "devDependencies",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L31",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "devdependencies",
-      "id": "database_package_devdependencies"
-    },
-    {
-      "label": "@repo/typescript-config",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L32",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "@repo/typescript-config",
-      "id": "database_package_devdependencies_repo_typescript_config"
-    },
-    {
-      "label": "@repo/vitest-config",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "@repo/vitest-config",
-      "id": "database_package_devdependencies_repo_vitest_config"
-    },
-    {
-      "label": "@types/bcrypt",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L34",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "@types/bcrypt",
-      "id": "database_package_devdependencies_types_bcrypt"
-    },
-    {
-      "label": "@types/pg",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L35",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "@types/pg",
-      "id": "database_package_devdependencies_types_pg"
-    },
-    {
-      "label": "bcrypt",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L36",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "bcrypt",
-      "id": "database_package_devdependencies_bcrypt"
-    },
-    {
-      "label": "dotenv",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L37",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "dotenv",
-      "id": "database_package_devdependencies_dotenv"
-    },
-    {
-      "label": "prisma",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L38",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "prisma",
-      "id": "database_package_devdependencies_prisma"
-    },
-    {
-      "label": "tsx",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L39",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "tsx",
-      "id": "database_package_devdependencies_tsx"
-    },
-    {
-      "label": "typescript",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L40",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "typescript",
-      "id": "database_package_devdependencies_typescript"
-    },
-    {
-      "label": "vitest",
-      "file_type": "code",
-      "source_file": "packages/database/package.json",
-      "source_location": "L41",
-      "_origin": "ast",
-      "community": 9,
-      "norm_label": "vitest",
-      "id": "database_package_devdependencies_vitest"
-    },
-    {
       "label": "prisma.config.ts",
       "file_type": "code",
       "source_file": "packages/database/prisma.config.ts",
@@ -9056,56 +9586,6 @@
       "community": 115,
       "norm_label": "prisma.config.ts",
       "id": "database_prisma_config"
-    },
-    {
-      "label": "seed-super-admin.ts",
-      "file_type": "code",
-      "source_file": "packages/database/prisma/seed-super-admin.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 88,
-      "norm_label": "seed-super-admin.ts",
-      "id": "prisma_seed_super_admin"
-    },
-    {
-      "label": "pool",
-      "file_type": "code",
-      "source_file": "packages/database/prisma/seed-super-admin.ts",
-      "source_location": "L20",
-      "_origin": "ast",
-      "community": 88,
-      "norm_label": "pool",
-      "id": "prisma_seed_super_admin_pool"
-    },
-    {
-      "label": "adapter",
-      "file_type": "code",
-      "source_file": "packages/database/prisma/seed-super-admin.ts",
-      "source_location": "L21",
-      "_origin": "ast",
-      "community": 88,
-      "norm_label": "adapter",
-      "id": "prisma_seed_super_admin_adapter"
-    },
-    {
-      "label": "prisma",
-      "file_type": "code",
-      "source_file": "packages/database/prisma/seed-super-admin.ts",
-      "source_location": "L22",
-      "_origin": "ast",
-      "community": 88,
-      "norm_label": "prisma",
-      "id": "prisma_seed_super_admin_prisma"
-    },
-    {
-      "label": "main()",
-      "file_type": "code",
-      "source_file": "packages/database/prisma/seed-super-admin.ts",
-      "source_location": "L24",
-      "_origin": "ast",
-      "community": 88,
-      "norm_label": "main()",
-      "id": "prisma_seed_super_admin_main"
     },
     {
       "label": "reset.seeder.ts",
@@ -12093,7 +12573,7 @@
       "source_file": "packages/queries/src/generated/model/healthCheck200.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 193,
+      "community": 38,
       "norm_label": "healthcheck200.ts",
       "id": "model_healthcheck200"
     },
@@ -12103,7 +12583,7 @@
       "source_file": "packages/queries/src/generated/model/healthCheck200.ts",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 193,
+      "community": 38,
       "norm_label": "healthcheck200",
       "id": "model_healthcheck200_healthcheck200"
     },
@@ -12113,7 +12593,7 @@
       "source_file": "packages/queries/src/generated/model/healthCheck200Details.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 193,
+      "community": 38,
       "norm_label": "healthcheck200details.ts",
       "id": "model_healthcheck200details"
     },
@@ -12123,7 +12603,7 @@
       "source_file": "packages/queries/src/generated/model/healthCheck200Details.ts",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 193,
+      "community": 38,
       "norm_label": "healthcheck200details",
       "id": "model_healthcheck200details_healthcheck200details"
     },
@@ -12133,7 +12613,7 @@
       "source_file": "packages/queries/src/generated/model/healthCheck200Error.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 193,
+      "community": 38,
       "norm_label": "healthcheck200error.ts",
       "id": "model_healthcheck200error"
     },
@@ -12143,7 +12623,7 @@
       "source_file": "packages/queries/src/generated/model/healthCheck200Error.ts",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 193,
+      "community": 38,
       "norm_label": "healthcheck200error",
       "id": "model_healthcheck200error_healthcheck200error"
     },
@@ -12153,7 +12633,7 @@
       "source_file": "packages/queries/src/generated/model/healthCheck200Info.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 193,
+      "community": 38,
       "norm_label": "healthcheck200info.ts",
       "id": "model_healthcheck200info"
     },
@@ -12163,7 +12643,7 @@
       "source_file": "packages/queries/src/generated/model/healthCheck200Info.ts",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 193,
+      "community": 38,
       "norm_label": "healthcheck200info",
       "id": "model_healthcheck200info_healthcheck200info"
     },
@@ -12173,7 +12653,7 @@
       "source_file": "packages/queries/src/generated/model/healthCheck503.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 38,
+      "community": 149,
       "norm_label": "healthcheck503.ts",
       "id": "model_healthcheck503"
     },
@@ -12183,7 +12663,7 @@
       "source_file": "packages/queries/src/generated/model/healthCheck503.ts",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 38,
+      "community": 149,
       "norm_label": "healthcheck503",
       "id": "model_healthcheck503_healthcheck503"
     },
@@ -12193,7 +12673,7 @@
       "source_file": "packages/queries/src/generated/model/healthCheck503Details.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 38,
+      "community": 149,
       "norm_label": "healthcheck503details.ts",
       "id": "model_healthcheck503details"
     },
@@ -12203,7 +12683,7 @@
       "source_file": "packages/queries/src/generated/model/healthCheck503Details.ts",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 38,
+      "community": 149,
       "norm_label": "healthcheck503details",
       "id": "model_healthcheck503details_healthcheck503details"
     },
@@ -12213,7 +12693,7 @@
       "source_file": "packages/queries/src/generated/model/healthCheck503Error.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 38,
+      "community": 149,
       "norm_label": "healthcheck503error.ts",
       "id": "model_healthcheck503error"
     },
@@ -12223,7 +12703,7 @@
       "source_file": "packages/queries/src/generated/model/healthCheck503Error.ts",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 38,
+      "community": 149,
       "norm_label": "healthcheck503error",
       "id": "model_healthcheck503error_healthcheck503error"
     },
@@ -12233,7 +12713,7 @@
       "source_file": "packages/queries/src/generated/model/healthCheck503Info.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 38,
+      "community": 149,
       "norm_label": "healthcheck503info.ts",
       "id": "model_healthcheck503info"
     },
@@ -12243,7 +12723,7 @@
       "source_file": "packages/queries/src/generated/model/healthCheck503Info.ts",
       "source_location": "L12",
       "_origin": "ast",
-      "community": 38,
+      "community": 149,
       "norm_label": "healthcheck503info",
       "id": "model_healthcheck503info_healthcheck503info"
     },
@@ -12503,7 +12983,7 @@
       "source_file": "packages/queries/src/generated/model/updateUserDto.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 191,
+      "community": 16,
       "norm_label": "updateuserdto.ts",
       "id": "model_updateuserdto"
     },
@@ -12513,7 +12993,7 @@
       "source_file": "packages/queries/src/generated/model/updateUserDto.ts",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 191,
+      "community": 16,
       "norm_label": "updateuserdto",
       "id": "model_updateuserdto_updateuserdto"
     },
@@ -12603,7 +13083,7 @@
       "source_file": "packages/queries/src/helpers/api-error.test.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 198,
+      "community": 420,
       "norm_label": "api-error.test.ts",
       "id": "helpers_api_error_test"
     },
@@ -12613,7 +13093,7 @@
       "source_file": "packages/queries/src/helpers/api-error.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 198,
+      "community": 420,
       "norm_label": "api-error.ts",
       "id": "helpers_api_error"
     },
@@ -12623,7 +13103,7 @@
       "source_file": "packages/queries/src/helpers/api-error.ts",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 198,
+      "community": 420,
       "norm_label": "extracterrormessage()",
       "id": "helpers_api_error_extracterrormessage"
     },
@@ -12803,7 +13283,7 @@
       "source_file": "packages/queries/src/mutator/custom-axios.ts",
       "source_location": "L142",
       "_origin": "ast",
-      "community": 38,
+      "community": 45,
       "norm_label": "errortype",
       "id": "mutator_custom_axios_errortype"
     },
@@ -17358,476 +17838,6 @@
       "id": "scripts_dev_turbo"
     },
     {
-      "label": "turbo.json",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 169,
-      "norm_label": "turbo.json",
-      "id": "turbo"
-    },
-    {
-      "label": "$schema",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L2",
-      "_origin": "ast",
-      "community": 169,
-      "norm_label": "$schema",
-      "id": "turbo_schema"
-    },
-    {
-      "label": "ui",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L3",
-      "_origin": "ast",
-      "community": 169,
-      "norm_label": "ui",
-      "id": "turbo_ui"
-    },
-    {
-      "label": "globalEnv",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L4",
-      "_origin": "ast",
-      "community": 169,
-      "norm_label": "globalenv",
-      "id": "turbo_globalenv"
-    },
-    {
-      "label": "tasks",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "tasks",
-      "id": "turbo_tasks"
-    },
-    {
-      "label": "build",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L6",
-      "_origin": "ast",
-      "community": 180,
-      "norm_label": "build",
-      "id": "turbo_tasks_build"
-    },
-    {
-      "label": "dependsOn",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L7",
-      "_origin": "ast",
-      "community": 180,
-      "norm_label": "dependson",
-      "id": "turbo_build_dependson"
-    },
-    {
-      "label": "inputs",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L8",
-      "_origin": "ast",
-      "community": 180,
-      "norm_label": "inputs",
-      "id": "turbo_build_inputs"
-    },
-    {
-      "label": "outputs",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L9",
-      "_origin": "ast",
-      "community": 180,
-      "norm_label": "outputs",
-      "id": "turbo_build_outputs"
-    },
-    {
-      "label": "dev",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L11",
-      "_origin": "ast",
-      "community": 181,
-      "norm_label": "dev",
-      "id": "turbo_tasks_dev"
-    },
-    {
-      "label": "dependsOn",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L12",
-      "_origin": "ast",
-      "community": 181,
-      "norm_label": "dependson",
-      "id": "turbo_dev_dependson"
-    },
-    {
-      "label": "cache",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L13",
-      "_origin": "ast",
-      "community": 181,
-      "norm_label": "cache",
-      "id": "turbo_dev_cache"
-    },
-    {
-      "label": "persistent",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L14",
-      "_origin": "ast",
-      "community": 181,
-      "norm_label": "persistent",
-      "id": "turbo_dev_persistent"
-    },
-    {
-      "label": "dev:worker",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L16",
-      "_origin": "ast",
-      "community": 183,
-      "norm_label": "dev:worker",
-      "id": "turbo_tasks_dev_worker"
-    },
-    {
-      "label": "dependsOn",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L17",
-      "_origin": "ast",
-      "community": 183,
-      "norm_label": "dependson",
-      "id": "turbo_dev_worker_dependson"
-    },
-    {
-      "label": "cache",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L18",
-      "_origin": "ast",
-      "community": 183,
-      "norm_label": "cache",
-      "id": "turbo_dev_worker_cache"
-    },
-    {
-      "label": "persistent",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L19",
-      "_origin": "ast",
-      "community": 183,
-      "norm_label": "persistent",
-      "id": "turbo_dev_worker_persistent"
-    },
-    {
-      "label": "lint",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L21",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "lint",
-      "id": "turbo_tasks_lint"
-    },
-    {
-      "label": "dependsOn",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L22",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "dependson",
-      "id": "turbo_lint_dependson"
-    },
-    {
-      "label": "test",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L24",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "test",
-      "id": "turbo_tasks_test"
-    },
-    {
-      "label": "inputs",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L25",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "inputs",
-      "id": "turbo_test_inputs"
-    },
-    {
-      "label": "test:watch",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L27",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "test:watch",
-      "id": "turbo_tasks_test_watch"
-    },
-    {
-      "label": "cache",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L28",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "cache",
-      "id": "turbo_test_watch_cache"
-    },
-    {
-      "label": "persistent",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L29",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "persistent",
-      "id": "turbo_test_watch_persistent"
-    },
-    {
-      "label": "test:integration",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L31",
-      "_origin": "ast",
-      "community": 188,
-      "norm_label": "test:integration",
-      "id": "turbo_tasks_test_integration"
-    },
-    {
-      "label": "dependsOn",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L32",
-      "_origin": "ast",
-      "community": 188,
-      "norm_label": "dependson",
-      "id": "turbo_test_integration_dependson"
-    },
-    {
-      "label": "cache",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "community": 188,
-      "norm_label": "cache",
-      "id": "turbo_test_integration_cache"
-    },
-    {
-      "label": "test:e2e",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L35",
-      "_origin": "ast",
-      "community": 187,
-      "norm_label": "test:e2e",
-      "id": "turbo_tasks_test_e2e"
-    },
-    {
-      "label": "dependsOn",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L36",
-      "_origin": "ast",
-      "community": 187,
-      "norm_label": "dependson",
-      "id": "turbo_test_e2e_dependson"
-    },
-    {
-      "label": "cache",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L37",
-      "_origin": "ast",
-      "community": 187,
-      "norm_label": "cache",
-      "id": "turbo_test_e2e_cache"
-    },
-    {
-      "label": "check-types",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L39",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "check-types",
-      "id": "turbo_tasks_check_types"
-    },
-    {
-      "label": "dependsOn",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L40",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "dependson",
-      "id": "turbo_check_types_dependson"
-    },
-    {
-      "label": "db:generate",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L42",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "db:generate",
-      "id": "turbo_tasks_db_generate"
-    },
-    {
-      "label": "cache",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L43",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "cache",
-      "id": "turbo_db_generate_cache"
-    },
-    {
-      "label": "db:migrate",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L45",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "db:migrate",
-      "id": "turbo_tasks_db_migrate"
-    },
-    {
-      "label": "cache",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L46",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "cache",
-      "id": "turbo_db_migrate_cache"
-    },
-    {
-      "label": "db:deploy",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L48",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "db:deploy",
-      "id": "turbo_tasks_db_deploy"
-    },
-    {
-      "label": "cache",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L49",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "cache",
-      "id": "turbo_db_deploy_cache"
-    },
-    {
-      "label": "db:seed",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L51",
-      "_origin": "ast",
-      "community": 186,
-      "norm_label": "db:seed",
-      "id": "turbo_tasks_db_seed"
-    },
-    {
-      "label": "dependsOn",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L52",
-      "_origin": "ast",
-      "community": 186,
-      "norm_label": "dependson",
-      "id": "turbo_db_seed_dependson"
-    },
-    {
-      "label": "cache",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L53",
-      "_origin": "ast",
-      "community": 186,
-      "norm_label": "cache",
-      "id": "turbo_db_seed_cache"
-    },
-    {
-      "label": "db:seed:super-admin",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L55",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "db:seed:super-admin",
-      "id": "turbo_tasks_db_seed_super_admin"
-    },
-    {
-      "label": "dependsOn",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L56",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "dependson",
-      "id": "turbo_db_seed_super_admin_dependson"
-    },
-    {
-      "label": "env",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L57",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "env",
-      "id": "turbo_db_seed_super_admin_env"
-    },
-    {
-      "label": "cache",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L58",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "cache",
-      "id": "turbo_db_seed_super_admin_cache"
-    },
-    {
-      "label": "gen:queries",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L60",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "gen:queries",
-      "id": "turbo_tasks_gen_queries"
-    },
-    {
-      "label": "cache",
-      "file_type": "code",
-      "source_file": "turbo.json",
-      "source_location": "L61",
-      "_origin": "ast",
-      "community": 68,
-      "norm_label": "cache",
-      "id": "turbo_gen_queries_cache"
-    },
-    {
       "label": "SKILL.md",
       "file_type": "document",
       "source_file": ".agents/skills/building-components/SKILL.md",
@@ -17883,7 +17893,7 @@
       "source_file": ".agents/skills/building-components/references/accessibility.mdx",
       "source_location": "L20",
       "_origin": "ast",
-      "community": 85,
+      "community": 159,
       "norm_label": "core principles",
       "id": "references_accessibility_core_principles"
     },
@@ -17893,7 +17903,7 @@
       "source_file": ".agents/skills/building-components/references/accessibility.mdx",
       "source_location": "L22",
       "_origin": "ast",
-      "community": 85,
+      "community": 159,
       "norm_label": "1. semantic html first",
       "id": "references_accessibility_1_semantic_html_first"
     },
@@ -17903,7 +17913,7 @@
       "source_file": ".agents/skills/building-components/references/accessibility.mdx",
       "source_location": "L40",
       "_origin": "ast",
-      "community": 85,
+      "community": 159,
       "norm_label": "2. keyboard navigation",
       "id": "references_accessibility_2_keyboard_navigation"
     },
@@ -17913,7 +17923,7 @@
       "source_file": ".agents/skills/building-components/references/accessibility.mdx",
       "source_location": "L75",
       "_origin": "ast",
-      "community": 85,
+      "community": 159,
       "norm_label": "3. screen reader support",
       "id": "references_accessibility_3_screen_reader_support"
     },
@@ -17923,7 +17933,7 @@
       "source_file": ".agents/skills/building-components/references/accessibility.mdx",
       "source_location": "L95",
       "_origin": "ast",
-      "community": 85,
+      "community": 159,
       "norm_label": "4. visual accessibility",
       "id": "references_accessibility_4_visual_accessibility"
     },
@@ -17993,7 +18003,7 @@
       "source_file": ".agents/skills/building-components/references/accessibility.mdx",
       "source_location": "L215",
       "_origin": "ast",
-      "community": 85,
+      "community": 169,
       "norm_label": "component patterns",
       "id": "references_accessibility_component_patterns"
     },
@@ -18003,7 +18013,7 @@
       "source_file": ".agents/skills/building-components/references/accessibility.mdx",
       "source_location": "L217",
       "_origin": "ast",
-      "community": 85,
+      "community": 169,
       "norm_label": "modal/dialog",
       "id": "references_accessibility_modal_dialog"
     },
@@ -18013,7 +18023,7 @@
       "source_file": ".agents/skills/building-components/references/accessibility.mdx",
       "source_location": "L300",
       "_origin": "ast",
-      "community": 85,
+      "community": 169,
       "norm_label": "dropdown menu",
       "id": "references_accessibility_dropdown_menu"
     },
@@ -18023,7 +18033,7 @@
       "source_file": ".agents/skills/building-components/references/accessibility.mdx",
       "source_location": "L387",
       "_origin": "ast",
-      "community": 85,
+      "community": 169,
       "norm_label": "tabs",
       "id": "references_accessibility_tabs"
     },
@@ -18033,7 +18043,7 @@
       "source_file": ".agents/skills/building-components/references/accessibility.mdx",
       "source_location": "L459",
       "_origin": "ast",
-      "community": 85,
+      "community": 169,
       "norm_label": "forms",
       "id": "references_accessibility_forms"
     },
@@ -18173,7 +18183,7 @@
       "source_file": ".agents/skills/building-components/references/accessibility.mdx",
       "source_location": "L752",
       "_origin": "ast",
-      "community": 85,
+      "community": 180,
       "norm_label": "common pitfalls",
       "id": "references_accessibility_common_pitfalls"
     },
@@ -18183,7 +18193,7 @@
       "source_file": ".agents/skills/building-components/references/accessibility.mdx",
       "source_location": "L754",
       "_origin": "ast",
-      "community": 85,
+      "community": 180,
       "norm_label": "placeholder text as labels",
       "id": "references_accessibility_placeholder_text_as_labels"
     },
@@ -18193,7 +18203,7 @@
       "source_file": ".agents/skills/building-components/references/accessibility.mdx",
       "source_location": "L775",
       "_origin": "ast",
-      "community": 85,
+      "community": 180,
       "norm_label": "empty buttons",
       "id": "references_accessibility_empty_buttons"
     },
@@ -18203,7 +18213,7 @@
       "source_file": ".agents/skills/building-components/references/accessibility.mdx",
       "source_location": "L797",
       "_origin": "ast",
-      "community": 85,
+      "community": 180,
       "norm_label": "disabled form elements",
       "id": "references_accessibility_disabled_form_elements"
     },
@@ -18633,7 +18643,7 @@
       "source_file": ".agents/skills/building-components/references/data-attributes.mdx",
       "source_location": "L162",
       "_origin": "ast",
-      "community": 156,
+      "community": 176,
       "norm_label": "component identification with data-slot",
       "id": "references_data_attributes_component_identification_with_data_slot"
     },
@@ -18643,7 +18653,7 @@
       "source_file": ".agents/skills/building-components/references/data-attributes.mdx",
       "source_location": "L166",
       "_origin": "ast",
-      "community": 156,
+      "community": 176,
       "norm_label": "the problem with child targeting",
       "id": "references_data_attributes_the_problem_with_child_targeting"
     },
@@ -18653,7 +18663,7 @@
       "source_file": ".agents/skills/building-components/references/data-attributes.mdx",
       "source_location": "L184",
       "_origin": "ast",
-      "community": 156,
+      "community": 176,
       "norm_label": "the solution: data-slot attributes",
       "id": "references_data_attributes_the_solution_data_slot_attributes"
     },
@@ -18663,7 +18673,7 @@
       "source_file": ".agents/skills/building-components/references/data-attributes.mdx",
       "source_location": "L218",
       "_origin": "ast",
-      "community": 156,
+      "community": 176,
       "norm_label": "benefits of data-slot",
       "id": "references_data_attributes_benefits_of_data_slot"
     },
@@ -18673,7 +18683,7 @@
       "source_file": ".agents/skills/building-components/references/data-attributes.mdx",
       "source_location": "L226",
       "_origin": "ast",
-      "community": 156,
+      "community": 176,
       "norm_label": "using `has-[]` for parent-aware styling",
       "id": "references_data_attributes_using_has_for_parent_aware_styling"
     },
@@ -18683,7 +18693,7 @@
       "source_file": ".agents/skills/building-components/references/data-attributes.mdx",
       "source_location": "L250",
       "_origin": "ast",
-      "community": 156,
+      "community": 176,
       "norm_label": "using `[&_]` for descendant targeting",
       "id": "references_data_attributes_using_for_descendant_targeting"
     },
@@ -18693,7 +18703,7 @@
       "source_file": ".agents/skills/building-components/references/data-attributes.mdx",
       "source_location": "L274",
       "_origin": "ast",
-      "community": 156,
+      "community": 176,
       "norm_label": "global css with data-slot",
       "id": "references_data_attributes_global_css_with_data_slot"
     },
@@ -18703,7 +18713,7 @@
       "source_file": ".agents/skills/building-components/references/data-attributes.mdx",
       "source_location": "L300",
       "_origin": "ast",
-      "community": 156,
+      "community": 176,
       "norm_label": "naming conventions",
       "id": "references_data_attributes_naming_conventions"
     },
@@ -18773,7 +18783,7 @@
       "source_file": ".agents/skills/building-components/references/definitions.mdx",
       "source_location": "L11",
       "_origin": "ast",
-      "community": 201,
+      "community": 154,
       "norm_label": "1. artifact taxonomy",
       "id": "references_definitions_1_artifact_taxonomy"
     },
@@ -18783,7 +18793,7 @@
       "source_file": ".agents/skills/building-components/references/definitions.mdx",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 201,
+      "community": 154,
       "norm_label": "1.1 primitive",
       "id": "references_definitions_1_1_primitive"
     },
@@ -18793,7 +18803,7 @@
       "source_file": ".agents/skills/building-components/references/definitions.mdx",
       "source_location": "L38",
       "_origin": "ast",
-      "community": 201,
+      "community": 154,
       "norm_label": "1.2 component",
       "id": "references_definitions_1_2_component"
     },
@@ -18803,7 +18813,7 @@
       "source_file": ".agents/skills/building-components/references/definitions.mdx",
       "source_location": "L58",
       "_origin": "ast",
-      "community": 201,
+      "community": 154,
       "norm_label": "1.3 pattern",
       "id": "references_definitions_1_3_pattern"
     },
@@ -18813,7 +18823,7 @@
       "source_file": ".agents/skills/building-components/references/definitions.mdx",
       "source_location": "L74",
       "_origin": "ast",
-      "community": 201,
+      "community": 154,
       "norm_label": "1.4 block",
       "id": "references_definitions_1_4_block"
     },
@@ -18823,7 +18833,7 @@
       "source_file": ".agents/skills/building-components/references/definitions.mdx",
       "source_location": "L103",
       "_origin": "ast",
-      "community": 201,
+      "community": 154,
       "norm_label": "1.5 page",
       "id": "references_definitions_1_5_page"
     },
@@ -18833,7 +18843,7 @@
       "source_file": ".agents/skills/building-components/references/definitions.mdx",
       "source_location": "L120",
       "_origin": "ast",
-      "community": 201,
+      "community": 154,
       "norm_label": "1.6 template",
       "id": "references_definitions_1_6_template"
     },
@@ -18843,7 +18853,7 @@
       "source_file": ".agents/skills/building-components/references/definitions.mdx",
       "source_location": "L139",
       "_origin": "ast",
-      "community": 201,
+      "community": 154,
       "norm_label": "1.7 utility (non-visual)",
       "id": "references_definitions_1_7_utility_non_visual"
     },
@@ -18923,7 +18933,7 @@
       "source_file": ".agents/skills/building-components/references/definitions.mdx",
       "source_location": "L197",
       "_origin": "ast",
-      "community": 202,
+      "community": 154,
       "norm_label": "3. styling and theming vocabulary",
       "id": "references_definitions_3_styling_and_theming_vocabulary"
     },
@@ -18933,7 +18943,7 @@
       "source_file": ".agents/skills/building-components/references/definitions.mdx",
       "source_location": "L199",
       "_origin": "ast",
-      "community": 202,
+      "community": 154,
       "norm_label": "3.1 headless",
       "id": "references_definitions_3_1_headless"
     },
@@ -18943,7 +18953,7 @@
       "source_file": ".agents/skills/building-components/references/definitions.mdx",
       "source_location": "L203",
       "_origin": "ast",
-      "community": 202,
+      "community": 154,
       "norm_label": "3.2 styled",
       "id": "references_definitions_3_2_styled"
     },
@@ -18953,7 +18963,7 @@
       "source_file": ".agents/skills/building-components/references/definitions.mdx",
       "source_location": "L207",
       "_origin": "ast",
-      "community": 202,
+      "community": 154,
       "norm_label": "3.3 variants",
       "id": "references_definitions_3_3_variants"
     },
@@ -18963,7 +18973,7 @@
       "source_file": ".agents/skills/building-components/references/definitions.mdx",
       "source_location": "L211",
       "_origin": "ast",
-      "community": 202,
+      "community": 154,
       "norm_label": "3.4 design tokens",
       "id": "references_definitions_3_4_design_tokens"
     },
@@ -19823,7 +19833,7 @@
       "source_file": ".agents/skills/building-components/references/principles.mdx",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 224,
+      "community": 153,
       "norm_label": "principles.mdx",
       "id": "users_tadeuszderuijter_dev_tallandtiny_monorepo_boilerplate_agents_skills_building_components_references_principles_mdx"
     },
@@ -19833,7 +19843,7 @@
       "source_file": ".agents/skills/building-components/references/principles.mdx",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 224,
+      "community": 153,
       "norm_label": "composability and reusability",
       "id": "references_principles_composability_and_reusability"
     },
@@ -19843,7 +19853,7 @@
       "source_file": ".agents/skills/building-components/references/principles.mdx",
       "source_location": "L21",
       "_origin": "ast",
-      "community": 224,
+      "community": 153,
       "norm_label": "accessible by default",
       "id": "references_principles_accessible_by_default"
     },
@@ -19853,7 +19863,7 @@
       "source_file": ".agents/skills/building-components/references/principles.mdx",
       "source_location": "L29",
       "_origin": "ast",
-      "community": 224,
+      "community": 153,
       "norm_label": "customizability and theming",
       "id": "references_principles_customizability_and_theming"
     },
@@ -19863,7 +19873,7 @@
       "source_file": ".agents/skills/building-components/references/principles.mdx",
       "source_location": "L37",
       "_origin": "ast",
-      "community": 224,
+      "community": 153,
       "norm_label": "lightweight and performant",
       "id": "references_principles_lightweight_and_performant"
     },
@@ -19873,7 +19883,7 @@
       "source_file": ".agents/skills/building-components/references/principles.mdx",
       "source_location": "L45",
       "_origin": "ast",
-      "community": 224,
+      "community": 153,
       "norm_label": "transparency and code ownership",
       "id": "references_principles_transparency_and_code_ownership"
     },
@@ -19883,7 +19893,7 @@
       "source_file": ".agents/skills/building-components/references/principles.mdx",
       "source_location": "L55",
       "_origin": "ast",
-      "community": 224,
+      "community": 153,
       "norm_label": "well-documented and dx-friendly",
       "id": "references_principles_well_documented_and_dx_friendly"
     },
@@ -22563,7 +22573,7 @@
       "source_file": ".agents/skills/turborepo/references/ci/github-actions.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 144,
+      "community": 167,
       "norm_label": "github-actions.md",
       "id": "users_tadeuszderuijter_dev_tallandtiny_monorepo_boilerplate_agents_skills_turborepo_references_ci_github_actions_md"
     },
@@ -22823,7 +22833,7 @@
       "source_file": ".agents/skills/turborepo/references/ci/vercel.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 200,
+      "community": 144,
       "norm_label": "vercel.md",
       "id": "users_tadeuszderuijter_dev_tallandtiny_monorepo_boilerplate_agents_skills_turborepo_references_ci_vercel_md"
     },
@@ -32303,6 +32313,1261 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_devdependencies"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_engines"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_packagemanager"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_pnpm"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_private"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_scripts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_build"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_check_types"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_create_superadmin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_db_deploy"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_db_generate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_db_migrate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_db_seed"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_dev"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_docker_down"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_docker_prod_build"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_docker_prod_down"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_docker_prod_logs"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_docker_prod_up"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_docker_reset"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_docker_up"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_format"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_gen_queries"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_lint"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_test"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_test_e2e"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_test_integration"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_test_watch"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_prettier"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_turbo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_typescript"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_engines",
+      "target": "package_engines_node"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L38",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_pnpm",
+      "target": "package_pnpm_onlybuiltdependencies"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package",
+      "target": "database_package_dependencies"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package",
+      "target": "database_package_devdependencies"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package",
+      "target": "database_package_exports"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package",
+      "target": "database_package_main"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package",
+      "target": "database_package_name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package",
+      "target": "database_package_private"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package",
+      "target": "database_package_scripts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package",
+      "target": "database_package_type"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package",
+      "target": "database_package_types"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package",
+      "target": "database_package_version"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_exports",
+      "target": "database_package_default"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_exports",
+      "target": "database_package_types"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_scripts",
+      "target": "database_package_scripts_build"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_scripts",
+      "target": "database_package_scripts_check_types"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "database_package_scripts",
+      "target": "database_package_scripts_create_superadmin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_scripts",
+      "target": "database_package_scripts_db_deploy"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_scripts",
+      "target": "database_package_scripts_db_generate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_scripts",
+      "target": "database_package_scripts_db_migrate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_scripts",
+      "target": "database_package_scripts_db_seed"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_scripts",
+      "target": "database_package_scripts_db_studio"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_scripts",
+      "target": "database_package_scripts_dev"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_scripts",
+      "target": "database_package_scripts_test"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_dependencies",
+      "target": "database_package_dependencies_pg"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_dependencies",
+      "target": "database_package_dependencies_prisma_adapter_pg"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_dependencies",
+      "target": "database_package_dependencies_prisma_client"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_devdependencies",
+      "target": "database_package_devdependencies_bcrypt"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_devdependencies",
+      "target": "database_package_devdependencies_dotenv"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_devdependencies",
+      "target": "database_package_devdependencies_prisma"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_devdependencies",
+      "target": "database_package_devdependencies_repo_typescript_config"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_devdependencies",
+      "target": "database_package_devdependencies_repo_vitest_config"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_devdependencies",
+      "target": "database_package_devdependencies_tsx"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_devdependencies",
+      "target": "database_package_devdependencies_types_bcrypt"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_devdependencies",
+      "target": "database_package_devdependencies_types_pg"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_devdependencies",
+      "target": "database_package_devdependencies_typescript"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/package.json",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "database_package_devdependencies",
+      "target": "database_package_devdependencies_vitest"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L126",
+      "weight": 1.0,
+      "source": "prisma_create_superadmin",
+      "target": "prisma_create_superadmin_adapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "prisma_create_superadmin",
+      "target": "prisma_create_superadmin_credentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L129",
+      "weight": 1.0,
+      "source": "prisma_create_superadmin",
+      "target": "prisma_create_superadmin_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L125",
+      "weight": 1.0,
+      "source": "prisma_create_superadmin",
+      "target": "prisma_create_superadmin_pool",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L127",
+      "weight": 1.0,
+      "source": "prisma_create_superadmin",
+      "target": "prisma_create_superadmin_prisma",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "prisma_create_superadmin",
+      "target": "prisma_create_superadmin_promptinteractive",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "prisma_create_superadmin",
+      "target": "prisma_create_superadmin_readfrompipe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "prisma_create_superadmin",
+      "target": "prisma_create_superadmin_readfromtty",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L116",
+      "weight": 1.0,
+      "source": "prisma_create_superadmin",
+      "target": "prisma_create_superadmin_resolvecredentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "prisma_create_superadmin",
+      "target": "src_seed_super_admin_seedsuperadmin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "prisma_create_superadmin_promptinteractive",
+      "target": "prisma_create_superadmin_readfromtty",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L122",
+      "weight": 1.0,
+      "source": "prisma_create_superadmin_resolvecredentials",
+      "target": "prisma_create_superadmin_promptinteractive",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L122",
+      "weight": 1.0,
+      "source": "prisma_create_superadmin_resolvecredentials",
+      "target": "prisma_create_superadmin_readfrompipe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/database/prisma/create-superadmin.ts",
+      "source_location": "L130",
+      "weight": 1.0,
+      "source": "prisma_create_superadmin_main",
+      "target": "prisma_create_superadmin_resolvecredentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "users_tadeuszderuijter_dev_tallandtiny_monorepo_boilerplate_turbo_json",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_globalenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "users_tadeuszderuijter_dev_tallandtiny_monorepo_boilerplate_turbo_json",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_schema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "users_tadeuszderuijter_dev_tallandtiny_monorepo_boilerplate_turbo_json",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_tasks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "users_tadeuszderuijter_dev_tallandtiny_monorepo_boilerplate_turbo_json",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_ui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_tasks_build",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_tasks_check_types",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_tasks_db_deploy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_tasks_db_generate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_tasks_db_migrate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_tasks_db_seed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_tasks_dev",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_tasks_dev_worker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_tasks_gen_queries",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_tasks_lint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_tasks_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_tasks_test_e2e",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_tasks_test_integration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_tasks_test_watch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_build",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_build_dependson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_build",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_build_inputs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_build",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_build_outputs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_dev",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_dev_cache",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_dev",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_dev_dependson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_dev",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_dev_persistent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_dev_worker",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_dev_worker_cache",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_dev_worker",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_dev_worker_dependson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_dev_worker",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_dev_worker_persistent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_lint",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_lint_dependson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_test",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_test_inputs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_test_watch",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_test_watch_cache",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_test_watch",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_test_watch_persistent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_test_integration",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_test_integration_cache",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_test_integration",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_test_integration_dependson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_test_e2e",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_test_e2e_cache",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_test_e2e",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_test_e2e_dependson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_check_types",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_check_types_dependson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_db_generate",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_db_generate_cache",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_db_migrate",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_db_migrate_cache",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_db_deploy",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_db_deploy_cache",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_db_seed",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_db_seed_cache",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_db_seed",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_db_seed_dependson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "turbo.json",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "tallandtiny_monorepo_boilerplate_turbo_tasks_gen_queries",
+      "target": "tallandtiny_monorepo_boilerplate_turbo_gen_queries_cache",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "apps/api/test/auth.e2e.test.ts",
       "source_location": "L12",
       "weight": 1.0,
@@ -32356,9 +33621,9 @@
       "source_file": "packages/database/prisma/seed.ts",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prisma_seed",
-      "target": "prisma_seed_dev_super_admin",
-      "confidence_score": 1.0
+      "target": "prisma_seed_dev_super_admin"
     },
     {
       "relation": "contains",
@@ -32441,9 +33706,9 @@
       "source_file": "packages/database/prisma/seed.ts",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prisma_seed",
-      "target": "src_seed_super_admin_seedsuperadmin",
-      "confidence_score": 1.0
+      "target": "src_seed_super_admin_seedsuperadmin"
     },
     {
       "relation": "calls",
@@ -44813,357 +46078,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L29",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package",
-      "target": "package_devdependencies"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package",
-      "target": "package_engines"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package",
-      "target": "package_name"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package",
-      "target": "package_packagemanager"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L37",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package",
-      "target": "package_pnpm"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package",
-      "target": "package_private"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package",
-      "target": "package_scripts"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_build"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_check_types"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_db_deploy"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_db_generate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L16",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_db_migrate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L18",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_db_seed"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_db_seed_super_admin"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_dev"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_docker_down"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L24",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_docker_prod_build"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L26",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_docker_prod_down"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L27",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_docker_prod_logs"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L25",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_docker_prod_up"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L23",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_docker_reset"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_docker_up"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_format"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_gen_queries"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_lint"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_test"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_test_e2e"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_test_integration"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_scripts",
-      "target": "package_scripts_test_watch"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L30",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_devdependencies",
-      "target": "package_devdependencies_prettier"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L31",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_devdependencies",
-      "target": "package_devdependencies_turbo"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L32",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_devdependencies",
-      "target": "package_devdependencies_typescript"
-    },
-    {
-      "relation": "imports",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L31",
-      "weight": 1.0,
-      "context": "import",
-      "confidence_score": 1.0,
-      "source": "package_devdependencies_turbo",
-      "target": "turbo"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L35",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_engines",
-      "target": "package_engines_node"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "package.json",
-      "source_location": "L38",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "package_pnpm",
-      "target": "package_pnpm_onlybuiltdependencies"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "packages/auth/package.json",
       "source_location": "L14",
       "weight": 1.0,
@@ -45982,429 +46896,6 @@
       "confidence_score": 1.0,
       "source": "auth_tsconfig_compileroptions",
       "target": "auth_tsconfig_compileroptions_baseurl"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L26",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package",
-      "target": "database_package_dependencies"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L31",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package",
-      "target": "database_package_devdependencies"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package",
-      "target": "database_package_exports"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package",
-      "target": "database_package_main"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package",
-      "target": "database_package_name"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package",
-      "target": "database_package_private"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package",
-      "target": "database_package_scripts"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package",
-      "target": "database_package_type"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package",
-      "target": "database_package_types"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package",
-      "target": "database_package_version"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_exports",
-      "target": "database_package_default"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_exports",
-      "target": "database_package_types"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_scripts",
-      "target": "database_package_scripts_build"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_scripts",
-      "target": "database_package_scripts_check_types"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_scripts",
-      "target": "database_package_scripts_db_deploy"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_scripts",
-      "target": "database_package_scripts_db_generate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L16",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_scripts",
-      "target": "database_package_scripts_db_migrate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L18",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_scripts",
-      "target": "database_package_scripts_db_seed"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_scripts",
-      "target": "database_package_scripts_db_seed_super_admin"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_scripts",
-      "target": "database_package_scripts_db_studio"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_scripts",
-      "target": "database_package_scripts_dev"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L24",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_scripts",
-      "target": "database_package_scripts_test"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L27",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_dependencies",
-      "target": "database_package_dependencies_pg"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L25",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_dependencies",
-      "target": "database_package_dependencies_prisma_adapter_pg"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L26",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_dependencies",
-      "target": "database_package_dependencies_prisma_client"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_devdependencies",
-      "target": "database_package_devdependencies_bcrypt"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L34",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_devdependencies",
-      "target": "database_package_devdependencies_dotenv"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L35",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_devdependencies",
-      "target": "database_package_devdependencies_prisma"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L30",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_devdependencies",
-      "target": "database_package_devdependencies_repo_typescript_config"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_devdependencies",
-      "target": "database_package_devdependencies_repo_vitest_config"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L36",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_devdependencies",
-      "target": "database_package_devdependencies_tsx"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L31",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_devdependencies",
-      "target": "database_package_devdependencies_types_bcrypt"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L32",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_devdependencies",
-      "target": "database_package_devdependencies_types_pg"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L37",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_devdependencies",
-      "target": "database_package_devdependencies_typescript"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/package.json",
-      "source_location": "L41",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "database_package_devdependencies",
-      "target": "database_package_devdependencies_vitest"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/prisma/seed-super-admin.ts",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "prisma_seed_super_admin",
-      "target": "prisma_seed_super_admin_adapter"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/prisma/seed-super-admin.ts",
-      "source_location": "L24",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "prisma_seed_super_admin",
-      "target": "prisma_seed_super_admin_main"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/prisma/seed-super-admin.ts",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "prisma_seed_super_admin",
-      "target": "prisma_seed_super_admin_pool"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/prisma/seed-super-admin.ts",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "prisma_seed_super_admin",
-      "target": "prisma_seed_super_admin_prisma"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/prisma/seed-super-admin.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "prisma_seed_super_admin",
-      "target": "src_seed_super_admin"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/prisma/seed-super-admin.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "prisma_seed_super_admin",
-      "target": "src_seed_super_admin_seedsuperadmin"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "packages/database/prisma/seed-super-admin.ts",
-      "source_location": "L25",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "prisma_seed_super_admin_main",
-      "target": "src_seed_super_admin_seedsuperadmin"
     },
     {
       "relation": "contains",
@@ -58271,466 +58762,6 @@
       "confidence_score": 1.0,
       "source": "scripts_dev",
       "target": "scripts_dev_waitforurl"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo",
-      "target": "turbo_globalenv"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo",
-      "target": "turbo_schema"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo",
-      "target": "turbo_tasks"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo",
-      "target": "turbo_ui"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks",
-      "target": "turbo_tasks_build"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L39",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks",
-      "target": "turbo_tasks_check_types"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L48",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks",
-      "target": "turbo_tasks_db_deploy"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L42",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks",
-      "target": "turbo_tasks_db_generate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L45",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks",
-      "target": "turbo_tasks_db_migrate"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L51",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks",
-      "target": "turbo_tasks_db_seed"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L55",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks",
-      "target": "turbo_tasks_db_seed_super_admin"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks",
-      "target": "turbo_tasks_dev"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L16",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks",
-      "target": "turbo_tasks_dev_worker"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L60",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks",
-      "target": "turbo_tasks_gen_queries"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L21",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks",
-      "target": "turbo_tasks_lint"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L24",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks",
-      "target": "turbo_tasks_test"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L35",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks",
-      "target": "turbo_tasks_test_e2e"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L31",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks",
-      "target": "turbo_tasks_test_integration"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L27",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks",
-      "target": "turbo_tasks_test_watch"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_build",
-      "target": "turbo_build_dependson"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_build",
-      "target": "turbo_build_inputs"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_build",
-      "target": "turbo_build_outputs"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_dev",
-      "target": "turbo_dev_cache"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_dev",
-      "target": "turbo_dev_dependson"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_dev",
-      "target": "turbo_dev_persistent"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L18",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_dev_worker",
-      "target": "turbo_dev_worker_cache"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_dev_worker",
-      "target": "turbo_dev_worker_dependson"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_dev_worker",
-      "target": "turbo_dev_worker_persistent"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L22",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_lint",
-      "target": "turbo_lint_dependson"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L25",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_test",
-      "target": "turbo_test_inputs"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L28",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_test_watch",
-      "target": "turbo_test_watch_cache"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L29",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_test_watch",
-      "target": "turbo_test_watch_persistent"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_test_integration",
-      "target": "turbo_test_integration_cache"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L32",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_test_integration",
-      "target": "turbo_test_integration_dependson"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L37",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_test_e2e",
-      "target": "turbo_test_e2e_cache"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L36",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_test_e2e",
-      "target": "turbo_test_e2e_dependson"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L40",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_check_types",
-      "target": "turbo_check_types_dependson"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L43",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_db_generate",
-      "target": "turbo_db_generate_cache"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L46",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_db_migrate",
-      "target": "turbo_db_migrate_cache"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L49",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_db_deploy",
-      "target": "turbo_db_deploy_cache"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L53",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_db_seed",
-      "target": "turbo_db_seed_cache"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L52",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_db_seed",
-      "target": "turbo_db_seed_dependson"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L58",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_db_seed_super_admin",
-      "target": "turbo_db_seed_super_admin_cache"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L56",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_db_seed_super_admin",
-      "target": "turbo_db_seed_super_admin_dependson"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L57",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_db_seed_super_admin",
-      "target": "turbo_db_seed_super_admin_env"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "turbo.json",
-      "source_location": "L61",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "turbo_tasks_gen_queries",
-      "target": "turbo_gen_queries_cache"
     },
     {
       "relation": "contains",
@@ -71756,5 +71787,5 @@
       "source_file": "_docker/docker-compose.prod.yml"
     }
   ],
-  "built_at_commit": "16b0a1b360bde07744f17f766f642fa6f75f786a"
+  "built_at_commit": "3c0d92fd05b3847c46e7d54b1004202319963c02"
 }
