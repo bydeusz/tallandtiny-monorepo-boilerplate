@@ -112,8 +112,12 @@ describe("Auth (e2e)", () => {
     });
     expect(meRes.status).toBe(200);
 
-    const meBody = (await meRes.json()) as { data: { email: string } };
+    const meBody = (await meRes.json()) as {
+      data: { email: string; role: string };
+    };
     expect(meBody.data.email).toBe("lisa.visser@bydeusz.com");
+    // The role is exposed through /me so the dashboard can gate on SUPER_ADMIN.
+    expect(meBody.data.role).toBe("USER");
   });
 
   it("rejects /me without a token → 401", async () => {

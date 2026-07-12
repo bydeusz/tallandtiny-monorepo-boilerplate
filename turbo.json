@@ -52,6 +52,11 @@
       "dependsOn": ["db:generate"],
       "cache": false
     },
+    "db:seed:super-admin": {
+      "dependsOn": ["db:generate"],
+      "env": ["SUPER_ADMIN_EMAIL", "SUPER_ADMIN_PASSWORD"],
+      "cache": false
+    },
     "gen:queries": {
       "cache": false
     }

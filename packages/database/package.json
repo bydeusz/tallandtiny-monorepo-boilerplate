@@ -16,10 +16,12 @@
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:seed": "prisma db seed",
+    "db:seed:super-admin": "tsx prisma/seed-super-admin.ts",
     "db:studio": "prisma studio",
     "dev": "prisma studio --browser none --port 5555",
     "build": "tsc",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.0.0",
@@ -28,12 +30,14 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
+    "@repo/vitest-config": "workspace:*",
     "@types/bcrypt": "^6.0.0",
     "@types/pg": "^8.11.0",
     "bcrypt": "^6.0.0",
     "dotenv": "^16.4.0",
     "prisma": "^7.0.0",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.0"
+    "typescript": "^5.9.0",
+    "vitest": "^4.1.9"
   }
 }
