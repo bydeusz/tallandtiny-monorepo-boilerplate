@@ -1,15 +1,15 @@
 ---
 name: start-ticket
-description: "Use when the user names a specific ticket from the Trello board they want to pick up and start building — it loads that card, records this Claude chat on it, moves it to the To Do column, and sets up an isolated workspace (git worktree or branch) ready to develop in. Triggers on /project:start-ticket <ticket>, \"pak ticket <naam> op\", \"start met ticket <naam>\", \"pull ticket <naam>\"."
+description: "Use when the user names a specific ticket from the Trello board they want to pick up and start building — it loads that card, records this Claude chat on it, moves it to the To Do column, and sets up a branch (or hands off to superpowers for an isolated worktree) ready to develop in. Triggers on /project:start-ticket <ticket>, \"pak ticket <naam> op\", \"start met ticket <naam>\", \"pull ticket <naam>\"."
 ---
 
 # /project:start-ticket
 
-Get a **named** ticket ready to build: load the card, stamp this Claude chat onto it, move it from Backlog to **To Do**, and create an isolated workspace (a git worktree or a branch) on `develop`. Then hand off to development.
+Get a **named** ticket ready to build: load the card, stamp this Claude chat onto it, move it from Backlog to **To Do**, and get it into an isolated dev workspace on `develop`. Then hand off to development.
 
 ## Core principle
 
-**This skill gets a ticket ready to build and then hands off — it does not prescribe how you develop.** How you build (TDD, plugin workflows, plain coding) is the developer's choice and depends on their toolchain. What this skill guarantees is a clean starting point: the right card in To Do, this chat linked on it, and a fresh workspace on `develop`. The ticket's acceptance criteria (story) or expected behaviour (bug) are the spec you hand over.
+**This skill gets a ticket ready to build and then hands off — it does not run the development itself.** It guarantees a clean starting point: the right card in **To Do**, this chat linked on it, and either a fresh `feat/`/`fix/` branch on `develop` **or** a clean hand-off to superpowers (which brainstorms, plans, and sets up its own worktree). It doesn't dictate your coding methodology — but when you hand off to superpowers, its **spec (brainstorming)** and **plan (writing-plans)** phases are part of that flow and must not be skipped just because the ticket is well-written.
 
 ## Companion skill
 
@@ -47,17 +47,18 @@ Move the card out of Backlog into the **To Do** column via `mcp__trello__get_lis
 - If nothing matches (or several do), show the lists and ask which column means "in progress".
 - `mcp__trello__move_card` → `cardId`, `idList` = To Do list id, `pos: "top"`.
 
-### 5. Create the workspace — worktree or branch
-First derive the name: slug the ticket title (kebab-case, ascii, short) and prefix by type — **story → `feat/<slug>`**, **bug → `fix/<slug>`**. Base is always `develop`.
+### 5. Set up the workspace — branch, or leave it to superpowers
+Detect whether the **superpowers** plugin is installed: its `superpowers:*` skills are available to you this session, or `~/.claude/plugins/` contains a `superpowers` entry. Then:
 
-**Choose worktree vs. branch by whether the superpowers plugin is installed.** You can tell from your own environment: superpowers is present if its `superpowers:*` skills are available to you this session (or `~/.claude/plugins/` contains a `superpowers` entry). Check, then:
-- **superpowers installed → create a git worktree.** Its development workflow expects an isolated worktree, so give it one: create a worktree on a new branch `<prefix>/<slug>` based on `develop` (e.g. `git worktree add <path> -b <prefix>/<slug> develop`, or the harness's worktree tool). Report the worktree path.
-- **superpowers not installed → create a plain branch.** If the working tree is dirty, tell the user and ask before switching. `git checkout develop` → (pull if a remote is configured) → `git checkout -b <prefix>/<slug>`.
+- **superpowers installed → do NOT create a branch or worktree here.** Leave the workspace to superpowers: its flow brainstorms and plans first, then creates and names its **own** isolated worktree via `superpowers:using-git-worktrees` (which prefers the native worktree tool). **Don't pre-create a `feat/…` worktree** — the `feat/`/`fix/` naming is only for the branch method below, and pre-creating one both fights superpowers' worktree tooling and forces a branch name it wouldn't choose. Go straight to step 6.
+- **superpowers not installed → create a plain branch.** Slug the ticket title (kebab-case, ascii, short) and prefix by type — **story → `feat/<slug>`**, **bug → `fix/<slug>`**. If the working tree is dirty, tell the user and ask before switching. `git checkout develop` → (pull if a remote is configured) → `git checkout -b <prefix>/<slug>`. *(The `feat/`/`fix/` prefix applies only to this branch method.)*
 
 ### 6. Hand off to development
-The ticket is now in **To Do**, this chat is stamped on the card, and the workspace is ready on `develop`. Report the concrete state back to the user — the card, the To Do list, and the worktree path or branch name — and hand off:
+The ticket is in **To Do** and this chat is stamped on the card. Report the concrete state — the card, the To Do list, and (if you created one) the branch name — then hand off:
 
-> Everything's set up. Build it however you work — if superpowers is installed, its development workflow takes over from here. The ticket's acceptance criteria (story) or expected behaviour (bug) are your spec.
+- **superpowers installed →** hand off *into the superpowers flow, starting at brainstorming*. Be explicit that it runs **`superpowers:brainstorming`** (turn the ticket into a spec) and then **`superpowers:writing-plans`** (the implementation plan) **before writing any code**, and that superpowers creates its own isolated worktree as part of that flow. **A thoroughly-written ticket is not a reason to skip brainstorming or planning** — the acceptance criteria are the *input* to brainstorming, not a substitute for it. For example:
+  > Card's in To Do and this chat is linked on it. Handing off to superpowers — start with brainstorming (spec), then writing-plans, even though the ticket is detailed: the acceptance criteria are the input to the spec, not a replacement for it. It sets up its own worktree and drives TDD from there.
+- **superpowers not installed →** the branch `<prefix>/<slug>` is ready on `develop`. Build it however you work; the ticket's acceptance criteria (story) or expected behaviour (bug) are your spec.
 
 This skill stops here. It does **not** write code, run tests, commit, or open a PR — that belongs to the developer's own flow.
 
@@ -71,8 +72,8 @@ This skill stops here. It does **not** write code, run tests, commit, or open a 
 | Session id | `echo "$CLAUDE_CODE_SESSION_ID"` | — |
 | Stamp chat on card | `mcp__trello__update_card` | `cardId`, `desc` (marker + original) |
 | Move to To Do | `mcp__trello__move_card` | `cardId`, `idList` (To Do), `pos: "top"` |
-| Workspace (superpowers) | `git worktree add <path> -b <prefix>/<slug> develop` | worktree on new branch |
-| Workspace (no superpowers) | `git checkout -b <prefix>/<slug>` | branch from `develop` |
+| Workspace — superpowers | *(none — hand off; superpowers brainstorms → plans → makes & names its own worktree)* | no `feat/`/`fix/` here |
+| Workspace — no superpowers | `git checkout -b feat/<slug>` (story) · `fix/<slug>` (bug) | branch from `develop` |
 
 **Credentials:** call the Trello tools *without* `apiKey`/`token` — the Claude.app harness injects them. Never ask the user for them.
 
@@ -81,5 +82,6 @@ This skill stops here. It does **not** write code, run tests, commit, or open a 
 - **Mutating before confirming the match.** A title match can be ambiguous; confirm the card before steps 3–5 touch Trello or git.
 - **Overwriting the description.** `update_card` replaces `desc` wholesale — always include the original body, only prepend the marker line (step 3).
 - **Stacking chat markers.** Replace an existing `> 🔗 Dev-chat:` line; don't add a second (step 3).
-- **Ignoring superpowers when choosing the workspace.** Worktree if superpowers is installed, plain branch if not — don't default to a branch without checking (step 5).
-- **Prescribing how to develop.** This skill hands off after workspace setup; it does not drive TDD, write code, commit, or open a PR. The developer (or their plugin workflow) owns that.
+- **Putting `feat/`/`fix/` on a worktree.** That prefix is only for the plain-branch method (no superpowers). With superpowers, don't create or name a worktree yourself — hand off and let superpowers create and name its own (step 5).
+- **Skipping brainstorming/planning because the ticket is detailed.** A well-written ticket is the *input* to superpowers' brainstorming (spec) and writing-plans, not a replacement — route the hand-off into those phases; don't jump straight to coding (step 6).
+- **Doing the development yourself.** This skill hands off; it does not write code, run tests, commit, or open a PR. It routes the hand-off into superpowers' brainstorming/planning, but the building itself is the developer's flow.
