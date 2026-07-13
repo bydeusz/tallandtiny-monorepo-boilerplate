@@ -56,10 +56,10 @@ module.exports = {
       name: 'no-cross-module-internals',
       severity: 'error',
       comment:
-        "Modules communicate only through their public surface (*.module.ts / *.service.ts / index.ts). Do not reach into another module's internals (dto / interfaces / constants). Promote anything shared to src/common.",
+        "Do not reach into another module's dto / interfaces — those are internal shapes; promote anything shared to src/common. (Shared contract constants under constants/ are allowed: they are a leaf public contract that must be imported directly to avoid module cycles, e.g. queue job names.)",
       from: { path: 'apps/api/src/modules/([^/]+)/' },
       to: {
-        path: 'apps/api/src/modules/[^/]+/(?:dto|interfaces|constants)/',
+        path: 'apps/api/src/modules/[^/]+/(?:dto|interfaces)/',
         pathNot: 'apps/api/src/modules/$1/',
       },
     },

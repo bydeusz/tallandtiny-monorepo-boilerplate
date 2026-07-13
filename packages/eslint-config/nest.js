@@ -8,11 +8,11 @@ import { baseConfig } from './base.js';
 
 // PII / secret patterns to catch directly in source (gitleaks covers runtime
 // secret-scanning in the hooks; this catches hard-coded PII in the code itself).
-// Tune these if they get noisy on example/fixture data.
+// Email is intentionally omitted: it fires on Swagger examples / fixtures rather
+// than real secrets, and gitleaks + entropy already cover leaked credentials.
 const piiRegexes = {
   'Dutch BSN (9 digits)': '\\b\\d{9}\\b',
   IBAN: '\\b[A-Z]{2}\\d{2}[A-Z0-9]{11,30}\\b',
-  'Email address': '\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\b',
 };
 
 // nestjs-typed's flat recommended config brings its own parser + rules but does
@@ -80,8 +80,22 @@ export const nestConfig = [
       ],
       'nestjs-security/require-class-validator': 'error',
       'nestjs-security/no-exposed-private-fields': 'error',
-      'nestjs-security/no-exposed-debug-endpoints': 'error',
+      // Heuristic that only matched non-endpoints (config / env / logger) and the
+      // intentionally-public health controller here — off to avoid pure noise.
+      'nestjs-security/no-exposed-debug-endpoints': 'off',
     },
+  },
+  // Response / output DTOs take no user input, so they need no class-validator
+  // decorators. Keep require-class-validator scoped to request DTOs.
+  {
+    files: ['**/*-response.dto.ts', 'src/common/dto/**'],
+    rules: { 'nestjs-security/require-class-validator': 'off' },
+  },
+  // Auth DTOs legitimately carry password / token fields (credentials in, tokens
+  // out); no-exposed-private-fields would only false-positive on them.
+  {
+    files: ['src/modules/auth/dto/**'],
+    rules: { 'nestjs-security/no-exposed-private-fields': 'off' },
   },
 
   // eslint-plugin-security — generic Node security floor.
