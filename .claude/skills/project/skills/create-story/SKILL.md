@@ -83,7 +83,7 @@ Show the full ticket in the chat: **title**, **body (rendered)**, **target board
 `mcp__trello__create_card` with:
 - `name` = ticket title
 - `idList` = the Backlog list `id` from step 6
-- `desc` = the markdown body
+- `desc` = the markdown body. **The body field is `desc`, NOT `description`.** `create_card` silently ignores a `description` argument and posts an **empty card** — only `desc` fills the body. Never pass `description`.
 - `idLabels` = `[<label id>]` — the blue label for a story, the red label for a bug (from step 6). Omit only if no matching colour exists and the user approved posting without one.
 - `pos` = `"top"` (newest on top of the backlog)
 
@@ -152,7 +152,7 @@ Dispatch read-only agents. All four research/review agents report findings back 
 | Find board | `mcp__trello__list_boards` | `filter: "open"` |
 | Find Backlog list | `mcp__trello__get_lists` | `boardId` |
 | Find story/bug label | `mcp__trello__trello_get_board_labels` | `boardId` → match `color` blue/red |
-| Create ticket | `mcp__trello__create_card` | `name`, `idList`, `desc`, `idLabels`, `pos: "top"` |
+| Create ticket | `mcp__trello__create_card` | `name`, `idList`, `desc` (body — **not** `description`), `idLabels`, `pos: "top"` |
 
 **Credentials:** call these tools *without* `apiKey`/`token`. The Claude.app harness injects them automatically. (Their schema marks them `required`, but omitting them works — never ask the user for them.)
 
@@ -161,6 +161,7 @@ Dispatch read-only agents. All four research/review agents report findings back 
 - **Researching in your own context instead of dispatching the three agents.** Step 2 fans out to three read-only subagents in parallel; doing it inline defeats the point and produces shallower research.
 - **Skipping the review agent.** Step 5 is mandatory — it is what catches duplicate work (a new route/service when one already exists) before it reaches the board.
 - **Letting a subagent create the card or edit the ticket.** Research and review agents only report back. You write the ticket; you post it after approval.
+- **Passing `description` instead of `desc`.** `create_card`'s body field is **`desc`**; a `description` argument is silently ignored and posts an **empty card**. Always use `desc` (step 8).
 - **Writing the ticket before the agents return.** A ticket without real file references from Agent 1 is incomplete.
 - **Reaching for new code first.** Default to reusing/extending existing endpoints and flows; propose new code only after Agent 1 shows why reuse won't work.
 - **Skipping the security/AVG pass.** Every ticket carries the **Beveiliging & AVG** section (Agent 3) — even when the conclusion is "no special impact".
