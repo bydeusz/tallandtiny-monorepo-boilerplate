@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { VerifyEmailForm } from "@/components/forms/verify-email-form";
+import { VerifyEmailForm } from "@repo/auth/components";
 
 export const metadata: Metadata = { title: "Verify email — Tall & Tiny" };
 

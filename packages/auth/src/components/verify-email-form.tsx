@@ -13,8 +13,8 @@ import {
   AlertDescription,
 } from "@repo/ui/molecules";
 
-import { TextField } from "@/components/forms/text-field";
-import { OtpField } from "@/components/forms/otp-field";
+import { TextField } from "./text-field";
+import { OtpField } from "./otp-field";
 
 type VerifyEmailFormProps = {
   email: string;

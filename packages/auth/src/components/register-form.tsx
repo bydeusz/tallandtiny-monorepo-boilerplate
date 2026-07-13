@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
 
-import { useAuth } from "@repo/auth";
+import { useAuthRegister, extractErrorMessage } from "@repo/queries";
 import { Button } from "@repo/ui/atoms";
 import {
   Alert,
@@ -14,48 +14,50 @@ import {
   AlertDescription,
 } from "@repo/ui/molecules";
 
-import { TextField } from "@/components/forms/text-field";
-import { PasswordField } from "@/components/forms/password-field";
+import { TextField } from "./text-field";
+import { PasswordField } from "./password-field";
 
-export function LoginForm() {
+export function RegisterForm() {
   const router = useRouter();
-  const { login } = useAuth();
-  const t = useTranslations("auth.login");
+  const t = useTranslations("auth.register.form");
 
+  const [firstname, setFirstname] = useState("");
+  const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function getErrorMessage(errorCode: string): string {
-    switch (errorCode) {
-      case "MissingCredentials":
-        return t("errors.missingCredentials");
-      case "UserNotFound":
-        return t("errors.userNotFound");
-      case "InvalidCredentials":
-        return t("errors.invalidPassword");
-      case "EmailNotVerified":
-        return t("errors.emailNotVerified");
-      case "PasswordResetRequired":
-        return t("errors.passwordResetRequired");
-      default:
-        return t("errors.default");
-    }
-  }
+  const { mutateAsync: register } = useAuthRegister();
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsSubmitting(true);
     setError("");
 
+    if (password.length < 8) {
+      setError(t("errors.passwordLength"));
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      await login({ email, password });
-      router.push("/");
-      router.refresh();
+      await register({
+        data: {
+          email,
+          name: firstname,
+          surname,
+          password,
+        },
+      });
+
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem("registerEmail", email);
+      }
+
+      router.push("/register/confirm");
     } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "default";
-      setError(getErrorMessage(message));
+      setError(extractErrorMessage(err) ?? t("errors.default"));
     } finally {
       setIsSubmitting(false);
     }
@@ -70,11 +72,31 @@ export function LoginForm() {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <TextField
+          label={t("firstname")}
+          type="text"
+          name="firstname"
+          id="firstname"
+          placeholder={t("firstnamePlaceholder")}
+          value={firstname}
+          onChange={(e) => setFirstname(e.target.value)}
+        />
+
+        <TextField
+          label={t("surname")}
+          type="text"
+          name="surname"
+          id="surname"
+          placeholder={t("surnamePlaceholder")}
+          value={surname}
+          onChange={(e) => setSurname(e.target.value)}
+        />
+
+        <TextField
           label={t("email")}
           type="email"
           name="email"
           id="email"
-          placeholder="john@doe.com"
+          placeholder={t("emailPlaceholder")}
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -89,27 +111,18 @@ export function LoginForm() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <div className="flex items-center justify-between">
-          <Link
-            href="/reset-password"
-            className="text-muted-foreground hover:text-foreground text-sm underline-offset-4 hover:underline"
-          >
-            {t("forgotPassword")}
-          </Link>
-        </div>
-
         <Button type="submit" className="w-full" disabled={isSubmitting}>
           {isSubmitting && <Loader2 className="mr-2 size-4 animate-spin" />}
-          {t("signIn")}
+          {t("signUp")}
         </Button>
 
         <div className="flex items-center gap-1 text-xs">
           <span className="text-muted-foreground">{t("alreadyHaveAccount")}</span>
           <Link
-            href="/register"
+            href="/login"
             className="text-foreground font-medium underline-offset-4 hover:underline"
           >
-            {t("noAccount")}
+            {t("signIn")}
           </Link>
         </div>
 

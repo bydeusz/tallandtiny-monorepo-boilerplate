@@ -14,7 +14,7 @@ import {
   CardTitle,
 } from "@repo/ui/molecules";
 import { Button } from "@repo/ui/atoms";
-import { PasswordField } from "@/components/forms/password-field";
+import { PasswordField } from "@repo/auth/components";
 
 export function UpdatePassword() {
   const t = useTranslations("forms.user-password");

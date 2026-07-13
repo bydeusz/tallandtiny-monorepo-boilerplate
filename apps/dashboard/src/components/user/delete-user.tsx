@@ -28,7 +28,7 @@ import {
   Skeleton,
 } from "@repo/ui/atoms";
 
-import { TextField } from "@/components/forms/text-field";
+import { TextField } from "@repo/auth/components";
 
 export function DeleteUser() {
   const formT = useTranslations("forms.user-delete");

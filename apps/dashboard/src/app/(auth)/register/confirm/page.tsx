@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { RegisterConfirmForm } from "@/components/forms/register-confirm-form";
+import { RegisterConfirmForm } from "@repo/auth/components";
 
 export const metadata: Metadata = { title: "Confirm your email — Tall & Tiny" };
 

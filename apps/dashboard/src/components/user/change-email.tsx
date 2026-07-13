@@ -13,7 +13,7 @@ import {
   CardTitle,
 } from "@repo/ui/molecules";
 import { Button } from "@repo/ui/atoms";
-import { TextField } from "@/components/forms/text-field";
+import { TextField } from "@repo/auth/components";
 
 export function ChangeEmail() {
   const t = useTranslations("forms.user-email");

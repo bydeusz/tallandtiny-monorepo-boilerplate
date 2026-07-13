@@ -13,7 +13,7 @@ import {
   AlertDescription,
 } from "@repo/ui/molecules";
 
-import { TextField } from "@/components/forms/text-field";
+import { TextField } from "./text-field";
 
 export function ResetPasswordForm() {
   const t = useTranslations("auth.reset");

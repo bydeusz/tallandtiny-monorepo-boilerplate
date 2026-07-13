@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { PasswordForm } from "@/components/forms/password-form";
+import { PasswordForm } from "@repo/auth/components";
 
 export const metadata: Metadata = { title: "Set new password — Tall & Tiny" };
 

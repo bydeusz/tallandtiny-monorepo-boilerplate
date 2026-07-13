@@ -13,8 +13,8 @@ import {
   AlertDescription,
 } from "@repo/ui/molecules";
 
-import { TextField } from "@/components/forms/text-field";
-import { PasswordField } from "@/components/forms/password-field";
+import { TextField } from "./text-field";
+import { PasswordField } from "./password-field";
 
 interface PasswordFormProps {
   email: string;
