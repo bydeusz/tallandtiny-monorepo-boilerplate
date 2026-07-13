@@ -27,6 +27,7 @@
     "docker:prod:logs": "docker compose -f _docker/docker-compose.prod.yml logs -f api"
   },
   "devDependencies": {
+    "dependency-cruiser": "^18.1.0",
     "prettier": "^3.4.2",
     "turbo": "^2.5.0",
     "typescript": "^5.9.0"
@@ -35,6 +36,10 @@
     "node": ">=22.12"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["@prisma/engines", "prisma", "bcrypt"]
+    "onlyBuiltDependencies": [
+      "@prisma/engines",
+      "prisma",
+      "bcrypt"
+    ]
   }
 }

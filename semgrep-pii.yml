@@ -1,0 +1,41 @@
+# Custom Semgrep rules — PII / secrets in logs ("leaky logs").
+# Based on the official Semgrep leaky-logs pattern:
+# https://semgrep.dev/blog/2020/fixing-leaky-logs-how-to-find-a-bug-and-ensure-it-never-returns/
+#
+# Flags console.* and Logger-style calls whose arguments reference sensitive
+# data (passwords, tokens, secrets, e-mail, BSN, IBAN, API keys). Runs in the
+# Stop hook alongside `p/default`. Tune the keyword regex below if it is noisy.
+rules:
+  - id: leaky-logs-sensitive-data
+    languages: [typescript, javascript]
+    severity: ERROR
+    message: >-
+      Possible sensitive data (password/token/secret/email/bsn/iban/apikey)
+      passed to a log call. Do not log PII or credentials — redact or drop the
+      field before logging.
+    metadata:
+      category: security
+      confidence: MEDIUM
+      references:
+        - https://semgrep.dev/blog/2020/fixing-leaky-logs-how-to-find-a-bug-and-ensure-it-never-returns/
+    patterns:
+      - pattern-either:
+          # Direct console.* logging
+          - pattern: console.log(..., $ARG, ...)
+          - pattern: console.error(..., $ARG, ...)
+          - pattern: console.warn(..., $ARG, ...)
+          - pattern: console.info(..., $ARG, ...)
+          - pattern: console.debug(..., $ARG, ...)
+          # NestJS Logger / nestjs-pino / any `logger.<level>(...)` call
+          - pattern: $LOGGER.log(..., $ARG, ...)
+          - pattern: $LOGGER.error(..., $ARG, ...)
+          - pattern: $LOGGER.warn(..., $ARG, ...)
+          - pattern: $LOGGER.debug(..., $ARG, ...)
+          - pattern: $LOGGER.verbose(..., $ARG, ...)
+          - pattern: $LOGGER.fatal(..., $ARG, ...)
+          - pattern: $LOGGER.info(..., $ARG, ...)
+      # $ARG is one of the call arguments; flag when its source text references
+      # a sensitive field name (case-insensitive).
+      - metavariable-regex:
+          metavariable: $ARG
+          regex: (?i).*(password|token|secret|email|bsn|iban|apikey).*
