@@ -50,6 +50,17 @@ export const nestConfig = [
   // @darraghor/eslint-plugin-nestjs-typed — providers are provided, DTO props
   // carry class-validator decorators, Swagger decorators match optionality.
   ...nestjsTypedRecommended,
+  // Recognise the project's custom paginated-response decorator so paginated
+  // endpoints satisfy api-method-should-specify-api-response.
+  {
+    files: ['src/**/*.ts'],
+    rules: {
+      '@darraghor/nestjs-typed/api-method-should-specify-api-response': [
+        'error',
+        { additionalCustomApiResponseDecorators: ['ApiPaginatedResponse'] },
+      ],
+    },
+  },
 
   // @trilon/eslint-plugin (Trilon's official plugin) — DI / decorator correctness
   // that the other plugins don't cover.

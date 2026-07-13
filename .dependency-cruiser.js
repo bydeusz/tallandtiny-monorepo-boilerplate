@@ -56,11 +56,11 @@ module.exports = {
       name: 'no-cross-module-internals',
       severity: 'error',
       comment:
-        "Do not reach into another module's dto / interfaces — those are internal shapes; promote anything shared to src/common. (Shared contract constants under constants/ are allowed: they are a leaf public contract that must be imported directly to avoid module cycles, e.g. queue job names.)",
+        "Do not reach into another module's request DTOs / interfaces — those are internal shapes; promote anything shared to src/common. Exceptions: *-response.dto.ts (a module's public output contract, which other modules may reference, e.g. a controller documenting the type it returns) and shared contract constants under constants/ (a leaf public contract imported directly to avoid module cycles, e.g. queue job names).",
       from: { path: 'apps/api/src/modules/([^/]+)/' },
       to: {
         path: 'apps/api/src/modules/[^/]+/(?:dto|interfaces)/',
-        pathNot: 'apps/api/src/modules/$1/',
+        pathNot: ['apps/api/src/modules/$1/', '-response\\.dto\\.ts$'],
       },
     },
   ],

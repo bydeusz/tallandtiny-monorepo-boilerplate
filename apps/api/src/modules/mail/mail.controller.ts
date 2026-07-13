@@ -16,6 +16,7 @@ import {
   ApiBearerAuth,
   ApiBody,
   ApiConsumes,
+  ApiOkResponse,
   ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
@@ -45,6 +46,7 @@ export class MailController {
   ) {}
 
   @ApiOperation({ operationId: 'MailContactSupport' })
+  @ApiOkResponse({ type: MessageResponseDto })
   @Post('contact')
   @HttpCode(HttpStatus.OK)
   @UseInterceptors(FileInterceptor('attachment'))
