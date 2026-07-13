@@ -11,6 +11,17 @@ Verify a ticket that was built (via `/project:start-ticket`) end-to-end in a rea
 
 **A criterion is green only when the browser actually proves it — and you never drive the browser or fix code yourself.** The ticket's acceptance criteria plus its **Beveiliging & AVG** section are the spec. You orchestrate a small team, in sequence: a **scenario-writer** writes the scenarios to a file, the engineer reads and approves them, a **runner** executes them and reports green/red, and a **fixer** repairs the code behind each red. Then you re-run the reds and loop until every scenario is green. A small ticket is not an excuse to collapse this into inline work — that is exactly the shortcut to resist.
 
+## When to use this — and when not
+
+**This skill proves criteria through a *real browser*, so it only fits work whose acceptance criteria are browser-observable.** That — not "frontend vs backend" — is the test.
+
+- **Use it** when the criterion can be shown in a browser:
+  - **frontend** work — UI, forms, validation, navigation, redirects, error messages;
+  - **backend** work whose effect surfaces *through* the UI — login and auth, route-guards, session/cookie behaviour, an endpoint the frontend calls, or a token-flow you can complete end-to-end (create an account → read the minted token from the DB / Prisma Studio → continue; see step 4).
+- **Don't use it** for changes with **no browser-observable effect** — an internal refactor, a queue worker, a cron job, a data migration, a service-to-service API with no UI in front of it. A browser proves nothing there, and forcing a scenario onto it only invites pretend-green. Those belong in **Vitest** unit/integration tests (`@repo/vitest-config`), not here.
+
+**Rule of thumb:** can you prove the criterion by *doing something in a browser and observing the result*? Yes → this skill. If the proof lives only in code, DB state, or an API response with no UI path → a unit/integration test. When a ticket mixes both, verify the browser-observable parts here and leave the rest to Vitest — and say which parts you did **not** cover in the report (step 9).
+
 ## Companion skills
 
 `/project:create-story` files the ticket (with acceptance criteria + **Beveiliging & AVG**); `/project:start-ticket` builds it and moves the card **Backlog → To Do**; this one verifies it and moves the card **To Do → Testing**. Same board and card — resolve them the way `start-ticket` does.
