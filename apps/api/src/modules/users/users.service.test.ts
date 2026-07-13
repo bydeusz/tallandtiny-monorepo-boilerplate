@@ -20,8 +20,8 @@ const fullUser = {
   updatedAt: new Date('2026-01-01'),
 } as const;
 
-// A findUnique mock that honours the `select` argument, so the test genuinely
-// exercises whether `role` is part of the service's select projection.
+// A findUnique mock that honours the `select` argument, so the tests genuinely
+// exercise which fields each service method projects (in particular `role`).
 function projectBySelect(args: {
   select?: Record<string, boolean>;
 }): Record<string, unknown> {
@@ -53,16 +53,22 @@ function buildService() {
   return { service, prisma };
 }
 
-describe('UsersService — role is exposed via findOne (/auth/me)', () => {
+describe('UsersService — role exposure', () => {
   let h: ReturnType<typeof buildService>;
 
   beforeEach(() => {
     h = buildService();
   });
 
-  it('returns the role for the requested user', async () => {
-    const result = await h.service.findOne('user-1');
+  it('exposes the role for the current user (/auth/me)', async () => {
+    const result = await h.service.findCurrentUser('user-1');
 
     expect(result.role).toBe(Role.SUPER_ADMIN);
+  });
+
+  it('does NOT leak the role through findOne (shared /users/:id endpoint)', async () => {
+    const result = await h.service.findOne('user-1');
+
+    expect(result).not.toHaveProperty('role');
   });
 });

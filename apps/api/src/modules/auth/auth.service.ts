@@ -20,7 +20,7 @@ import {
 import { PrismaService } from '../../prisma/prisma.service';
 import { MAIL_JOB_SEND, QueueService } from '../queue';
 import { UsersService } from '../users/users.service';
-import { UserResponseDto } from '../users/dto';
+import { CurrentUserResponseDto } from '../users/dto';
 import {
   AuthTokensResponseDto,
   LoginDto,
@@ -347,8 +347,8 @@ export class AuthService {
     return { message: 'Password has been reset successfully.' };
   }
 
-  getCurrentUser(userId: string): Promise<UserResponseDto> {
-    return this.usersService.findOne(userId);
+  getCurrentUser(userId: string): Promise<CurrentUserResponseDto> {
+    return this.usersService.findCurrentUser(userId);
   }
 
   async requestEmailChange(

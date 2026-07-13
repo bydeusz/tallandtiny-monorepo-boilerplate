@@ -7,14 +7,17 @@ import { PaginatedResult } from '../../common/interfaces';
 import { buildPaginationMeta, buildPrismaSkipTake } from '../../common/utils';
 import { StorageService } from '../storage';
 import { PrismaService } from '../../prisma/prisma.service';
-import { UpdateUserDto, UserResponseDto } from './dto';
+import {
+  CurrentUserResponseDto,
+  UpdateUserDto,
+  UserResponseDto,
+} from './dto';
 
 const userPublicSelect = {
   id: true,
   name: true,
   surname: true,
   email: true,
-  role: true,
   isActive: true,
   avatarUrl: true,
   address: true,
@@ -27,6 +30,14 @@ const userPublicSelect = {
   updatedAt: true,
 } satisfies Prisma.UserSelect;
 type UserPublic = Prisma.UserGetPayload<{ select: typeof userPublicSelect }>;
+
+// The platform role is only exposed for the *current* user (via /auth/me), not
+// through the shared user list/detail endpoints — those stay gated to the super
+// admin in a later story, and must not leak who the super admins are.
+const currentUserSelect = {
+  ...userPublicSelect,
+  role: true,
+} satisfies Prisma.UserSelect;
 
 @Injectable()
 export class UsersService {
@@ -76,6 +87,20 @@ export class UsersService {
     }
 
     return this.toUserResponseDto(user);
+  }
+
+  async findCurrentUser(id: string): Promise<CurrentUserResponseDto> {
+    const user = await this.prisma.user.findUnique({
+      where: { id },
+      select: currentUserSelect,
+    });
+
+    if (!user) {
+      throw new NotFoundException('User not found.');
+    }
+
+    const avatarUrl = await this.resolveAssetUrl(user.avatarUrl);
+    return { ...user, avatarUrl };
   }
 
   findByEmail(email: string): Promise<User | null> {
