@@ -5,6 +5,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "node scripts/dev.mjs",
+    "dev:docs": "turbo run dev --filter=docs",
     "lint": "turbo run lint",
     "check-types": "turbo run check-types",
     "test": "turbo run test",
