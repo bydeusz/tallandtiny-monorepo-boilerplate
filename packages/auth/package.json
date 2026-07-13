@@ -5,7 +5,8 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./server": "./src/server.ts"
+    "./server": "./src/server.ts",
+    "./components": "./src/components/index.ts"
   },
   "scripts": {
     "check-types": "tsc --noEmit",
@@ -13,7 +14,9 @@
   },
   "dependencies": {
     "@repo/queries": "workspace:*",
-    "@tanstack/react-query-devtools": "^5.90.0"
+    "@repo/ui": "workspace:*",
+    "@tanstack/react-query-devtools": "^5.90.0",
+    "lucide-react": "^0.468.0"
   },
   "peerDependencies": {
     "@tanstack/react-query": "^5.62.0",
@@ -26,10 +29,12 @@
     "@repo/typescript-config": "workspace:*",
     "@repo/vitest-config": "workspace:*",
     "@tanstack/react-query": "^5.62.0",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^22.10.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "lucide-react": "^0.468.0",
+    "jsdom": "^29.1.1",
     "next": "^16.0.0",
     "next-intl": "^4.8.3",
     "react": "^19.0.0",

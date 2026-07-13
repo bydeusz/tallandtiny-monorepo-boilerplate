@@ -1,3 +1,3 @@
-import { node } from "@repo/vitest-config/node";
+import { react } from "@repo/vitest-config/react";
 
-export default node();
+export default react();

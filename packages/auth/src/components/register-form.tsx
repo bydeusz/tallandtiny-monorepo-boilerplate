@@ -14,10 +14,14 @@ import {
   AlertDescription,
 } from "@repo/ui/molecules";
 
-import { TextField } from "@/components/forms/text-field";
-import { PasswordField } from "@/components/forms/password-field";
+import { TextField } from "./text-field";
+import { PasswordField } from "./password-field";
 
-export function RegisterForm() {
+type RegisterFormProps = {
+  loginHref?: string;
+};
+
+export function RegisterForm({ loginHref = "/login" }: RegisterFormProps = {}) {
   const router = useRouter();
   const t = useTranslations("auth.register.form");
 
@@ -119,7 +123,7 @@ export function RegisterForm() {
         <div className="flex items-center gap-1 text-xs">
           <span className="text-muted-foreground">{t("alreadyHaveAccount")}</span>
           <Link
-            href="/login"
+            href={loginHref}
             className="text-foreground font-medium underline-offset-4 hover:underline"
           >
             {t("signIn")}

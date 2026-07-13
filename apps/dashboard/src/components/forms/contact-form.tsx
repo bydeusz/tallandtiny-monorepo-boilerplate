@@ -16,7 +16,7 @@ import {
 import { Button, Label, Textarea } from "@repo/ui/atoms";
 import { useToast } from "@repo/ui/hooks/use-toast";
 
-import { TextField } from "@/components/forms/text-field";
+import { TextField } from "@repo/auth/components";
 
 export function ContactForm() {
   const { user } = useAuth();

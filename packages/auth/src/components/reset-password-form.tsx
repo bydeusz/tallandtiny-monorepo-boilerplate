@@ -13,9 +13,13 @@ import {
   AlertDescription,
 } from "@repo/ui/molecules";
 
-import { TextField } from "@/components/forms/text-field";
+import { TextField } from "./text-field";
 
-export function ResetPasswordForm() {
+type ResetPasswordFormProps = {
+  loginHref?: string;
+};
+
+export function ResetPasswordForm({ loginHref = "/login" }: ResetPasswordFormProps = {}) {
   const t = useTranslations("auth.reset");
 
   const [email, setEmail] = useState("");
@@ -68,7 +72,7 @@ export function ResetPasswordForm() {
 
         <div className="flex items-center gap-1 text-xs">
           <Link
-            href="/login"
+            href={loginHref}
             className="text-muted-foreground hover:text-foreground text-sm underline-offset-4 hover:underline"
           >
             {t("login")}

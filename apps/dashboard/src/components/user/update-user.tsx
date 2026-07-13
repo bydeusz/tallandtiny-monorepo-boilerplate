@@ -18,7 +18,7 @@ import {
   CardTitle,
 } from "@repo/ui/molecules";
 import { Button } from "@repo/ui/atoms";
-import { TextField } from "@/components/forms/text-field";
+import { TextField } from "@repo/auth/components";
 
 export function UpdateUser() {
   const t = useTranslations("forms.user-update");

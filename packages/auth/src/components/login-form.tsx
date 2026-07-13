@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
 
-import { useAuth } from "@repo/auth";
+import { useAuth } from "../auth-provider";
 import { Button } from "@repo/ui/atoms";
 import {
   Alert,
@@ -14,10 +14,20 @@ import {
   AlertDescription,
 } from "@repo/ui/molecules";
 
-import { TextField } from "@/components/forms/text-field";
-import { PasswordField } from "@/components/forms/password-field";
+import { TextField } from "./text-field";
+import { PasswordField } from "./password-field";
 
-export function LoginForm() {
+type LoginFormProps = {
+  showRegister?: boolean;
+  registerHref?: string;
+  resetHref?: string;
+};
+
+export function LoginForm({
+  showRegister = true,
+  registerHref = "/register",
+  resetHref = "/reset-password",
+}: LoginFormProps = {}) {
   const router = useRouter();
   const { login } = useAuth();
   const t = useTranslations("auth.login");
@@ -91,7 +101,7 @@ export function LoginForm() {
 
         <div className="flex items-center justify-between">
           <Link
-            href="/reset-password"
+            href={resetHref}
             className="text-muted-foreground hover:text-foreground text-sm underline-offset-4 hover:underline"
           >
             {t("forgotPassword")}
@@ -103,15 +113,17 @@ export function LoginForm() {
           {t("signIn")}
         </Button>
 
-        <div className="flex items-center gap-1 text-xs">
-          <span className="text-muted-foreground">{t("alreadyHaveAccount")}</span>
-          <Link
-            href="/register"
-            className="text-foreground font-medium underline-offset-4 hover:underline"
-          >
-            {t("noAccount")}
-          </Link>
-        </div>
+        {showRegister && (
+          <div className="flex items-center gap-1 text-xs">
+            <span className="text-muted-foreground">{t("alreadyHaveAccount")}</span>
+            <Link
+              href={registerHref}
+              className="text-foreground font-medium underline-offset-4 hover:underline"
+            >
+              {t("noAccount")}
+            </Link>
+          </div>
+        )}
 
         {error && (
           <Alert variant="destructive">

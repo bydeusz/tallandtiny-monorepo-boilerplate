@@ -28,7 +28,7 @@ import {
   Button,
   Label,
 } from "@repo/ui/atoms";
-import { TextField } from "@/components/forms/text-field";
+import { TextField } from "@repo/auth/components";
 
 const COUNTRIES = ["NL", "BE", "DE"] as const;
 

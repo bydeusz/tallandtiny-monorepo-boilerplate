@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ResetPasswordForm } from "@/components/forms/reset-password-form";
+import { ResetPasswordForm } from "@repo/auth/components";
 
 export const metadata: Metadata = { title: "Reset password — Tall & Tiny" };
 
