@@ -24,5 +24,7 @@ describe("configuration via Nest ConfigService", () => {
 
     const config = moduleRef.get(ConfigService);
     expect(config.get<number>("port")).toBe(4567);
+
+    await moduleRef.close();
   });
 });

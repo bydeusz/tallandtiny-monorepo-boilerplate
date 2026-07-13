@@ -6,6 +6,7 @@ import { RegisterDto } from './register.dto';
 const pipe = new ValidationPipe({
   whitelist: true,
   forbidNonWhitelisted: true,
+  forbidUnknownValues: true,
   transform: true,
 });
 const meta: ArgumentMetadata = { type: 'body', metatype: RegisterDto, data: '' };
