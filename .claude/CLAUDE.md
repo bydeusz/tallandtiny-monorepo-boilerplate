@@ -13,3 +13,7 @@ When the user types `/project:start-ticket`, invoke the Skill tool with `skill: 
 # project:test-ticket
 - **test-ticket** (`.claude/skills/project/skills/test-ticket/SKILL.md`) - verify a built ticket end-to-end with the Playwright MCP: a scenario-writer, runner, and fixer agent loop the ticket's acceptance criteria to all-green. Trigger: `/project:test-ticket`
 When the user types `/project:test-ticket`, invoke the Skill tool with `skill: "project:test-ticket"` before doing anything else.
+
+# project:generate-docs
+- **generate-docs** (`.claude/skills/project/skills/generate-docs/SKILL.md`) - after building a feature, write a thorough Fumadocs page (how it works, usage, dependencies) into the docs app (apps/docs), grounded in the real code, and ship it as a draft PR. Trigger: `/project:generate-docs`
+When the user types `/project:generate-docs`, invoke the Skill tool with `skill: "project:generate-docs"` before doing anything else.
