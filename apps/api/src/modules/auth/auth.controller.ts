@@ -25,7 +25,7 @@ import {
   RequestNewPasswordDto,
   ResendActivationDto,
 } from './dto';
-import { UserResponseDto } from '../users/dto';
+import { CurrentUserResponseDto } from '../users/dto';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
@@ -145,7 +145,7 @@ export class AuthController {
   @ApiOperation({ operationId: 'AuthGetCurrentUser' })
   @Get('me')
   @HttpCode(HttpStatus.OK)
-  me(@CurrentUser('sub') userId: string): Promise<UserResponseDto> {
+  me(@CurrentUser('sub') userId: string): Promise<CurrentUserResponseDto> {
     return this.authService.getCurrentUser(userId);
   }
 

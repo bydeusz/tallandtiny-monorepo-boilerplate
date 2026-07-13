@@ -6,7 +6,7 @@ import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { createKeyv } from '@keyv/redis';
 import { GracefulShutdownService } from './common/services/graceful-shutdown.service';
-import { JwtAuthGuard } from './common/guards';
+import { JwtAuthGuard, RolesGuard } from './common/guards';
 import {
   RequestLoggingInterceptor,
   TransformInterceptor,
@@ -90,6 +90,10 @@ import { PrismaModule } from './prisma/prisma.module';
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
     },
     {
       provide: APP_FILTER,

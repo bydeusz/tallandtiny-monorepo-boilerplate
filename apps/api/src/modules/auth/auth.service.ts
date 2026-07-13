@@ -8,6 +8,7 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
+import { Role } from '@repo/database';
 import { createHmac, randomBytes, randomInt, randomUUID } from 'crypto';
 import ms, { StringValue } from 'ms';
 import {
@@ -19,7 +20,7 @@ import {
 import { PrismaService } from '../../prisma/prisma.service';
 import { MAIL_JOB_SEND, QueueService } from '../queue';
 import { UsersService } from '../users/users.service';
-import { UserResponseDto } from '../users/dto';
+import { CurrentUserResponseDto } from '../users/dto';
 import {
   AuthTokensResponseDto,
   LoginDto,
@@ -31,6 +32,7 @@ import { JwtPayload } from './interfaces/jwt-payload.interface';
 interface TokenUser {
   id: string;
   email: string;
+  role: Role;
 }
 
 @Injectable()
@@ -47,6 +49,7 @@ export class AuthService {
     const payload: JwtPayload = {
       sub: user.id,
       email: user.email,
+      role: user.role,
     };
     const refreshToken = await this.createAndStoreRefreshToken(user.id);
 
@@ -210,6 +213,7 @@ export class AuthService {
     return this.generateTokens({
       id: refreshTokenRecord.user.id,
       email: refreshTokenRecord.user.email,
+      role: refreshTokenRecord.user.role,
     });
   }
 
@@ -343,8 +347,8 @@ export class AuthService {
     return { message: 'Password has been reset successfully.' };
   }
 
-  getCurrentUser(userId: string): Promise<UserResponseDto> {
-    return this.usersService.findOne(userId);
+  getCurrentUser(userId: string): Promise<CurrentUserResponseDto> {
+    return this.usersService.findCurrentUser(userId);
   }
 
   async requestEmailChange(
