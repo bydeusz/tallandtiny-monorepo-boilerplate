@@ -18,9 +18,10 @@ import { OtpField } from "./otp-field";
 
 type VerifyEmailFormProps = {
   email: string;
+  loginHref?: string;
 };
 
-export function VerifyEmailForm({ email }: VerifyEmailFormProps) {
+export function VerifyEmailForm({ email, loginHref = "/login" }: VerifyEmailFormProps) {
   const t = useTranslations("auth.verify");
 
   const [code, setCode] = useState("");
@@ -62,7 +63,7 @@ export function VerifyEmailForm({ email }: VerifyEmailFormProps) {
           <AlertDescription>{t("success")}</AlertDescription>
         </Alert>
         <Link
-          href="/login"
+          href={loginHref}
           className="text-muted-foreground hover:text-foreground text-sm underline-offset-4 hover:underline"
         >
           {t("backToLogin")}
@@ -112,7 +113,7 @@ export function VerifyEmailForm({ email }: VerifyEmailFormProps) {
 
         <div className="flex items-center gap-1 text-xs">
           <Link
-            href="/login"
+            href={loginHref}
             className="text-muted-foreground hover:text-foreground text-sm underline-offset-4 hover:underline"
           >
             {t("backToLogin")}
