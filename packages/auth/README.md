@@ -15,8 +15,10 @@ consuming Next app transpiles it via `transpilePackages`.
 ## Wiring a new app
 
 1. **Dependency + transpile.** Add `"@repo/auth": "workspace:*"` to the app and
-   include `@repo/auth` in `transpilePackages` in `next.config.ts`. Provide the
-   peer deps: `next`, `next-intl`, `react`, `react-dom`, `@tanstack/react-query`.
+   include `@repo/auth` in `transpilePackages` in `next.config.ts`. The forms
+   render raw-TSX `@repo/ui` components and use `@repo/queries`, so transpile
+   those too (`transpilePackages: ["@repo/auth", "@repo/ui", "@repo/queries", "@repo/i18n"]`).
+   Provide the peer deps: `next`, `next-intl`, `react`, `react-dom`, `@tanstack/react-query`.
 
 2. **Providers.** Wrap the app in `QueryProvider` + `AuthProvider` from `@repo/auth`
    (and a `NextIntlClientProvider` — see i18n below).
