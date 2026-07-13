@@ -205,9 +205,9 @@
     "semantic_hash": "3fd933f29e6070ecd22b42702b1921f7"
   },
   "apps/api/src/modules/auth/auth.controller.ts": {
-    "mtime": 1783895103.5666347,
-    "ast_hash": "1258b470193c164f8facc926607580fc",
-    "semantic_hash": "1258b470193c164f8facc926607580fc"
+    "mtime": 1783937613.721812,
+    "ast_hash": "b6dcbe31f7f2000308d8d74770ccea46",
+    "semantic_hash": ""
   },
   "apps/api/src/modules/auth/auth.module.ts": {
     "mtime": 1783895103.5667274,
@@ -215,8 +215,8 @@
     "semantic_hash": "df94dd70346add89f2c50fa4b2cd428d"
   },
   "apps/api/src/modules/auth/auth.service.ts": {
-    "mtime": 1783896139.6980476,
-    "ast_hash": "2104f9c1086775da44838ab436967d27",
+    "mtime": 1783937609.7370083,
+    "ast_hash": "79a8eccf2d2fab3da75588d2157a4589",
     "semantic_hash": ""
   },
   "apps/api/src/modules/auth/dto/activate.dto.ts": {
@@ -430,9 +430,9 @@
     "semantic_hash": "fead4359a25181942354c3c627f358b6"
   },
   "apps/api/src/modules/users/dto/index.ts": {
-    "mtime": 1783895103.5718527,
-    "ast_hash": "f4e001d8eddafb688757db7bc8d13ff4",
-    "semantic_hash": "f4e001d8eddafb688757db7bc8d13ff4"
+    "mtime": 1783937593.299901,
+    "ast_hash": "468a82c56321f965b51f6717eeaf2b23",
+    "semantic_hash": ""
   },
   "apps/api/src/modules/users/dto/update-user.dto.ts": {
     "mtime": 1783895103.571925,
@@ -440,8 +440,8 @@
     "semantic_hash": "d032775ccb5908a065fce5a58876302c"
   },
   "apps/api/src/modules/users/dto/user-response.dto.ts": {
-    "mtime": 1783896324.0308177,
-    "ast_hash": "f2eec34e2ac08b3b83a297fac1cefdb1",
+    "mtime": 1783937586.2088814,
+    "ast_hash": "91abf0dceb0135ee218a0f5813ac5bfe",
     "semantic_hash": ""
   },
   "apps/api/src/modules/users/users.controller.ts": {
@@ -455,8 +455,8 @@
     "semantic_hash": "f3eb2901994d3dcf77b5bb6766f937aa"
   },
   "apps/api/src/modules/users/users.service.ts": {
-    "mtime": 1783896321.530387,
-    "ast_hash": "bea90bedbb49777c73e9e918e2be4f2d",
+    "mtime": 1783937579.641139,
+    "ast_hash": "f860c9c185de7db8cd95b02742e4d74e",
     "semantic_hash": ""
   },
   "apps/api/src/prisma/prisma.module.ts": {
@@ -2915,8 +2915,8 @@
     "semantic_hash": ""
   },
   "apps/api/src/modules/users/users.service.test.ts": {
-    "mtime": 1783896305.1139908,
-    "ast_hash": "12261f48bad1a6c74381a14ef87401d4",
+    "mtime": 1783937634.0106225,
+    "ast_hash": "2ef41ab652e324777ae33b34e924ae1a",
     "semantic_hash": ""
   },
   "apps/api/test/super-admin-seed.integration.test.ts": {
@@ -2947,6 +2947,11 @@
   "packages/database/prisma/create-superadmin.ts": {
     "mtime": 1783897952.856701,
     "ast_hash": "64fda6d356fb88c12e7c58f210bf5975",
+    "semantic_hash": ""
+  },
+  "apps/api/src/modules/users/dto/current-user-response.dto.ts": {
+    "mtime": 1783937589.7838225,
+    "ast_hash": "591b235c8cee6283c638d4e438cbd6c2",
     "semantic_hash": ""
   }
 }
