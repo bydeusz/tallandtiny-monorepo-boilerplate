@@ -19,7 +19,7 @@ When the user types `/project:test-ticket`, invoke the Skill tool with `skill: "
 When the user types `/project:generate-docs`, invoke the Skill tool with `skill: "project:generate-docs"` before doing anything else.
 
 # project:update-docs
-- **update-docs** (`.claude/skills/project/skills/update-docs/SKILL.md`) - reconcile existing Fumadocs pages with code that has since drifted: audit every page, re-verify each claim against current code (grounding in reverse), patch only the stale spans in place (both language siblings in lockstep, `last-updated` bumped on changed pages only), defer undocumented features to generate-docs, and ship the diffs as a draft PR. Trigger: `/project:update-docs`
+- **update-docs** (`.claude/skills/project/skills/update-docs/SKILL.md`) - reconcile existing Fumadocs pages with code that has since drifted, in two phases: first audit every page (re-verify each claim against current code — grounding in reverse) and present a worst-first ranked list of which docs need updating with a severity per page, then STOP; the user picks which docs to update; only then surgically patch the chosen pages (both language siblings in lockstep, `last-updated` bumped on changed pages only), deferring undocumented features to generate-docs, and ship the diffs as a draft PR. Trigger: `/project:update-docs`
 When the user types `/project:update-docs`, invoke the Skill tool with `skill: "project:update-docs"` before doing anything else.
 
 # project:clean-slate
