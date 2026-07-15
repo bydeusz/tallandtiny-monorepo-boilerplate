@@ -1,0 +1,76 @@
+---
+title: update-docs
+description: Toetst bestaande docs-pagina's aan de huidige code en patcht alleen de delen die zijn afgeweken.
+---
+
+`update-docs` houdt de documentatie eerlijk: het toetst de pagina's die je al hebt opnieuw aan
+de code zoals die **nu** is, en patcht alleen de delen die zijn **afgeweken** — een
+chirurgische update, geen herschrijving.
+
+<Callout type="info">
+  **Laatst bijgewerkt** 2026-07-16 · **Van toepassing op** `.claude/skills/project/skills/update-docs/`
+</Callout>
+
+## Wat het doet
+
+Documentatie veroudert stilletjes: een commando wordt hernoemd, een response-veld verandert,
+een nieuwe mogelijkheid landt — en de pagina die het oude gedrag beschreef, klopt niet meer.
+`update-docs` is **grounding in omgekeerde richting**: in plaats van nieuwe beweringen uit de
+code te schrijven, neemt het elke bewering die een pagina al doet en verifieert die opnieuw
+tegen de huidige code, en wijzigt dan alleen wat niet meer klopt. Het **auditt elke pagina**
+(niet alleen degene die je noemt), patcht de afgeweken stukken ter plekke, houdt beide
+taalversies in de pas, en werkt de "laatst bijgewerkt"-stempel **alleen bij op pagina's die het
+echt heeft gewijzigd**. Een feature die het aantreft zonder enige pagina wordt overgedragen aan
+[generate-docs](/nl/docs/skills/generate-docs), niet hier verzonnen.
+
+## Wanneer je het gebruikt
+
+Pak 'm wanneer de **docs achterop de code kunnen zijn geraakt**:
+
+- Een gedocumenteerd commando of script is hernoemd, een endpoint of response-veld is
+  veranderd, of een config-waarde klopt nu niet meer.
+- Er is een nieuwe mogelijkheid geland die de bestaande pagina niet noemt.
+- Je wilt gewoon een gezondheidscheck — "zijn mijn docs nog actueel?" / "werk de docs bij."
+
+**Wanneer je 'm _niet_ gebruikt:**
+
+- **Een gewijzigde feature heeft helemaal geen pagina.** Dat is geen patch maar een nieuwe
+  pagina — gebruik [generate-docs](/nl/docs/skills/generate-docs). `update-docs` maakt nooit
+  pagina's aan.
+- **Je wilt een pagina van nul herschreven.** Dat doet 'ie bewust niet — een volledige
+  herschrijving wist handmatige edits, drijft de taalversies uit elkaar, en begraaft de echte
+  wijziging in ruis. Het patcht de afgeweken stukken en laat de rest byte-voor-byte staan.
+
+## Hoe je het start
+
+Vraag het op naam — **`/project:update-docs`** — of in gewone taal:
+
+- "werk de docs bij" · "de docs kloppen niet meer" · "zijn mijn docs nog actueel" · "audit de docs"
+- "update the docs" · "the docs are out of date"
+
+Een ongescopet verzoek ("werk de docs bij") betekent dat de **hele site** wordt geauditeerd;
+noem een pagina of sectie om het daartoe te beperken.
+
+## Wat er gebeurt
+
+1. **Inventariseer.** Het somt elke pagina op (elke `.mdx` en de `.nl.mdx`-tegenhanger) en leest
+   de talenconfig van de app.
+2. **Detecteer drift.** Voor elke pagina ankert het op de "laatst bijgewerkt"-datum, kijkt naar
+   welke code sindsdien veranderde, en verifieert elke concrete bewering opnieuw — commando's,
+   paden, endpoints, response-vormen, config-rijen — tegen de huidige code. Mismatches en
+   ontbrekende nieuwe mogelijkheden zijn drift.
+3. **Classificeer.** Elke pagina is **verouderd** (heeft drift → patchen), **schoon**
+   (geverifieerd, onaangeroerd gelaten — inclusief de stempel), of een **ongedocumenteerde
+   feature** (overgedragen aan generate-docs).
+4. **Patch chirurgisch.** Het bewerkt alleen de afgeweken stukken, laat elke wijziging in beide
+   taalversies landen (code-waarden verbatim, tekst vertaald), en zet "laatst bijgewerkt" op
+   vandaag alleen op pagina's die het wijzigde.
+5. **Toon diffs → goedkeuren → opleveren.** Het toont een drift-tabel en de daadwerkelijke
+   oud→nieuw diffs; pas nadat jij goedkeurt, schrijft het weg, en pusht en opent het een
+   **draft PR**.
+
+## Verwante skills
+
+[generate-docs](/nl/docs/skills/generate-docs) maakt een pagina voor een nieuwe feature;
+`update-docs` is het andere eind van dezelfde lus — het houdt die pagina's waar terwijl de code
+verder gaat.

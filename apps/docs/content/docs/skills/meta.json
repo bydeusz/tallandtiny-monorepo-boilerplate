@@ -1,0 +1,13 @@
+{
+  "title": "Skills",
+  "pages": [
+    "index",
+    "graphify",
+    "create-story",
+    "start-ticket",
+    "test-ticket",
+    "generate-docs",
+    "update-docs",
+    "clean-slate"
+  ]
+}

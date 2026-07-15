@@ -1,0 +1,73 @@
+---
+title: Skills
+description: De kant-en-klare AI-workflows die met deze repo meekomen, en wanneer je elke skill inzet.
+---
+
+Deze repository komt niet alleen met code — hij komt ook met **skills**: kant-en-klare
+workflows die een AI-codeerassistent kan volgen om de dagelijkse klussen rond het project
+elke keer op dezelfde zorgvuldige manier te doen. Deze pagina legt uit wat een skill is,
+hoe je er een in gang zet, en geeft je een overzicht van elke skill in de repo met een link
+naar de eigen pagina.
+
+<Callout type="info">
+  **Laatst bijgewerkt** 2026-07-16 · **Van toepassing op** `.claude/skills/`
+</Callout>
+
+## Wat is een skill?
+
+Een **skill** is een kant-en-klare set instructies voor een AI-assistent — een klus
+opgeknipt in precies de stappen die genomen moeten worden, één keer vastgelegd zodat het
+elke keer hetzelfde gaat. Zie het als een recept dat de assistent leest voordat hij begint:
+in plaats van dat jij in elke chat opnieuw uitlegt "zo maken we in dit project een ticket
+aan", weet de skill dat al.
+
+Skills staan in de map **`.claude/skills/`** in de repo, elk in een eigen `SKILL.md`-bestand.
+Doordat ze onderdeel van de repository zijn, reizen ze mee met de code — iedereen die aan
+het project werkt (en hun assistent) krijgt dezelfde workflows.
+
+Er komen hier twee soorten mee:
+
+- **Projectskills** (`.claude/skills/project/skills/`) — de workflows die speciaal voor de
+  werkwijze van _dit_ project zijn gemaakt: een ticket aanmaken, er een oppakken, testen,
+  documenteren en achteraf opruimen.
+- **Een tooling-skill** — `graphify`, die de codebase omzet in een doorzoekbare kaart die de
+  assistent gebruikt om de repo te begrijpen voordat hij iets aanraakt.
+
+## Hoe je een skill gebruikt
+
+Je draait een skill niet zelf — je vraagt het de assistent, en die volgt de skill. Er zijn
+twee manieren om er een in gang te zetten:
+
+- **Op naam, met een slash-commando.** Projectskills gebruiken de `/project:`-prefix —
+  bijvoorbeeld `/project:create-story` of `/project:start-ticket`. De tooling-skill is
+  simpelweg `/graphify`. Dit is de directe, ondubbelzinnige manier.
+- **In gewone taal.** Elke skill somt ook de alledaagse zinnen op die 'm triggeren, in het
+  Engels _én_ het Nederlands. "Maak hier een story van" of "make a ticket for this" is
+  genoeg — de assistent herkent de bedoeling en start de bijbehorende skill.
+
+Hoe dan ook: de assistent leest de skill en werkt de stappen af. Veel stappen hebben hun
+eigen veiligheidschecks — een voorbeeld tonen voordat hij een ticket plaatst, om
+bevestiging vragen voordat hij iets verwijdert — zodat jij de baas blijft over de dingen
+die ertoe doen.
+
+## De skills in deze repo
+
+Er komen zeven skills met het project mee. Eén helpt de assistent de code te **begrijpen**
+(`graphify`); vijf beslaan het **leven van een ticket**, van idee tot gebouwd-en-
+gedocumenteerd; en één **ruimt** je werkomgeving achteraf op. Elke skill heeft een eigen
+pagina die uitlegt wat 'ie doet en — het belangrijkste — wanneer je 'm inzet.
+
+| Skill | Wat het doet | Wanneer je het gebruikt |
+| --- | --- | --- |
+| [graphify](/nl/docs/skills/graphify) | Zet de hele codebase om in een doorzoekbare kennisgraaf die de assistent kan bevragen in plaats van te gokken. | Elke vraag over hoe de code samenhangt — vóór je iets leest of wijzigt. |
+| [create-story](/nl/docs/skills/create-story) | Zet een feature of bug die je in de chat beschrijft om in een onderzocht Trello-ticket op de Backlog. | Je hebt een idee of bug beschreven en wilt het als een net ticket vastleggen. |
+| [start-ticket](/nl/docs/skills/start-ticket) | Haalt een genoemd ticket op, zet het op **To Do**, koppelt deze chat eraan en zet een schone werkomgeving op. | Je bent klaar om een specifiek ticket van het bord te gaan bouwen. |
+| [test-ticket](/nl/docs/skills/test-ticket) | Verifieert een gebouwd ticket end-to-end in een echte browser en drijft elk acceptatiecriterium naar groen. | Een ticket is gebouwd en je wilt het in de browser bewezen zien voordat het live gaat. |
+| [generate-docs](/nl/docs/skills/generate-docs) | Schrijft een gloednieuwe documentatiepagina voor een feature die je net hebt gebouwd, in het Engels en Nederlands. | Een feature is klaar en heeft nog **geen** documentatiepagina. |
+| [update-docs](/nl/docs/skills/update-docs) | Toetst bestaande docs-pagina's aan de huidige code en patcht alleen de delen die zijn afgeweken. | De code is veranderd en de bestaande docs kloppen mogelijk niet meer. |
+| [clean-slate](/nl/docs/skills/clean-slate) | Ruimt git-worktrees op die je uit een lijst kiest, en verwijdert de superpowers-scratchmappen. | Je dev-omgeving is rommelig en je wilt met een schone lei beginnen. |
+
+<Callout type="info">
+  Nieuw in het project? Begin bij [graphify](/nl/docs/skills/graphify) — dat is degene
+  waar de assistent op leunt om al het andere te begrijpen.
+</Callout>

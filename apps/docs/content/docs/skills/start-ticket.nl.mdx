@@ -1,0 +1,71 @@
+---
+title: start-ticket
+description: Haalt een genoemd ticket op, zet het op To Do, koppelt deze chat eraan en zet een schone werkomgeving op.
+---
+
+`start-ticket` neemt een **genoemd ticket** van het bord en maakt het klaar om te bouwen: het
+laadt het kaartje, koppelt deze chat eraan, zet het op **To Do**, en zet een geïsoleerde
+werkomgeving op — en draagt daarna over aan de ontwikkeling.
+
+<Callout type="info">
+  **Laatst bijgewerkt** 2026-07-16 · **Van toepassing op** `.claude/skills/project/skills/start-ticket/`
+</Callout>
+
+## Wat het doet
+
+Jij noemt een ticket; de skill maakt er alles omheen klaar zodat je met een schone lei kunt
+beginnen. Het verplaatst het kaartje van **Backlog** naar **To Do**, stempelt deze precieze
+Claude-chat op het kaartje (zodat je er later naar terug kunt), en zet een dev-werkomgeving
+op `develop` op — óf een verse branch, óf, als de superpowers-workflow beschikbaar is, draagt
+het over zodat die workflow zijn eigen geïsoleerde worktree maakt. Het is de tegenhanger van
+[create-story](/nl/docs/skills/create-story): die skill legt tickets _in_ de Backlog, deze
+haalt er een gekozen ticket _uit_.
+
+## Wanneer je het gebruikt
+
+Gebruik het zodra je een **specifiek ticket hebt gekozen en het wilt gaan bouwen**:
+
+- Een ticket staat in de Backlog en is als volgende aan de beurt — je wilt het in
+  behandeling, op een eigen branch of worktree, met deze chat eraan gekoppeld.
+- Je wilt een schoon, geïsoleerd startpunt in plaats van bewerken bovenop waar je mee bezig
+  was.
+
+**Wanneer je 'm _niet_ gebruikt:**
+
+- **Je hebt nog geen ticket.** Beschrijf het werk en leg het eerst vast met
+  [create-story](/nl/docs/skills/create-story).
+- **Je verwacht dat het ticket wordt gebouwd.** Dat doet het niet. Het maakt de werkomgeving
+  klaar en draagt over — het echte coderen is je ontwikkelflow (die, met superpowers, begint
+  met het ticket omzetten in een spec en een plan vóór er code komt).
+
+## Hoe je het start
+
+Noem het ticket bij het commando — **`/project:start-ticket <ticket>`** — met de titel, URL
+of id. Of zeg het in gewone taal:
+
+- "pak ticket &lt;naam&gt; op" · "start met ticket &lt;naam&gt;"
+- "pull ticket &lt;naam&gt;"
+
+Je moet het ticket **noemen** — de skill bladert de Backlog niet door om er zelf een te
+kiezen. Noem je er geen, dan vraagt 'ie welke.
+
+## Wat er gebeurt
+
+1. **Vind het kaartje.** Het bord en het genoemde ticket worden opgezocht, en de match wordt
+   met jou bevestigd voordat er iets verandert.
+2. **Laad het.** Het volledige ticket wordt gelezen — beschrijving en acceptatiecriteria —
+   als de spec om over te dragen.
+3. **Koppel deze chat.** Er wordt een "hervat deze dev-chat"-markering op het kaartje gezet,
+   zodat je later naar dit exacte gesprek terug kunt.
+4. **Naar To Do.** Het kaartje gaat van Backlog naar de **To Do**-kolom.
+5. **Zet de werkomgeving op.** Met superpowers beschikbaar draagt het over en laat die flow
+   een eigen worktree maken; anders maakt het een `feat/…` (story)- of `fix/…` (bug)-branch op
+   `develop`.
+6. **Draag over.** Het rapporteert het kaartje, de To Do-lijst en de branch/worktree, en zet
+   je door naar de ontwikkeling.
+
+## Verwante skills
+
+[create-story](/nl/docs/skills/create-story) legt het ticket vast dat deze oppakt; zodra het
+werk is gebouwd, verifieert [test-ticket](/nl/docs/skills/test-ticket) het end-to-end in de
+browser.
