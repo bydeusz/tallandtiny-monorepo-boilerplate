@@ -19,5 +19,5 @@ When the user types `/project:test-ticket`, invoke the Skill tool with `skill: "
 When the user types `/project:generate-docs`, invoke the Skill tool with `skill: "project:generate-docs"` before doing anything else.
 
 # project:clean-slate
-- **clean-slate** (`.claude/skills/project/skills/clean-slate/SKILL.md`) - safely tear down the isolated git worktrees under .claude/worktrees/ and remove the docs/superpowers scratch folder, skipping any worktree that's active or holds unsaved/unpushed work. Trigger: `/project:clean-slate`
+- **clean-slate** (`.claude/skills/project/skills/clean-slate/SKILL.md`) - safely tear down the isolated git worktrees under .claude/worktrees/ and remove the superpowers folders (tracked docs/superpowers via git rm + gitignored .superpowers scratch via rm -rf), skipping any worktree that's active or holds unsaved/unpushed work. Trigger: `/project:clean-slate`
 When the user types `/project:clean-slate`, invoke the Skill tool with `skill: "project:clean-slate"` before doing anything else.
