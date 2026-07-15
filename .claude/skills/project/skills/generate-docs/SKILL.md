@@ -1,6 +1,6 @@
 ---
 name: generate-docs
-description: "Use when a feature or change has just been built and its developer documentation should be written into the Fumadocs docs app (apps/docs) — a per-feature page covering how it works, how to use it, and its dependencies. Triggers on /project:generate-docs, \"documenteer deze feature\", \"genereer docs voor …\", \"schrijf documentatie voor wat ik net heb gebouwd\", \"add this to the docs site\"."
+description: "Use when a feature or change has just been built and its documentation should be written into the Fumadocs docs app (apps/docs) — a per-feature page covering how it works, how to use it, and its dependencies, in plain language a non-coder can follow while staying technically accurate. Triggers on /project:generate-docs, \"documenteer deze feature\", \"genereer docs voor …\", \"schrijf documentatie voor wat ik net heb gebouwd\", \"schrijf docs in eenvoudige taal\", \"add this to the docs site\"."
 ---
 
 # /project:generate-docs
@@ -9,7 +9,7 @@ Turn a feature you just built into a thorough **Fumadocs** documentation page in
 
 ## Core principle
 
-**Generated docs describe the code that was actually built — every concrete claim verified against the source, never guessed — and every page follows one fixed skeleton so nothing required is silently dropped.** Two failure modes kill developer docs: (1) plausible-but-wrong specifics — a seed command, an import path, a response shape that doesn't match the code; and (2) the un-sexy required parts going missing — dependencies, an anti-staleness stamp, links out. So this skill grounds every command, path, signature, endpoint, and request/response shape in the real code and the git diff, and marks anything it can't verify as a **visible TODO** rather than presenting a guess as fact. You approve the placement and the full page **before** anything is written; then it's committed and opened as a draft PR.
+**Generated docs describe the code that was actually built — every concrete claim verified against the source, never guessed — and every page follows one fixed skeleton so nothing required is silently dropped.** Two failure modes kill developer docs: (1) plausible-but-wrong specifics — a seed command, an import path, a response shape that doesn't match the code; and (2) the un-sexy required parts going missing — dependencies, an anti-staleness stamp, links out. So this skill grounds every command, path, signature, endpoint, and request/response shape in the real code and the git diff, and marks anything it can't verify as a **visible TODO** rather than presenting a guess as fact. It also writes for **two readers at once** — plain enough that someone who doesn't code can follow the prose, precise enough that a developer gets the exact commands and reference. You approve the placement and the full page **before** anything is written; then it's committed and opened as a draft PR.
 
 ## Companion skills
 
@@ -40,7 +40,7 @@ Find the Fumadocs app (`apps/docs`; confirm via `source.config.ts` + `content/do
 The rule that makes docs trustworthy: **no command, path, import, signature, endpoint, or request/response shape enters the page unless you verified it against the actual code, `package.json`, or the step-1 diff.** If you cannot verify a specific — the exact seed-script name, a field on a response DTO, an import path — do **not** invent a plausible value. Write the real one, or mark it `{/* TODO: verify <what> */}` and list it in the report. A polished page full of wrong commands and import paths is worse than an honest gap.
 
 ### 4. Write the page to the fixed skeleton
-Produce **one** Fumadocs MDX page using the **skeleton below** — REQUIRED sections always present, optional ones only when the feature has them. Ground every concrete value per step 3, use the built-in components, and give code blocks a `title=`. Fill the **metadata bar** with today's date (`date +%Y-%m-%d`), the owner, and what it applies to (app/package).
+Produce **one** Fumadocs MDX page using the **skeleton below** — REQUIRED sections always present, optional ones only when the feature has them. Write it in **plain language** (see *Plain language* below): every section opens in everyday words and every technical term is explained on first use, while the code and reference stay for developers. Ground every concrete value per step 3, use the built-in components, and give code blocks a `title=`. Fill the **metadata bar** with today's date (`date +%Y-%m-%d`), the owner, and what it applies to (app/package).
 
 ### 5. Integrate into the sidebar — or the page hides
 Slot the page into the nav so it actually shows up:
@@ -95,7 +95,7 @@ description: <One sentence, used for search and the sidebar subtitle.>
 <One-sentence summary of what this feature does.>
 
 ## Overview
-<2–4 sentences: the problem it solves, when to use it.>
+<2–4 plain sentences: the everyday problem it solves and when to use it — no jargon, or explain it inline.>
 
 <Callout type="info">
   **Last updated** 2026-07-13 · **Owner** <team/person> · **Applies to** `apps/api` (v<x.y>)
@@ -112,7 +112,7 @@ description: <One sentence, used for search and the sidebar subtitle.>
 ```
 
 ## Usage
-<task recipes, minimal-first; real snippets>
+<open with a plain sentence — what you're doing and why → then the real, grounded snippet ("In code:")>
 
 ## Reference
 <TypeTable / endpoint + method / request+response shape — all grounded>
@@ -120,6 +120,24 @@ description: <One sentence, used for search and the sidebar subtitle.>
 ## Related
 - [<dependency>](/docs/<slug>) · [source](<repo path>) · [changelog](<...>)
 ```
+
+## Plain language — technical, but anyone can follow
+
+The page serves **two readers at once**: a developer who needs the exact commands and reference, and someone who doesn't code (a PM, a designer, a new teammate) who needs to understand what the feature is and why it exists. Write so both are served — plain prose anyone can follow, with the technical detail kept and clearly framed. This never overrides grounding (step 3): you still verify every value, you just explain it in plain words.
+
+**The recipe — apply to every section:**
+1. **Open in everyday words.** Start each section with 1–2 sentences saying what it is and why it matters, in plain language, *before* any code, command, or field name. A non-coder should get the point from that opening alone.
+2. **Explain each term the first time it appears** — briefly, inline, and expand acronyms. E.g. *a **role** is like a badge that decides which doors you can open*; *a **guard** — code that checks "are you allowed?" before a request goes through*; *a **migration** — a versioned change to the database's structure*; *the **JWT**, a signed token the app uses to prove who you are*.
+3. **Keep the technical detail — frame it, don't drop it.** Code blocks, `TypeTable`/API reference, commands, and response shapes stay for developers. Lead each with a plain sentence saying what it's for, so a non-coder gets the gist even if they skip the block. Pattern: *plain explanation → "In code:" → the block.*
+4. **Short sentences, active voice, concrete words.** One idea per sentence. Prefer everyday verbs ("check", "allow", "sign in") over insider terms ("authorize", "provision") — or pair them the first time.
+5. **Say why, in real terms** — the problem it solves, what breaks without it — not only the what.
+
+**The bar — check before you finish:** *could someone who doesn't code read only the prose, skipping every code block, and still understand what the feature does, why it exists, and roughly how it's used?* If not, the prose isn't plain enough yet.
+
+**One section, before → after:**
+> **Before (developer-only):** "`RolesGuard` gates the endpoint; `JwtAuthGuard` must run first to populate `request.user` from the JWT payload."
+>
+> **After (plain + technical):** "Before the app runs a protected action it checks two things — *are you signed in?* and *is your role allowed here?* The first reads your login token (the **JWT**, a signed token that proves who you are); the second, a **guard** (a small check that runs before the action), compares your role against the roles the route allows. In code, that's `@UseGuards(JwtAuthGuard, RolesGuard)` with `@Roles('SUPER_ADMIN')`."
 
 ## Grounding — the rule that keeps docs honest
 
@@ -145,7 +163,7 @@ Under the pull to produce a complete-looking page, the tempting shortcut is to f
 | 1 | Fact-sheet from the diff | `git diff <base>...HEAD` + read files; real paths/commands/shapes |
 | 2 | Read docs nav | `apps/docs/content/docs/**` + `meta.json`; explicit `pages` vs `"..."` |
 | 3 | Ground every value | verified against code/`package.json`/diff, else `{/* TODO: verify */}` |
-| 4 | Write to the skeleton | REQUIRED sections + optional-when-relevant; metadata bar dated today |
+| 4 | Write to the skeleton, in plain language | REQUIRED sections; each opens in everyday words, jargon explained on first use, code blocks framed plainly; metadata bar dated today |
 | 5 | Wire into `meta.json` | add to `pages` unless a `"..."` covers it — else the page hides |
 | 6 | Preview → approve | show path + meta diff + full MDX; write only after approval |
 | 7 | Ship | commit docs only (no `graphify-out/`), push, draft PR → `develop` |
@@ -155,6 +173,7 @@ Under the pull to produce a complete-looking page, the tempting shortcut is to f
 - **Dropping a file into a folder whose `meta.json` has an explicit `pages` list without adding it.** The page is then hidden from the sidebar (step 5). Add it, or ensure a `"..."` rest-item covers it.
 - **Omitting the metadata bar or Related links.** Both are REQUIRED — the metadata stamp fights staleness, the links stop dead ends.
 - **A wall of prose or an example that won't run.** Use the templated sections and a real, copy-pasteable snippet.
+- **Jargon walls / code with no plain intro.** A term used without explaining it, or a code block dropped in with no everyday-language lead, loses every non-coder. Open in plain words, define terms on first use, and frame each block (*Plain language*).
 - **Writing before approval.** Placement + full preview go to the engineer first (step 6).
 - **Committing `graphify-out/` or unrelated files.** Stage only the new page + `meta.json` (step 7).
 - **Scaffolding the docs app.** Out of scope — this skill writes pages into the existing `apps/docs` (ticket 8 builds the app).
