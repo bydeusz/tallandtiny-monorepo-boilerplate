@@ -1,0 +1,67 @@
+---
+title: create-story
+description: Turns a feature or bug you describe in chat into a researched Trello ticket on the Backlog.
+---
+
+`create-story` takes a feature or bug you've described in plain language and turns it into a
+proper **Trello ticket** — researched against the real codebase, previewed for your
+approval, and posted to the **Backlog**.
+
+<Callout type="info">
+  **Last updated** 2026-07-16 · **Applies to** `.claude/skills/project/skills/create-story/`
+</Callout>
+
+## What it does
+
+You describe what you want ("users should be able to reset their password from the
+dashboard") and the skill produces a well-formed ticket for it — either a **story** (a new
+feature or change) or a **bug** (something broken). It doesn't write the ticket from your
+sentence alone: it first researches the codebase so the ticket points at real files, reuses
+what already exists, and flags the security and privacy angle. The finished ticket lands in
+the **Backlog** column of the project's Trello board.
+
+## When to use it
+
+Reach for it whenever a **good idea or a real bug comes up in conversation and you want it
+captured** instead of lost:
+
+- You've just described a feature and want it on the board as a story.
+- You hit a bug and want it logged with reproduction steps.
+- You want the ticket to reference the actual code and existing flows — not a vague
+  one-liner someone has to research later.
+
+**When _not_ to use it:**
+
+- **You want to start building right now.** This skill only _files_ the ticket; it writes
+  no code. To pull a ticket off the board and begin, use
+  [start-ticket](/docs/skills/start-ticket).
+- **The work is already ticketed.** It's for turning a fresh description into a new card, not
+  for editing existing ones.
+
+## How to start it
+
+Ask for it by name — **`/project:create-story`** — or just say it in plain language:
+
+- "maak hier een story van" · "zet dit op de backlog"
+- "make a ticket for this" · "log this bug"
+
+The ticket is written in **the same language you used** to describe it — a Dutch
+description gives a Dutch ticket.
+
+## What happens
+
+1. **Story or bug?** The skill decides from your words (or asks if it's genuinely unclear).
+2. **Research — in parallel.** It dispatches a small team of read-only assistants at once:
+   one hunts the codebase for existing code to _reuse_, one checks current best practice for
+   any library or tool involved, and one gives a **security & privacy (GDPR/AVG)** verdict.
+3. **Write.** It drafts the ticket from those findings — real file references, a reuse note,
+   acceptance criteria, and a security section that every ticket carries.
+4. **Review.** A separate assistant checks the draft against the code, mainly to catch
+   **duplicate work** — building something that already exists.
+5. **Preview & confirm.** It shows you the full ticket (title, body, target board, list and
+   label) and posts it **only after you approve** — blue label for a story, red for a bug.
+
+## Related skills
+
+`create-story` files the ticket; [start-ticket](/docs/skills/start-ticket) is the other half
+— it pulls a chosen ticket out of the Backlog and gets it ready to build.

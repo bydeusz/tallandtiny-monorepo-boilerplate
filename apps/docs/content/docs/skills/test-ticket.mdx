@@ -1,0 +1,72 @@
+---
+title: test-ticket
+description: Verifies a built ticket end-to-end in a real browser, driving every acceptance criterion to green.
+---
+
+`test-ticket` proves a built ticket actually works by **driving a real browser** through its
+acceptance criteria — writing test scenarios, running them, fixing what fails, and looping
+until everything is green.
+
+<Callout type="info">
+  **Last updated** 2026-07-16 · **Applies to** `.claude/skills/project/skills/test-ticket/`
+</Callout>
+
+## What it does
+
+It takes a ticket that's already built and checks it end-to-end in an actual browser, using
+the **Playwright MCP** (a tool that lets an assistant click, type and read a live page). The
+ticket's acceptance criteria — plus its security & privacy section — are the spec. A small
+team works in sequence: a **scenario-writer** turns the criteria into concrete test
+scenarios, you approve them, a **runner** drives the browser and reports each one green or
+red, and a **fixer** repairs the code behind every red. Then it re-runs the reds and loops
+until all green. It moves the card from **To Do** to **Testing**.
+
+## When to use it
+
+The deciding question is simple: **can you prove the criterion by doing something in a
+browser and watching the result?**
+
+- **Use it** when the effect is browser-observable:
+  - **frontend** work — forms, validation, navigation, redirects, error messages;
+  - **backend** work whose effect shows _through_ the UI — login and auth, route guards,
+    session/cookie behaviour, an endpoint the frontend calls, or a token flow you can
+    complete end-to-end (register → read the minted code from the database → continue).
+
+**When _not_ to use it:**
+
+- **Changes with no browser-observable effect** — an internal refactor, a queue worker, a
+  cron job, a data migration, or a service-to-service API with no UI in front of it. A
+  browser proves nothing there, and forcing a scenario onto it only invites pretend-green.
+  Those belong in **Vitest** unit/integration tests, not here.
+- When a ticket mixes both, verify the browser-observable parts here and leave the rest to
+  Vitest — the report says which parts weren't covered.
+
+## How to start it
+
+Ask for it by name — **`/project:test-ticket`** — or in plain language:
+
+- "test dit ticket" · "test het ticket met playwright" · "verifieer dit ticket end-to-end"
+- "run the e2e for this ticket"
+
+It's the natural next step after a ticket built via [start-ticket](/docs/skills/start-ticket).
+
+## What happens
+
+1. **See what changed.** It inspects the real diff on the ticket's branch, so scenarios match
+   what was actually built (not just the ticket's wording).
+2. **Move to Testing.** The card advances from To Do to the **Testing** column.
+3. **Prepare the environment.** It runs the dev server from the ticket's own code (not bare
+   `develop`), brings up the database and services, and uses seeded users and real tokens
+   from the database — never fabricated data.
+4. **Write scenarios → you approve.** The scenario-writer saves the scenarios to a file; you
+   read, edit if you want, and approve before any browser run.
+5. **Run → fix → re-run.** The runner drives the browser and marks each scenario green or red
+   with evidence; the fixer repairs the code behind the reds; it re-runs until green, capped
+   at three rounds per scenario so it never loops forever or fakes a pass.
+6. **Report.** You get the final green/red table, the evidence, and every fix made. The card
+   stays in **Testing** — this skill doesn't merge or open a PR.
+
+## Related skills
+
+[start-ticket](/docs/skills/start-ticket) builds the ticket this one verifies; once it's
+proven, [generate-docs](/docs/skills/generate-docs) documents the feature.

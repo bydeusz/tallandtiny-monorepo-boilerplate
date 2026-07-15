@@ -1,0 +1,69 @@
+---
+title: generate-docs
+description: Schrijft een gloednieuwe documentatiepagina voor een feature die je net hebt gebouwd, in elke geconfigureerde taal.
+---
+
+`generate-docs` zet een feature die je net hebt gebouwd om in een **nieuwe documentatiepagina**
+in deze docs-app — gegrond in de echte code, in gewone taal, geproduceerd in elke taal die de
+app ondersteunt, en opgeleverd als draft PR.
+
+<Callout type="info">
+  **Laatst bijgewerkt** 2026-07-16 · **Van toepassing op** `.claude/skills/project/skills/generate-docs/`
+</Callout>
+
+## Wat het doet
+
+Het schrijft een grondige Fumadocs-pagina voor een feature: wat het doet, hoe je het gebruikt,
+en waar het van afhangt. Twee dingen maken het betrouwbaar. Ten eerste **grounding** — elk
+commando, pad, signatuur en response-vorm wordt geverifieerd tegen de echte code en de
+git-diff, nooit gegokt; wat niet te verifiëren is, wordt als zichtbare TODO gemarkeerd in
+plaats van een zelfverzekerd fout antwoord. Ten tweede schrijft het voor **twee lezers
+tegelijk**: gewoon genoeg dat iemand die niet codeert de tekst kan volgen, precies genoeg dat
+een ontwikkelaar de exacte commando's krijgt. Doordat de docs-app tweetalig is, is de
+oplevering **één pagina per taal** (Engels `.mdx` en Nederlands `.nl.mdx`) — dezelfde
+structuur, alleen de tekst vertaald, elke code-waarde identiek. Deze categorie is zo gemaakt.
+
+## Wanneer je het gebruikt
+
+Pak 'm wanneer een **feature klaar is en nog geen documentatiepagina heeft**:
+
+- Je hebt net iets gebouwd en wilt het vastleggen nu de details vers zijn.
+- Je wilt de pagina gegrond in de echte code en beschikbaar in het Engels én Nederlands.
+
+**Wanneer je 'm _niet_ gebruikt:**
+
+- **De docs bestaan al en zijn alleen afgeweken** van de code — een hernoemd commando, een
+  gewijzigd veld, een nieuwe mogelijkheid die op een bestaande pagina ontbreekt. Dat is een
+  verzoen-klus voor [update-docs](/nl/docs/skills/update-docs), die ter plekke patcht in plaats
+  van opnieuw te schrijven.
+- **De docs-app bestaat nog niet.** Deze skill schrijft pagina's _in_ de bestaande `apps/docs`;
+  hij zet de app niet op.
+
+## Hoe je het start
+
+Vraag het op naam — **`/project:generate-docs`** — of in gewone taal:
+
+- "documenteer deze feature" · "genereer docs voor …" · "schrijf documentatie voor wat ik net heb gebouwd"
+- "add this to the docs site"
+
+## Wat er gebeurt
+
+1. **Feitenblad.** Het bekijkt wat er werkelijk is gebouwd (de diff en de gewijzigde bestanden)
+   en haalt de echte paden, commando's, signaturen en vormen eruit.
+2. **Vind de docs-app.** Het leest de talenlijst van de docs-app, zodat het weet hoeveel
+   pagina's het moet maken en hoe het ze benoemt.
+3. **Ground elke waarde.** Elk concreet commando, pad en vorm wordt één keer tegen de code
+   geverifieerd — onveranderd hergebruikt in elke taal.
+4. **Schrijf de pagina('s).** Het schrijft de pagina in de standaardtaal vanuit een vast
+   skelet (overzicht, een gedateerde stempel, vereisten, quick start, gebruik, referentie,
+   verwante links), daarna een getrouwe vertaling voor elke andere taal.
+5. **Zet het in de sidebar.** Het voegt de pagina toe aan de `meta.json` van de sectie (en elke
+   `meta.<locale>.json`) zodat 'ie echt verschijnt.
+6. **Voorbeeld → goedkeuren → opleveren.** Het toont je elke pagina en elke navigatiewijziging;
+   pas nadat jij goedkeurt, schrijft het de bestanden weg, en pusht en opent het een **draft PR**.
+
+## Verwante skills
+
+[test-ticket](/nl/docs/skills/test-ticket) verifieert de feature vóór je 'm documenteert;
+[update-docs](/nl/docs/skills/update-docs) is de tegenhanger die deze pagina's waar houdt
+terwijl de code blijft veranderen.

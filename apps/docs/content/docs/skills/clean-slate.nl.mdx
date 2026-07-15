@@ -1,0 +1,75 @@
+---
+title: clean-slate
+description: Ruimt git-worktrees op die je uit een lijst kiest, en verwijdert de superpowers-scratchmappen.
+---
+
+`clean-slate` ruimt je dev-omgeving op: het toont je elke git-**worktree** met een eerlijke
+status, laat je kiezen welke weg mogen, en veegt de **superpowers**-mappen leeg — zonder ooit
+stilzwijgend werk of de sessie waarin je draait te vernietigen.
+
+<Callout type="info">
+  **Laatst bijgewerkt** 2026-07-16 · **Van toepassing op** `.claude/skills/project/skills/clean-slate/`
+</Callout>
+
+## Wat het doet
+
+Tickets bouwen laat rommel achter: geïsoleerde **worktrees** (aparte werkkopieën van de repo,
+één per branch) stapelen zich op, en de superpowers-workflow laat specs, plannen en
+scratch-bestanden achter. `clean-slate` ruimt beide op. Het inspecteert elke worktree, toont ze
+als een **genummerde lijst met een duidelijke status per stuk**, en laat _jou_ kiezen welke weg
+mogen — ook die in gebruik zijn. Wat het garandeert: er wordt niets verwijderd tenzij je het
+hebt geselecteerd; elke worktree met een waarschuwing (niet-gecommit werk, niet-gepushte
+commits, of een live sessie) wordt eruit gelicht en pas force-verwijderd nadat je díe specifiek
+bevestigt; en de worktree waarin deze sessie draait, wordt nooit verwijderd.
+
+Een paar termen:
+
+- Een **worktree** is een tweede checkout van de repo op een eigen branch, zodat werk
+  geïsoleerd blijft; [start-ticket](/nl/docs/skills/start-ticket) maakt deze aan.
+- De **superpowers-mappen** zijn `docs/superpowers/` (design-specs + plannen, git-tracked) en
+  `.superpowers/` (lokale scratch en logs, gitignored).
+
+## Wanneer je het gebruikt
+
+Pak 'm wanneer je **werkomgeving is volgelopen en je met een schone lei wilt beginnen**:
+
+- Oude worktrees van afgeronde (gemergede) tickets vervuilen de repo.
+- Superpowers-specs, -plannen en -scratch van eerder werk slingeren rond.
+- Je wilt je omgeving bewust resetten — en stuk voor stuk beslissen wat weg gaat.
+
+**Wanneer je 'm _niet_ gebruikt:**
+
+- **Je wilt gewoon één specifieke branch of bestand weggooien.** Dit is een begeleide veeg van
+  worktrees en de superpowers-mappen, geen algemene verwijdertool.
+- **Vanuit de worktree die je weg wilt hebben.** Het kan de eigen worktree van de sessie niet
+  verwijderen — draai het vanuit een andere sessie om díe weg te halen.
+
+## Hoe je het start
+
+Vraag het op naam — **`/project:clean-slate`** — of in gewone taal:
+
+- "ruim mijn worktrees op" · "gooi worktrees weg" · "opschonen" · "reset mijn omgeving" · "verwijder superpowers"
+- "clean slate" · "clean up my worktrees"
+
+## Wat er gebeurt
+
+1. **Lijst de worktrees.** Het werkt vanuit de hoofd-checkout (en beschermt de worktree van de
+   huidige sessie) en inspecteert elke worktree, teruggebracht tot één eerlijke status:
+   **schoon**, **niet-gecommit werk**, **niet-gepushte commits**, **live sessie (locked)**, of
+   **huidige sessie (beschermd)**. Herbouw-ruis zoals `graphify-out/` wordt eruit gefilterd
+   zodat schone worktrees er niet eng uitzien.
+2. **Jij kiest.** Het toont de genummerde lijst en jij antwoordt met de nummers die weg mogen —
+   een reeks, `all`, of `none`.
+3. **Bevestig de risicovolle.** Voor elke gekozen worktree met een waarschuwing herhaalt het het
+   specifieke risico en vraagt een laatste akkoord voor het die force-verwijdert — nooit een
+   blanket force.
+4. **Verwijder.** Het verwijdert de gekozen worktrees, en veegt daarna de superpowers-mappen leeg
+   — het getrackte `docs/superpowers/` met een commit, de gitignored `.superpowers/`-scratch door
+   het te verwijderen.
+5. **Rapporteer.** Het bevestigt wat is verwijderd, wat is behouden en waarom, en dat de interne
+   boekhouding van git klopt.
+
+## Verwante skills
+
+[start-ticket](/nl/docs/skills/start-ticket) maakt de worktrees die `clean-slate` later opruimt
+— de twee zijn tegenovergestelde uiteinden van de werkomgeving-levenscyclus van een ticket.
