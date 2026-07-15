@@ -1,0 +1,71 @@
+---
+title: Skills
+description: The packaged AI workflows that ship with this repo, and when to reach for each one.
+---
+
+This repository doesn't just come with code — it comes with **skills**: ready-made
+workflows that an AI coding assistant can follow to do the everyday jobs around the
+project the same careful way every time. This page explains what a skill is, how you set
+one off, and gives you an overview of every skill in the repo with a link to its own page.
+
+<Callout type="info">
+  **Last updated** 2026-07-16 · **Applies to** `.claude/skills/`
+</Callout>
+
+## What is a skill?
+
+A **skill** is a packaged set of instructions for an AI assistant — a job broken down into
+the exact steps to take, written down once so it happens the same way every time. Think of
+it as a recipe the assistant reads before it starts: instead of you re-explaining "here's
+how we file a ticket in this project" in every chat, the skill already knows.
+
+Skills live in the **`.claude/skills/`** folder in the repo, each in its own `SKILL.md`
+file. Because they're part of the repository, they travel with the code — everyone working
+in the project (and their assistant) gets the same workflows.
+
+Two kinds ship here:
+
+- **Project skills** (`.claude/skills/project/skills/`) — the workflows built specifically
+  for _this_ project's way of working: filing a ticket, picking one up, testing it,
+  documenting it, and cleaning up afterwards.
+- **A tooling skill** — `graphify`, which turns the codebase into a searchable map the
+  assistant uses to understand the repo before it touches anything.
+
+## How you use a skill
+
+You don't run a skill yourself — you ask the assistant, and it follows the skill. There are
+two ways to set one off:
+
+- **By name, with a slash command.** Project skills use the `/project:` prefix — for
+  example `/project:create-story` or `/project:start-ticket`. The tooling skill is just
+  `/graphify`. This is the direct, unambiguous way.
+- **In plain language.** Each skill also lists the everyday phrases that trigger it, in
+  English _and_ Dutch. Saying "make a ticket for this" or "maak hier een story van" is
+  enough — the assistant recognises the intent and starts the matching skill.
+
+Either way, the assistant reads the skill and works through its steps. Many of the steps
+include their own safety checks — showing you a preview before it posts a ticket, asking
+you to confirm before it deletes anything — so you stay in control of the parts that
+matter.
+
+## The skills in this repo
+
+Seven skills ship with the project. One helps the assistant **understand** the code
+(`graphify`); five cover the **life of a ticket**, from idea to shipped-and-documented; and
+one **cleans up** your workspace afterwards. Each has its own page explaining what it does
+and — the important part — when to reach for it.
+
+| Skill | What it does | When to use it |
+| --- | --- | --- |
+| [graphify](/docs/skills/graphify) | Turns the whole codebase into a searchable knowledge graph the assistant can query instead of guessing. | Any question about how the code fits together — before reading or changing anything. |
+| [create-story](/docs/skills/create-story) | Turns a feature or bug you describe in chat into a researched Trello ticket on the Backlog. | You've described an idea or a bug and want it logged as a proper ticket. |
+| [start-ticket](/docs/skills/start-ticket) | Pulls a named ticket, moves it to **To Do**, links this chat to it, and sets up a clean workspace. | You're ready to start building a specific ticket from the board. |
+| [test-ticket](/docs/skills/test-ticket) | Verifies a built ticket end-to-end in a real browser, driving every acceptance criterion to green. | A ticket is built and you want it proven in the browser before it ships. |
+| [generate-docs](/docs/skills/generate-docs) | Writes a brand-new documentation page for a feature you just built, in English and Dutch. | A feature is done and has **no** doc page yet. |
+| [update-docs](/docs/skills/update-docs) | Checks existing doc pages against the current code and patches only the parts that drifted. | The code changed and the existing docs may be out of date. |
+| [clean-slate](/docs/skills/clean-slate) | Tears down git worktrees you pick from a list and removes the superpowers scratch folders. | Your dev environment is cluttered and you want a fresh start. |
+
+<Callout type="info">
+  New to the project? Start with [graphify](/docs/skills/graphify) — it's the one the
+  assistant leans on to understand everything else.
+</Callout>
