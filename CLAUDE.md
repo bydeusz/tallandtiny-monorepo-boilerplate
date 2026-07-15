@@ -1,3 +1,14 @@
+## trello
+
+The `/project:create-story` skill posts tickets to this Trello board. Set the board name below, exactly as it appears in Trello (replace the placeholder).
+
+trello: monorepo-boilerplate
+
+## Worktrees
+- Dit project gebruikt pnpm, nooit npm.
+- Setup na `git worktree add`: pnpm install --frozen-lockfile --prefer-offline
+- Worktrees in .worktrees/ (zelfde filesystem → hardlinks blijven werken)
+
 ## graphify
 
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
@@ -7,9 +18,3 @@ Rules:
 - If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
 - Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
-
-## trello
-
-The `/project:create-story` skill posts tickets to this Trello board. Set the board name below, exactly as it appears in Trello (replace the placeholder).
-
-trello: monorepo-boilerplate
