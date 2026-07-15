@@ -1,0 +1,48 @@
+---
+title: Start your project
+description: This repo is a template — copy it into your own project and continue on your own branch.
+---
+
+This repository is a **template**: a ready-made starting point you copy into your own
+project, not a library you install. Here's how to make it yours.
+
+<Callout type="info">
+  **Last updated** 2026-07-15 · **Applies to** the whole monorepo (root)
+</Callout>
+
+## Get the code
+
+<Tabs items={["Use this template (GitHub)", "Clone directly"]}>
+  <Tab value="Use this template (GitHub)">
+    If this repository is on GitHub with template mode turned on, open it and click
+    **Use this template → Create a new repository**. GitHub gives you a fresh
+    repository that starts from this code with a clean history — your project from
+    commit one.
+  </Tab>
+  <Tab value="Clone directly">
+    Otherwise, clone the code and point it at your own remote:
+
+    ```bash
+    git clone <this-repo-url> my-project
+    cd my-project
+    git remote set-url origin <your-own-repo-url>
+    git checkout -b main
+    ```
+
+    You now have the full template on your own branch, ready to build on.
+  </Tab>
+</Tabs>
+
+## Make it your own
+
+<Callout type="warn">
+  **Renaming is manual.** The name `tallandtiny` is hard-coded in a few places — the
+  root `package.json` name, the default `DATABASE_URL`, the Docker Compose project
+  name, and the mail sender address. There's no rename script, so when you're ready to
+  brand it as your own, do a find-and-replace for `tallandtiny` across the repo.
+</Callout>
+
+## Next
+
+You've got the code. Next, install the dependencies and run the apps on your machine —
+covered in the local setup guide.

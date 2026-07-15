@@ -1,0 +1,47 @@
+---
+title: Je project starten
+description: Deze repo is een template — kopieer 'm naar je eigen project en ga verder op je eigen branch.
+---
+
+Deze repository is een **template**: een kant-en-klaar startpunt dat je naar je eigen
+project kopieert, geen library die je installeert. Zo maak je 'm van jezelf.
+
+<Callout type="info">
+  **Laatst bijgewerkt** 2026-07-15 · **Van toepassing op** de hele monorepo (root)
+</Callout>
+
+## De code ophalen
+
+<Tabs items={["Use this template (GitHub)", "Direct clonen"]}>
+  <Tab value="Use this template (GitHub)">
+    Staat deze repository op GitHub met template-modus aan? Open 'm dan en klik
+    **Use this template → Create a new repository**. GitHub geeft je een nieuwe
+    repository met een schone historie — je eigen project vanaf de eerste commit.
+  </Tab>
+  <Tab value="Direct clonen">
+    Clone anders de code en richt 'm op je eigen remote:
+
+    ```bash
+    git clone <deze-repo-url> my-project
+    cd my-project
+    git remote set-url origin <je-eigen-repo-url>
+    git checkout -b main
+    ```
+
+    Je hebt nu de volledige template op je eigen branch, klaar om op te bouwen.
+  </Tab>
+</Tabs>
+
+## Maak 'm van jezelf
+
+<Callout type="warn">
+  **Hernoemen doe je zelf.** De naam `tallandtiny` staat hard-coded op een paar
+  plekken — de naam in de root-`package.json`, de standaard-`DATABASE_URL`, de Docker
+  Compose-projectnaam en het afzenderadres van de mail. Er is geen hernoemscript, dus
+  doe een find-and-replace op `tallandtiny` als je 'm van je eigen merk wilt maken.
+</Callout>
+
+## Volgende stap
+
+Je hebt de code. Installeer daarna de dependencies en draai de apps lokaal — dat staat
+in de lokale-setupgids.
