@@ -108,10 +108,13 @@ export const nestConfig = [
     files: ['**/*-response.dto.ts', 'src/common/dto/**'],
     rules: { 'nestjs-security/require-class-validator': 'off' },
   },
-  // Auth DTOs legitimately carry password / token fields (credentials in, tokens
-  // out); no-exposed-private-fields would only false-positive on them.
+  // no-exposed-private-fields stays ON for every DTO. Request DTOs mark their
+  // sensitive inputs with @Exclude({ toPlainOnly: true }) (kept on input, never
+  // serialized to a response). The single exemption is the auth token-response
+  // DTO, whose access/refresh tokens ARE the intended payload — @Exclude would
+  // break it and the rule can't model intentional exposure.
   {
-    files: ['src/modules/auth/dto/**'],
+    files: ['src/modules/auth/dto/auth-response.dto.ts'],
     rules: { 'nestjs-security/no-exposed-private-fields': 'off' },
   },
 
