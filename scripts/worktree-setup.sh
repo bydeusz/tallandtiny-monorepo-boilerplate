@@ -1,5 +1,6 @@
 #!/bin/sh
 # worktree-setup.sh — bootstrap a fresh git worktree so it is ready to develop:
+#   0) copy gitignored .env files from the main worktree
 #   1) pnpm install
 #   2) prisma generate (@repo/database)  -> src/generated/prisma
 #   3) build @repo/database (tsc)         -> dist/ that re-exports the client
@@ -13,6 +14,29 @@ set -u
 
 ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || exit 0
 cd "$ROOT" || exit 0
+
+# --- Copy gitignored env files from the main worktree ------------------------
+# .env* is gitignored, so a fresh checkout never gets them; without them the api,
+# database and web apps fail on missing config. Copy every ignored env file from
+# the main worktree to the same relative path here. Tracked *.env.example already
+# came with the checkout (git check-ignore skips them); existing files are never
+# overwritten. Runs before the node_modules guard, so re-running also repairs an
+# already-installed worktree that is only missing env.
+MAIN_ROOT=$(dirname "$(git rev-parse --git-common-dir 2>/dev/null)")
+MAIN_ROOT=$(cd "$MAIN_ROOT" 2>/dev/null && pwd || true)
+if [ -n "$MAIN_ROOT" ] && [ "$MAIN_ROOT" != "$ROOT" ] && [ -d "$MAIN_ROOT" ]; then
+  find "$MAIN_ROOT" \
+      \( -name node_modules -o -name .git -o -path '*/.claude/worktrees' -o -name graphify-out \) -prune \
+      -o -type f \( -name '.env' -o -name '.env.*' \) -print 2>/dev/null \
+  | while IFS= read -r src; do
+      rel=${src#"$MAIN_ROOT"/}
+      ( cd "$MAIN_ROOT" && git check-ignore -q "$rel" ) || continue  # skip tracked *.example
+      dest="$ROOT/$rel"
+      [ -e "$dest" ] && continue                                     # never clobber
+      mkdir -p "$(dirname "$dest")"
+      cp "$src" "$dest" && echo "[worktree-setup] env gekopieerd: $rel" >&2
+    done
+fi
 
 # Fresh worktree/clone only. If node_modules already exists there is nothing to
 # do (this also makes a normal branch switch a no-op).
