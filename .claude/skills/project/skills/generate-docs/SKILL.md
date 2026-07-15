@@ -1,15 +1,15 @@
 ---
 name: generate-docs
-description: "Use when a feature or change has just been built and its documentation should be written into the Fumadocs docs app (apps/docs) — a per-feature page covering how it works, how to use it, and its dependencies, in plain language a non-coder can follow while staying technically accurate. Triggers on /project:generate-docs, \"documenteer deze feature\", \"genereer docs voor …\", \"schrijf documentatie voor wat ik net heb gebouwd\", \"schrijf docs in eenvoudige taal\", \"add this to the docs site\"."
+description: "Use when a feature or change has just been built and its documentation should be written into the Fumadocs docs app (apps/docs) — a per-feature page covering how it works, how to use it, and its dependencies, in plain language a non-coder can follow while staying technically accurate, and in every language the docs app is configured for (English + Dutch). Triggers on /project:generate-docs, \"documenteer deze feature\", \"genereer docs voor …\", \"schrijf documentatie voor wat ik net heb gebouwd\", \"schrijf docs in eenvoudige taal\", \"documenteer in het Engels en Nederlands\", \"vertaal de docs naar het Nederlands\", \"add this to the docs site\"."
 ---
 
 # /project:generate-docs
 
-Turn a feature you just built into a thorough **Fumadocs** documentation page in the docs app (`apps/docs`), grounded in the code that was actually written, and ship it as a draft PR.
+Turn a feature you just built into a thorough **Fumadocs** documentation page in the docs app (`apps/docs`), grounded in the code that was actually written, produced in **every language the docs app is configured for**, and shipped as a draft PR.
 
 ## Core principle
 
-**Generated docs describe the code that was actually built — every concrete claim verified against the source, never guessed — and every page follows one fixed skeleton so nothing required is silently dropped.** Two failure modes kill developer docs: (1) plausible-but-wrong specifics — a seed command, an import path, a response shape that doesn't match the code; and (2) the un-sexy required parts going missing — dependencies, an anti-staleness stamp, links out. So this skill grounds every command, path, signature, endpoint, and request/response shape in the real code and the git diff, and marks anything it can't verify as a **visible TODO** rather than presenting a guess as fact. It also writes for **two readers at once** — plain enough that someone who doesn't code can follow the prose, precise enough that a developer gets the exact commands and reference. You approve the placement and the full page **before** anything is written; then it's committed and opened as a draft PR.
+**Generated docs describe the code that was actually built — every concrete claim verified against the source, never guessed — and every page follows one fixed skeleton so nothing required is silently dropped.** Two failure modes kill developer docs: (1) plausible-but-wrong specifics — a seed command, an import path, a response shape that doesn't match the code; and (2) the un-sexy required parts going missing — dependencies, an anti-staleness stamp, links out. So this skill grounds every command, path, signature, endpoint, and request/response shape in the real code and the git diff, and marks anything it can't verify as a **visible TODO** rather than presenting a guess as fact. It writes for **two readers at once** — plain enough that someone who doesn't code can follow the prose, precise enough that a developer gets the exact commands and reference. And when the docs app is internationalised, the deliverable is not one page but **one page per configured language** — matched, structurally identical, with only the prose translated and every grounded value byte-for-byte the same. You approve the placement and the full page(s) **before** anything is written; then it's committed and opened as a draft PR.
 
 ## Companion skills
 
@@ -24,6 +24,37 @@ Turn a feature you just built into a thorough **Fumadocs** documentation page in
 - **Preview locally:** `pnpm dev:docs` → `http://localhost:3004`. Fumadocs regenerates its `.source/` automatically — no manual codegen.
 - **If there is no Fumadocs app yet** (`apps/docs/content/docs/` or `source.config.ts` absent), **stop and report.** This skill writes *into* that app; it does not scaffold it — that's ticket 8.
 
+## Multi-language output (i18n)
+
+The docs app is internationalised. When it is, a feature's documentation is **one page per configured language** — matched pages, same structure, only the prose translated.
+
+**Detect the languages — read `apps/docs/src/lib/i18n.ts` (never hardcode them):**
+```ts
+defineI18n({ defaultLanguage: 'en', languages: ['en', 'nl'], hideLocale: 'default-locale' });
+```
+- `languages` is the list you must produce a page for. Read it live — if a third language is added there, this skill produces it too.
+- `defaultLanguage` is the one whose files carry **no** locale suffix.
+- **Conditional:** if there is no `i18n.ts` or `languages` has a single entry, produce a single page (the original behaviour) and skip the rest of this section. Everything below applies only when `languages` has more than one entry.
+
+**File naming — the Fumadocs `dot` parser** (this repo's setup: plain `loader({ i18n })` in `src/lib/source.ts`, no custom parser). The locale goes **before** the extension:
+
+| Language | Content page | Folder landing | Section nav |
+|---|---|---|---|
+| `en` (default — no suffix) | `content/docs/auth/roles.mdx` | `index.mdx` | `meta.json` |
+| `nl` (non-default — `.nl`) | `content/docs/auth/roles.nl.mdx` | `index.nl.mdx` | `meta.nl.json` |
+
+So each feature yields a **pair** per non-default language: `roles.mdx` **and** `roles.nl.mdx`, plus a `meta.nl.json` beside every `meta.json` you touch.
+
+**URLs (`hideLocale: 'default-locale'`):** the default language has no prefix — `roles.mdx` → `/docs/auth/roles`; Dutch → `/nl/docs/auth/roles`. **If you write only `roles.mdx`, the Dutch route silently falls back to the English file** — the reader who chose Nederlands gets English. Writing `roles.nl.mdx` is what fixes that; it is the whole point of this section.
+
+**What translates, and what does NOT:**
+- **Translate the prose** — headings, sentences, `<Callout>` text, table-cell descriptions, and the frontmatter `title` + `description` (they're the sidebar label and search subtitle). Apply the *Plain language* recipe in **each** language, not just English.
+- **Never translate** code blocks, commands, file paths, import paths, identifiers, enum values, endpoints, env-var names, or any grounded value. They are identical bytes in every language: `pnpm --filter api seed:roles` stays `pnpm --filter api seed:roles` in the Dutch page; `SUPER_ADMIN` stays `SUPER_ADMIN`.
+- **Ground once, reuse everywhere.** Step 3 verifies each concrete value one time; every language page uses that identical value. A `{/* TODO: verify */}` marker rides along into **every** language until it's resolved.
+- **Keep the pages parallel.** Same skeleton, same sections in the same order, same code blocks, same `meta.json` `pages` order — only the words differ. If you later edit one language's page, update the others so they don't drift.
+
+**`meta.<locale>.json`** mirrors `meta.json` but with a translated `title` (the section's sidebar label). The `pages` array holds the **same basenames** in every language (`"roles"`, never `"roles.nl"`) — the loader resolves the localised file per locale.
+
 ## Workflow
 
 In order. **Nothing is written to disk until you approve the preview (step 6).** Steps 1–3 run graphify first (repo rule): `graphify query "<topic>"` before reading raw source.
@@ -31,35 +62,40 @@ In order. **Nothing is written to disk until you approve the preview (step 6).**
 ### 1. See what was actually built — the fact-sheet
 If you built the feature earlier in this chat you already have the context — but still confirm the specifics against the code before quoting them. Otherwise inspect the change: on the feature's branch/worktree run `git log <base>..HEAD` and `git diff <base>...HEAD` (base is usually `develop`) and read the changed files.
 
-Produce a short **fact-sheet**: the real file paths, routes/endpoints + HTTP methods, commands/scripts (read from `package.json`), function/DTO signatures, request/response shapes, new dependencies, and env vars. **This fact-sheet — not memory and not the ticket wording — is the source for every concrete value in the doc.** Delegating this read to a subagent keeps your context clean; have it return the fact-sheet.
+Produce a short **fact-sheet**: the real file paths, routes/endpoints + HTTP methods, commands/scripts (read from `package.json`), function/DTO signatures, request/response shapes, new dependencies, and env vars. **This fact-sheet — not memory and not the ticket wording — is the source for every concrete value in the doc, in every language.** Delegating this read to a subagent keeps your context clean; have it return the fact-sheet.
 
-### 2. Locate the docs app and read its nav
-Find the Fumadocs app (`apps/docs`; confirm via `source.config.ts` + `content/docs/`). Read the existing `content/docs/` tree and the relevant `meta.json` files, so you place the page in the right section and match the existing conventions. For each candidate folder note whether its `meta.json` uses an explicit `pages` list or a `"..."` rest-item — that decides whether you must hand-add the page in step 5.
+### 2. Locate the docs app — its nav and its languages
+Find the Fumadocs app (`apps/docs`; confirm via `source.config.ts` + `content/docs/`). Then:
+- Read `src/lib/i18n.ts` for the **language list** and `defaultLanguage` (see *Multi-language output*). This decides how many pages you produce and how they're named — it's not visible from `source.config.ts` or the content tree, so read it explicitly.
+- Read the existing `content/docs/` tree and the relevant `meta.json` files, so you place the page in the right section and match conventions. For each candidate folder note whether its `meta.json` uses an explicit `pages` list or a `"..."` rest-item — that decides whether you must hand-add the page in step 5.
 
 ### 3. Ground every concrete claim in the code — never guess
-The rule that makes docs trustworthy: **no command, path, import, signature, endpoint, or request/response shape enters the page unless you verified it against the actual code, `package.json`, or the step-1 diff.** If you cannot verify a specific — the exact seed-script name, a field on a response DTO, an import path — do **not** invent a plausible value. Write the real one, or mark it `{/* TODO: verify <what> */}` and list it in the report. A polished page full of wrong commands and import paths is worse than an honest gap.
+The rule that makes docs trustworthy: **no command, path, import, signature, endpoint, or request/response shape enters the page unless you verified it against the actual code, `package.json`, or the step-1 diff.** If you cannot verify a specific — the exact seed-script name, a field on a response DTO, an import path — do **not** invent a plausible value. Write the real one, or mark it `{/* TODO: verify <what> */}` and list it in the report. A polished page full of wrong commands and import paths is worse than an honest gap. Verify each value **once** here — every language page reuses it unchanged.
 
-### 4. Write the page to the fixed skeleton
-Produce **one** Fumadocs MDX page using the **skeleton below** — REQUIRED sections always present, optional ones only when the feature has them. Write it in **plain language** (see *Plain language* below): every section opens in everyday words and every technical term is explained on first use, while the code and reference stay for developers. Ground every concrete value per step 3, use the built-in components, and give code blocks a `title=`. Fill the **metadata bar** with today's date (`date +%Y-%m-%d`), the owner, and what it applies to (app/package).
+### 4. Write the page(s) — the skeleton, once per language
+Write the default-language page first: **one** Fumadocs MDX page using the **skeleton below** — REQUIRED sections always present, optional ones only when the feature has them. Write it in **plain language** (see *Plain language* below): every section opens in everyday words and every technical term is explained on first use, while the code and reference stay for developers. Ground every concrete value per step 3, use the built-in components, give code blocks a `title=`, and fill the **metadata bar** with today's date (`date +%Y-%m-%d`), the owner, and what it applies to (app/package).
+
+Then, for **each other language in `i18n.ts`**, produce the sibling page (`<slug>.<locale>.mdx`) as a **faithful translation** of that same page: translate only the prose (and the frontmatter `title`/`description`), copy every code block, command, path, and grounded value **verbatim**, and keep the sections and their order identical (see *Multi-language output*). Apply the *Plain language* recipe in each language.
 
 ### 5. Integrate into the sidebar — or the page hides
-Slot the page into the nav so it actually shows up:
+Slot the page into the nav so it actually shows up — and mirror it for each language's `meta.<locale>.json`:
 - **Existing section, `meta.json` has a `"..."` rest-item** → the page auto-lists; add an explicit entry only to control ordering.
 - **Existing section, `meta.json` has an explicit `pages` list with no `"..."`** → you **MUST** add the page's basename to `pages`, or it stays hidden.
 - **New section** → create the folder's `meta.json` with a `title` and a `pages` array that includes the page **and** `"..."` (so future pages aren't hidden).
-- Never create a second file that resolves to an existing page's URL — the loader errors on duplicate slugs.
+- **For every non-default language**, create/update the matching `meta.<locale>.json` (e.g. `meta.nl.json`) with the **translated `title`** and the **same `pages` basenames** — otherwise that section's sidebar label stays in the default language for other locales.
+- Never create a second file that resolves to an existing page's URL (same slug, same locale) — the loader errors on duplicate slugs.
 
 ### 6. Propose placement and preview — approve before writing
-Show the engineer three things: the **target file path**, the **`meta.json` change as a diff**, and the **full MDX page**. Ask them to read, edit if they want, and approve. Apply their edits. **Only after explicit approval do you write to disk.** Docs are a committed artifact — the gate exists so the engineer sees them before they land.
+Show the engineer: the **target file paths** (every language + every `meta` file), the **`meta.json` / `meta.<locale>.json` changes as diffs**, and the **full MDX page in each language**. Ask them to read, edit if they want, and approve. Apply their edits. **Only after explicit approval do you write to disk.** Docs are a committed artifact — the gate exists so the engineer sees them before they land.
 
 ### 7. Write, then ship as a draft PR
-Write the `.mdx` and update `meta.json`. Then, on the feature's branch/worktree:
-- Commit **only the docs files** (the new page + `meta.json`) — not unrelated changes, and keep `graphify-out/` out of the commit.
+Write every `.mdx` (all languages) and update every `meta.json` / `meta.<locale>.json`. Then, on the feature's branch/worktree:
+- Commit **only the docs files** (the new pages in all languages + the `meta` files) — not unrelated changes, and keep `graphify-out/` out of the commit.
 - Push and open a **draft PR** against `develop`.
-- If graphify is in use, run `graphify update .` after writing so the graph reflects the new page.
+- If graphify is in use, run `graphify update .` after writing so the graph reflects the new pages.
 
 ### 8. Report
-Give the page path + slug, the placement, any `TODO: verify` markers still open, the local preview URL (`http://localhost:3004/docs/<slug>`), and the draft-PR link.
+Give, **per language**, the page path + slug and the local preview URL (default `http://localhost:3004/docs/<slug>`, non-default `…/<locale>/docs/<slug>`). Plus the placement, any `TODO: verify` markers still open (they appear in every language), and the draft-PR link.
 
 ## The page skeleton
 
@@ -85,6 +121,8 @@ Same skeleton every page, so readers build muscle memory and nothing required is
 
 Keep the four Diátaxis modes (how-to · reference · explanation · tutorial) in **separate sections** — blend on the page, never within a section.
 
+**On an i18n app, write this same skeleton once per language** — `roles.mdx` (en) and `roles.nl.mdx` (nl): identical sections in the same order, identical code and grounded values, only the prose translated.
+
 ### Skeleton in MDX (shape to adapt — fill from the fact-sheet, don't copy the values)
 ```mdx
 ---
@@ -98,7 +136,7 @@ description: <One sentence, used for search and the sidebar subtitle.>
 <2–4 plain sentences: the everyday problem it solves and when to use it — no jargon, or explain it inline.>
 
 <Callout type="info">
-  **Last updated** 2026-07-13 · **Owner** <team/person> · **Applies to** `apps/api` (v<x.y>)
+  **Last updated** 2026-07-15 · **Owner** <team/person> · **Applies to** `apps/api` (v<x.y>)
 </Callout>
 
 ## Prerequisites & dependencies
@@ -123,7 +161,7 @@ description: <One sentence, used for search and the sidebar subtitle.>
 
 ## Plain language — technical, but anyone can follow
 
-The page serves **two readers at once**: a developer who needs the exact commands and reference, and someone who doesn't code (a PM, a designer, a new teammate) who needs to understand what the feature is and why it exists. Write so both are served — plain prose anyone can follow, with the technical detail kept and clearly framed. This never overrides grounding (step 3): you still verify every value, you just explain it in plain words.
+The page serves **two readers at once**: a developer who needs the exact commands and reference, and someone who doesn't code (a PM, a designer, a new teammate) who needs to understand what the feature is and why it exists. Write so both are served — plain prose anyone can follow, with the technical detail kept and clearly framed. This never overrides grounding (step 3): you still verify every value, you just explain it in plain words. Apply this recipe in **every** language you produce.
 
 **The recipe — apply to every section:**
 1. **Open in everyday words.** Start each section with 1–2 sentences saying what it is and why it matters, in plain language, *before* any code, command, or field name. A non-coder should get the point from that opening alone.
@@ -150,30 +188,36 @@ Under the pull to produce a complete-looking page, the tempting shortcut is to f
 | "The import path is standard" | Paths differ per repo. graphify/grep the real one. |
 | "I'll fix the exact details later" | Later never comes. Ship a visible `{/* TODO: verify */}`, not a confident guess. |
 | "The ticket says it works this way" | The ticket is intent; the code is truth. Document the code. |
+| "I'll localise the command for the Dutch page" | Commands, paths, and identifiers are the same bytes in every language — only prose translates. A translated command doesn't run. |
 
 **Red flags — STOP and verify (or mark TODO):**
 - Writing a command, path, or endpoint you did not read in the code.
 - A response/DTO shape recalled from memory.
 - "This is probably how it's wired."
+- A code block, command, or identifier that differs between the language versions.
 
 ## Quick reference
 
 | Step | Action | Key detail |
 |------|--------|------------|
 | 1 | Fact-sheet from the diff | `git diff <base>...HEAD` + read files; real paths/commands/shapes |
-| 2 | Read docs nav | `apps/docs/content/docs/**` + `meta.json`; explicit `pages` vs `"..."` |
-| 3 | Ground every value | verified against code/`package.json`/diff, else `{/* TODO: verify */}` |
-| 4 | Write to the skeleton, in plain language | REQUIRED sections; each opens in everyday words, jargon explained on first use, code blocks framed plainly; metadata bar dated today |
-| 5 | Wire into `meta.json` | add to `pages` unless a `"..."` covers it — else the page hides |
-| 6 | Preview → approve | show path + meta diff + full MDX; write only after approval |
-| 7 | Ship | commit docs only (no `graphify-out/`), push, draft PR → `develop` |
+| 2 | Read docs nav + languages | `content/docs/**` + `meta.json` (explicit `pages` vs `"..."`); **`src/lib/i18n.ts` → language list + default** |
+| 3 | Ground every value once | verified against code/`package.json`/diff, else `{/* TODO: verify */}`; reused in every language |
+| 4 | Write skeleton once per language, plain language | default `<slug>.mdx` + `<slug>.<locale>.mdx` each; prose translated, code/values verbatim; metadata bar dated today |
+| 5 | Wire into `meta.json` + `meta.<locale>.json` | add basename to `pages` unless `"..."` covers it; translated `title` per locale — else the page hides / label stays default-language |
+| 6 | Preview → approve | show every language file + every meta diff; write only after approval |
+| 7 | Ship | commit docs only, all languages (no `graphify-out/`), push, draft PR → `develop` |
 
 ## Common mistakes
+- **Only writing the default-language page.** On an i18n app that leaves every non-default reader on the fallback (Dutch route serves English). Produce `<slug>.<locale>.mdx` for each language in `i18n.ts` (*Multi-language output*).
+- **Translating code, commands, paths, or identifiers.** Only prose is translated; grounded values are byte-identical across languages — a translated command won't run (*Multi-language output*).
+- **Forgetting `meta.<locale>.json`.** The section's sidebar label then stays in the default language for other locales (step 5).
+- **Hardcoding `en`/`nl`.** Read `i18n.ts` and produce whatever languages it declares — a new language added there must appear in the docs (step 2).
 - **Guessing commands, paths, or response shapes.** Verify against the code, or mark `{/* TODO: verify */}` (step 3). A confident wrong value is worse than a flagged gap.
 - **Dropping a file into a folder whose `meta.json` has an explicit `pages` list without adding it.** The page is then hidden from the sidebar (step 5). Add it, or ensure a `"..."` rest-item covers it.
 - **Omitting the metadata bar or Related links.** Both are REQUIRED — the metadata stamp fights staleness, the links stop dead ends.
 - **A wall of prose or an example that won't run.** Use the templated sections and a real, copy-pasteable snippet.
 - **Jargon walls / code with no plain intro.** A term used without explaining it, or a code block dropped in with no everyday-language lead, loses every non-coder. Open in plain words, define terms on first use, and frame each block (*Plain language*).
-- **Writing before approval.** Placement + full preview go to the engineer first (step 6).
-- **Committing `graphify-out/` or unrelated files.** Stage only the new page + `meta.json` (step 7).
+- **Writing before approval.** Placement + full preview (all languages) go to the engineer first (step 6).
+- **Committing `graphify-out/` or unrelated files.** Stage only the new pages + `meta` files (step 7).
 - **Scaffolding the docs app.** Out of scope — this skill writes pages into the existing `apps/docs` (ticket 8 builds the app).

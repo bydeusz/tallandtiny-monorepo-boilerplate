@@ -15,7 +15,7 @@ When the user types `/project:start-ticket`, invoke the Skill tool with `skill: 
 When the user types `/project:test-ticket`, invoke the Skill tool with `skill: "project:test-ticket"` before doing anything else.
 
 # project:generate-docs
-- **generate-docs** (`.claude/skills/project/skills/generate-docs/SKILL.md`) - after building a feature, write a thorough Fumadocs page (how it works, usage, dependencies) in plain language non-coders can follow, grounded in the real code, and ship it as a draft PR. Trigger: `/project:generate-docs`
+- **generate-docs** (`.claude/skills/project/skills/generate-docs/SKILL.md`) - after building a feature, write a thorough Fumadocs page (how it works, usage, dependencies) in plain language non-coders can follow, grounded in the real code, in every language the docs app is configured for (English + Dutch — one `<slug>.mdx` + `<slug>.nl.mdx`), and ship it as a draft PR. Trigger: `/project:generate-docs`
 When the user types `/project:generate-docs`, invoke the Skill tool with `skill: "project:generate-docs"` before doing anything else.
 
 # project:clean-slate
