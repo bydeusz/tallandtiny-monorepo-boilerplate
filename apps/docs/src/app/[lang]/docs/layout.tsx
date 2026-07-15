@@ -15,7 +15,7 @@ export default async function Layout({
   const tree = source.pageTree[lang];
   if (!tree) notFound();
   return (
-    <DocsLayout tree={tree} {...baseOptions()}>
+    <DocsLayout tree={tree} {...baseOptions(lang)}>
       {children}
     </DocsLayout>
   );

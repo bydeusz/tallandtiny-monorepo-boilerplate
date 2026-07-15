@@ -1,9 +1,9 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
-export function baseOptions(): BaseLayoutProps {
+export function baseOptions(lang: string): BaseLayoutProps {
   return {
     nav: {
-      title: 'Boilerplate Docs',
+      title: lang === 'nl' ? 'Boilerplate-documentatie' : 'Boilerplate Docs',
     },
   };
 }
