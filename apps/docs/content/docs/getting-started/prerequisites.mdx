@@ -1,0 +1,241 @@
+---
+title: Prerequisites
+description: What to install before running the monorepo — Git, Node.js, pnpm, Docker and the security tooling — with commands for macOS, Linux and Windows.
+---
+
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+
+Everything you need installed on your machine before you can set up and run this project.
+
+<Callout type="info">
+  **Last updated** 2026-07-16 · **Applies to** the whole monorepo (root)
+</Callout>
+
+## Before you start
+
+This is a **monorepo** — several apps and packages living in one repository. To run it locally you need a JavaScript runtime, the package manager the repo pins, and Docker for its database and other background services.
+
+The tools split into two groups:
+
+- **Required** — Git, Node.js, pnpm and Docker. Without these you can't install or run the project.
+- **Recommended** — Semgrep, Gitleaks, graphify and jq. These power the repo's built-in security checks and its AI-assisted workflow. The project still runs without them; they just switch off quietly when missing.
+
+Each tool below has a one-line install command per operating system and a command to check it worked. Install the required ones first, top to bottom.
+
+## Git
+
+Git downloads the code and tracks your changes. The repo also uses it to auto-set-up new worktrees.
+
+<Tabs items={["macOS", "Linux", "Windows"]}>
+  <Tab value="macOS">
+    ```bash
+    xcode-select --install    # includes Git
+    # or: brew install git
+    ```
+  </Tab>
+  <Tab value="Linux">
+    ```bash
+    sudo apt install git      # Debian/Ubuntu
+    # or: sudo dnf install git   # Fedora
+    ```
+  </Tab>
+  <Tab value="Windows">
+    ```powershell
+    winget install Git.Git
+    # or download from https://git-scm.com/download/win
+    ```
+  </Tab>
+</Tabs>
+
+Check: `git --version`
+
+## Node.js
+
+Node.js is the JavaScript runtime every app, script and build step runs on. You need **version 22.12 or newer**.
+
+<Tabs items={["macOS", "Linux", "Windows"]}>
+  <Tab value="macOS">
+    ```bash
+    brew install node@22
+    # or with nvm: nvm install 22
+    ```
+  </Tab>
+  <Tab value="Linux">
+    ```bash
+    # nvm (recommended) — https://github.com/nvm-sh/nvm
+    nvm install 22
+    ```
+  </Tab>
+  <Tab value="Windows">
+    ```powershell
+    winget install OpenJS.NodeJS.LTS
+    # or use fnm / nvm-windows
+    ```
+  </Tab>
+</Tabs>
+
+Check: `node --version` — must print `v22.12` or higher.
+
+## pnpm
+
+pnpm is the package manager this repo uses — **never npm**. The simplest way is **Corepack**, which ships with Node and automatically uses the exact pnpm version the repo pins (`10.28.2`).
+
+Corepack works the same on every OS:
+
+```bash
+corepack enable
+```
+
+Then run `pnpm install` inside the repo — Corepack downloads and pins `pnpm@10.28.2` for you (the version from the `packageManager` field in `package.json`).
+
+<Callout type="info">
+  Prefer a manual install? `npm install -g pnpm@10.28.2` or `brew install pnpm` also work — just match the pinned version.
+</Callout>
+
+Check: `pnpm --version` — should print `10.28.2`.
+
+## Docker
+
+Docker runs the project's backing services in containers, so you don't install them by hand: **PostgreSQL 16** (database), **Redis 7** (cache & job queue), **MinIO** (S3-style file storage) and **Mailpit** (a local email inbox). It's also required for the integration and end-to-end tests. On macOS and Windows install **Docker Desktop**; on Linux install **Docker Engine** + the Compose plugin.
+
+<Tabs items={["macOS", "Linux", "Windows"]}>
+  <Tab value="macOS">
+    ```bash
+    brew install --cask docker
+    # or download Docker Desktop: https://www.docker.com/products/docker-desktop
+    ```
+    Launch Docker Desktop once so the engine starts.
+  </Tab>
+  <Tab value="Linux">
+    ```bash
+    curl -fsSL https://get.docker.com | sh
+    sudo usermod -aG docker $USER   # then log out and back in
+    ```
+    This installs Docker Engine and Compose v2.
+  </Tab>
+  <Tab value="Windows">
+    ```powershell
+    winget install Docker.DockerDesktop
+    # requires WSL2 — https://docs.docker.com/desktop/wsl/
+    ```
+  </Tab>
+</Tabs>
+
+Check: `docker --version` and `docker compose version`. Once it's running, `pnpm docker:up` starts the services.
+
+<Callout type="info">
+  The tools below power the repo's security scanning and AI-assisted workflow (they run from the Claude Code hooks in `.claude/settings.json`). They're optional to just run the app — each one skips quietly if it isn't installed — but recommended for the full experience.
+</Callout>
+
+## Semgrep
+
+Semgrep is a static-analysis tool that scans the API code for security issues and accidentally logged personal data (PII). Install it with pipx or uv (both cross-platform); on macOS Homebrew works too.
+
+<Tabs items={["macOS", "Linux", "Windows"]}>
+  <Tab value="macOS">
+    ```bash
+    brew install semgrep
+    # or: pipx install semgrep
+    ```
+  </Tab>
+  <Tab value="Linux">
+    ```bash
+    pipx install semgrep
+    # or: uv tool install semgrep
+    ```
+  </Tab>
+  <Tab value="Windows">
+    ```powershell
+    pipx install semgrep
+    # or: uv tool install semgrep
+    ```
+  </Tab>
+</Tabs>
+
+Check: `semgrep --version`
+
+## Gitleaks
+
+Gitleaks scans your changes for secrets — API keys, tokens, passwords — before they get committed.
+
+<Tabs items={["macOS", "Linux", "Windows"]}>
+  <Tab value="macOS">
+    ```bash
+    brew install gitleaks
+    ```
+  </Tab>
+  <Tab value="Linux">
+    ```bash
+    brew install gitleaks
+    # or grab a binary from https://github.com/gitleaks/gitleaks/releases
+    ```
+  </Tab>
+  <Tab value="Windows">
+    ```powershell
+    # download the .zip from the releases page and add gitleaks.exe to your PATH
+    # https://github.com/gitleaks/gitleaks/releases
+    ```
+  </Tab>
+</Tabs>
+
+Check: `gitleaks version`
+
+## graphify
+
+graphify builds a **knowledge graph** of the repo (stored in `graphify-out/`) so questions about the codebase can be answered from a small, focused map instead of raw file searches. It's a Python tool; install it with **uv** or **pipx**.
+
+Same on every OS:
+
+```bash
+uv tool install graphifyy      # or: pipx install graphifyy
+graphify install               # sets up the Claude Code skill
+```
+
+Needs Python 3 with uv or pipx. (The package is named `graphifyy`; the command is `graphify`.)
+
+Check: `graphify --version`
+
+## jq
+
+jq is a small command-line tool for reading JSON. The repo's Claude Code hooks use it to parse their input.
+
+<Tabs items={["macOS", "Linux", "Windows"]}>
+  <Tab value="macOS">
+    ```bash
+    brew install jq
+    ```
+  </Tab>
+  <Tab value="Linux">
+    ```bash
+    sudo apt install jq       # Debian/Ubuntu
+    # or: sudo dnf install jq    # Fedora
+    ```
+  </Tab>
+  <Tab value="Windows">
+    ```powershell
+    winget install jqlang.jq
+    ```
+  </Tab>
+</Tabs>
+
+Check: `jq --version`
+
+## Verify your setup
+
+Run these to confirm everything is in place:
+
+```bash
+git --version
+node --version        # v22.12 or higher
+pnpm --version        # 10.28.2
+docker --version && docker compose version
+semgrep --version
+gitleaks version
+graphify --version
+jq --version
+```
+
+## Related
+
+- Next: [Start your project](/docs/getting-started/start-your-project) — copy the template and make it yours.
+- Where these come from: `package.json` (`engines`, `packageManager`), `_docker/docker-compose.yml`, and the hooks in `.claude/settings.json`.
