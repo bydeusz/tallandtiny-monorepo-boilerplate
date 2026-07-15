@@ -1,0 +1,70 @@
+---
+title: create-story
+description: Zet een feature of bug die je in de chat beschrijft om in een onderzocht Trello-ticket op de Backlog.
+---
+
+`create-story` neemt een feature of bug die je in gewone taal hebt beschreven en maakt er
+een net **Trello-ticket** van — onderzocht tegen de echte codebase, aan jou getoond ter
+goedkeuring, en geplaatst op de **Backlog**.
+
+<Callout type="info">
+  **Laatst bijgewerkt** 2026-07-16 · **Van toepassing op** `.claude/skills/project/skills/create-story/`
+</Callout>
+
+## Wat het doet
+
+Je beschrijft wat je wilt ("gebruikers moeten hun wachtwoord kunnen resetten vanaf het
+dashboard") en de skill maakt daar een goed opgebouwd ticket van — een **story** (een nieuwe
+feature of wijziging) of een **bug** (iets kapots). Het ticket wordt niet uit je zin alleen
+geschreven: eerst wordt de codebase onderzocht, zodat het ticket naar echte bestanden wijst,
+hergebruikt wat er al is, en de beveiligings- en privacykant aanstipt. Het afgeronde ticket
+komt in de **Backlog**-kolom van het Trello-bord van het project.
+
+## Wanneer je het gebruikt
+
+Pak 'm wanneer er in een gesprek een **goed idee of een echte bug opkomt en je die wilt
+vastleggen** in plaats van kwijtraken:
+
+- Je hebt net een feature beschreven en wilt die als story op het bord.
+- Je stuit op een bug en wilt die met reproductiestappen vastleggen.
+- Je wilt dat het ticket verwijst naar de echte code en bestaande flows — geen vage
+  eenregelaar die iemand later moet uitzoeken.
+
+**Wanneer je 'm _niet_ gebruikt:**
+
+- **Je wilt nu meteen gaan bouwen.** Deze skill _legt_ het ticket alleen vast; er wordt geen
+  code geschreven. Om een ticket van het bord te pakken en te beginnen, gebruik je
+  [start-ticket](/nl/docs/skills/start-ticket).
+- **Het werk staat al op een ticket.** Het is om een verse beschrijving in een nieuw kaartje
+  om te zetten, niet om bestaande te bewerken.
+
+## Hoe je het start
+
+Vraag het op naam — **`/project:create-story`** — of zeg het gewoon in gewone taal:
+
+- "maak hier een story van" · "zet dit op de backlog"
+- "make a ticket for this" · "log this bug"
+
+Het ticket wordt geschreven in **dezelfde taal die je gebruikte** om het te beschrijven —
+een Nederlandse beschrijving geeft een Nederlands ticket.
+
+## Wat er gebeurt
+
+1. **Story of bug?** De skill bepaalt het uit je woorden (of vraagt het als het echt onduidelijk is).
+2. **Onderzoek — parallel.** Er wordt tegelijk een klein team read-only assistenten ingezet:
+   één speurt de codebase af naar bestaande code om te _hergebruiken_, één checkt de huidige
+   best practice voor elke betrokken library of tool, en één geeft een **beveiligings- en
+   privacy (AVG/GDPR)**-oordeel.
+3. **Schrijven.** Het ticket wordt uit die bevindingen opgesteld — echte bestandsverwijzingen,
+   een hergebruik-notitie, acceptatiecriteria, en een beveiligingssectie die elk ticket
+   draagt.
+4. **Review.** Een aparte assistent toetst het concept aan de code, vooral om **dubbel werk**
+   te vangen — iets bouwen wat al bestaat.
+5. **Voorbeeld & bevestigen.** Het volledige ticket wordt getoond (titel, tekst, doelbord,
+   lijst en label) en pas geplaatst **nadat jij het goedkeurt** — blauw label voor een story,
+   rood voor een bug.
+
+## Verwante skills
+
+`create-story` legt het ticket vast; [start-ticket](/nl/docs/skills/start-ticket) is de
+andere helft — die haalt een gekozen ticket uit de Backlog en maakt het klaar om te bouwen.

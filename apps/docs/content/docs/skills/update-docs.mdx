@@ -1,0 +1,71 @@
+---
+title: update-docs
+description: Checks existing doc pages against the current code and patches only the parts that drifted.
+---
+
+`update-docs` keeps the documentation honest: it re-checks the pages you already have against
+the code as it is **now**, and patches only the parts that have **drifted** — a surgical
+update, not a rewrite.
+
+<Callout type="info">
+  **Last updated** 2026-07-16 · **Applies to** `.claude/skills/project/skills/update-docs/`
+</Callout>
+
+## What it does
+
+Documentation rots quietly: a command gets renamed, a response field changes, a new
+capability lands — and the page that described the old behaviour is now wrong. `update-docs`
+is **grounding run in reverse**: instead of writing new claims from the code, it takes each
+claim a page already makes and re-verifies it against the current code, then changes only
+what no longer matches. It **audits every page** (not just the one you mention), patches the
+drifted spans in place, keeps both language versions in lockstep, and bumps the
+"last updated" stamp **only on pages it actually changed**. A feature it finds with no page at
+all is handed off to [generate-docs](/docs/skills/generate-docs), not invented here.
+
+## When to use it
+
+Reach for it when the **docs may have fallen behind the code**:
+
+- A documented command or script was renamed, an endpoint or response field changed, or a
+  config value is now wrong.
+- A new capability landed that the existing page doesn't mention.
+- You simply want a health check — "are my docs still accurate?" / "werk de docs bij."
+
+**When _not_ to use it:**
+
+- **A changed feature has no page at all.** That's not a patch, it's a new page — use
+  [generate-docs](/docs/skills/generate-docs). `update-docs` never creates pages.
+- **You want a page rewritten from scratch.** It deliberately doesn't — a full regenerate
+  clobbers hand-edits, drifts the language versions apart, and buries the real change in
+  noise. It patches the drifted spans and leaves the rest byte-for-byte.
+
+## How to start it
+
+Ask for it by name — **`/project:update-docs`** — or in plain language:
+
+- "werk de docs bij" · "de docs kloppen niet meer" · "zijn mijn docs nog actueel" · "audit de docs"
+- "update the docs" · "the docs are out of date"
+
+An unscoped request ("update the docs") means the **whole site** is audited; name a page or
+section to scope it to just that.
+
+## What happens
+
+1. **Inventory.** It lists every page (each `.mdx` and its `.nl.mdx` sibling) and reads the
+   app's language config.
+2. **Detect drift.** For each page it anchors on the "last updated" date, looks at what code
+   changed since, and re-verifies every concrete claim — commands, paths, endpoints, response
+   shapes, config rows — against the current code. Mismatches and missing new capabilities are
+   drift.
+3. **Classify.** Each page is **stale** (has drift → patch), **clean** (verified, left
+   untouched — including its stamp), or an **undocumented feature** (deferred to generate-docs).
+4. **Patch surgically.** It edits only the drifted spans, lands every change in both language
+   siblings (code values verbatim, prose translated), and bumps "last updated" to today only
+   on pages it changed.
+5. **Show diffs → approve → ship.** It shows a drift table and the actual old→new diffs; only
+   after you approve does it write, then push and open a **draft PR**.
+
+## Related skills
+
+[generate-docs](/docs/skills/generate-docs) creates a page for a new feature; `update-docs`
+is the other end of the same loop — it keeps those pages true as the code moves on.

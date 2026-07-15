@@ -1,0 +1,76 @@
+---
+title: test-ticket
+description: Verifieert een gebouwd ticket end-to-end in een echte browser en drijft elk acceptatiecriterium naar groen.
+---
+
+`test-ticket` bewijst dat een gebouwd ticket echt werkt door **een echte browser aan te
+sturen** langs de acceptatiecriteria — testscenario's schrijven, ze draaien, repareren wat
+faalt, en doorgaan tot alles groen is.
+
+<Callout type="info">
+  **Laatst bijgewerkt** 2026-07-16 · **Van toepassing op** `.claude/skills/project/skills/test-ticket/`
+</Callout>
+
+## Wat het doet
+
+Het neemt een ticket dat al gebouwd is en controleert het end-to-end in een echte browser,
+met de **Playwright MCP** (een tool waarmee een assistent op een live pagina kan klikken,
+typen en lezen). De acceptatiecriteria van het ticket — plus de beveiligings- en
+privacysectie — zijn de spec. Een klein team werkt op volgorde: een **scenario-schrijver**
+zet de criteria om in concrete testscenario's, jij keurt ze goed, een **runner** stuurt de
+browser aan en meldt elk scenario groen of rood, en een **fixer** repareert de code achter
+elke rode. Daarna draait het de rode opnieuw en gaat door tot alles groen is. Het verplaatst
+het kaartje van **To Do** naar **Testing**.
+
+## Wanneer je het gebruikt
+
+De doorslaggevende vraag is simpel: **kun je het criterium bewijzen door iets in een browser
+te doen en het resultaat te zien?**
+
+- **Gebruik het** als het effect in de browser waarneembaar is:
+  - **frontend**-werk — formulieren, validatie, navigatie, redirects, foutmeldingen;
+  - **backend**-werk waarvan het effect _via_ de UI zichtbaar wordt — inloggen en auth,
+    route-guards, sessie/cookie-gedrag, een endpoint dat de frontend aanroept, of een
+    token-flow die je end-to-end kunt afmaken (registreren → de aangemaakte code uit de
+    database lezen → verder).
+
+**Wanneer je 'm _niet_ gebruikt:**
+
+- **Wijzigingen zonder in de browser waarneembaar effect** — een interne refactor, een
+  queue-worker, een cron-job, een datamigratie, of een service-naar-service-API zonder UI
+  ervoor. Een browser bewijst daar niets, en er toch een scenario op forceren nodigt uit tot
+  nep-groen. Die horen in **Vitest** unit/integratietests, niet hier.
+- Als een ticket beide mengt, verifieer je de in de browser waarneembare delen hier en laat
+  je de rest aan Vitest — het rapport vermeldt welke delen niet zijn gedekt.
+
+## Hoe je het start
+
+Vraag het op naam — **`/project:test-ticket`** — of in gewone taal:
+
+- "test dit ticket" · "test het ticket met playwright" · "verifieer dit ticket end-to-end"
+- "run the e2e for this ticket"
+
+Het is de logische volgende stap na een ticket gebouwd via
+[start-ticket](/nl/docs/skills/start-ticket).
+
+## Wat er gebeurt
+
+1. **Zie wat er veranderde.** De echte diff op de branch van het ticket wordt bekeken, zodat
+   scenario's aansluiten op wat er werkelijk is gebouwd (niet alleen de tekst van het ticket).
+2. **Naar Testing.** Het kaartje gaat van To Do naar de **Testing**-kolom.
+3. **Bereid de omgeving voor.** De dev-server draait vanuit de eigen code van het ticket (niet
+   het kale `develop`), de database en services worden gestart, en er worden geseede
+   gebruikers en echte tokens uit de database gebruikt — nooit verzonnen data.
+4. **Scenario's schrijven → jij keurt goed.** De scenario-schrijver zet de scenario's in een
+   bestand; jij leest, bewerkt desgewenst, en keurt goed vóór er een browser draait.
+5. **Draaien → repareren → opnieuw.** De runner stuurt de browser en markeert elk scenario
+   groen of rood met bewijs; de fixer repareert de code achter de rode; het draait opnieuw tot
+   groen, met een limiet van drie rondes per scenario zodat het nooit eindeloos loopt of een
+   pass nep-groen maakt.
+6. **Rapporteer.** Je krijgt de uiteindelijke groen/rood-tabel, het bewijs en elke uitgevoerde
+   fix. Het kaartje blijft in **Testing** — deze skill merget niet en opent geen PR.
+
+## Verwante skills
+
+[start-ticket](/nl/docs/skills/start-ticket) bouwt het ticket dat deze verifieert; zodra het
+bewezen is, documenteert [generate-docs](/nl/docs/skills/generate-docs) de feature.
