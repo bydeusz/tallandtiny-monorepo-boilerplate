@@ -5,9 +5,14 @@ The `/project:create-story` skill posts tickets to this Trello board. Set the bo
 trello: monorepo-boilerplate
 
 ## Worktrees
-- Dit project gebruikt pnpm, nooit npm.
-- Setup na `git worktree add`: pnpm install --frozen-lockfile --prefer-offline
-- Worktrees in .worktrees/ (zelfde filesystem → hardlinks blijven werken)
+- This project uses pnpm, never npm.
+- Worktree setup is automated: a post-checkout hook runs `scripts/worktree-setup.sh`
+  synchronously on `git worktree add` (copy .env files → pnpm install →
+  @repo/database generate+build), so a new worktree is ready to use immediately.
+  The hook installs itself via the `prepare` script on `pnpm install`; install it
+  manually with `pnpm setup:hooks`. Fallback if the hook isn't active yet (e.g. right
+  after the very first clone): run `pnpm setup:worktree` inside the worktree.
+- Worktrees live in .worktrees/ (same filesystem → pnpm hardlinks keep working).
 
 ## graphify
 
