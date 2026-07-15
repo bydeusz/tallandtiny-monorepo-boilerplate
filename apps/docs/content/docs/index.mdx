@@ -1,7 +1,134 @@
 ---
 title: Introduction
-description: Documentation for the tallandtiny monorepo boilerplate.
+description: Why this monorepo boilerplate exists and what you can build with it.
 ---
 
-Welcome to the docs for the **tallandtiny** monorepo boilerplate. New here? Start with
-[Start your project](/docs/getting-started/start-your-project).
+This is a ready-made starting point for building a full-stack TypeScript product — the
+front-ends, the API, the database and the everyday plumbing already wired together in
+one repository. It's also designed to be built _with AI_ — fast to work in with a coding
+assistant, and hard to make a mess in.
+
+## Why this boilerplate exists
+
+Every new product starts with the same unglamorous work: set up a database, build login,
+pick a UI library, connect the front-end to the back-end, add tests, and get it all
+running on your laptop. That work is the same every time, and it costs days before you
+write a single line of the thing you actually set out to build.
+
+This boilerplate does that groundwork once. It's a **monorepo** — one repository that
+holds several applications and shared building blocks side by side — so the pieces are
+already connected and share the same tooling. You copy it, rename it, and start from a
+working full-stack app instead of an empty folder.
+
+<Callout type="info">
+  **Last updated** 2026-07-15 · **Applies to** the whole monorepo (root)
+</Callout>
+
+## Made for AI-assisted development
+
+A big part of _why_ this boilerplate exists is _how_ you build with it: it's set up to be
+developed hand-in-hand with AI coding assistants. You can **vibe-code** — describe what
+you want in plain language and let the assistant write much of it — while the repository
+quietly keeps the quality and security bar high. That last part is the point: AI makes it
+easy to produce **"slop"** (plausible-looking code that's low-quality or subtly wrong),
+and this setup is built to catch it.
+
+Three things make that work:
+
+- **The assistant understands the codebase.** A knowledge graph of the whole repo (in
+  `graphify-out/`) lets an assistant find the right files and how they connect instead of
+  guessing; house rules live in `CLAUDE.md` files (for example: use pnpm, never npm); and
+  ready-made workflows turn common jobs — filing a ticket, building it, testing it, and
+  writing these very docs — into repeatable steps.
+- **Guardrails catch the slop.** Everything is typed from end to end — TypeScript, a typed
+  database layer (Prisma), and an API client generated from the API itself — so mismatches
+  fail to build instead of reaching users. The architecture is enforced by tools, not
+  trust: `dependency-cruiser` checks the boundaries between modules and a structure check
+  keeps the design system tidy. Automated tests (Vitest, with real databases via
+  Testcontainers) confirm things actually work.
+- **Security is in the loop, not an afterthought.** Security-focused linting flags risky
+  patterns and hard-coded secrets before they land (`eslint-plugin-security`,
+  `eslint-plugin-no-secrets`); a Semgrep rule scans for leaked personal data (PII); and the
+  API ships with the usual protections — secure HTTP headers, rate limiting, and password
+  hashing with token-based login.
+
+The result: you can lean on AI to move quickly, and the repo does the worrying about
+quality and safety for you.
+
+## What's in the box
+
+The repository is split into **apps** (things you run and deploy) and **packages**
+(shared code the apps reuse).
+
+### The applications
+
+| App | Runs on | What it is |
+| --- | --- | --- |
+| Website (`apps/website`) | localhost:3003 | Public marketing site — your product's front door. |
+| Web (`apps/web`) | localhost:3000 | A general-purpose public web app to build on. |
+| Dashboard (`apps/dashboard`) | localhost:3002 | The signed-in area, behind a login. |
+| API (`apps/api`) | localhost:3001 | The back-end that stores data and does the work — accounts, email, files, background jobs. |
+| Docs (`apps/docs`) | localhost:3004 | This documentation site. |
+
+### The shared building blocks
+
+| Package | What it gives you |
+| --- | --- |
+| `@repo/ui` | The design system — ready-made buttons, forms and layout, styled consistently (Tailwind + shadcn/Radix). |
+| `@repo/auth` | Ready-made screens for signing up, logging in, verifying email and resetting a password. |
+| `@repo/database` | The data layer — your data model and safe, typed access to PostgreSQL (via Prisma). |
+| `@repo/queries` | A typed connection from the front-ends to the API, generated automatically so the two never drift apart. |
+| `@repo/i18n` | Multi-language support (English and Dutch included out of the box). |
+| `@repo/eslint-config`, `@repo/typescript-config`, `@repo/vitest-config` | Shared rules for code style, TypeScript and testing, so every app follows the same standard. |
+
+Under the hood, **Turborepo** and **pnpm** tie it all together, and a single Docker
+Compose brings up a local database (PostgreSQL), cache (Redis), file storage (MinIO) and
+a test mailbox (Mailpit) — so you can run everything on your own machine.
+
+## What you can build with it
+
+Because the plumbing is already there, you can start on the real product on day one. It
+fits, among other things:
+
+- **A full-stack SaaS product** — a signed-in web app backed by an API and a database,
+  with working accounts (register, log in, verify email, reset password) already included.
+- **A product with several front-ends** — a public marketing site, an app, and a private
+  dashboard that all share the same look (`@repo/ui`) and the same connection to the
+  back-end (`@repo/queries`).
+- **An API-first product** — the front-end talks to the back-end through a typed client
+  generated from the API itself, so a change on the back-end shows up immediately on the
+  front-end.
+- **Back-ends that do heavy lifting** — sending email, storing uploaded files and running
+  background jobs are all wired up (email, S3-compatible storage, a job queue).
+- **A bilingual product** — English and Dutch are supported from the start, and you can
+  add more languages.
+
+## How it's organised
+
+Everything lives in two folders: **`apps/`** for the things you run, and **`packages/`**
+for the shared code they reuse.
+
+```
+tallandtiny-monorepo-boilerplate/
+├─ apps/
+│  ├─ web/         # public web app        (:3000)
+│  ├─ api/         # back-end API          (:3001)
+│  ├─ dashboard/   # signed-in dashboard   (:3002)
+│  ├─ website/     # marketing site        (:3003)
+│  └─ docs/        # this documentation    (:3004)
+└─ packages/
+   ├─ ui/          # shared design system
+   ├─ auth/        # ready-made auth screens
+   ├─ database/    # data model + DB access (Prisma)
+   ├─ queries/     # typed API client
+   ├─ i18n/        # translations (en / nl)
+   └─ …            # shared eslint / tsconfig / vitest presets
+```
+
+Sharing code this way means a button, a database query or an API type is written once and
+reused everywhere — fix it in one place and every app gets the fix.
+
+## Next
+
+Ready to make it yours? Head to **[Start your project](/docs/getting-started/start-your-project)**
+— it walks you through copying the template and pointing it at your own repository.
