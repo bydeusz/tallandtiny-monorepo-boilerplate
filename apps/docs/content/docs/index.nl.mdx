@@ -1,7 +1,139 @@
 ---
 title: Introductie
-description: Documentatie voor de tallandtiny monorepo-boilerplate.
+description: Waarom deze monorepo-boilerplate bestaat en wat je ermee kunt bouwen.
 ---
 
-Welkom bij de documentatie van de **tallandtiny** monorepo-boilerplate. Nieuw hier?
-Begin bij [Je project starten](/nl/docs/getting-started/start-your-project).
+Dit is een kant-en-klaar startpunt om een full-stack TypeScript-product te bouwen — de
+front-ends, de API, de database en al het dagelijkse "loodgieterswerk" zitten al aan
+elkaar geknoopt in één repository. Hij is ook ontworpen om _met AI_ gebouwd te worden —
+prettig snel werken met een codeerassistent, en lastig om er een zooitje van te maken.
+
+## Waarom deze boilerplate bestaat
+
+Elk nieuw product begint met hetzelfde ondankbare werk: een database opzetten, inloggen
+bouwen, een UI-bibliotheek kiezen, de front-end aan de back-end knopen, tests toevoegen
+en het geheel op je laptop aan de praat krijgen. Dat werk is elke keer hetzelfde en kost
+dagen voordat je één regel schrijft van wat je eigenlijk wilde maken.
+
+Deze boilerplate doet dat voorwerk één keer. Het is een **monorepo** — één repository die
+meerdere applicaties en gedeelde bouwstenen naast elkaar bevat — zodat de onderdelen al
+met elkaar verbonden zijn en dezelfde tooling delen. Je kopieert 'm, hernoemt 'm, en
+begint met een werkende full-stack app in plaats van een lege map.
+
+<Callout type="info">
+  **Laatst bijgewerkt** 2026-07-15 · **Van toepassing op** de hele monorepo (root)
+</Callout>
+
+## Gemaakt voor ontwikkelen met AI
+
+Een groot deel van _waarom_ deze boilerplate bestaat, zit in _hoe_ je ermee bouwt: hij is
+ingericht om samen met AI-codeerassistenten ontwikkeld te worden. Je kunt **vibe-coden** —
+in gewone taal beschrijven wat je wilt en de assistent het grootste deel laten schrijven —
+terwijl de repository de lat voor kwaliteit en veiligheid stil op hoog houdt. Dat laatste
+is precies de bedoeling: met AI is het makkelijk om **"slop"** te maken (code die er goed
+uitziet, maar rommelig of net verkeerd is), en deze opzet is gemaakt om dat te
+onderscheppen.
+
+Drie dingen maken dat mogelijk:
+
+- **De assistent begrijpt de codebase.** Een kennisgraaf van de hele repo (in
+  `graphify-out/`) laat een assistent de juiste bestanden en hun samenhang vinden in plaats
+  van te gokken; de huisregels staan in `CLAUDE.md`-bestanden (bijvoorbeeld: gebruik pnpm,
+  nooit npm); en kant-en-klare workflows maken veelvoorkomende klussen — een ticket
+  aanmaken, bouwen, testen en deze documentatie schrijven — tot herhaalbare stappen.
+- **Guardrails vangen de slop op.** Alles is van begin tot eind getypeerd — TypeScript, een
+  getypeerde datalaag (Prisma) en een API-client die uit de API zelf wordt gegenereerd —
+  zodat mismatches al bij het bouwen stuklopen in plaats van bij je gebruikers te belanden.
+  De architectuur wordt afgedwongen door tools, niet door vertrouwen: `dependency-cruiser`
+  bewaakt de grenzen tussen modules en een structuurcheck houdt het designsysteem netjes.
+  Geautomatiseerde tests (Vitest, met echte databases via Testcontainers) bevestigen dat
+  het ook echt werkt.
+- **Veiligheid zit in de lus, niet als bijzaak.** Beveiligingsgerichte linting markeert
+  risicovolle patronen en hard-coded secrets voordat ze binnenkomen
+  (`eslint-plugin-security`, `eslint-plugin-no-secrets`); een Semgrep-regel scant op gelekte
+  persoonsgegevens (PII); en de API komt met de gebruikelijke bescherming — veilige
+  HTTP-headers, rate limiting, en wachtwoord-hashing met token-gebaseerd inloggen.
+
+Het resultaat: je kunt op AI leunen om snel te bouwen, en de repo bewaakt de kwaliteit en
+veiligheid voor je.
+
+## Wat er in de doos zit
+
+De repository is opgesplitst in **apps** (dingen die je draait en uitrolt) en **packages**
+(gedeelde code die de apps hergebruiken).
+
+### De applicaties
+
+| App | Draait op | Wat het is |
+| --- | --- | --- |
+| Website (`apps/website`) | localhost:3003 | Publieke marketingsite — de voordeur van je product. |
+| Web (`apps/web`) | localhost:3000 | Een algemene publieke web-app om op voort te bouwen. |
+| Dashboard (`apps/dashboard`) | localhost:3002 | Het ingelogde gedeelte, achter een login. |
+| API (`apps/api`) | localhost:3001 | De back-end die data opslaat en het werk doet — accounts, e-mail, bestanden, achtergrondtaken. |
+| Docs (`apps/docs`) | localhost:3004 | Deze documentatiesite. |
+
+### De gedeelde bouwstenen
+
+| Package | Wat het je geeft |
+| --- | --- |
+| `@repo/ui` | Het designsysteem — kant-en-klare knoppen, formulieren en opmaak, overal consistent gestyled (Tailwind + shadcn/Radix). |
+| `@repo/auth` | Kant-en-klare schermen voor registreren, inloggen, e-mail verifiëren en wachtwoord resetten. |
+| `@repo/database` | De datalaag — je datamodel en veilige, getypeerde toegang tot PostgreSQL (via Prisma). |
+| `@repo/queries` | Een getypeerde verbinding van de front-ends naar de API, automatisch gegenereerd zodat de twee nooit uit elkaar lopen. |
+| `@repo/i18n` | Meertaligheid (Engels en Nederlands standaard aanwezig). |
+| `@repo/eslint-config`, `@repo/typescript-config`, `@repo/vitest-config` | Gedeelde regels voor codestijl, TypeScript en testen, zodat elke app dezelfde standaard volgt. |
+
+Onder de motorkap knopen **Turborepo** en **pnpm** alles aan elkaar, en één Docker Compose
+start lokaal een database (PostgreSQL), cache (Redis), bestandsopslag (MinIO) en een
+testpostbus (Mailpit) — zo draai je alles op je eigen machine.
+
+## Wat je ermee kunt bouwen
+
+Doordat het loodgieterswerk er al is, kun je vanaf dag één aan het échte product beginnen.
+Het past onder andere bij:
+
+- **Een full-stack SaaS-product** — een ingelogde web-app met een API en database
+  erachter, waarbij werkende accounts (registreren, inloggen, e-mail verifiëren, wachtwoord
+  resetten) al meegeleverd zijn.
+- **Een product met meerdere front-ends** — een publieke marketingsite, een app en een
+  besloten dashboard die allemaal dezelfde uitstraling (`@repo/ui`) en dezelfde verbinding
+  met de back-end (`@repo/queries`) delen.
+- **Een API-first product** — de front-end praat met de back-end via een getypeerde client
+  die uit de API zelf wordt gegenereerd, zodat een wijziging in de back-end meteen zichtbaar
+  is in de front-end.
+- **Back-ends die zwaar werk doen** — e-mail versturen, geüploade bestanden opslaan en
+  achtergrondtaken draaien zijn allemaal aangesloten (e-mail, S3-compatibele opslag, een
+  taakwachtrij).
+- **Een tweetalig product** — Engels en Nederlands worden vanaf het begin ondersteund, en
+  je kunt meer talen toevoegen.
+
+## Hoe het is opgebouwd
+
+Alles staat in twee mappen: **`apps/`** voor de dingen die je draait, en **`packages/`**
+voor de gedeelde code die ze hergebruiken.
+
+```
+tallandtiny-monorepo-boilerplate/
+├─ apps/
+│  ├─ web/         # publieke web-app        (:3000)
+│  ├─ api/         # back-end-API            (:3001)
+│  ├─ dashboard/   # ingelogd dashboard      (:3002)
+│  ├─ website/     # marketingsite           (:3003)
+│  └─ docs/        # deze documentatie       (:3004)
+└─ packages/
+   ├─ ui/          # gedeeld designsysteem
+   ├─ auth/        # kant-en-klare auth-schermen
+   ├─ database/    # datamodel + DB-toegang  (Prisma)
+   ├─ queries/     # getypeerde API-client
+   ├─ i18n/        # vertalingen (en / nl)
+   └─ …            # gedeelde eslint / tsconfig / vitest presets
+```
+
+Code zo delen betekent dat een knop, een databasequery of een API-type één keer wordt
+geschreven en overal wordt hergebruikt — verbeter het op één plek en elke app profiteert
+mee.
+
+## Volgende stap
+
+Klaar om 'm van jezelf te maken? Ga naar **[Je project starten](/nl/docs/getting-started/start-your-project)**
+— daar lees je hoe je de template kopieert en op je eigen repository richt.
