@@ -1,0 +1,77 @@
+---
+title: graphify
+description: Turns the codebase into a searchable knowledge graph the assistant queries instead of guessing.
+---
+
+`graphify` gives the AI assistant a **map of the codebase** it can search, so it finds the
+right files and how they connect instead of guessing — and it keeps that map up to date as
+the code changes.
+
+<Callout type="info">
+  **Last updated** 2026-07-16 · **Applies to** `.claude/skills/graphify/`
+</Callout>
+
+## What it does
+
+`graphify` reads the whole project and builds a **knowledge graph** — a network of the
+concepts, files and functions in the code and how they link together. That graph is saved
+in the `graphify-out/` folder (it already ships prebuilt in this repo), so the assistant
+can look things up in it rather than reading file after file hoping to stumble on the right
+one.
+
+A few plain-language terms:
+
+- A **knowledge graph** is a map of "things and how they relate" — here, the parts of the
+  codebase and their connections.
+- **God nodes** are the most connected parts — the hubs everything else touches, a good
+  place to start understanding the project.
+- **Community detection** groups related parts together, so the graph surfaces links across
+  files you wouldn't think to look for.
+
+## When to use it
+
+This is the assistant's **first stop for any question about the code** — and in this repo
+it's a house rule, not a suggestion:
+
+- **Before answering "how does X work?", "what calls Y?", or "where does this data flow?"**
+  Ask the graph first; it returns a small, focused slice of the project instead of a pile of
+  raw search results.
+- **Before reading or changing code** in an area you don't know yet — get oriented, then
+  open the specific files.
+- **After you change the code**, refresh the map so it doesn't go stale (see below).
+
+**When _not_ to reach for it:** if you already know the exact file and line you need, just
+open it — the graph is for finding your way, not for re-reading something you've already
+located. It's also not for general programming questions that aren't about _this_ codebase.
+
+## How to start it
+
+Ask for it by name with **`/graphify`**, or use the underlying commands directly. The most
+useful ones day-to-day:
+
+```bash
+graphify query "how does login work?"     # broad, focused answer from the graph
+graphify path "AuthModule" "Database"      # how two parts of the code connect
+graphify explain "RolesGuard"              # plain-language explanation of one part
+graphify update .                          # refresh the map after you change code
+```
+
+Running the bare `/graphify` command (re)builds the whole map from scratch; the queries
+above read the map that already exists.
+
+## What happens
+
+When you ask a question, `graphify` walks its graph out from the concepts in your question
+and hands back a scoped subgraph — the handful of files and links that actually matter —
+often much smaller and sharper than a wide text search. For a broad tour, the repo also
+keeps a readable `graphify-out/GRAPH_REPORT.md` and, when built, a browsable wiki under
+`graphify-out/wiki/`. After code changes, `graphify update .` re-scans only what changed, so
+the map stays honest without a full rebuild.
+
+## Related skills
+
+`graphify` sits underneath the others: the research steps in
+[create-story](/docs/skills/create-story), and the code-touching steps in
+[test-ticket](/docs/skills/test-ticket), [generate-docs](/docs/skills/generate-docs) and
+[update-docs](/docs/skills/update-docs), all query the graph before they read raw source.
+Understanding the map first is what makes the rest accurate.

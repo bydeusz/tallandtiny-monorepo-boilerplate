@@ -1,0 +1,79 @@
+---
+title: graphify
+description: Zet de codebase om in een doorzoekbare kennisgraaf die de assistent bevraagt in plaats van gokt.
+---
+
+`graphify` geeft de AI-assistent een **kaart van de codebase** die hij kan doorzoeken,
+zodat hij de juiste bestanden en hun samenhang vindt in plaats van te gokken — en die kaart
+blijft actueel terwijl de code verandert.
+
+<Callout type="info">
+  **Laatst bijgewerkt** 2026-07-16 · **Van toepassing op** `.claude/skills/graphify/`
+</Callout>
+
+## Wat het doet
+
+`graphify` leest het hele project en bouwt een **kennisgraaf** — een netwerk van de
+concepten, bestanden en functies in de code en hoe ze met elkaar samenhangen. Die graaf
+staat in de map `graphify-out/` (in deze repo komt hij kant-en-klaar mee), zodat de
+assistent dingen kan opzoeken in plaats van bestand na bestand te lezen in de hoop het
+juiste tegen te komen.
+
+Een paar termen in gewone taal:
+
+- Een **kennisgraaf** is een kaart van "dingen en hoe ze samenhangen" — hier: de onderdelen
+  van de codebase en hun verbindingen.
+- **God nodes** zijn de meest verbonden onderdelen — de knooppunten waar al het andere aan
+  raakt, een goede plek om het project te gaan begrijpen.
+- **Community-detectie** groepeert samenhangende onderdelen, zodat de graaf verbanden tussen
+  bestanden laat zien waar je zelf niet op zou zoeken.
+
+## Wanneer je het gebruikt
+
+Dit is de **eerste halte van de assistent bij elke vraag over de code** — en in deze repo
+is het een huisregel, geen suggestie:
+
+- **Vóór je "hoe werkt X?", "wat roept Y aan?" of "waar loopt deze data?" beantwoordt.**
+  Vraag het eerst aan de graaf; die geeft een kleine, gerichte doorsnede van het project
+  terug in plaats van een stapel ruwe zoekresultaten.
+- **Vóór je code leest of wijzigt** in een gebied dat je nog niet kent — oriënteer je eerst,
+  open daarna de specifieke bestanden.
+- **Nadat je de code hebt gewijzigd**, ververs de kaart zodat hij niet veroudert (zie
+  hieronder).
+
+**Wanneer je 'm _niet_ pakt:** als je het exacte bestand en de regel al weet, open die dan
+gewoon — de graaf is om je weg te vinden, niet om iets te herlezen wat je al hebt gevonden.
+Hij is ook niet voor algemene programmeervragen die niet over _deze_ codebase gaan.
+
+## Hoe je het start
+
+Vraag het op naam met **`/graphify`**, of gebruik de onderliggende commando's direct. De
+handigste voor dagelijks gebruik:
+
+```bash
+graphify query "how does login work?"     # breed, gericht antwoord uit de graaf
+graphify path "AuthModule" "Database"      # hoe twee delen van de code samenhangen
+graphify explain "RolesGuard"              # uitleg van één onderdeel in gewone taal
+graphify update .                          # ververs de kaart nadat je code hebt gewijzigd
+```
+
+Het kale `/graphify`-commando (her)bouwt de hele kaart vanaf nul; de queries hierboven lezen
+de kaart die er al is.
+
+## Wat er gebeurt
+
+Als je een vraag stelt, loopt `graphify` vanuit de concepten in je vraag door zijn graaf en
+geeft een afgebakende subgraaf terug — het handjevol bestanden en verbindingen dat er echt
+toe doet — vaak veel kleiner en scherper dan een brede tekstzoekopdracht. Voor een breed
+overzicht houdt de repo ook een leesbaar `graphify-out/GRAPH_REPORT.md` bij en, indien
+gebouwd, een doorbladerbare wiki onder `graphify-out/wiki/`. Na codewijzigingen scant
+`graphify update .` alleen opnieuw wat er is veranderd, zodat de kaart eerlijk blijft zonder
+een volledige herbouw.
+
+## Verwante skills
+
+`graphify` ligt onder de andere: de onderzoeksstappen in
+[create-story](/nl/docs/skills/create-story), en de code-rakende stappen in
+[test-ticket](/nl/docs/skills/test-ticket), [generate-docs](/nl/docs/skills/generate-docs)
+en [update-docs](/nl/docs/skills/update-docs), bevragen allemaal de graaf voordat ze ruwe
+broncode lezen. Eerst de kaart begrijpen is wat de rest accuraat maakt.

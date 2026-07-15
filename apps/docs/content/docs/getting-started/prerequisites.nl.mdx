@@ -1,0 +1,241 @@
+---
+title: Vereisten
+description: Wat je moet installeren voordat je de monorepo kunt draaien — Git, Node.js, pnpm, Docker en de security-tools — met commando's voor macOS, Linux en Windows.
+---
+
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+
+Alles wat je op je machine geïnstalleerd moet hebben voordat je dit project kunt opzetten en draaien.
+
+<Callout type="info">
+  **Laatst bijgewerkt** 2026-07-16 · **Van toepassing op** de hele monorepo (root)
+</Callout>
+
+## Voordat je begint
+
+Dit is een **monorepo** — meerdere apps en packages in één repository. Om 'm lokaal te draaien heb je een JavaScript-runtime nodig, de package manager die de repo vastpint, en Docker voor de database en andere achtergronddiensten.
+
+De tools vallen in twee groepen:
+
+- **Vereist** — Git, Node.js, pnpm en Docker. Zonder deze kun je het project niet installeren of draaien.
+- **Aanbevolen** — Semgrep, Gitleaks, graphify en jq. Deze verzorgen de ingebouwde security-checks en de AI-workflow. Het project draait ook zonder; ze schakelen zichzelf stilletjes uit als ze ontbreken.
+
+Elke tool hieronder heeft één install-commando per besturingssysteem en een commando om te controleren of het gelukt is. Installeer de vereiste eerst, van boven naar beneden.
+
+## Git
+
+Git haalt de code op en houdt je wijzigingen bij. De repo gebruikt 'm ook om nieuwe worktrees automatisch op te zetten.
+
+<Tabs items={["macOS", "Linux", "Windows"]}>
+  <Tab value="macOS">
+    ```bash
+    xcode-select --install    # includes Git
+    # or: brew install git
+    ```
+  </Tab>
+  <Tab value="Linux">
+    ```bash
+    sudo apt install git      # Debian/Ubuntu
+    # or: sudo dnf install git   # Fedora
+    ```
+  </Tab>
+  <Tab value="Windows">
+    ```powershell
+    winget install Git.Git
+    # or download from https://git-scm.com/download/win
+    ```
+  </Tab>
+</Tabs>
+
+Controleren: `git --version`
+
+## Node.js
+
+Node.js is de JavaScript-runtime waarop elke app, elk script en elke build-stap draait. Je hebt **versie 22.12 of nieuwer** nodig.
+
+<Tabs items={["macOS", "Linux", "Windows"]}>
+  <Tab value="macOS">
+    ```bash
+    brew install node@22
+    # or with nvm: nvm install 22
+    ```
+  </Tab>
+  <Tab value="Linux">
+    ```bash
+    # nvm (recommended) — https://github.com/nvm-sh/nvm
+    nvm install 22
+    ```
+  </Tab>
+  <Tab value="Windows">
+    ```powershell
+    winget install OpenJS.NodeJS.LTS
+    # or use fnm / nvm-windows
+    ```
+  </Tab>
+</Tabs>
+
+Controleren: `node --version` — moet `v22.12` of hoger tonen.
+
+## pnpm
+
+pnpm is de package manager die deze repo gebruikt — **nooit npm**. De simpelste manier is **Corepack**, dat met Node meekomt en automatisch de exacte pnpm-versie gebruikt die de repo vastpint (`10.28.2`).
+
+Corepack werkt op elk OS hetzelfde:
+
+```bash
+corepack enable
+```
+
+Draai daarna `pnpm install` in de repo — Corepack downloadt en pint `pnpm@10.28.2` voor je (de versie uit het `packageManager`-veld in `package.json`).
+
+<Callout type="info">
+  Liever handmatig installeren? `npm install -g pnpm@10.28.2` of `brew install pnpm` werkt ook — houd alleen de vastgepinde versie aan.
+</Callout>
+
+Controleren: `pnpm --version` — hoort `10.28.2` te tonen.
+
+## Docker
+
+Docker draait de achtergronddiensten van het project in containers, zodat je ze niet met de hand hoeft te installeren: **PostgreSQL 16** (database), **Redis 7** (cache & job-wachtrij), **MinIO** (S3-achtige bestandsopslag) en **Mailpit** (een lokale mailinbox). Het is ook nodig voor de integratie- en end-to-end-tests. Installeer op macOS en Windows **Docker Desktop**; op Linux **Docker Engine** + de Compose-plugin.
+
+<Tabs items={["macOS", "Linux", "Windows"]}>
+  <Tab value="macOS">
+    ```bash
+    brew install --cask docker
+    # or download Docker Desktop: https://www.docker.com/products/docker-desktop
+    ```
+    Start Docker Desktop één keer zodat de engine draait.
+  </Tab>
+  <Tab value="Linux">
+    ```bash
+    curl -fsSL https://get.docker.com | sh
+    sudo usermod -aG docker $USER   # then log out and back in
+    ```
+    Dit installeert Docker Engine en Compose v2.
+  </Tab>
+  <Tab value="Windows">
+    ```powershell
+    winget install Docker.DockerDesktop
+    # requires WSL2 — https://docs.docker.com/desktop/wsl/
+    ```
+  </Tab>
+</Tabs>
+
+Controleren: `docker --version` en `docker compose version`. Zodra het draait, start `pnpm docker:up` de diensten.
+
+<Callout type="info">
+  De tools hieronder verzorgen de security-scanning en de AI-workflow van de repo (ze draaien vanuit de Claude Code-hooks in `.claude/settings.json`). Ze zijn optioneel om de app te draaien — elke tool slaat zichzelf stilletjes over als 'ie niet geïnstalleerd is — maar aanbevolen voor de volledige ervaring.
+</Callout>
+
+## Semgrep
+
+Semgrep is een statische-analyse-tool die de API-code scant op security-problemen en per ongeluk gelogde persoonsgegevens (PII). Installeer 'm met pipx of uv (allebei cross-platform); op macOS werkt Homebrew ook.
+
+<Tabs items={["macOS", "Linux", "Windows"]}>
+  <Tab value="macOS">
+    ```bash
+    brew install semgrep
+    # or: pipx install semgrep
+    ```
+  </Tab>
+  <Tab value="Linux">
+    ```bash
+    pipx install semgrep
+    # or: uv tool install semgrep
+    ```
+  </Tab>
+  <Tab value="Windows">
+    ```powershell
+    pipx install semgrep
+    # or: uv tool install semgrep
+    ```
+  </Tab>
+</Tabs>
+
+Controleren: `semgrep --version`
+
+## Gitleaks
+
+Gitleaks scant je wijzigingen op secrets — API-keys, tokens, wachtwoorden — voordat ze gecommit worden.
+
+<Tabs items={["macOS", "Linux", "Windows"]}>
+  <Tab value="macOS">
+    ```bash
+    brew install gitleaks
+    ```
+  </Tab>
+  <Tab value="Linux">
+    ```bash
+    brew install gitleaks
+    # or grab a binary from https://github.com/gitleaks/gitleaks/releases
+    ```
+  </Tab>
+  <Tab value="Windows">
+    ```powershell
+    # download the .zip from the releases page and add gitleaks.exe to your PATH
+    # https://github.com/gitleaks/gitleaks/releases
+    ```
+  </Tab>
+</Tabs>
+
+Controleren: `gitleaks version`
+
+## graphify
+
+graphify bouwt een **kennisgraaf** van de repo (opgeslagen in `graphify-out/`) zodat vragen over de codebase beantwoord kunnen worden vanuit een kleine, gerichte kaart in plaats van ruwe bestandszoekopdrachten. Het is een Python-tool; installeer 'm met **uv** of **pipx**.
+
+Op elk OS hetzelfde:
+
+```bash
+uv tool install graphifyy      # or: pipx install graphifyy
+graphify install               # sets up the Claude Code skill
+```
+
+Heeft Python 3 met uv of pipx nodig. (Het pakket heet `graphifyy`; het commando is `graphify`.)
+
+Controleren: `graphify --version`
+
+## jq
+
+jq is een klein command-line-tool om JSON te lezen. De Claude Code-hooks van de repo gebruiken 'm om hun invoer te parsen.
+
+<Tabs items={["macOS", "Linux", "Windows"]}>
+  <Tab value="macOS">
+    ```bash
+    brew install jq
+    ```
+  </Tab>
+  <Tab value="Linux">
+    ```bash
+    sudo apt install jq       # Debian/Ubuntu
+    # or: sudo dnf install jq    # Fedora
+    ```
+  </Tab>
+  <Tab value="Windows">
+    ```powershell
+    winget install jqlang.jq
+    ```
+  </Tab>
+</Tabs>
+
+Controleren: `jq --version`
+
+## Controleer je setup
+
+Draai deze om te bevestigen dat alles klaarstaat:
+
+```bash
+git --version
+node --version        # v22.12 or higher
+pnpm --version        # 10.28.2
+docker --version && docker compose version
+semgrep --version
+gitleaks version
+graphify --version
+jq --version
+```
+
+## Verwante pagina's
+
+- Volgende: [Je project starten](/docs/getting-started/start-your-project) — kopieer de template en maak 'm van jezelf.
+- Waar dit vandaan komt: `package.json` (`engines`, `packageManager`), `_docker/docker-compose.yml`, en de hooks in `.claude/settings.json`.

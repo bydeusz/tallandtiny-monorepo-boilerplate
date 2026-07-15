@@ -1,16 +1,16 @@
-# Graph Report - tallandtiny-monorepo-boilerplate  (2026-07-15)
+# Graph Report - flatten-agents-skills  (2026-07-16)
 
 ## Corpus Check
-- 602 files · ~176,818 words
+- 603 files · ~179,334 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3331 nodes · 3966 edges · 380 communities (235 shown, 145 thin omitted)
+- 3349 nodes · 3982 edges · 373 communities (228 shown, 145 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 23 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c4cfc3b1`
+- Built from commit: `0fd340cb`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -134,7 +134,6 @@
 - [[_COMMUNITY_Community 146|Community 146]]
 - [[_COMMUNITY_Community 147|Community 147]]
 - [[_COMMUNITY_Community 148|Community 148]]
-- [[_COMMUNITY_Community 149|Community 149]]
 - [[_COMMUNITY_Community 150|Community 150]]
 - [[_COMMUNITY_Community 151|Community 151]]
 - [[_COMMUNITY_Community 152|Community 152]]
@@ -168,6 +167,7 @@
 - [[_COMMUNITY_Community 180|Community 180]]
 - [[_COMMUNITY_Community 181|Community 181]]
 - [[_COMMUNITY_Community 182|Community 182]]
+- [[_COMMUNITY_Community 183|Community 183]]
 - [[_COMMUNITY_Community 184|Community 184]]
 - [[_COMMUNITY_Community 185|Community 185]]
 - [[_COMMUNITY_Community 186|Community 186]]
@@ -181,7 +181,6 @@
 - [[_COMMUNITY_Community 198|Community 198]]
 - [[_COMMUNITY_Community 199|Community 199]]
 - [[_COMMUNITY_Community 200|Community 200]]
-- [[_COMMUNITY_Community 201|Community 201]]
 - [[_COMMUNITY_Community 202|Community 202]]
 - [[_COMMUNITY_Community 203|Community 203]]
 - [[_COMMUNITY_Community 204|Community 204]]
@@ -193,8 +192,6 @@
 - [[_COMMUNITY_Community 212|Community 212]]
 - [[_COMMUNITY_Community 213|Community 213]]
 - [[_COMMUNITY_Community 214|Community 214]]
-- [[_COMMUNITY_Community 215|Community 215]]
-- [[_COMMUNITY_Community 216|Community 216]]
 - [[_COMMUNITY_Community 217|Community 217]]
 - [[_COMMUNITY_Community 219|Community 219]]
 - [[_COMMUNITY_Community 220|Community 220]]
@@ -202,9 +199,6 @@
 - [[_COMMUNITY_Community 222|Community 222]]
 - [[_COMMUNITY_Community 223|Community 223]]
 - [[_COMMUNITY_Community 225|Community 225]]
-- [[_COMMUNITY_Community 226|Community 226]]
-- [[_COMMUNITY_Community 227|Community 227]]
-- [[_COMMUNITY_Community 229|Community 229]]
 - [[_COMMUNITY_Community 230|Community 230]]
 - [[_COMMUNITY_Community 231|Community 231]]
 - [[_COMMUNITY_Community 232|Community 232]]
@@ -353,7 +347,6 @@
 - [[_COMMUNITY_Community 416|Community 416]]
 - [[_COMMUNITY_Community 417|Community 417]]
 - [[_COMMUNITY_Community 419|Community 419]]
-- [[_COMMUNITY_Community 420|Community 420]]
 - [[_COMMUNITY_Community 421|Community 421]]
 - [[_COMMUNITY_Community 424|Community 424]]
 - [[_COMMUNITY_Community 425|Community 425]]
@@ -389,7 +382,7 @@
 - **Local development infrastructure stack** — _docker_docker_compose_postgres, _docker_docker_compose_redis, _docker_docker_compose_minio, _docker_docker_compose_minio_init, _docker_docker_compose_mailpit [INFERRED 0.85]
 - **Production application stack** — _docker_docker_compose_prod_migrate, _docker_docker_compose_prod_api, _docker_docker_compose_prod_worker, _docker_docker_compose_prod_postgres, _docker_docker_compose_prod_redis, _docker_docker_compose_prod_minio [INFERRED 0.85]
 
-## Communities (380 total, 145 thin omitted)
+## Communities (373 total, 145 thin omitted)
 
 ### Community 0 - "API Auth Endpoints"
 Cohesion: 0.06
@@ -401,11 +394,11 @@ Nodes (65): authActivate(), AuthActivateMutationBody, AuthActivateMutationError,
 
 ### Community 2 - "Auth & User DTOs"
 Cohesion: 0.08
-Nodes (15): ActivateDto, AuthTokensResponseDto, ChangePasswordDto, ConfirmEmailChangeDto, LoginDto, PaginatedResponseDto, PaginationMetaDto, RefreshTokenDto (+7 more)
+Nodes (16): ActivateDto, AuthTokensResponseDto, ChangePasswordDto, ConfirmEmailChangeDto, LoginDto, PaginatedResponseDto, PaginationMetaDto, RefreshTokenDto (+8 more)
 
 ### Community 3 - "File Query Hooks"
 Cohesion: 0.07
-Nodes (30): FileDeleteMutationError, FileDeleteMutationResult, FileGetQueryError, FileGetQueryResult, fileList(), FileListQueryError, FileListQueryResult, fileReplace() (+22 more)
+Nodes (31): FileDeleteMutationError, FileDeleteMutationResult, fileGet(), FileGetQueryError, FileGetQueryResult, fileList(), FileListQueryError, FileListQueryResult (+23 more)
 
 ### Community 4 - "UI Package Dependencies"
 Cohesion: 0.04
@@ -456,8 +449,8 @@ Cohesion: 0.22
 Nodes (7): FileListQueryDto, PaginationQueryDto, FilesModule, PaginatedResult, PaginationMeta, buildPaginationMeta(), buildPrismaSkipTake()
 
 ### Community 16 - "User Query Hooks"
-Cohesion: 0.09
-Nodes (23): UpdateUserDto, UserList200, getUserGetQueryKey(), getUserGetQueryOptions(), getUserListQueryKey(), getUserListQueryOptions(), getUserUpdateMutationOptions(), SecondParameter (+15 more)
+Cohesion: 0.11
+Nodes (20): getUserGetQueryKey(), getUserGetQueryOptions(), getUserListQueryKey(), getUserListQueryOptions(), SecondParameter, userDelete(), UserDeleteMutationError, UserDeleteMutationResult (+12 more)
 
 ### Community 17 - "API Files Service"
 Cohesion: 0.18
@@ -484,16 +477,16 @@ Cohesion: 0.22
 Nodes (5): HttpRequestLike, HttpResponseLike, TransformInterceptor, ApiErrorResponse, ApiResponse
 
 ### Community 23 - "Auth Token Store & Axios"
-Cohesion: 0.22
-Nodes (10): clearAccessToken(), getAccessToken(), setAccessToken(), AXIOS_INSTANCE, configureAuthRefresh(), refreshAccessToken(), RefreshConfig, RetriableRequestConfig (+2 more)
+Cohesion: 0.24
+Nodes (9): clearAccessToken(), getAccessToken(), setAccessToken(), configureAuthRefresh(), refreshAccessToken(), RefreshConfig, RetriableRequestConfig, setAuthTokenGetter() (+1 more)
 
 ### Community 24 - "API Storage Module"
 Cohesion: 0.16
 Nodes (3): StorageFile, StorageModule, StorageService
 
 ### Community 25 - "Dashboard Auth Queries"
-Cohesion: 0.15
-Nodes (14): getAuthGetCurrentUserQueryKey(), getAuthGetCurrentUserQueryOptions(), getFileReplaceMutationOptions(), useFileReplace(), extractErrorMessage(), metadata, ALLOWED_TYPES, UpdateAvatar() (+6 more)
+Cohesion: 0.13
+Nodes (14): getFileReplaceMutationOptions(), useFileReplace(), extractErrorMessage(), UpdateUserDto, metadata, ALLOWED_TYPES, UpdateAvatar(), BillingFormData (+6 more)
 
 ### Community 27 - "Dashboard shadcn Config"
 Cohesion: 0.11
@@ -525,19 +518,19 @@ Nodes (8): FLAGS, LanguageSwitcher(), isLocale(), Locale, locales, resolveLocale
 
 ### Community 34 - "API Contact/Mail DTOs"
 Cohesion: 0.17
-Nodes (7): ContactSupportDto, MailAttachment, SendMailOptions, ALLOWED_ATTACHMENT_TYPES, MailController, SendRawMailOptions, QueueModuleMode
+Nodes (7): CurrentUser, ContactSupportDto, MailAttachment, SendMailOptions, ALLOWED_ATTACHMENT_TYPES, MailController, SendRawMailOptions
 
 ### Community 35 - "Dashboard Login Form"
 Cohesion: 0.25
 Nodes (7): compilerOptions, allowImportingTsExtensions, noEmit, types, exclude, extends, include
 
 ### Community 36 - "API Public/Transform Decorators"
-Cohesion: 0.07
-Nodes (27): scripts, build, check-types, create:superadmin, db:deploy, db:generate, db:migrate, db:seed (+19 more)
+Cohesion: 0.05
+Nodes (42): dependsOn, inputs, outputs, dependsOn, cache, cache, cache, cache (+34 more)
 
 ### Community 38 - "Health Check Queries"
-Cohesion: 0.17
-Nodes (11): getHealthCheckQueryKey(), getHealthCheckQueryOptions(), healthCheck(), HealthCheckQueryError, HealthCheckQueryResult, SecondParameter, useHealthCheck(), HealthCheck200 (+3 more)
+Cohesion: 0.15
+Nodes (12): getHealthCheckQueryKey(), getHealthCheckQueryOptions(), healthCheck(), HealthCheckQueryError, HealthCheckQueryResult, SecondParameter, useHealthCheck(), HealthCheck503 (+4 more)
 
 ### Community 39 - "Auth Middleware (Server)"
 Cohesion: 0.22
@@ -564,20 +557,20 @@ Cohesion: 0.21
 Nodes (9): Brand(), BrandProps, Dashboard(), DashboardContent(), DashboardInjectedProps, DashboardNavigation(), DashboardSidebar(), DashboardSidebarProps (+1 more)
 
 ### Community 45 - "Mail Query Hooks"
-Cohesion: 0.17
-Nodes (9): mailContactSupport(), MailContactSupportMutationBody, MailContactSupportMutationError, MailContactSupportMutationResult, SecondParameter, MailContactSupportBody, MessageResponseDto, BodyType (+1 more)
+Cohesion: 0.18
+Nodes (8): mailContactSupport(), MailContactSupportMutationBody, MailContactSupportMutationError, MailContactSupportMutationResult, SecondParameter, MailContactSupportBody, MessageResponseDto, BodyType
 
 ### Community 46 - "Dev Log Script"
 Cohesion: 0.15
 Nodes (13): argv, BEL, child, CSI, ESC, logDir, logFile, OSC (+5 more)
 
 ### Community 47 - "UI Carousel Component"
-Cohesion: 0.18
-Nodes (11): getAuthActivateMutationOptions(), useAuthActivate(), LoginForm(), LoginFormProps, OtpField(), OtpFieldProps, RegisterConfirmForm(), TextField() (+3 more)
+Cohesion: 0.13
+Nodes (17): getAuthActivateMutationOptions(), getAuthRegisterMutationOptions(), getAuthRequestNewPasswordMutationOptions(), useAuthActivate(), useAuthRegister(), useAuthRequestNewPassword(), OtpField(), OtpFieldProps (+9 more)
 
 ### Community 48 - "Auth Provider & Root Layout"
-Cohesion: 0.19
-Nodes (9): fontSans, metadata, useAuthGetCurrentUser(), AuthContext, AuthContextValue, AuthProvider(), AuthUser, LoginPayload (+1 more)
+Cohesion: 0.16
+Nodes (11): fontSans, metadata, getAuthGetCurrentUserQueryKey(), getAuthGetCurrentUserQueryOptions(), useAuthGetCurrentUser(), AuthContext, AuthContextValue, AuthProvider() (+3 more)
 
 ### Community 51 - "UI Sheet Component"
 Cohesion: 0.15
@@ -620,8 +613,8 @@ Cohesion: 0.22
 Nodes (8): compilerOptions, jsx, lib, module, moduleResolution, noEmit, extends, $schema
 
 ### Community 62 - "Dashboard Error Page"
-Cohesion: 0.24
-Nodes (7): metadata, getAuthRequestEmailChangeMutationOptions(), useAuthRequestEmailChange(), LogoutButton(), Thumbnail(), useAuth(), ChangeEmail()
+Cohesion: 0.38
+Nodes (4): metadata, getAuthRequestEmailChangeMutationOptions(), useAuthRequestEmailChange(), ChangeEmail()
 
 ### Community 63 - "NestJS CLI Config"
 Cohesion: 0.25
@@ -688,8 +681,8 @@ Cohesion: 0.11
 Nodes (18): 1. See what actually changed — unless the chat already shows it, 2. Get the ticket and its spec, 3. Move the card to Testing, 4. Prepare the environment — REQUIRED before any browser run, 5. Write the scenario handoff to a file — dispatch the scenario-writer agent, 6. Review the scenarios with the engineer — approve before running, 7. Run the scenarios — dispatch the runner agent (green/red), 8. Fix the reds — dispatch a fixer agent, then re-run — loop until green (+10 more)
 
 ### Community 84 - "UI Popover Component"
-Cohesion: 0.16
-Nodes (6): CurrentUser, Public(), SkipTransform(), HealthController, HealthModule, RedisHealthIndicator
+Cohesion: 0.26
+Nodes (4): SkipTransform(), HealthController, HealthModule, RedisHealthIndicator
 
 ### Community 85 - "UI Tabs Component"
 Cohesion: 0.06
@@ -704,8 +697,8 @@ Cohesion: 0.50
 Nodes (3): name, private, version
 
 ### Community 90 - "UI Avatar Component"
-Cohesion: 0.07
-Nodes (29): 1. Default to Semantic Elements, 1. Semantic HTML Flexibility, 2. Component Reusability, 2. Document Valid Elements, 3. Accessibility Improvements, 3. Validate Element Appropriateness, 4. Handle Event Handlers Properly, 4. Style System Integration (+21 more)
+Cohesion: 0.10
+Nodes (19): 1. Default to Semantic Elements, 2. Document Valid Elements, 3. Validate Element Appropriateness, 4. Handle Event Handlers Properly, Best Practices, Common Pitfalls, Common Use Cases, Discriminated Unions (+11 more)
 
 ### Community 91 - "UI Badge Component"
 Cohesion: 0.07
@@ -760,8 +753,8 @@ Cohesion: 0.11
 Nodes (17): Debugging Cache Issues, Debugging with `globalConfiguration` Enabled, Diagnostic Tools, `--dry` / `--dry=json`, .env File Changed, Environment Variable Changed, `--force`, Incorrect Cache Hits (+9 more)
 
 ### Community 144 - "Community 144"
-Cohesion: 0.09
-Nodes (22): dependsOn, cache, cache, cache, cache, dependsOn, cache, dependsOn (+14 more)
+Cohesion: 0.12
+Nodes (16): 1. Inventory every page and the app's conventions, 2. Detect drift per page — grounding in reverse, 3. Classify each page, 4. Patch the stale pages — surgical, both languages, stamp bumped, 5. Show the diffs and get approval, 6. Write, then ship as a draft PR, 7. Report, Common mistakes (+8 more)
 
 ### Community 145 - "Community 145"
 Cohesion: 0.12
@@ -779,10 +772,6 @@ Nodes (16): Basic Syntax, By Dependencies/Dependents, By Directory, By Package N
 Cohesion: 0.12
 Nodes (16): 1. Components, 1. Source Code Distribution, 2. A public endpoint, 2. Metadata and Configuration, 3. CLI, 3. Preview and Documentation, Creating a Registry, For Authors (+8 more)
 
-### Community 149 - "Community 149"
-Cohesion: 0.47
-Nodes (4): getAuthRegisterMutationOptions(), useAuthRegister(), RegisterForm(), RegisterFormProps
-
 ### Community 150 - "Community 150"
 Cohesion: 0.12
 Nodes (16): 1.1 Avoid Boolean Prop Proliferation, 1.2 Use Compound Components, 1. Component Architecture, 2.1 Decouple State Management from UI, 2.2 Define Generic Context Interfaces for Dependency Injection, 2.3 Lift State into Provider Components, 2. State Management, 3.1 Create Explicit Component Variants (+8 more)
@@ -796,8 +785,8 @@ Cohesion: 0.12
 Nodes (16): #1 Root Scripts Not Using `turbo run`, #2 Using `&&` to Chain Turbo Tasks, #3 Overly Broad globalDependencies, #4 Repetitive Task Configuration, #5 Using `../` to Traverse Out of Package in `inputs`, #6 MOST COMMON MISTAKE: Creating Root Tasks, #7 Tasks That Need Parallel Execution + Cache Invalidation, Caching Tasks with Side Effects (+8 more)
 
 ### Community 153 - "Community 153"
-Cohesion: 0.29
-Nodes (6): Accessible by Default, Composability and Reusability, Customizability and Theming, Lightweight and Performant, Transparency and Code Ownership, Well-documented and DX-Friendly
+Cohesion: 0.13
+Nodes (12): Building Components, References, When to use this skill, Accessible by Default, Composability and Reusability, Customizability and Theming, Lightweight and Performant, Transparency and Code Ownership (+4 more)
 
 ### Community 154 - "Community 154"
 Cohesion: 0.06
@@ -812,8 +801,8 @@ Cohesion: 0.33
 Nodes (3): HttpRequestLike, HttpResponseLike, RequestLoggingInterceptor
 
 ### Community 157 - "Community 157"
-Cohesion: 0.36
-Nodes (4): HealthCheck503, HealthCheck503Details, HealthCheck503Error, HealthCheck503Info
+Cohesion: 0.33
+Nodes (5): LoginForm(), LoginFormProps, LogoutButton(), Thumbnail(), useAuth()
 
 ### Community 158 - "Community 158"
 Cohesion: 0.12
@@ -844,8 +833,8 @@ Cohesion: 0.14
 Nodes (13): Changed + Dependents (PR Builds), Changed Packages, CI/CD Patterns, Common Filter Patterns, Complex Combinations, Debugging Filters, Dependents Only (Exclude Target), Directory-Based (+5 more)
 
 ### Community 165 - "Community 165"
-Cohesion: 0.25
-Nodes (8): Benefits of data-slot, Component identification with data-slot, Global CSS with data-slot, Naming conventions, The problem with child targeting, The solution: data-slot attributes, Using `[&_]` for descendant targeting, Using `has-[]` for parent-aware styling
+Cohesion: 0.36
+Nodes (4): HealthCheck200, HealthCheck200Details, HealthCheck200Error, HealthCheck200Info
 
 ### Community 166 - "Community 166"
 Cohesion: 0.14
@@ -872,7 +861,7 @@ Cohesion: 0.17
 Nodes (11): Cache Restoration, Example Flow, Global Hash Inputs, How `global.inputs` Changes the Hash Equation, How Turborepo Caching Works, Key Points, Local Cache Location, Task Hash Inputs (+3 more)
 
 ### Community 172 - "Community 172"
-Cohesion: 0.15
+Cohesion: 0.17
 Nodes (12): actions/cache Fallback, Cache Considerations, Caching Strategies, CI Optimization Patterns, Conditional Tasks, Custom Git Ranges with --filter, Main Branch: Full Build, Matrix Builds (+4 more)
 
 ### Community 173 - "Community 173"
@@ -880,24 +869,24 @@ Cohesion: 0.17
 Nodes (11): Complete Example, Configuration Keys, `env` - Task-Specific Variables, Environment Variables in Turborepo, `globalEnv` - Variables Affecting All Tasks, `globalPassThroughEnv` - Global Runtime Variables, Negation, `passThroughEnv` - Runtime-Only Variables (Not Hashed) (+3 more)
 
 ### Community 174 - "Community 174"
-Cohesion: 0.67
-Nodes (3): test:integration, cache, dependsOn
+Cohesion: 0.40
+Nodes (5): 1. Semantic HTML Flexibility, 2. Component Reusability, 3. Accessibility Improvements, 4. Style System Integration, Key Benefits
 
 ### Community 175 - "Community 175"
 Cohesion: 0.17
 Nodes (11): 1. Root Component, 2. Item Component, 3. Trigger Component, 4. Content Component, 5. Putting it all together, Content Structure, Informational Components, Interactive Elements (+3 more)
 
 ### Community 176 - "Community 176"
-Cohesion: 0.17
-Nodes (11): Benefits of this approach, Combined approach, Common state patterns, `data-slot` use cases, `data-state` use cases, Integration with Radix UI, `props` use cases, Styling state with data-state (+3 more)
+Cohesion: 0.10
+Nodes (19): Benefits of data-slot, Benefits of this approach, Combined approach, Common state patterns, Component identification with data-slot, `data-slot` use cases, `data-state` use cases, Global CSS with data-slot (+11 more)
 
 ### Community 177 - "Community 177"
 Cohesion: 0.17
 Nodes (11): Accessibility, Best Practices, Changelog and Versioning, Demo, Source Code, and Preview, Documentation Framework, Essential Documentation Sections, Examples, Features (+3 more)
 
 ### Community 178 - "Community 178"
-Cohesion: 0.25
-Nodes (6): Building Components, References, When to use this skill, Controlled State, Merging states, Uncontrolled State
+Cohesion: 0.40
+Nodes (5): Comparison: `as` vs `asChild`, Implementation Methods, Manual Implementation, Using Radix UI Slot, When to Use Each Approach
 
 ### Community 179 - "Community 179"
 Cohesion: 0.17
@@ -924,8 +913,8 @@ Cohesion: 0.18
 Nodes (11): Adding to Inherited Arrays with `$TURBO_EXTENDS$`, Always Prefer Package Tasks Over Root Tasks, Basic Structure, Configuration Sections, Excluding Tasks from Packages, Extending from Other Packages, File Location, Package Configurations (+3 more)
 
 ### Community 186 - "Community 186"
-Cohesion: 0.20
-Nodes (8): devDependencies, dependency-cruiser, prettier, turbo, typescript, globalEnv, $schema, ui
+Cohesion: 0.05
+Nodes (39): devDependencies, dependency-cruiser, prettier, turbo, typescript, engines, node, name (+31 more)
 
 ### Community 187 - "Community 187"
 Cohesion: 0.22
@@ -962,10 +951,6 @@ Nodes (10): Always Use `turbo run` in CI, CI/CD with Turborepo, Core Principles,
 ### Community 200 - "Community 200"
 Cohesion: 0.20
 Nodes (10): Build Command, Environment Variables, How It Works, Installation, Monorepo Root Directory, Options, Remote Cache, Setup in Vercel (+2 more)
-
-### Community 201 - "Community 201"
-Cohesion: 0.25
-Nodes (7): engines, node, name, packageManager, pnpm, onlyBuiltDependencies, private
 
 ### Community 202 - "Community 202"
 Cohesion: 0.33
@@ -1011,14 +996,6 @@ Nodes (8): Checking Environment Mode, Disabling Framework Inference, Environment
 Cohesion: 0.67
 Nodes (3): DATABASE_URL, step(), worktree-setup.sh script
 
-### Community 215 - "Community 215"
-Cohesion: 0.50
-Nodes (4): dependsOn, inputs, outputs, build
-
-### Community 216 - "Community 216"
-Cohesion: 0.50
-Nodes (4): cache, dependsOn, persistent, dev
-
 ### Community 217 - "Community 217"
 Cohesion: 0.22
 Nodes (8): graphify reference: extra exports and benchmark, Step 6b - Wiki (only if --wiki flag), Step 7 - Neo4j export (only if --neo4j or --neo4j-push flag), Step 7a - FalkorDB export (only if --falkordb or --falkordb-push flag), Step 7b - SVG export (only if --svg flag), Step 7c - GraphML export (only if --graphml flag), Step 7d - MCP server (only if --mcp flag), Step 8 - Token reduction benchmark (only if total_words > 5000)
@@ -1034,14 +1011,6 @@ Nodes (9): 2.1 Avoid Inline Objects in renderItem, 2.2 Hoist callbacks to the ro
 ### Community 225 - "Community 225"
 Cohesion: 0.25
 Nodes (7): Basic Usage, Package Selection, Passing Arguments to Scripts, Quick Reference, Running Tasks, turbo run, When to Use `turbo run` vs `turbo`
-
-### Community 226 - "Community 226"
-Cohesion: 0.67
-Nodes (3): test:e2e, cache, dependsOn
-
-### Community 227 - "Community 227"
-Cohesion: 0.67
-Nodes (3): test:watch, cache, persistent
 
 ### Community 231 - "Community 231"
 Cohesion: 0.13
@@ -1132,8 +1101,8 @@ Cohesion: 0.67
 Nodes (3): 8.1 Destructure Functions Early in Render (React Compiler), 8.2 Use .get() and .set() for Reanimated Shared Values (not .value), 8. React Compiler
 
 ### Community 280 - "Community 280"
-Cohesion: 0.29
-Nodes (6): graphify, project:clean-slate, project:create-story, project:generate-docs, project:start-ticket, project:test-ticket
+Cohesion: 0.25
+Nodes (7): graphify, project:clean-slate, project:create-story, project:generate-docs, project:start-ticket, project:test-ticket, project:update-docs
 
 ### Community 409 - "Community 409"
 Cohesion: 0.08
@@ -1163,10 +1132,6 @@ Nodes (4): Alert(), AlertDescription(), AlertTitle(), alertVariants
 Cohesion: 0.33
 Nodes (3): TabsContent(), TabsList(), TabsTrigger()
 
-### Community 420 - "Community 420"
-Cohesion: 0.47
-Nodes (4): getAuthRequestNewPasswordMutationOptions(), useAuthRequestNewPassword(), ResetPasswordForm(), ResetPasswordFormProps
-
 ### Community 421 - "Community 421"
 Cohesion: 0.50
 Nodes (3): Badge(), BadgeProps, badgeVariants
@@ -1180,7 +1145,7 @@ Cohesion: 0.50
 Nodes (3): LAYERS, pkgRoot, problems
 
 ## Knowledge Gaps
-- **1810 isolated node(s):** `$schema`, `collection`, `sourceRoot`, `deleteOutDir`, `assets` (+1805 more)
+- **1826 isolated node(s):** `$schema`, `collection`, `sourceRoot`, `deleteOutDir`, `assets` (+1821 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **145 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -1189,15 +1154,15 @@ _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `cn()` connect `Community 409` to `Community 416`, `Community 417`, `Community 419`, `Community 421`, `Community 231`, `Community 138`, `Toast Notification System`, `UI Carousel Component`, `Community 240`, `Community 247`, `Community 411`, `API Mail Service`, `Community 413`?**
   _High betweenness centrality (0.010) - this node is a cross-community bridge._
-- **Why does `TextField()` connect `UI Carousel Component` to `Community 409`, `Community 420`, `Community 149`?**
+- **Why does `TextField()` connect `UI Carousel Component` to `Community 409`, `Community 157`?**
   _High betweenness centrality (0.008) - this node is a cross-community bridge._
-- **Why does `Turborepo Skill` connect `Community 222` to `Community 192`, `Community 207`, `Community 139`, `Community 183`?**
+- **Why does `Turborepo Skill` connect `Community 222` to `Community 192`, `Community 139`, `Community 149`, `Community 207`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `$schema`, `collection`, `sourceRoot` to the rest of the system?**
-  _1810 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1826 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `API Auth Endpoints` be split into smaller, more focused modules?**
   _Cohesion score 0.055855855855855854 - nodes in this community are weakly interconnected._
 - **Should `Auth Query Hooks` be split into smaller, more focused modules?**
   _Cohesion score 0.039160839160839164 - nodes in this community are weakly interconnected._
 - **Should `Auth & User DTOs` be split into smaller, more focused modules?**
-  _Cohesion score 0.08064516129032258 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07765151515151515 - nodes in this community are weakly interconnected._

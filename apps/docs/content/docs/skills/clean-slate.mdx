@@ -1,0 +1,74 @@
+---
+title: clean-slate
+description: Tears down git worktrees you pick from a list and removes the superpowers scratch folders.
+---
+
+`clean-slate` tidies your dev environment: it shows you every git **worktree** with an honest
+status, lets you pick which to remove, and clears out the **superpowers** folders — without
+ever silently destroying work or the session you're running in.
+
+<Callout type="info">
+  **Last updated** 2026-07-16 · **Applies to** `.claude/skills/project/skills/clean-slate/`
+</Callout>
+
+## What it does
+
+Building tickets leaves clutter behind: isolated **worktrees** (separate working copies of
+the repo, one per branch) pile up, and the superpowers workflow leaves specs, plans and
+scratch files. `clean-slate` clears both. It inspects every worktree, presents them as a
+**numbered list with a plain status on each**, and lets _you_ choose which to remove —
+including ones that are in use. What it guarantees: nothing is removed unless you selected it;
+any worktree that carries a warning (uncommitted work, unpushed commits, or a live session) is
+called out and only force-removed after you confirm that specific one; and the worktree this
+session is running in is never removed.
+
+A couple of terms:
+
+- A **worktree** is a second checkout of the repo on its own branch, so work stays isolated;
+  [start-ticket](/docs/skills/start-ticket) creates these.
+- The **superpowers folders** are `docs/superpowers/` (design specs + plans, git-tracked) and
+  `.superpowers/` (local scratch and logs, gitignored).
+
+## When to use it
+
+Reach for it when your **workspace has piled up and you want a fresh start**:
+
+- Old worktrees from finished (merged) tickets are cluttering the repo.
+- Superpowers specs, plans and scratch from past work are lying around.
+- You want to reset your environment deliberately — and decide item by item what goes.
+
+**When _not_ to use it:**
+
+- **You just want to drop one specific branch or file.** This is a guided sweep of worktrees
+  and the superpowers folders, not a general-purpose delete tool.
+- **From the worktree you want gone.** It can't remove the session's own worktree — run it
+  from another session to remove that one.
+
+## How to start it
+
+Ask for it by name — **`/project:clean-slate`** — or in plain language:
+
+- "ruim mijn worktrees op" · "gooi worktrees weg" · "opschonen" · "reset mijn omgeving" · "verwijder superpowers"
+- "clean slate" · "clean up my worktrees"
+
+## What happens
+
+1. **List the worktrees.** It works from the main checkout (protecting the current session's
+   worktree) and inspects each worktree, folding it down to one honest status: **clean**,
+   **uncommitted work**, **unpushed commits**, **live session (locked)**, or **current session
+   (protected)**. Rebuild noise like `graphify-out/` is filtered out so clean worktrees don't
+   look scary.
+2. **You pick.** It shows the numbered list and you reply with the numbers to remove — a range,
+   `all`, or `none`.
+3. **Confirm the risky ones.** For each worktree you picked that carries a warning, it restates
+   the specific risk and gets a final go before force-removing that one — never a blanket force.
+4. **Remove.** It removes the selected worktrees, then clears the superpowers folders — the
+   tracked `docs/superpowers/` with a commit, the gitignored `.superpowers/` scratch by deleting
+   it.
+5. **Report.** It confirms what was removed, what was kept and why, and that git's internal
+   bookkeeping matches.
+
+## Related skills
+
+[start-ticket](/docs/skills/start-ticket) creates the worktrees `clean-slate` later clears
+away — the two are opposite ends of a ticket's workspace lifecycle.

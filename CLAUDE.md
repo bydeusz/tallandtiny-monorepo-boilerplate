@@ -12,7 +12,7 @@ trello: monorepo-boilerplate
   The hook installs itself via the `prepare` script on `pnpm install`; install it
   manually with `pnpm setup:hooks`. Fallback if the hook isn't active yet (e.g. right
   after the very first clone): run `pnpm setup:worktree` inside the worktree.
-- Worktrees live in .worktrees/ (same filesystem → pnpm hardlinks keep working).
+- Worktrees live in .claude/worktrees/ (branches worktree-<topic>; same filesystem → pnpm hardlinks keep working).
 
 ## graphify
 

@@ -1,0 +1,68 @@
+---
+title: generate-docs
+description: Writes a brand-new documentation page for a feature you just built, in every configured language.
+---
+
+`generate-docs` turns a feature you just built into a **new documentation page** in this
+docs app — grounded in the real code, written in plain language, produced in every language
+the app supports, and shipped as a draft PR.
+
+<Callout type="info">
+  **Last updated** 2026-07-16 · **Applies to** `.claude/skills/project/skills/generate-docs/`
+</Callout>
+
+## What it does
+
+It writes a thorough Fumadocs page for a feature: what it does, how to use it, and what it
+depends on. Two things make it trustworthy. First, **grounding** — every command, path,
+signature and response shape is verified against the actual code and the git diff, never
+guessed; anything it can't verify is marked as a visible TODO rather than a confident wrong
+answer. Second, it writes for **two readers at once**: plain enough that someone who doesn't
+code can follow the prose, precise enough that a developer gets the exact commands. Because
+the docs app is bilingual, the deliverable is **one page per language** (English `.mdx` and
+Dutch `.nl.mdx`) — same structure, only the prose translated, every code value identical.
+This very category was produced this way.
+
+## When to use it
+
+Reach for it when a **feature is finished and has no documentation page yet**:
+
+- You just built something and want it written up while the details are fresh.
+- You want the page grounded in the real code and available in both English and Dutch.
+
+**When _not_ to use it:**
+
+- **The docs already exist and just drifted** from the code — a renamed command, a changed
+  field, a new capability missing from an existing page. That's a reconcile job for
+  [update-docs](/docs/skills/update-docs), which patches in place instead of writing anew.
+- **The docs app doesn't exist yet.** This skill writes pages _into_ the existing `apps/docs`;
+  it doesn't scaffold the app.
+
+## How to start it
+
+Ask for it by name — **`/project:generate-docs`** — or in plain language:
+
+- "documenteer deze feature" · "genereer docs voor …" · "schrijf documentatie voor wat ik net heb gebouwd"
+- "add this to the docs site"
+
+## What happens
+
+1. **Fact-sheet.** It inspects what was actually built (the diff and the changed files) and
+   pulls out the real paths, commands, signatures and shapes.
+2. **Locate the docs app.** It reads the docs app's language list so it knows how many pages
+   to produce and how to name them.
+3. **Ground every value.** Each concrete command, path and shape is verified once against the
+   code — reused unchanged in every language.
+4. **Write the page(s).** It writes the default-language page from a fixed skeleton (overview,
+   a dated stamp, prerequisites, quick start, usage, reference, related links), then a
+   faithful translation for each other language.
+5. **Wire it into the sidebar.** It adds the page to the section's `meta.json` (and each
+   `meta.<locale>.json`) so it actually shows up.
+6. **Preview → approve → ship.** It shows you every page and every nav change; only after you
+   approve does it write the files, then push and open a **draft PR**.
+
+## Related skills
+
+[test-ticket](/docs/skills/test-ticket) verifies the feature before you document it;
+[update-docs](/docs/skills/update-docs) is the counterpart that keeps these pages true as the
+code keeps changing.

@@ -1,0 +1,70 @@
+---
+title: start-ticket
+description: Pulls a named ticket, moves it to To Do, links this chat to it, and sets up a clean workspace.
+---
+
+`start-ticket` takes a **named ticket** from the board and gets it ready to build: it loads
+the card, links this chat to it, moves it to **To Do**, and sets up an isolated workspace —
+then hands off to development.
+
+<Callout type="info">
+  **Last updated** 2026-07-16 · **Applies to** `.claude/skills/project/skills/start-ticket/`
+</Callout>
+
+## What it does
+
+You name a ticket; the skill preps everything around it so you can start with a clean slate.
+It moves the card from **Backlog** to **To Do**, stamps this exact Claude chat onto the card
+(so you can return to it later), and sets up a dev workspace on `develop` — either a fresh
+branch, or, when the superpowers workflow is available, it hands off so that workflow
+creates its own isolated worktree. It's the counterpart to
+[create-story](/docs/skills/create-story): that skill files tickets _into_ the Backlog, this
+one pulls a chosen one _out_.
+
+## When to use it
+
+Use it the moment you've **picked a specific ticket and want to begin building it**:
+
+- A ticket is sitting in the Backlog and it's next up — you want it in progress, on its own
+  branch or worktree, with this chat linked to it.
+- You want a clean, isolated starting point rather than editing on top of whatever you were
+  doing.
+
+**When _not_ to use it:**
+
+- **You don't have a ticket yet.** Describe the work and file it first with
+  [create-story](/docs/skills/create-story).
+- **You expect it to build the ticket.** It doesn't. It preps the workspace and hands off —
+  the actual coding is your development flow (which, with superpowers, starts by turning the
+  ticket into a spec and a plan before any code).
+
+## How to start it
+
+Name the ticket with the command — **`/project:start-ticket <ticket>`** — using its title,
+URL or id. Or say it in plain language:
+
+- "pak ticket &lt;naam&gt; op" · "start met ticket &lt;naam&gt;"
+- "pull ticket &lt;name&gt;"
+
+You have to **name** the ticket — the skill won't browse the Backlog and pick one for you.
+If you name none, it asks which one.
+
+## What happens
+
+1. **Find the card.** It resolves the board and matches the ticket you named, then confirms
+   the match with you before changing anything.
+2. **Load it.** It reads the full ticket — description and acceptance criteria — as the spec
+   to hand off.
+3. **Link this chat.** It stamps a "resume this dev chat" marker onto the card, so you can
+   come back to this exact conversation later.
+4. **Move to To Do.** The card advances from Backlog to the **To Do** column.
+5. **Set up the workspace.** With superpowers available, it hands off and lets that flow make
+   its own worktree; otherwise it creates a `feat/…` (story) or `fix/…` (bug) branch on
+   `develop`.
+6. **Hand off.** It reports the card, the To Do list and the branch/worktree, and passes you
+   into development.
+
+## Related skills
+
+[create-story](/docs/skills/create-story) files the ticket this one picks up; once the work
+is built, [test-ticket](/docs/skills/test-ticket) verifies it end-to-end in the browser.
