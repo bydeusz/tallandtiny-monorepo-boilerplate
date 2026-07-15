@@ -5894,7 +5894,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "layout_logout_button",
-      "community": 25,
+      "community": 62,
       "norm_label": "logout-button.tsx"
     },
     {
@@ -5904,7 +5904,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "layout_logout_button_logoutbutton",
-      "community": 25,
+      "community": 62,
       "norm_label": "logoutbutton()"
     },
     {
@@ -5914,7 +5914,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "layout_thumbnail",
-      "community": 44,
+      "community": 62,
       "norm_label": "thumbnail.tsx"
     },
     {
@@ -5924,7 +5924,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "layout_thumbnail_thumbnail",
-      "community": 44,
+      "community": 62,
       "norm_label": "thumbnail()"
     },
     {
@@ -9244,7 +9244,7 @@
       "source_location": "L142",
       "_origin": "ast",
       "id": "src_auth_provider_useauth",
-      "community": 25,
+      "community": 62,
       "norm_label": "useauth()"
     },
     {
@@ -9274,7 +9274,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tests_register_form_test",
-      "community": 47,
+      "community": 149,
       "norm_label": "register-form.test.tsx"
     },
     {
@@ -9394,7 +9394,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_register_form",
-      "community": 47,
+      "community": 149,
       "norm_label": "register-form.tsx"
     },
     {
@@ -9404,7 +9404,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "components_register_form_registerformprops",
-      "community": 47,
+      "community": 149,
       "norm_label": "registerformprops"
     },
     {
@@ -9414,7 +9414,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "components_register_form_registerform",
-      "community": 47,
+      "community": 149,
       "norm_label": "registerform()"
     },
     {
@@ -11774,7 +11774,7 @@
       "source_location": "L144",
       "_origin": "ast",
       "id": "auth_auth_getauthregistermutationoptions",
-      "community": 47,
+      "community": 149,
       "norm_label": "getauthregistermutationoptions()"
     },
     {
@@ -11814,7 +11814,7 @@
       "source_location": "L188",
       "_origin": "ast",
       "id": "auth_auth_useauthregister",
-      "community": 47,
+      "community": 149,
       "norm_label": "useauthregister()"
     },
     {
@@ -12254,7 +12254,7 @@
       "source_location": "L812",
       "_origin": "ast",
       "id": "auth_auth_getauthgetcurrentuserquerykey",
-      "community": 48,
+      "community": 25,
       "norm_label": "getauthgetcurrentuserquerykey()"
     },
     {
@@ -12264,7 +12264,7 @@
       "source_location": "L816",
       "_origin": "ast",
       "id": "auth_auth_getauthgetcurrentuserqueryoptions",
-      "community": 48,
+      "community": 25,
       "norm_label": "getauthgetcurrentuserqueryoptions()"
     },
     {
@@ -12624,7 +12624,7 @@
       "source_location": "L404",
       "_origin": "ast",
       "id": "files_files_fileget",
-      "community": 3,
+      "community": 1,
       "norm_label": "fileget()"
     },
     {
@@ -13044,7 +13044,7 @@
       "source_location": "L327",
       "_origin": "ast",
       "id": "users_users_getuserupdatemutationoptions",
-      "community": 25,
+      "community": 16,
       "norm_label": "getuserupdatemutationoptions()"
     },
     {
@@ -13344,7 +13344,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "model_healthcheck200",
-      "community": 157,
+      "community": 38,
       "norm_label": "healthcheck200.ts"
     },
     {
@@ -13354,7 +13354,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "model_healthcheck200_healthcheck200",
-      "community": 157,
+      "community": 38,
       "norm_label": "healthcheck200"
     },
     {
@@ -13364,7 +13364,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "model_healthcheck200details",
-      "community": 157,
+      "community": 38,
       "norm_label": "healthcheck200details.ts"
     },
     {
@@ -13374,7 +13374,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "model_healthcheck200details_healthcheck200details",
-      "community": 157,
+      "community": 38,
       "norm_label": "healthcheck200details"
     },
     {
@@ -13384,7 +13384,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "model_healthcheck200error",
-      "community": 157,
+      "community": 38,
       "norm_label": "healthcheck200error.ts"
     },
     {
@@ -13394,7 +13394,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "model_healthcheck200error_healthcheck200error",
-      "community": 157,
+      "community": 38,
       "norm_label": "healthcheck200error"
     },
     {
@@ -13404,7 +13404,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "model_healthcheck200info",
-      "community": 157,
+      "community": 38,
       "norm_label": "healthcheck200info.ts"
     },
     {
@@ -13414,7 +13414,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "model_healthcheck200info_healthcheck200info",
-      "community": 157,
+      "community": 38,
       "norm_label": "healthcheck200info"
     },
     {
@@ -13424,7 +13424,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "model_healthcheck503",
-      "community": 38,
+      "community": 157,
       "norm_label": "healthcheck503.ts"
     },
     {
@@ -13434,7 +13434,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "model_healthcheck503_healthcheck503",
-      "community": 38,
+      "community": 157,
       "norm_label": "healthcheck503"
     },
     {
@@ -13444,7 +13444,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "model_healthcheck503details",
-      "community": 38,
+      "community": 157,
       "norm_label": "healthcheck503details.ts"
     },
     {
@@ -13454,7 +13454,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "model_healthcheck503details_healthcheck503details",
-      "community": 38,
+      "community": 157,
       "norm_label": "healthcheck503details"
     },
     {
@@ -13464,7 +13464,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "model_healthcheck503error",
-      "community": 38,
+      "community": 157,
       "norm_label": "healthcheck503error.ts"
     },
     {
@@ -13474,7 +13474,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "model_healthcheck503error_healthcheck503error",
-      "community": 38,
+      "community": 157,
       "norm_label": "healthcheck503error"
     },
     {
@@ -13484,7 +13484,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "model_healthcheck503info",
-      "community": 38,
+      "community": 157,
       "norm_label": "healthcheck503info.ts"
     },
     {
@@ -13494,7 +13494,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "model_healthcheck503info_healthcheck503info",
-      "community": 38,
+      "community": 157,
       "norm_label": "healthcheck503info"
     },
     {
@@ -13754,7 +13754,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "model_updateuserdto",
-      "community": 25,
+      "community": 16,
       "norm_label": "updateuserdto.ts"
     },
     {
@@ -13764,7 +13764,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "model_updateuserdto_updateuserdto",
-      "community": 25,
+      "community": 16,
       "norm_label": "updateuserdto"
     },
     {
@@ -13784,7 +13784,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "model_userlist200_userlist200",
-      "community": 2,
+      "community": 16,
       "norm_label": "userlist200"
     },
     {
@@ -13854,7 +13854,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "helpers_api_error_test",
-      "community": 420,
+      "community": 25,
       "norm_label": "api-error.test.ts"
     },
     {
@@ -13864,7 +13864,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "helpers_api_error",
-      "community": 420,
+      "community": 25,
       "norm_label": "api-error.ts"
     },
     {
@@ -13874,7 +13874,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "helpers_api_error_extracterrormessage",
-      "community": 420,
+      "community": 25,
       "norm_label": "extracterrormessage()"
     },
     {
@@ -13974,7 +13974,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "mutator_custom_axios_axios_instance",
-      "community": 1,
+      "community": 23,
       "norm_label": "axios_instance"
     },
     {
@@ -14054,7 +14054,7 @@
       "source_location": "L142",
       "_origin": "ast",
       "id": "mutator_custom_axios_errortype",
-      "community": 38,
+      "community": 45,
       "norm_label": "errortype"
     },
     {
@@ -15544,7 +15544,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "avatar_avatar",
-      "community": 409,
+      "community": 138,
       "norm_label": "avatar.tsx"
     },
     {
@@ -15554,7 +15554,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "avatar_avatar_avatar",
-      "community": 409,
+      "community": 138,
       "norm_label": "avatar()"
     },
     {
@@ -15564,7 +15564,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "avatar_avatar_avatarimage",
-      "community": 409,
+      "community": 138,
       "norm_label": "avatarimage()"
     },
     {
@@ -15574,7 +15574,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "avatar_avatar_avatarfallback",
-      "community": 409,
+      "community": 138,
       "norm_label": "avatarfallback()"
     },
     {
@@ -15584,7 +15584,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "avatar_index",
-      "community": 409,
+      "community": 138,
       "norm_label": "index.ts"
     },
     {
@@ -15644,7 +15644,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "button_button",
-      "community": 149,
+      "community": 231,
       "norm_label": "button.tsx"
     },
     {
@@ -15654,7 +15654,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "button_button_buttonvariants",
-      "community": 149,
+      "community": 231,
       "norm_label": "buttonvariants"
     },
     {
@@ -15664,7 +15664,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "button_button_buttonprops",
-      "community": 149,
+      "community": 231,
       "norm_label": "buttonprops"
     },
     {
@@ -15674,7 +15674,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "button_button_button",
-      "community": 149,
+      "community": 231,
       "norm_label": "button"
     },
     {
@@ -15684,7 +15684,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "button_index",
-      "community": 149,
+      "community": 231,
       "norm_label": "index.ts"
     },
     {
@@ -16184,7 +16184,7 @@
       "source_location": "L170",
       "_origin": "ast",
       "id": "hooks_use_toast_usetoast",
-      "community": 25,
+      "community": 12,
       "norm_label": "usetoast()"
     },
     {
@@ -16194,7 +16194,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "packages_ui_src_index_ts_src_index",
-      "community": 231,
+      "community": 12,
       "norm_label": "index.ts"
     },
     {
@@ -16534,7 +16534,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "dialog_dialog",
-      "community": 149,
+      "community": 409,
       "norm_label": "dialog.tsx"
     },
     {
@@ -16544,7 +16544,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "dialog_dialog_dialog",
-      "community": 149,
+      "community": 409,
       "norm_label": "dialog()"
     },
     {
@@ -16554,7 +16554,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "dialog_dialog_dialogtrigger",
-      "community": 149,
+      "community": 409,
       "norm_label": "dialogtrigger()"
     },
     {
@@ -16564,7 +16564,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "dialog_dialog_dialogportal",
-      "community": 149,
+      "community": 409,
       "norm_label": "dialogportal()"
     },
     {
@@ -16574,7 +16574,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "dialog_dialog_dialogclose",
-      "community": 149,
+      "community": 409,
       "norm_label": "dialogclose()"
     },
     {
@@ -16584,7 +16584,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "dialog_dialog_dialogoverlay",
-      "community": 149,
+      "community": 409,
       "norm_label": "dialogoverlay()"
     },
     {
@@ -16594,7 +16594,7 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "dialog_dialog_dialogcontent",
-      "community": 149,
+      "community": 409,
       "norm_label": "dialogcontent()"
     },
     {
@@ -16604,7 +16604,7 @@
       "source_location": "L84",
       "_origin": "ast",
       "id": "dialog_dialog_dialogheader",
-      "community": 149,
+      "community": 409,
       "norm_label": "dialogheader()"
     },
     {
@@ -16614,7 +16614,7 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "dialog_dialog_dialogfooter",
-      "community": 149,
+      "community": 409,
       "norm_label": "dialogfooter()"
     },
     {
@@ -16624,7 +16624,7 @@
       "source_location": "L121",
       "_origin": "ast",
       "id": "dialog_dialog_dialogtitle",
-      "community": 149,
+      "community": 409,
       "norm_label": "dialogtitle()"
     },
     {
@@ -16634,7 +16634,7 @@
       "source_location": "L134",
       "_origin": "ast",
       "id": "dialog_dialog_dialogdescription",
-      "community": 149,
+      "community": 409,
       "norm_label": "dialogdescription()"
     },
     {
@@ -16774,7 +16774,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "popover_popover",
-      "community": 174,
+      "community": 411,
       "norm_label": "popover.tsx"
     },
     {
@@ -16784,7 +16784,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "popover_popover_popover",
-      "community": 174,
+      "community": 411,
       "norm_label": "popover()"
     },
     {
@@ -16794,7 +16794,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "popover_popover_popovertrigger",
-      "community": 174,
+      "community": 411,
       "norm_label": "popovertrigger()"
     },
     {
@@ -16804,7 +16804,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "popover_popover_popoveranchor",
-      "community": 174,
+      "community": 411,
       "norm_label": "popoveranchor()"
     },
     {
@@ -16814,7 +16814,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "popover_popover_popovercontent",
-      "community": 174,
+      "community": 411,
       "norm_label": "popovercontent()"
     },
     {
@@ -16824,7 +16824,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "popover_index",
-      "community": 174,
+      "community": 411,
       "norm_label": "index.ts"
     },
     {
@@ -17394,7 +17394,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "toast_index",
-      "community": 411,
+      "community": 12,
       "norm_label": "index.ts"
     },
     {
@@ -17614,7 +17614,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "carousel_index",
-      "community": 231,
+      "community": 12,
       "norm_label": "index.ts"
     },
     {
@@ -17634,7 +17634,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "toaster_toaster_toaster",
-      "community": 25,
+      "community": 12,
       "norm_label": "toaster()"
     },
     {
@@ -17644,7 +17644,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "toaster_index",
-      "community": 231,
+      "community": 12,
       "norm_label": "index.ts"
     },
     {
@@ -17654,7 +17654,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "organisms_index",
-      "community": 231,
+      "community": 12,
       "norm_label": "index.ts"
     },
     {
@@ -18828,7 +18828,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "turbo_tasks_dev_worker",
-      "community": 205,
+      "community": 144,
       "norm_label": "dev:worker"
     },
     {
@@ -18838,7 +18838,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "turbo_dev_worker_dependson",
-      "community": 205,
+      "community": 144,
       "norm_label": "dependson"
     },
     {
@@ -18848,7 +18848,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "turbo_dev_worker_cache",
-      "community": 205,
+      "community": 144,
       "norm_label": "cache"
     },
     {
@@ -18858,7 +18858,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "turbo_dev_worker_persistent",
-      "community": 205,
+      "community": 144,
       "norm_label": "persistent"
     },
     {
@@ -18938,7 +18938,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "turbo_tasks_test_integration",
-      "community": 144,
+      "community": 174,
       "norm_label": "test:integration"
     },
     {
@@ -18948,7 +18948,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "turbo_test_integration_dependson",
-      "community": 144,
+      "community": 174,
       "norm_label": "dependson"
     },
     {
@@ -18958,7 +18958,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "turbo_test_integration_cache",
-      "community": 144,
+      "community": 174,
       "norm_label": "cache"
     },
     {
@@ -19078,7 +19078,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "turbo_tasks_db_seed",
-      "community": 206,
+      "community": 144,
       "norm_label": "db:seed"
     },
     {
@@ -19088,7 +19088,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "turbo_db_seed_dependson",
-      "community": 206,
+      "community": 144,
       "norm_label": "dependson"
     },
     {
@@ -19098,7 +19098,7 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "turbo_db_seed_cache",
-      "community": 206,
+      "community": 144,
       "norm_label": "cache"
     },
     {
@@ -20838,7 +20838,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "references_polymorphism_implementation_methods",
-      "community": 193,
+      "community": 90,
       "norm_label": "implementation methods"
     },
     {
@@ -20848,7 +20848,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "references_polymorphism_manual_implementation",
-      "community": 193,
+      "community": 90,
       "norm_label": "manual implementation"
     },
     {
@@ -20858,7 +20858,7 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "references_polymorphism_using_radix_ui_slot",
-      "community": 193,
+      "community": 90,
       "norm_label": "using radix ui slot"
     },
     {
@@ -20868,7 +20868,7 @@
       "source_location": "L175",
       "_origin": "ast",
       "id": "references_polymorphism_comparison_as_vs_aschild",
-      "community": 193,
+      "community": 90,
       "norm_label": "comparison: `as` vs `aschild`"
     },
     {
@@ -20878,7 +20878,7 @@
       "source_location": "L217",
       "_origin": "ast",
       "id": "references_polymorphism_when_to_use_each_approach",
-      "community": 193,
+      "community": 90,
       "norm_label": "when to use each approach"
     },
     {
@@ -21018,7 +21018,7 @@
       "source_location": "L439",
       "_origin": "ast",
       "id": "references_polymorphism_best_practices",
-      "community": 191,
+      "community": 90,
       "norm_label": "best practices"
     },
     {
@@ -21028,7 +21028,7 @@
       "source_location": "L441",
       "_origin": "ast",
       "id": "references_polymorphism_1_default_to_semantic_elements",
-      "community": 191,
+      "community": 90,
       "norm_label": "1. default to semantic elements"
     },
     {
@@ -21038,7 +21038,7 @@
       "source_location": "L455",
       "_origin": "ast",
       "id": "references_polymorphism_2_document_valid_elements",
-      "community": 191,
+      "community": 90,
       "norm_label": "2. document valid elements"
     },
     {
@@ -21048,7 +21048,7 @@
       "source_location": "L470",
       "_origin": "ast",
       "id": "references_polymorphism_3_validate_element_appropriateness",
-      "community": 191,
+      "community": 90,
       "norm_label": "3. validate element appropriateness"
     },
     {
@@ -21058,7 +21058,7 @@
       "source_location": "L486",
       "_origin": "ast",
       "id": "references_polymorphism_4_handle_event_handlers_properly",
-      "community": 191,
+      "community": 90,
       "norm_label": "4. handle event handlers properly"
     },
     {
@@ -22738,7 +22738,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "best_practices_packages",
-      "community": 91,
+      "community": 183,
       "norm_label": "packages.md"
     },
     {
@@ -23988,7 +23988,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ci_patterns",
-      "community": 183,
+      "community": 172,
       "norm_label": "patterns.md"
     },
     {
@@ -31202,20 +31202,10 @@
       "norm_label": "project:generate-docs"
     },
     {
-      "label": "project:update-docs",
-      "file_type": "document",
-      "source_file": ".claude/CLAUDE.md",
-      "source_location": "L21",
-      "_origin": "ast",
-      "id": "claude_claude_project_update_docs",
-      "community": 280,
-      "norm_label": "project:update-docs"
-    },
-    {
       "label": "project:clean-slate",
       "file_type": "document",
       "source_file": ".claude/CLAUDE.md",
-      "source_location": "L25",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "claude_claude_project_clean_slate",
       "community": 280,
@@ -32709,176 +32699,6 @@
       "_origin": "ast",
       "id": "test_ticket_skill_common_mistakes",
       "community": 83,
-      "norm_label": "common mistakes"
-    },
-    {
-      "label": "SKILL.md",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "update_docs_skill",
-      "community": 138,
-      "norm_label": "skill.md"
-    },
-    {
-      "label": "/project:update-docs",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "update_docs_skill_project_update_docs",
-      "community": 138,
-      "norm_label": "/project:update-docs"
-    },
-    {
-      "label": "Core principle",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L10",
-      "_origin": "ast",
-      "id": "update_docs_skill_core_principle",
-      "community": 138,
-      "norm_label": "core principle"
-    },
-    {
-      "label": "Relationship to generate-docs",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L14",
-      "_origin": "ast",
-      "id": "update_docs_skill_relationship_to_generate_docs",
-      "community": 138,
-      "norm_label": "relationship to generate-docs"
-    },
-    {
-      "label": "When to use \u2014 and when not",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L20",
-      "_origin": "ast",
-      "id": "update_docs_skill_when_to_use_and_when_not",
-      "community": 138,
-      "norm_label": "when to use \u2014 and when not"
-    },
-    {
-      "label": "Workflow",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L26",
-      "_origin": "ast",
-      "id": "update_docs_skill_workflow",
-      "community": 138,
-      "norm_label": "workflow"
-    },
-    {
-      "label": "1. Inventory every page and the app's conventions",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L30",
-      "_origin": "ast",
-      "id": "update_docs_skill_1_inventory_every_page_and_the_app_s_conventions",
-      "community": 138,
-      "norm_label": "1. inventory every page and the app's conventions"
-    },
-    {
-      "label": "2. Detect drift per page \u2014 grounding in reverse",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "update_docs_skill_2_detect_drift_per_page_grounding_in_reverse",
-      "community": 138,
-      "norm_label": "2. detect drift per page \u2014 grounding in reverse"
-    },
-    {
-      "label": "3. Classify each page",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L42",
-      "_origin": "ast",
-      "id": "update_docs_skill_3_classify_each_page",
-      "community": 138,
-      "norm_label": "3. classify each page"
-    },
-    {
-      "label": "4. Patch the stale pages \u2014 surgical, both languages, stamp bumped",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L47",
-      "_origin": "ast",
-      "id": "update_docs_skill_4_patch_the_stale_pages_surgical_both_languages_stamp_bumped",
-      "community": 138,
-      "norm_label": "4. patch the stale pages \u2014 surgical, both languages, stamp bumped"
-    },
-    {
-      "label": "5. Show the diffs and get approval",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L53",
-      "_origin": "ast",
-      "id": "update_docs_skill_5_show_the_diffs_and_get_approval",
-      "community": 138,
-      "norm_label": "5. show the diffs and get approval"
-    },
-    {
-      "label": "6. Write, then ship as a draft PR",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L61",
-      "_origin": "ast",
-      "id": "update_docs_skill_6_write_then_ship_as_a_draft_pr",
-      "community": 138,
-      "norm_label": "6. write, then ship as a draft pr"
-    },
-    {
-      "label": "7. Report",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L67",
-      "_origin": "ast",
-      "id": "update_docs_skill_7_report",
-      "community": 138,
-      "norm_label": "7. report"
-    },
-    {
-      "label": "Grounding in reverse \u2014 the core technique",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L70",
-      "_origin": "ast",
-      "id": "update_docs_skill_grounding_in_reverse_the_core_technique",
-      "community": 138,
-      "norm_label": "grounding in reverse \u2014 the core technique"
-    },
-    {
-      "label": "Never do this",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L83",
-      "_origin": "ast",
-      "id": "update_docs_skill_never_do_this",
-      "community": 138,
-      "norm_label": "never do this"
-    },
-    {
-      "label": "Quick reference",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L111",
-      "_origin": "ast",
-      "id": "update_docs_skill_quick_reference",
-      "community": 138,
-      "norm_label": "quick reference"
-    },
-    {
-      "label": "Common mistakes",
-      "file_type": "document",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L123",
-      "_origin": "ast",
-      "id": "update_docs_skill_common_mistakes",
-      "community": 138,
       "norm_label": "common mistakes"
     },
     {
@@ -72498,16 +72318,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": ".claude/CLAUDE.md",
-      "source_location": "L21",
-      "weight": 1.0,
-      "source": "claude_claude",
-      "target": "claude_claude_project_update_docs",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": "L6",
       "weight": 1.0,
@@ -73858,166 +73668,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L6",
-      "weight": 1.0,
-      "source": "update_docs_skill",
-      "target": "update_docs_skill_project_update_docs",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L123",
-      "weight": 1.0,
-      "source": "update_docs_skill_project_update_docs",
-      "target": "update_docs_skill_common_mistakes",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L10",
-      "weight": 1.0,
-      "source": "update_docs_skill_project_update_docs",
-      "target": "update_docs_skill_core_principle",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L70",
-      "weight": 1.0,
-      "source": "update_docs_skill_project_update_docs",
-      "target": "update_docs_skill_grounding_in_reverse_the_core_technique",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L83",
-      "weight": 1.0,
-      "source": "update_docs_skill_project_update_docs",
-      "target": "update_docs_skill_never_do_this",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L111",
-      "weight": 1.0,
-      "source": "update_docs_skill_project_update_docs",
-      "target": "update_docs_skill_quick_reference",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L14",
-      "weight": 1.0,
-      "source": "update_docs_skill_project_update_docs",
-      "target": "update_docs_skill_relationship_to_generate_docs",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L20",
-      "weight": 1.0,
-      "source": "update_docs_skill_project_update_docs",
-      "target": "update_docs_skill_when_to_use_and_when_not",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L26",
-      "weight": 1.0,
-      "source": "update_docs_skill_project_update_docs",
-      "target": "update_docs_skill_workflow",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L30",
-      "weight": 1.0,
-      "source": "update_docs_skill_workflow",
-      "target": "update_docs_skill_1_inventory_every_page_and_the_app_s_conventions",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L33",
-      "weight": 1.0,
-      "source": "update_docs_skill_workflow",
-      "target": "update_docs_skill_2_detect_drift_per_page_grounding_in_reverse",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L42",
-      "weight": 1.0,
-      "source": "update_docs_skill_workflow",
-      "target": "update_docs_skill_3_classify_each_page",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L47",
-      "weight": 1.0,
-      "source": "update_docs_skill_workflow",
-      "target": "update_docs_skill_4_patch_the_stale_pages_surgical_both_languages_stamp_bumped",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L53",
-      "weight": 1.0,
-      "source": "update_docs_skill_workflow",
-      "target": "update_docs_skill_5_show_the_diffs_and_get_approval",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L61",
-      "weight": 1.0,
-      "source": "update_docs_skill_workflow",
-      "target": "update_docs_skill_6_write_then_ship_as_a_draft_pr",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/skills/project/skills/update-docs/SKILL.md",
-      "source_location": "L67",
-      "weight": 1.0,
-      "source": "update_docs_skill_workflow",
-      "target": "update_docs_skill_7_report",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "CLAUDE.md",
       "source_location": "L12",
       "weight": 1.0,
@@ -74121,9 +73771,9 @@
       "source_file": "apps/docs/content/docs/index.mdx",
       "source_location": "L106",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_index",
-      "target": "docs_index_how_it_s_organised"
+      "target": "docs_index_how_it_s_organised",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -74131,9 +73781,9 @@
       "source_file": "apps/docs/content/docs/index.mdx",
       "source_location": "L27",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_index",
-      "target": "docs_index_made_for_ai_assisted_development"
+      "target": "docs_index_made_for_ai_assisted_development",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -74141,9 +73791,9 @@
       "source_file": "apps/docs/content/docs/index.mdx",
       "source_location": "L131",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_index",
-      "target": "docs_index_next"
+      "target": "docs_index_next",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -74151,9 +73801,9 @@
       "source_file": "apps/docs/content/docs/index.mdx",
       "source_location": "L58",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_index",
-      "target": "docs_index_what_s_in_the_box"
+      "target": "docs_index_what_s_in_the_box",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -74161,9 +73811,9 @@
       "source_file": "apps/docs/content/docs/index.mdx",
       "source_location": "L88",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_index",
-      "target": "docs_index_what_you_can_build_with_it"
+      "target": "docs_index_what_you_can_build_with_it",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -74171,9 +73821,9 @@
       "source_file": "apps/docs/content/docs/index.mdx",
       "source_location": "L11",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_index",
-      "target": "docs_index_why_this_boilerplate_exists"
+      "target": "docs_index_why_this_boilerplate_exists",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -74181,9 +73831,9 @@
       "source_file": "apps/docs/content/docs/index.mdx",
       "source_location": "L63",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_index_what_s_in_the_box",
-      "target": "docs_index_the_applications"
+      "target": "docs_index_the_applications",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -74191,9 +73841,9 @@
       "source_file": "apps/docs/content/docs/index.mdx",
       "source_location": "L73",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_index_what_s_in_the_box",
-      "target": "docs_index_the_shared_building_blocks"
+      "target": "docs_index_the_shared_building_blocks",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -74201,9 +73851,9 @@
       "source_file": "apps/docs/content/docs/index.nl.mdx",
       "source_location": "L27",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_index_nl",
-      "target": "docs_index_nl_gemaakt_voor_ontwikkelen_met_ai"
+      "target": "docs_index_nl_gemaakt_voor_ontwikkelen_met_ai",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -74211,9 +73861,9 @@
       "source_file": "apps/docs/content/docs/index.nl.mdx",
       "source_location": "L110",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_index_nl",
-      "target": "docs_index_nl_hoe_het_is_opgebouwd"
+      "target": "docs_index_nl_hoe_het_is_opgebouwd",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -74221,9 +73871,9 @@
       "source_file": "apps/docs/content/docs/index.nl.mdx",
       "source_location": "L136",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_index_nl",
-      "target": "docs_index_nl_volgende_stap"
+      "target": "docs_index_nl_volgende_stap",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -74231,9 +73881,9 @@
       "source_file": "apps/docs/content/docs/index.nl.mdx",
       "source_location": "L11",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_index_nl",
-      "target": "docs_index_nl_waarom_deze_boilerplate_bestaat"
+      "target": "docs_index_nl_waarom_deze_boilerplate_bestaat",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -74241,9 +73891,9 @@
       "source_file": "apps/docs/content/docs/index.nl.mdx",
       "source_location": "L60",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_index_nl",
-      "target": "docs_index_nl_wat_er_in_de_doos_zit"
+      "target": "docs_index_nl_wat_er_in_de_doos_zit",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -74251,9 +73901,9 @@
       "source_file": "apps/docs/content/docs/index.nl.mdx",
       "source_location": "L90",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_index_nl",
-      "target": "docs_index_nl_wat_je_ermee_kunt_bouwen"
+      "target": "docs_index_nl_wat_je_ermee_kunt_bouwen",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -74261,9 +73911,9 @@
       "source_file": "apps/docs/content/docs/index.nl.mdx",
       "source_location": "L65",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_index_nl_wat_er_in_de_doos_zit",
-      "target": "docs_index_nl_de_applicaties"
+      "target": "docs_index_nl_de_applicaties",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -74271,9 +73921,9 @@
       "source_file": "apps/docs/content/docs/index.nl.mdx",
       "source_location": "L75",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "docs_index_nl_wat_er_in_de_doos_zit",
-      "target": "docs_index_nl_de_gedeelde_bouwstenen"
+      "target": "docs_index_nl_de_gedeelde_bouwstenen",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -74669,5 +74319,5 @@
       "source_file": "_docker/docker-compose.prod.yml"
     }
   ],
-  "built_at_commit": "0fd340cbd456d56a9f3feb4d3d032a1d167edba2"
+  "built_at_commit": "c4cfc3b1c4e27315bd9e59e932d416cfa112fff6"
 }

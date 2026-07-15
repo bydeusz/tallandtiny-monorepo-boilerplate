@@ -2180,8 +2180,8 @@
     "semantic_hash": ""
   },
   ".claude/CLAUDE.md": {
-    "mtime": 1784154813.5355265,
-    "ast_hash": "cce1d6d859329d45ccbb2b1b253c9701",
+    "mtime": 1784145753.3946848,
+    "ast_hash": "e92e13c1fdc0493f626f5a68c5b314c1",
     "semantic_hash": ""
   },
   ".claude/skills/graphify/SKILL.md": {
@@ -2230,8 +2230,8 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1784154813.5358891,
-    "ast_hash": "0752a9d2cc07e5cb02339963a8edb598",
+    "mtime": 1784142405.6973505,
+    "ast_hash": "b25a2e1f272d8c4df837b7f818036a38",
     "semantic_hash": ""
   },
   "README.md": {
@@ -2795,22 +2795,22 @@
     "semantic_hash": ""
   },
   "apps/docs/.source/browser.ts": {
-    "mtime": 1784151931.4874694,
+    "mtime": 1784150227.848256,
     "ast_hash": "a637f13d3a2b549aadf4165c6f8e4fb0",
     "semantic_hash": ""
   },
   "apps/docs/.source/dynamic.ts": {
-    "mtime": 1784151931.4874592,
+    "mtime": 1784150227.8482327,
     "ast_hash": "6521c8a5255d3b06ea9ecd7e6f905ccc",
     "semantic_hash": ""
   },
   "apps/docs/.source/server.ts": {
-    "mtime": 1784151931.4874213,
+    "mtime": 1784150227.848232,
     "ast_hash": "3c29a6045d4ab450803b2d39bc747f68",
     "semantic_hash": ""
   },
   "apps/docs/.source/source.config.mjs": {
-    "mtime": 1784151930.7913818,
+    "mtime": 1784150227.4169126,
     "ast_hash": "8b1f9d74ca6d6f0828d0d973bc637c06",
     "semantic_hash": ""
   },
@@ -3037,11 +3037,6 @@
   "apps/docs/content/docs/index.nl.mdx": {
     "mtime": 1784150244.3454251,
     "ast_hash": "7bd3c7525e82710120a2909953e1da58",
-    "semantic_hash": ""
-  },
-  ".claude/skills/project/skills/update-docs/SKILL.md": {
-    "mtime": 1784154813.5357368,
-    "ast_hash": "428679ccbf1b9f29231d1f25e0195ea6",
     "semantic_hash": ""
   }
 }
