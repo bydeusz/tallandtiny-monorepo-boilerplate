@@ -1,4 +1,8 @@
-# Graphify
+---
+title: Graphify
+description: "De kennisgraaf van de codebase — query, path en explain."
+---
+
 
 This repo carries a **knowledge graph** of its own codebase, built and maintained with
 [Graphify](https://github.com/Graphify-Labs/graphify). The graph lets an AI assistant
@@ -8,7 +12,7 @@ map of the code instead of grepping raw files.
 The graph lives in `graphify-out/` and **is committed to git**, so every clone gets the
 same up-to-date map — you do not have to rebuild it to start querying.
 
-- Upstream project & docs: <https://github.com/Graphify-Labs/graphify>
+- Upstream project & docs: https://github.com/Graphify-Labs/graphify
 - Currently pinned version in this repo: **0.8.41** (see `.claude/skills/graphify/.graphify_version`)
 
 ---
@@ -214,7 +218,7 @@ graphify hook uninstall        # remove it
 Create a `.graphifyignore` at the repo root (same syntax as `.gitignore`) to keep noise out
 of the graph. This repo has none yet; a typical one:
 
-```gitignore
+```text
 node_modules/
 dist/
 .turbo/
