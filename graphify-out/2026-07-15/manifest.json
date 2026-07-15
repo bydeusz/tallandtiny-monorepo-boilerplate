@@ -2249,116 +2249,6 @@
     "ast_hash": "7690a15ac55b9ac582842079f1665ec5",
     "semantic_hash": "7690a15ac55b9ac582842079f1665ec5"
   },
-  "docs/superpowers/plans/2026-06-19-tintsmith-monorepo-scaffold.md": {
-    "mtime": 1782473444.1083236,
-    "ast_hash": "14f44f6c3b69dc7ee53b95f0adcc027f",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/plans/2026-06-23-dashboard-website-apps.md": {
-    "mtime": 1782473444.1064305,
-    "ast_hash": "37c4da49e82198bb687fbee75da91a4d",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/plans/2026-06-23-docker-dev-prod-containerization.md": {
-    "mtime": 1782473444.1103888,
-    "ast_hash": "3fccf395e55d0f5bfa84df9c94886727",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/plans/2026-06-23-shadcn-per-app-config.md": {
-    "mtime": 1782247358.551961,
-    "ast_hash": "e892794390ce3e26c6b3f2ccf708f84f",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/plans/2026-06-24-nestjs-boilerplate-port-api.md": {
-    "mtime": 1782473444.105431,
-    "ast_hash": "4a100e2636c218df9f9d1cc233c0e915",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/plans/2026-06-24-queries-auth-refresh-and-helpers.md": {
-    "mtime": 1782337691.9171166,
-    "ast_hash": "9017aa2295ebc5dbe2e3ba3a24eb2d4d",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/plans/2026-06-25-dashboard-phase-a-wiring.md": {
-    "mtime": 1782473444.1091018,
-    "ast_hash": "61b80d976ee3a40e5165114920e5992e",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/plans/2026-06-25-dashboard-phase-b-auth.md": {
-    "mtime": 1782473444.105988,
-    "ast_hash": "cf9094a1b79910985aad43141c75e37d",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/plans/2026-06-25-dashboard-phase-c-shell.md": {
-    "mtime": 1782473444.1073334,
-    "ast_hash": "751465336b48da7f96226fe28a669aa6",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/plans/2026-06-25-dashboard-phase-d-organisation.md": {
-    "mtime": 1782473444.1068258,
-    "ast_hash": "344302d6c00c38774801f4659aa6c3d8",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/plans/2026-06-25-dashboard-phase-e-settings.md": {
-    "mtime": 1782473444.109644,
-    "ast_hash": "77c97ebc7764f65a451f7ca46b1e6d32",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/plans/2026-06-25-dashboard-phase-f-support.md": {
-    "mtime": 1782473444.1108706,
-    "ast_hash": "7eac1e2b4d1b43d02f7936f8d17a6cb3",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/plans/2026-06-25-dashboard-port-overview.md": {
-    "mtime": 1782371524.4018009,
-    "ast_hash": "7da05cae7c16ba27574150d7ab4fe9f8",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/plans/2026-06-25-repo-auth.md": {
-    "mtime": 1782344115.9809563,
-    "ast_hash": "19c66b770ccf6ef858f519e0318a9dc4",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/plans/2026-06-25-repo-i18n.md": {
-    "mtime": 1782342658.9854417,
-    "ast_hash": "be27a195aded8883f527106285a62207",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/plans/2026-06-25-repo-ui-primitives.md": {
-    "mtime": 1782339761.7263021,
-    "ast_hash": "097426b888af65c79f26785d14deaef9",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/specs/2026-06-19-tintsmith-monorepo-design.md": {
-    "mtime": 1782473444.1117117,
-    "ast_hash": "e22a3ab40a8e9c6f1eca296173ed3127",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/specs/2026-06-23-dashboard-website-apps-design.md": {
-    "mtime": 1782473444.1122172,
-    "ast_hash": "e571ecbec0e7cef3eb4291b38078cdde",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/specs/2026-06-23-docker-dev-prod-containerization-design.md": {
-    "mtime": 1782473444.112576,
-    "ast_hash": "eb7633bd19be2b22aa47d6be1d87894b",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/specs/2026-06-23-shadcn-per-app-config-design.md": {
-    "mtime": 1782247136.671568,
-    "ast_hash": "3763407e58acc2d68a4d08b3dd22193c",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/specs/2026-06-24-dashboard-boilerplate-port-design.md": {
-    "mtime": 1782337211.1316419,
-    "ast_hash": "baebffd4b488af5737c6ae006520a38b",
-    "semantic_hash": ""
-  },
-  "docs/superpowers/specs/2026-06-24-nestjs-boilerplate-port-api-design.md": {
-    "mtime": 1782473444.1113176,
-    "ast_hash": "1d31710aa228c66582de760ab1163c2a",
-    "semantic_hash": ""
-  },
   "pnpm-workspace.yaml": {
     "mtime": 1781830497.848496,
     "ast_hash": "de6b9e7bb156f8dc12f68dc3d1a0b649",
@@ -2905,22 +2795,22 @@
     "semantic_hash": ""
   },
   "apps/docs/.source/browser.ts": {
-    "mtime": 1784142510.009203,
-    "ast_hash": "c797fd5cbd89d25310e07c4dfa6679fe",
+    "mtime": 1784150227.848256,
+    "ast_hash": "a637f13d3a2b549aadf4165c6f8e4fb0",
     "semantic_hash": ""
   },
   "apps/docs/.source/dynamic.ts": {
-    "mtime": 1784142510.0091746,
+    "mtime": 1784150227.8482327,
     "ast_hash": "6521c8a5255d3b06ea9ecd7e6f905ccc",
     "semantic_hash": ""
   },
   "apps/docs/.source/server.ts": {
-    "mtime": 1784142510.0091946,
-    "ast_hash": "549291ba6382507ebb0551ee09781e3a",
+    "mtime": 1784150227.848232,
+    "ast_hash": "3c29a6045d4ab450803b2d39bc747f68",
     "semantic_hash": ""
   },
   "apps/docs/.source/source.config.mjs": {
-    "mtime": 1784142509.907469,
+    "mtime": 1784150227.4169126,
     "ast_hash": "8b1f9d74ca6d6f0828d0d973bc637c06",
     "semantic_hash": ""
   },
@@ -3045,8 +2935,8 @@
     "semantic_hash": ""
   },
   "apps/docs/content/docs/index.mdx": {
-    "mtime": 1784145753.3952434,
-    "ast_hash": "c4fe669487b3a0dc2235cf5dd74fa18d",
+    "mtime": 1784150244.345139,
+    "ast_hash": "fee665f4faf124c93fd2453572031449",
     "semantic_hash": ""
   },
   "packages/auth/README.md": {
@@ -3119,14 +3009,34 @@
     "ast_hash": "9cc2a250eaf2498191bdfedfbd663ae1",
     "semantic_hash": ""
   },
-  "apps/docs/content/docs/start-your-project.mdx": {
-    "mtime": 1784146514.7200155,
-    "ast_hash": "e3da52e11cb9f1b01166b41f4c8ef112",
+  "apps/docs/content/docs/getting-started/meta.json": {
+    "mtime": 1784147206.757933,
+    "ast_hash": "ab1bfbb5e99c66283ca1608e2d2a58ae",
     "semantic_hash": ""
   },
-  "apps/docs/content/docs/start-your-project.nl.mdx": {
-    "mtime": 1784146520.9570475,
-    "ast_hash": "8c19d30f510d428139d9df5ca03463a9",
+  "apps/docs/content/docs/getting-started/meta.nl.json": {
+    "mtime": 1784147207.715186,
+    "ast_hash": "67e3469144a9b1eb3a5180ef0ffa0368",
+    "semantic_hash": ""
+  },
+  "apps/docs/content/docs/meta.json": {
+    "mtime": 1784147208.7126362,
+    "ast_hash": "f5e1940abfb3f65d6ef924050412dd05",
+    "semantic_hash": ""
+  },
+  "apps/docs/content/docs/getting-started/start-your-project.mdx": {
+    "mtime": 1784147192.8918035,
+    "ast_hash": "c5c2a0439047a70d219db755d234f823",
+    "semantic_hash": ""
+  },
+  "apps/docs/content/docs/getting-started/start-your-project.nl.mdx": {
+    "mtime": 1784147201.338195,
+    "ast_hash": "167d3ddb9fc60f4ebdd6565c578da1d7",
+    "semantic_hash": ""
+  },
+  "apps/docs/content/docs/index.nl.mdx": {
+    "mtime": 1784150244.3454251,
+    "ast_hash": "7bd3c7525e82710120a2909953e1da58",
     "semantic_hash": ""
   }
 }
