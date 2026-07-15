@@ -20,6 +20,7 @@ const TARGETS = [
   { name: 'web', url: 'http://localhost:3000' },
   { name: 'dashboard', url: 'http://localhost:3002' },
   { name: 'website', url: 'http://localhost:3003' },
+  { name: 'docs', url: 'http://localhost:3004' },
   { name: 'swagger', url: 'http://localhost:3001/api/docs' },
   { name: 'prisma studio', url: 'http://localhost:5555' },
   { name: 'mailpit', url: 'http://localhost:8025' },
