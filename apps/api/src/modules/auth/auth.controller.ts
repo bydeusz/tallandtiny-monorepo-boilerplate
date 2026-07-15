@@ -17,13 +17,13 @@ import {
 } from '@nestjs/swagger';
 import { Throttle } from '@nestjs/throttler';
 import { CurrentUser, Public } from '../../common/decorators';
+import { MessageResponseDto } from '../../common/dto';
 import {
   ActivateDto,
   AuthTokensResponseDto,
   ChangePasswordDto,
   ConfirmEmailChangeDto,
   LoginDto,
-  MessageResponseDto,
   RefreshTokenDto,
   ResetPasswordDto,
   RegisterDto,

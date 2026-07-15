@@ -23,7 +23,7 @@ import {
 import type { Express } from 'express';
 import { Queue } from 'bullmq';
 import { CurrentUser } from '../../common/decorators';
-import { MessageResponseDto } from '../auth/dto/auth-response.dto';
+import { MessageResponseDto } from '../../common/dto';
 import { MAIL_JOB_SEND, MAIL_QUEUE } from '../queue/constants/queue.constants';
 import { ContactSupportDto } from './dto';
 import type { MailAttachment } from './interfaces/send-mail-options.interface';

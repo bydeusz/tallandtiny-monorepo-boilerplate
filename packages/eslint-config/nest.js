@@ -91,10 +91,16 @@ export const nestConfig = [
       ],
       'nestjs-security/require-class-validator': 'error',
       'nestjs-security/no-exposed-private-fields': 'error',
-      // Heuristic that only matched non-endpoints (config / env / logger) and the
-      // intentionally-public health controller here — off to avoid pure noise.
-      'nestjs-security/no-exposed-debug-endpoints': 'off',
+      'nestjs-security/no-exposed-debug-endpoints': 'error',
     },
+  },
+  {
+    // no-exposed-debug-endpoints is a keyword heuristic that here only matched
+    // non-endpoints (config / env / logger) and the intentionally-public health
+    // controller. Scope it off for those paths but keep the rule live elsewhere,
+    // so a genuinely unauthenticated debug endpoint would still be caught.
+    files: ['src/config/**', 'src/common/logger/**', 'src/modules/health/**'],
+    rules: { 'nestjs-security/no-exposed-debug-endpoints': 'off' },
   },
   // Response / output DTOs take no user input, so they need no class-validator
   // decorators. Keep require-class-validator scoped to request DTOs.
