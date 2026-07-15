@@ -2905,22 +2905,22 @@
     "semantic_hash": ""
   },
   "apps/docs/.source/browser.ts": {
-    "mtime": 1784142510.009203,
-    "ast_hash": "c797fd5cbd89d25310e07c4dfa6679fe",
+    "mtime": 1784147229.9891288,
+    "ast_hash": "a637f13d3a2b549aadf4165c6f8e4fb0",
     "semantic_hash": ""
   },
   "apps/docs/.source/dynamic.ts": {
-    "mtime": 1784142510.0091746,
+    "mtime": 1784147229.9891186,
     "ast_hash": "6521c8a5255d3b06ea9ecd7e6f905ccc",
     "semantic_hash": ""
   },
   "apps/docs/.source/server.ts": {
-    "mtime": 1784142510.0091946,
-    "ast_hash": "549291ba6382507ebb0551ee09781e3a",
+    "mtime": 1784147229.9890852,
+    "ast_hash": "3c29a6045d4ab450803b2d39bc747f68",
     "semantic_hash": ""
   },
   "apps/docs/.source/source.config.mjs": {
-    "mtime": 1784142509.907469,
+    "mtime": 1784146818.0557861,
     "ast_hash": "8b1f9d74ca6d6f0828d0d973bc637c06",
     "semantic_hash": ""
   },
@@ -3045,8 +3045,8 @@
     "semantic_hash": ""
   },
   "apps/docs/content/docs/index.mdx": {
-    "mtime": 1784145753.3952434,
-    "ast_hash": "c4fe669487b3a0dc2235cf5dd74fa18d",
+    "mtime": 1784147210.7473881,
+    "ast_hash": "6480654a8c77b604fff03912c9a4dcba",
     "semantic_hash": ""
   },
   "packages/auth/README.md": {
@@ -3119,14 +3119,34 @@
     "ast_hash": "9cc2a250eaf2498191bdfedfbd663ae1",
     "semantic_hash": ""
   },
-  "apps/docs/content/docs/start-your-project.mdx": {
-    "mtime": 1784146514.7200155,
-    "ast_hash": "e3da52e11cb9f1b01166b41f4c8ef112",
+  "apps/docs/content/docs/getting-started/meta.json": {
+    "mtime": 1784147206.757933,
+    "ast_hash": "ab1bfbb5e99c66283ca1608e2d2a58ae",
     "semantic_hash": ""
   },
-  "apps/docs/content/docs/start-your-project.nl.mdx": {
-    "mtime": 1784146520.9570475,
-    "ast_hash": "8c19d30f510d428139d9df5ca03463a9",
+  "apps/docs/content/docs/getting-started/meta.nl.json": {
+    "mtime": 1784147207.715186,
+    "ast_hash": "67e3469144a9b1eb3a5180ef0ffa0368",
+    "semantic_hash": ""
+  },
+  "apps/docs/content/docs/meta.json": {
+    "mtime": 1784147208.7126362,
+    "ast_hash": "f5e1940abfb3f65d6ef924050412dd05",
+    "semantic_hash": ""
+  },
+  "apps/docs/content/docs/getting-started/start-your-project.mdx": {
+    "mtime": 1784147192.8918035,
+    "ast_hash": "c5c2a0439047a70d219db755d234f823",
+    "semantic_hash": ""
+  },
+  "apps/docs/content/docs/getting-started/start-your-project.nl.mdx": {
+    "mtime": 1784147201.338195,
+    "ast_hash": "167d3ddb9fc60f4ebdd6565c578da1d7",
+    "semantic_hash": ""
+  },
+  "apps/docs/content/docs/index.nl.mdx": {
+    "mtime": 1784147212.3267307,
+    "ast_hash": "f8337055b9f6cde4a29b41c34192e1c7",
     "semantic_hash": ""
   }
 }
