@@ -14,7 +14,7 @@ const meta: ArgumentMetadata = { type: 'body', metatype: RegisterDto, data: '' }
 const validBody = {
   name: 'Ada',
   surname: 'Lovelace',
-  email: 'ada@bydeusz.com',
+  email: 'ada@example.com',
   password: 'password123',
 };
 

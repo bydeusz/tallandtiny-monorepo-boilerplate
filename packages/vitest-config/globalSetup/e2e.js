@@ -43,7 +43,7 @@ export async function setup() {
   process.env.S3_ACCESS_KEY = MINIO_USER;
   process.env.S3_SECRET_KEY = MINIO_PASS;
   process.env.CORS_ORIGIN = "*";
-  process.env.ALLOWED_EMAIL_DOMAINS = "bydeusz.com";
+  process.env.ALLOWED_EMAIL_DOMAINS = "example.com";
   process.env.NODE_ENV = "test";
   process.env.PORT = "3001";
 

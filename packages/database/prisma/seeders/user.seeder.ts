@@ -20,7 +20,7 @@ export async function seedUsers(prisma: PrismaClient): Promise<void> {
     {
       name: 'John',
       surname: 'Doe',
-      email: 'john.doe@bydeusz.com',
+      email: 'john.doe@example.com',
       address: 'Damrak 70',
       postalCode: '1012 LM',
       city: 'Amsterdam',
@@ -29,7 +29,7 @@ export async function seedUsers(prisma: PrismaClient): Promise<void> {
     {
       name: 'Lisa',
       surname: 'Visser',
-      email: 'lisa.visser@bydeusz.com',
+      email: 'lisa.visser@example.com',
       address: 'Coolsingel 100',
       postalCode: '3011 AG',
       city: 'Rotterdam',

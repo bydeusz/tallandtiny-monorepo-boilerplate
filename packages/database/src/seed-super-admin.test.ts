@@ -25,19 +25,19 @@ describe('seedSuperAdmin', () => {
 
   it('upserts a single super admin keyed by email (idempotent — no duplicate)', async () => {
     await seedSuperAdmin(prisma as never, {
-      email: 'root@bydeusz.com',
+      email: 'root@example.com',
       password: 'Sup3rSecret!',
     });
 
     expect(prisma.user.upsert).toHaveBeenCalledTimes(1);
     expect(prisma.user.upsert.mock.calls[0][0].where).toEqual({
-      email: 'root@bydeusz.com',
+      email: 'root@example.com',
     });
   });
 
   it('creates an active SUPER_ADMIN that can log in immediately', async () => {
     await seedSuperAdmin(prisma as never, {
-      email: 'root@bydeusz.com',
+      email: 'root@example.com',
       password: 'Sup3rSecret!',
     });
 
@@ -53,7 +53,7 @@ describe('seedSuperAdmin', () => {
 
   it('re-asserts SUPER_ADMIN + active on an existing account (update branch)', async () => {
     await seedSuperAdmin(prisma as never, {
-      email: 'root@bydeusz.com',
+      email: 'root@example.com',
       password: 'Sup3rSecret!',
     });
 
@@ -69,7 +69,7 @@ describe('seedSuperAdmin', () => {
     });
 
     expect(prisma.user.upsert.mock.calls[0][0].where).toEqual({
-      email: 'root@bydeusz.com',
+      email: 'root@example.com',
     });
   });
 
@@ -78,7 +78,7 @@ describe('seedSuperAdmin', () => {
       seedSuperAdmin(prisma as never, { email: '', password: 'x' }),
     ).rejects.toThrow();
     await expect(
-      seedSuperAdmin(prisma as never, { email: 'a@bydeusz.com', password: '' }),
+      seedSuperAdmin(prisma as never, { email: 'a@example.com', password: '' }),
     ).rejects.toThrow();
   });
 });

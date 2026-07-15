@@ -2,7 +2,7 @@ import { prisma, Role, seedSuperAdmin } from '@repo/database';
 import bcrypt from 'bcrypt';
 import { afterAll, describe, expect, it } from 'vitest';
 
-const email = `super-admin-${Date.now()}@bydeusz.com`;
+const email = `super-admin-${Date.now()}@example.com`;
 
 describe('seedSuperAdmin (integration)', () => {
   afterAll(async () => {

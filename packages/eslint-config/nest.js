@@ -8,11 +8,12 @@ import { baseConfig } from './base.js';
 
 // PII / secret patterns to catch directly in source (gitleaks covers runtime
 // secret-scanning in the hooks; this catches hard-coded PII in the code itself).
-// Email is intentionally omitted: it fires on Swagger examples / fixtures rather
-// than real secrets, and gitleaks + entropy already cover leaked credentials.
+// Real e-mails are flagged too; fixtures/docs use RFC 2606 example domains
+// (example.com, .test, .invalid, …) which are allow-listed via ignoreContent below.
 const piiRegexes = {
   'Dutch BSN (9 digits)': '\\b\\d{9}\\b',
   IBAN: '\\b[A-Z]{2}\\d{2}[A-Z0-9]{11,30}\\b',
+  'Email address': '\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\b',
 };
 
 // nestjs-typed's flat recommended config brings its own parser + rules but does
@@ -136,7 +137,17 @@ export const nestConfig = [
     rules: {
       'no-secrets/no-secrets': [
         'error',
-        { tolerance: 4.2, additionalRegexes: piiRegexes },
+        {
+          tolerance: 4.2,
+          additionalRegexes: piiRegexes,
+          // Allow-list RFC 2606 reserved domains so fixture/doc e-mails don't
+          // fire; real external addresses still do. ignoreContent takes
+          // precedence over additionalRegexes.
+          ignoreContent: [
+            '@example\\.(com|org|net)\\b',
+            '@\\S+\\.(test|invalid|localhost)\\b',
+          ],
+        },
       ],
     },
   },
