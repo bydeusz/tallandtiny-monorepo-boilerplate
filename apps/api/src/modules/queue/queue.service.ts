@@ -4,6 +4,7 @@ import { JobsOptions, Queue } from 'bullmq';
 import { MAIL_QUEUE } from './constants/queue.constants';
 
 @Injectable()
+// eslint-disable-next-line @darraghor/nestjs-typed/injectable-should-be-provided -- provided (and exported) by QueueModule.register(), a dynamic module the static rule can't see
 export class QueueService implements OnModuleDestroy {
   private readonly logger = new Logger(QueueService.name);
 

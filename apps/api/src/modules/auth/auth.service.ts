@@ -17,16 +17,12 @@ import {
   generatePassword,
   hashPassword,
 } from '../../common/utils';
+import { MessageResponseDto } from '../../common/dto';
 import { PrismaService } from '../../prisma/prisma.service';
 import { MAIL_JOB_SEND, QueueService } from '../queue';
 import { UsersService } from '../users/users.service';
 import { CurrentUserResponseDto } from '../users/dto';
-import {
-  AuthTokensResponseDto,
-  LoginDto,
-  MessageResponseDto,
-  RegisterDto,
-} from './dto';
+import { AuthTokensResponseDto, LoginDto, RegisterDto } from './dto';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 
 interface TokenUser {

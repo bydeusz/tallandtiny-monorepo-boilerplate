@@ -8,16 +8,22 @@ import {
   Post,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 import { Throttle } from '@nestjs/throttler';
 import { CurrentUser, Public } from '../../common/decorators';
+import { MessageResponseDto } from '../../common/dto';
 import {
   ActivateDto,
   AuthTokensResponseDto,
   ChangePasswordDto,
   ConfirmEmailChangeDto,
   LoginDto,
-  MessageResponseDto,
   RefreshTokenDto,
   ResetPasswordDto,
   RegisterDto,
@@ -25,7 +31,7 @@ import {
   RequestNewPasswordDto,
   ResendActivationDto,
 } from './dto';
-import { CurrentUserResponseDto } from '../users/dto';
+import { CurrentUserResponseDto } from '../users/dto/current-user-response.dto';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
@@ -40,6 +46,7 @@ export class AuthController {
   @Public()
   @Throttle({ default: { limit: 5, ttl: 60000 } })
   @ApiOperation({ operationId: 'AuthLogin' })
+  @ApiOkResponse({ type: AuthTokensResponseDto })
   @Post('login')
   @HttpCode(HttpStatus.OK)
   login(@Body() loginDto: LoginDto): Promise<AuthTokensResponseDto> {
@@ -49,6 +56,7 @@ export class AuthController {
   @Public()
   @Throttle({ default: { limit: 5, ttl: 60000 } })
   @ApiOperation({ operationId: 'AuthRegister' })
+  @ApiCreatedResponse({ type: MessageResponseDto })
   @Post('register')
   register(@Body() registerDto: RegisterDto): Promise<MessageResponseDto> {
     const registrationEnabled = this.configService.get<boolean>(
@@ -65,6 +73,7 @@ export class AuthController {
   @Public()
   @Throttle({ default: { limit: 5, ttl: 60000 } })
   @ApiOperation({ operationId: 'AuthActivate' })
+  @ApiOkResponse({ type: AuthTokensResponseDto })
   @Post('activate')
   @HttpCode(HttpStatus.OK)
   activate(@Body() activateDto: ActivateDto): Promise<AuthTokensResponseDto> {
@@ -74,6 +83,7 @@ export class AuthController {
   @Public()
   @Throttle({ default: { limit: 5, ttl: 60000 } })
   @ApiOperation({ operationId: 'AuthResendActivation' })
+  @ApiOkResponse({ type: MessageResponseDto })
   @Post('resend-activation')
   @HttpCode(HttpStatus.OK)
   resendActivationCode(
@@ -85,6 +95,7 @@ export class AuthController {
   @Public()
   @Throttle({ default: { limit: 5, ttl: 60000 } })
   @ApiOperation({ operationId: 'AuthRequestNewPassword' })
+  @ApiOkResponse({ type: MessageResponseDto })
   @Post('request-new-password')
   @HttpCode(HttpStatus.OK)
   requestNewPassword(
@@ -96,6 +107,7 @@ export class AuthController {
   @Public()
   @Throttle({ default: { limit: 5, ttl: 60000 } })
   @ApiOperation({ operationId: 'AuthResetPassword' })
+  @ApiOkResponse({ type: MessageResponseDto })
   @Post('reset-password')
   @HttpCode(HttpStatus.OK)
   resetPassword(
@@ -110,6 +122,7 @@ export class AuthController {
 
   @Public()
   @ApiOperation({ operationId: 'AuthRefresh' })
+  @ApiOkResponse({ type: AuthTokensResponseDto })
   @Post('refresh')
   @HttpCode(HttpStatus.OK)
   refresh(
@@ -119,6 +132,7 @@ export class AuthController {
   }
 
   @ApiOperation({ operationId: 'AuthLogout' })
+  @ApiOkResponse({ type: MessageResponseDto })
   @Post('logout')
   @HttpCode(HttpStatus.OK)
   async logout(
@@ -129,6 +143,7 @@ export class AuthController {
   }
 
   @ApiOperation({ operationId: 'AuthChangePassword' })
+  @ApiOkResponse({ type: AuthTokensResponseDto })
   @Post('change-password')
   @HttpCode(HttpStatus.OK)
   changePassword(
@@ -143,6 +158,7 @@ export class AuthController {
   }
 
   @ApiOperation({ operationId: 'AuthGetCurrentUser' })
+  @ApiOkResponse({ type: CurrentUserResponseDto })
   @Get('me')
   @HttpCode(HttpStatus.OK)
   me(@CurrentUser('sub') userId: string): Promise<CurrentUserResponseDto> {
@@ -151,6 +167,7 @@ export class AuthController {
 
   @Throttle({ default: { limit: 3, ttl: 60000 } })
   @ApiOperation({ operationId: 'AuthRequestEmailChange' })
+  @ApiOkResponse({ type: MessageResponseDto })
   @Post('request-email-change')
   @HttpCode(HttpStatus.OK)
   requestEmailChange(
@@ -163,6 +180,7 @@ export class AuthController {
   @Public()
   @Throttle({ default: { limit: 5, ttl: 60000 } })
   @ApiOperation({ operationId: 'AuthConfirmEmailChange' })
+  @ApiOkResponse({ type: MessageResponseDto })
   @Post('confirm-email-change')
   @HttpCode(HttpStatus.OK)
   confirmEmailChange(

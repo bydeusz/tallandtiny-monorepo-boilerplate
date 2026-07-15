@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
 
 export class RegisterDto {
@@ -12,6 +13,7 @@ export class RegisterDto {
   @IsEmail()
   email!: string;
 
+  @Exclude({ toPlainOnly: true })
   @IsString()
   @MinLength(8)
   password!: string;

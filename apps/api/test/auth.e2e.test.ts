@@ -95,7 +95,7 @@ describe("Auth (e2e)", () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        email: "lisa.visser@bydeusz.com",
+        email: "lisa.visser@example.com",
         password: "Admin123!",
       }),
     });
@@ -115,7 +115,7 @@ describe("Auth (e2e)", () => {
     const meBody = (await meRes.json()) as {
       data: { email: string; role: string };
     };
-    expect(meBody.data.email).toBe("lisa.visser@bydeusz.com");
+    expect(meBody.data.email).toBe("lisa.visser@example.com");
     // The role is exposed through /me so the dashboard can gate on SUPER_ADMIN.
     expect(meBody.data.role).toBe("USER");
   });
@@ -125,7 +125,7 @@ describe("Auth (e2e)", () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        email: "superadmin@bydeusz.com",
+        email: "superadmin@example.com",
         password: "Admin123!",
       }),
     });
@@ -143,7 +143,7 @@ describe("Auth (e2e)", () => {
     const meBody = (await meRes.json()) as {
       data: { email: string; role: string };
     };
-    expect(meBody.data.email).toBe("superadmin@bydeusz.com");
+    expect(meBody.data.email).toBe("superadmin@example.com");
     expect(meBody.data.role).toBe("SUPER_ADMIN");
   });
 

@@ -3,6 +3,7 @@ import { randomBytes } from 'crypto';
 
 const SALT_ROUNDS = 10;
 const PASSWORD_CHARSET =
+  // eslint-disable-next-line no-secrets/no-secrets -- password-generation charset, not a secret
   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
 
 export function hashPassword(password: string): Promise<string> {

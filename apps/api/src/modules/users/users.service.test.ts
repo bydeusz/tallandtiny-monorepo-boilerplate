@@ -6,7 +6,7 @@ const fullUser = {
   id: 'user-1',
   name: 'Ada',
   surname: 'Lovelace',
-  email: 'ada@bydeusz.com',
+  email: 'ada@example.com',
   role: Role.SUPER_ADMIN,
   isActive: true,
   avatarUrl: null,

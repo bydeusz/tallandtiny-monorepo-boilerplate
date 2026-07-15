@@ -19,11 +19,13 @@ import {
   ApiBearerAuth,
   ApiBody,
   ApiConsumes,
+  ApiCreatedResponse,
+  ApiOkResponse,
   ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
 import type { Express } from 'express';
-import { CurrentUser } from '../../common/decorators';
+import { ApiPaginatedResponse, CurrentUser } from '../../common/decorators';
 import { FileScope } from '@repo/database';
 import { PaginatedResult } from '../../common/interfaces';
 import {
@@ -47,6 +49,7 @@ export class FilesController {
   constructor(private readonly filesService: FilesService) {}
 
   @ApiOperation({ operationId: 'FileUpload' })
+  @ApiCreatedResponse({ type: FileResponseDto })
   @Post(':scope/:ownerId/:folder')
   @UseInterceptors(FileInterceptor('file'))
   @ApiConsumes('multipart/form-data')
@@ -89,6 +92,7 @@ export class FilesController {
   }
 
   @ApiOperation({ operationId: 'FileReplace' })
+  @ApiOkResponse({ type: FileResponseDto })
   @Put(':scope/:ownerId/:folder')
   @UseInterceptors(FileInterceptor('file'))
   @ApiConsumes('multipart/form-data')
@@ -130,6 +134,7 @@ export class FilesController {
   }
 
   @ApiOperation({ operationId: 'FileList' })
+  @ApiPaginatedResponse(FileResponseDto)
   @Get()
   findAll(
     @CurrentUser('sub') currentUserId: string,
@@ -139,6 +144,7 @@ export class FilesController {
   }
 
   @ApiOperation({ operationId: 'FileGet' })
+  @ApiOkResponse({ type: FileResponseDto })
   @Get(':id')
   findOne(
     @Param('id', ParseUUIDPipe) id: string,
@@ -148,6 +154,7 @@ export class FilesController {
   }
 
   @ApiOperation({ operationId: 'FileDelete' })
+  @ApiOkResponse({ type: FileResponseDto })
   @Delete(':id')
   remove(
     @Param('id', ParseUUIDPipe) id: string,

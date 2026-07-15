@@ -15,7 +15,7 @@ function buildService() {
       return undefined;
     }),
     get: vi.fn((key: string) => {
-      if (key === 'auth.allowedEmailDomains') return ['bydeusz.com'];
+      if (key === 'auth.allowedEmailDomains') return ['example.com'];
       if (key === 'auth.frontendUrl') return 'http://localhost:3000';
       return undefined;
     }),
@@ -27,7 +27,7 @@ function buildService() {
         id: 'user-1',
         name: 'Ada',
         surname: 'Lovelace',
-        email: 'ada@bydeusz.com',
+        email: 'ada@example.com',
       }),
     },
     activationCode: {
@@ -64,13 +64,13 @@ describe('AuthService — role in JWT payload', () => {
   it('includes the role in the signed access-token payload', async () => {
     await h.service.generateTokens({
       id: 'user-1',
-      email: 'admin@bydeusz.com',
+      email: 'admin@example.com',
       role: Role.SUPER_ADMIN,
     });
 
     expect(h.jwtService.signAsync).toHaveBeenCalledWith({
       sub: 'user-1',
-      email: 'admin@bydeusz.com',
+      email: 'admin@example.com',
       role: Role.SUPER_ADMIN,
     });
   });
@@ -78,7 +78,7 @@ describe('AuthService — role in JWT payload', () => {
   it('sets the role from the database record on login', async () => {
     h.usersService.findByEmail.mockResolvedValue({
       id: 'user-1',
-      email: 'admin@bydeusz.com',
+      email: 'admin@example.com',
       password: 'hashed',
       isActive: true,
       mustChangePassword: false,
@@ -88,7 +88,7 @@ describe('AuthService — role in JWT payload', () => {
       .spyOn(h.service, 'generateTokens')
       .mockResolvedValue({ access_token: 'a', refresh_token: 'r' });
 
-    await h.service.login({ email: 'admin@bydeusz.com', password: 'pw' });
+    await h.service.login({ email: 'admin@example.com', password: 'pw' });
 
     expect(generateSpy).toHaveBeenCalledWith(
       expect.objectContaining({ role: Role.SUPER_ADMIN }),
@@ -105,7 +105,7 @@ describe('AuthService — role in JWT payload', () => {
       id: 'rt-1',
       user: {
         id: 'user-1',
-        email: 'admin@bydeusz.com',
+        email: 'admin@example.com',
         role: Role.SUPER_ADMIN,
       },
     });
@@ -132,7 +132,7 @@ describe('AuthService — registration cannot escalate role', () => {
     await h.service.register({
       name: 'Ada',
       surname: 'Lovelace',
-      email: 'ada@bydeusz.com',
+      email: 'ada@example.com',
       password: 'password123',
     });
 

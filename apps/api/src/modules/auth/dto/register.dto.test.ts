@@ -6,6 +6,7 @@ import { RegisterDto } from './register.dto';
 const pipe = new ValidationPipe({
   whitelist: true,
   forbidNonWhitelisted: true,
+  forbidUnknownValues: true,
   transform: true,
 });
 const meta: ArgumentMetadata = { type: 'body', metatype: RegisterDto, data: '' };
@@ -13,7 +14,7 @@ const meta: ArgumentMetadata = { type: 'body', metatype: RegisterDto, data: '' }
 const validBody = {
   name: 'Ada',
   surname: 'Lovelace',
-  email: 'ada@bydeusz.com',
+  email: 'ada@example.com',
   password: 'password123',
 };
 

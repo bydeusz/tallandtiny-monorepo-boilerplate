@@ -10,7 +10,7 @@ import { seedUsers } from './seeders/user.seeder.js';
 // Production/staging bootstrap the super admin via `pnpm create:superadmin`
 // instead (operator-chosen credentials, no repo credentials there).
 const DEV_SUPER_ADMIN = {
-  email: 'superadmin@bydeusz.com',
+  email: 'superadmin@example.com',
   password: 'Admin123!',
   name: 'Super',
   surname: 'Admin',

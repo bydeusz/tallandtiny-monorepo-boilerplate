@@ -39,7 +39,7 @@ describe('RolesGuard', () => {
   it('allows a handler that declares no roles', () => {
     const context = createContext(controller.unprotected, {
       sub: 'user-1',
-      email: 'user@bydeusz.com',
+      email: 'user@example.com',
       role: Role.USER,
     });
 
@@ -49,7 +49,7 @@ describe('RolesGuard', () => {
   it('allows a user whose role is one of the required roles', () => {
     const context = createContext(controller.superAdminOnly, {
       sub: 'admin-1',
-      email: 'admin@bydeusz.com',
+      email: 'admin@example.com',
       role: Role.SUPER_ADMIN,
     });
 
@@ -59,7 +59,7 @@ describe('RolesGuard', () => {
   it('allows a user matching any of several required roles', () => {
     const context = createContext(controller.adminArea, {
       sub: 'admin-1',
-      email: 'admin@bydeusz.com',
+      email: 'admin@example.com',
       role: Role.ADMIN,
     });
 
@@ -69,7 +69,7 @@ describe('RolesGuard', () => {
   it('rejects a USER on a SUPER_ADMIN-only handler', () => {
     const context = createContext(controller.superAdminOnly, {
       sub: 'user-1',
-      email: 'user@bydeusz.com',
+      email: 'user@example.com',
       role: Role.USER,
     });
 
