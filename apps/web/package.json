@@ -10,10 +10,15 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@repo/auth": "workspace:*",
+    "@repo/i18n": "workspace:*",
     "@repo/queries": "workspace:*",
     "@repo/ui": "workspace:*",
     "@tanstack/react-query": "^5.62.0",
+    "flag-icons": "^7.5.0",
+    "lucide-react": "^0.468.0",
     "next": "^16.0.0",
+    "next-intl": "^4.8.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
