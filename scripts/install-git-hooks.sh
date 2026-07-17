@@ -14,6 +14,9 @@ set -u
 
 START="# worktree-setup-hook-start"
 END="# worktree-setup-hook-end"
+# Bump when the BLOCK below changes so an already-installed OLDER block is
+# rewritten instead of skipped (the installer keys idempotency on this marker).
+VERSION="# worktree-setup-hook v2"
 
 COMMON=$(git rev-parse --git-common-dir 2>/dev/null) || {
   echo "[install-git-hooks] geen git repo — overgeslagen." >&2
@@ -29,9 +32,21 @@ HOOK="$HOOKS_DIR/post-checkout"
 
 mkdir -p "$HOOKS_DIR"
 
-# Already installed → nothing to do.
-if [ -f "$HOOK" ] && grep -qF "$START" "$HOOK"; then
+# Already installed at the current version → nothing to do.
+if [ -f "$HOOK" ] && grep -qF "$VERSION" "$HOOK"; then
   exit 0
+fi
+
+# An OLDER block is present (START marker but not the current VERSION): strip it
+# from START..END so the current block is (re)installed below. Portable across
+# BSD/GNU sed (no in-place flag): filter to a temp file, then swap.
+if [ -f "$HOOK" ] && grep -qF "$START" "$HOOK"; then
+  if sed "/$START/,/$END/d" "$HOOK" >"$HOOK.tmp"; then
+    mv "$HOOK.tmp" "$HOOK"
+    echo "[install-git-hooks] oude worktree-setup hook vervangen." >&2
+  else
+    rm -f "$HOOK.tmp"
+  fi
 fi
 
 # The trampoline. Runs synchronously (blocks `git worktree add`) and only on a
@@ -39,9 +54,13 @@ fi
 # so any later hook block (e.g. graphify) still runs.
 BLOCK=$(cat <<'EOF'
 # worktree-setup-hook-start
+# worktree-setup-hook v2
 # Bootstrap a fresh worktree (pnpm install + @repo/database) BEFORE anything else.
 # Synchronous on purpose: `git worktree add` blocks until the worktree is ready.
-if [ "$3" = 1 ] && [ ! -d node_modules ]; then
+# Guard on the completion sentinel, not "node_modules exists": a worktree whose
+# first bootstrap was interrupted has node_modules but no sentinel, so this keeps
+# re-running setup (which is idempotent) on each checkout until it fully succeeds.
+if [ "$3" = 1 ] && [ ! -f node_modules/.worktree-setup-done ]; then
   _wt_root=$(git rev-parse --show-toplevel 2>/dev/null)
   if [ -n "$_wt_root" ] && [ -x "$_wt_root/scripts/worktree-setup.sh" ]; then
     "$_wt_root/scripts/worktree-setup.sh"

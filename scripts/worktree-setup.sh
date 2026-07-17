@@ -38,9 +38,16 @@ if [ -n "$MAIN_ROOT" ] && [ "$MAIN_ROOT" != "$ROOT" ] && [ -d "$MAIN_ROOT" ]; th
     done
 fi
 
-# Fresh worktree/clone only. If node_modules already exists there is nothing to
-# do (this also makes a normal branch switch a no-op).
-if [ -d node_modules ]; then
+# Idempotency via a completion SENTINEL, not "node_modules exists". pnpm creates
+# node_modules early during install, so an interrupted first run (a harness that
+# does not wait for the synchronous hook, a cold store, Ctrl-C) leaves a partial
+# node_modules AND no generated Prisma client — yet the old `[ -d node_modules ]`
+# guard treated that as "done" and never repaired it. Keying the no-op on the
+# sentinel instead makes a fully-set-up worktree skip (fast branch switches stay a
+# no-op) while a fresh OR half-installed worktree falls through to the steps below,
+# which are idempotent and therefore self-healing.
+SENTINEL="$ROOT/node_modules/.worktree-setup-done"
+if [ -f "$SENTINEL" ]; then
   exit 0
 fi
 
@@ -54,7 +61,7 @@ LOG="$ROOT/.worktree-setup.log"
 # not connect to a database. Do not override a real DATABASE_URL if one is set.
 export DATABASE_URL="${DATABASE_URL:-postgresql://placeholder:placeholder@localhost:5432/placeholder}"
 
-echo "[worktree-setup] Verse worktree → bootstrap gestart (log: $LOG)" >&2
+echo "[worktree-setup] Worktree nog niet compleet → bootstrap/herstel gestart (log: $LOG)" >&2
 
 step() {
   echo "" >>"$LOG"
@@ -62,12 +69,19 @@ step() {
   "$@" >>"$LOG" 2>&1
 }
 
+# All three steps are idempotent, so re-running after an interrupted attempt
+# repairs the worktree: `pnpm install` finishes a partial node_modules,
+# `db:generate` re-emits src/generated/prisma (gitignored → must exist per
+# worktree), `build` re-emits dist/. The sentinel is written ONLY after all three
+# succeed, so a failure leaves the worktree marked "not done" and the next run
+# (a git checkout or `pnpm setup:worktree`) retries instead of skipping.
 if step pnpm install --frozen-lockfile --prefer-offline \
   && step pnpm --filter @repo/database db:generate \
   && step pnpm --filter @repo/database build; then
+  : >"$SENTINEL"
   echo "[worktree-setup] Klaar — node_modules + @repo/database gereed." >&2
 else
-  echo "[worktree-setup] FOUT tijdens bootstrap — zie $LOG" >&2
+  echo "[worktree-setup] FOUT tijdens bootstrap — zie $LOG (worktree als niet-klaar gemarkeerd; volgende run probeert opnieuw)" >&2
 fi
 
 # Never fail the checkout: git ignores the post-checkout exit code, but keep it
