@@ -1,7 +1,7 @@
 import { createAuthMiddleware } from "@repo/auth/server";
 
 export const proxy = createAuthMiddleware({
-  authRoutes: ["/login", "/register", "/reset-password", "/verify"],
+  authRoutes: ["/login", "/reset-password"],
   protectedRoutes: ["/", "/settings", "/support"],
 });
 
