@@ -262,6 +262,9 @@ describe('OrganisationsService — update/members/invite', () => {
         },
       },
     });
+    expect(h.prisma.$transaction).toHaveBeenCalledWith(expect.any(Function), {
+      isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
+    });
   });
 
   it('refuses to demote the last owner (409)', async () => {
@@ -299,6 +302,9 @@ describe('OrganisationsService — update/members/invite', () => {
     });
 
     expect(result.role).toBe(OrganisationRole.OWNER);
+    expect(h.prisma.$transaction).toHaveBeenCalledWith(expect.any(Function), {
+      isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
+    });
   });
 
   it('lists members with mapped user fields (paginated)', async () => {
