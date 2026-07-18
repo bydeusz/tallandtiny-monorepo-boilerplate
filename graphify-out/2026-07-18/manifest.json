@@ -690,8 +690,8 @@
     "semantic_hash": ""
   },
   "apps/web/package.json": {
-    "mtime": 1784325950.2618675,
-    "ast_hash": "f158703c1aad4d035571adb5e7d7646b",
+    "mtime": 1784325807.6777105,
+    "ast_hash": "43642f1c8e908345abaaf86d47ea9f5f",
     "semantic_hash": ""
   },
   "apps/web/postcss.config.mjs": {
@@ -715,9 +715,9 @@
     "semantic_hash": ""
   },
   "apps/web/tsconfig.json": {
-    "mtime": 1784355428.4843252,
-    "ast_hash": "7f3730cc423f70791cacd27b138e84d7",
-    "semantic_hash": ""
+    "mtime": 1784324998.5203009,
+    "ast_hash": "c5a1e07de818516643dff04d0b69e4a4",
+    "semantic_hash": "c5a1e07de818516643dff04d0b69e4a4"
   },
   "apps/website/components.json": {
     "mtime": 1784324998.5204237,
@@ -915,13 +915,13 @@
     "semantic_hash": "900ed0844a52569708550ef03a8b1b10"
   },
   "packages/i18n/src/messages/en.json": {
-    "mtime": 1784355473.5237753,
-    "ast_hash": "cd2d297502262b33943eab1d8a3375cd",
+    "mtime": 1784324998.6156867,
+    "ast_hash": "0d173cbeea6cdc0ed597c76094423a2f",
     "semantic_hash": ""
   },
   "packages/i18n/src/messages/nl.json": {
-    "mtime": 1784355474.82533,
-    "ast_hash": "6b431938a345da8f7fe8a1e91c8ba983",
+    "mtime": 1784324998.6158738,
+    "ast_hash": "7905cdbeb4ff68b7e015b202c0d25243",
     "semantic_hash": ""
   },
   "packages/i18n/src/request.ts": {
@@ -1920,22 +1920,22 @@
     "semantic_hash": ""
   },
   "apps/docs/.source/browser.ts": {
-    "mtime": 1784355298.3794646,
+    "mtime": 1784325819.1427286,
     "ast_hash": "68aabdd1f1f76d3450feb8c813728954",
     "semantic_hash": ""
   },
   "apps/docs/.source/dynamic.ts": {
-    "mtime": 1784355298.3794298,
+    "mtime": 1784325819.1427343,
     "ast_hash": "6521c8a5255d3b06ea9ecd7e6f905ccc",
     "semantic_hash": ""
   },
   "apps/docs/.source/server.ts": {
-    "mtime": 1784355298.379437,
+    "mtime": 1784325819.1427188,
     "ast_hash": "4cfd79c382984a7e867f99f291e4b789",
     "semantic_hash": ""
   },
   "apps/docs/.source/source.config.mjs": {
-    "mtime": 1784355298.2342315,
+    "mtime": 1784325819.044711,
     "ast_hash": "8b1f9d74ca6d6f0828d0d973bc637c06",
     "semantic_hash": ""
   },
@@ -3177,46 +3177,6 @@
   "apps/web/public/img/mood-bg.jpg": {
     "mtime": 1784325914.0038393,
     "ast_hash": "9aa9514b8ba5c654a33baace03cbbded",
-    "semantic_hash": ""
-  },
-  "apps/web/src/app/(auth)/login/page.tsx": {
-    "mtime": 1784355326.065667,
-    "ast_hash": "13d6cfeca22b8ab7ddaa52daa7217521",
-    "semantic_hash": ""
-  },
-  "apps/web/src/app/(auth)/register/confirm/page.tsx": {
-    "mtime": 1784355330.063941,
-    "ast_hash": "95c806261259658466f075ac9ebea784",
-    "semantic_hash": ""
-  },
-  "apps/web/src/app/(auth)/register/page.tsx": {
-    "mtime": 1784355328.0586607,
-    "ast_hash": "6fa797520a46a4c1a922dc17bf6917f2",
-    "semantic_hash": ""
-  },
-  "apps/web/src/app/(auth)/reset-password/confirm/page.tsx": {
-    "mtime": 1784355336.533952,
-    "ast_hash": "379e0011ca46002dfc85e43347189ebb",
-    "semantic_hash": ""
-  },
-  "apps/web/src/app/(auth)/reset-password/page.tsx": {
-    "mtime": 1784355334.1336796,
-    "ast_hash": "ccb197b8624214eb1622d42c65c02cd6",
-    "semantic_hash": ""
-  },
-  "apps/web/src/app/(auth)/verify/page.tsx": {
-    "mtime": 1784355332.0663846,
-    "ast_hash": "acc822c9c8a2cb20b40922fd6bd882b1",
-    "semantic_hash": ""
-  },
-  "apps/web/test/auth-pages.test.tsx": {
-    "mtime": 1784355314.66676,
-    "ast_hash": "d4d11a118d7601b663ee0b7a096af182",
-    "semantic_hash": ""
-  },
-  "apps/web/vitest.config.ts": {
-    "mtime": 1784325951.3092396,
-    "ast_hash": "017c69fc94253c136b8b9fef7a6f84e0",
     "semantic_hash": ""
   }
 }
