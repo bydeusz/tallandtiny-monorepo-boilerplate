@@ -232,6 +232,7 @@ export class OrganisationsService {
       72 * 60 * 60 * 1000,
     );
     const temporaryPasswordExpiresAt = new Date(Date.now() + ttlMs);
+    const expiresInHours = Math.round(ttlMs / (60 * 60 * 1000));
     const { name, surname, email } = dto;
 
     const { user, membership } = await this.prisma.$transaction(async (tx) => {
@@ -266,6 +267,7 @@ export class OrganisationsService {
       `${user.name} ${user.surname}`.trim(),
       temporaryPassword,
       organisation?.name ?? 'the organisation',
+      expiresInHours,
     );
 
     return {
@@ -282,13 +284,17 @@ export class OrganisationsService {
     organisationId: string,
     targetUserId: string,
   ): Promise<void> {
-    await this.assertNotLastOwner(organisationId, targetUserId);
-
-    await this.prisma.organisationMember.delete({
-      where: {
-        userId_organisationId: { userId: targetUserId, organisationId },
+    await this.prisma.$transaction(
+      async (tx) => {
+        await this.assertNotLastOwner(tx, organisationId, targetUserId);
+        await tx.organisationMember.delete({
+          where: {
+            userId_organisationId: { userId: targetUserId, organisationId },
+          },
+        });
       },
-    });
+      { isolationLevel: Prisma.TransactionIsolationLevel.Serializable },
+    );
   }
 
   async changeMemberRole(
@@ -296,25 +302,30 @@ export class OrganisationsService {
     targetUserId: string,
     dto: ChangeMemberRoleDto,
   ): Promise<OrganisationMemberResponseDto> {
-    if (dto.role === OrganisationRole.MEMBER) {
-      await this.assertNotLastOwner(organisationId, targetUserId);
-    } else {
-      // promotion: still ensure the member exists
-      await this.getMemberOrThrow(organisationId, targetUserId);
-    }
+    const updated = await this.prisma.$transaction(
+      async (tx) => {
+        if (dto.role === OrganisationRole.MEMBER) {
+          await this.assertNotLastOwner(tx, organisationId, targetUserId);
+        } else {
+          // promotion: still ensure the member exists
+          await this.getMemberOrThrow(tx, organisationId, targetUserId);
+        }
 
-    const updated = await this.prisma.organisationMember.update({
-      where: {
-        userId_organisationId: { userId: targetUserId, organisationId },
+        return tx.organisationMember.update({
+          where: {
+            userId_organisationId: { userId: targetUserId, organisationId },
+          },
+          data: { role: dto.role },
+          select: {
+            userId: true,
+            role: true,
+            createdAt: true,
+            user: { select: { name: true, surname: true, email: true } },
+          },
+        });
       },
-      data: { role: dto.role },
-      select: {
-        userId: true,
-        role: true,
-        createdAt: true,
-        user: { select: { name: true, surname: true, email: true } },
-      },
-    });
+      { isolationLevel: Prisma.TransactionIsolationLevel.Serializable },
+    );
 
     return {
       userId: updated.userId,
@@ -327,10 +338,11 @@ export class OrganisationsService {
   }
 
   private async getMemberOrThrow(
+    client: Prisma.TransactionClient,
     organisationId: string,
     targetUserId: string,
   ) {
-    const member = await this.prisma.organisationMember.findUnique({
+    const member = await client.organisationMember.findUnique({
       where: {
         userId_organisationId: { userId: targetUserId, organisationId },
       },
@@ -342,16 +354,21 @@ export class OrganisationsService {
   }
 
   private async assertNotLastOwner(
+    client: Prisma.TransactionClient,
     organisationId: string,
     targetUserId: string,
   ): Promise<void> {
-    const target = await this.getMemberOrThrow(organisationId, targetUserId);
+    const target = await this.getMemberOrThrow(
+      client,
+      organisationId,
+      targetUserId,
+    );
 
     if (target.role !== OrganisationRole.OWNER) {
       return;
     }
 
-    const ownerCount = await this.prisma.organisationMember.count({
+    const ownerCount = await client.organisationMember.count({
       where: { organisationId, role: OrganisationRole.OWNER },
     });
 
@@ -383,13 +400,20 @@ export class OrganisationsService {
     name: string,
     temporaryPassword: string,
     organisationName: string,
+    expiresInHours: number,
   ): Promise<void> {
     const resetUrl = this.buildResetPasswordUrl(email);
     await this.queueService.addMailJob(MAIL_JOB_SEND, {
       to: email,
       subject: `You've been invited to ${organisationName}`,
       template: 'organisation-invitation',
-      context: { name, organisationName, temporaryPassword, resetUrl },
+      context: {
+        name,
+        organisationName,
+        temporaryPassword,
+        resetUrl,
+        expiresInHours,
+      },
     });
   }
 

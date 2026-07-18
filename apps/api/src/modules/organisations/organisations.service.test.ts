@@ -18,9 +18,17 @@ const orgRow = {
 };
 
 function buildService(overrides: Record<string, unknown> = {}) {
+  const organisationMemberMock = {
+    findMany: vi.fn(),
+    count: vi.fn(),
+    findUnique: vi.fn(),
+    create: vi.fn().mockResolvedValue({}),
+    update: vi.fn(),
+    delete: vi.fn(),
+  };
   const tx = {
     organisation: { create: vi.fn().mockResolvedValue(orgRow) },
-    organisationMember: { create: vi.fn().mockResolvedValue({}) },
+    organisationMember: organisationMemberMock,
     user: { create: vi.fn() },
   };
   const prisma = {
@@ -32,14 +40,7 @@ function buildService(overrides: Record<string, unknown> = {}) {
       findUnique: vi.fn().mockResolvedValue({ ...orgRow, _count: { members: 1 } }),
       update: vi.fn(),
     },
-    organisationMember: {
-      findMany: vi.fn(),
-      count: vi.fn(),
-      findUnique: vi.fn(),
-      create: vi.fn(),
-      update: vi.fn(),
-      delete: vi.fn(),
-    },
+    organisationMember: organisationMemberMock,
     ...overrides,
   };
   const storageService = { extractKeyFromUrl: vi.fn(), getSignedUrl: vi.fn() };
@@ -208,6 +209,8 @@ describe('OrganisationsService — update/members/invite', () => {
           email: 'new@example.com',
           isActive: true,
           mustChangePassword: true,
+          password: expect.stringMatching(/^\$2[aby]\$/),
+          temporaryPasswordExpiresAt: expect.any(Date),
         }),
       }),
     );
@@ -296,5 +299,32 @@ describe('OrganisationsService — update/members/invite', () => {
     });
 
     expect(result.role).toBe(OrganisationRole.OWNER);
+  });
+
+  it('lists members with mapped user fields (paginated)', async () => {
+    h.prisma.organisationMember.findMany.mockResolvedValue([
+      {
+        userId: 'u1',
+        role: OrganisationRole.OWNER,
+        createdAt: new Date('2026-01-01'),
+        user: { name: 'Ada', surname: 'Lovelace', email: 'ada@example.com' },
+      },
+    ]);
+    h.prisma.organisationMember.count.mockResolvedValue(1);
+
+    const result = await h.service.findMembers('org-1', { page: 1, limit: 10 });
+
+    expect(h.prisma.organisationMember.findMany).toHaveBeenCalledWith(
+      expect.objectContaining({ where: { organisationId: 'org-1' } }),
+    );
+    expect(result.data[0]).toEqual({
+      userId: 'u1',
+      name: 'Ada',
+      surname: 'Lovelace',
+      email: 'ada@example.com',
+      role: OrganisationRole.OWNER,
+      createdAt: new Date('2026-01-01'),
+    });
+    expect(result.meta.total).toBe(1);
   });
 });
