@@ -96,6 +96,7 @@ describe('OrganisationsService — create/list/get', () => {
     expect(result.data[0].role).toBe(OrganisationRole.OWNER);
     expect(result.data[0].memberCount).toBe(3);
     expect(result.meta.total).toBe(1);
+    expect(h.prisma.$transaction).toHaveBeenCalledWith(expect.any(Array));
   });
 
   it('returns a single organisation with the caller role', async () => {
