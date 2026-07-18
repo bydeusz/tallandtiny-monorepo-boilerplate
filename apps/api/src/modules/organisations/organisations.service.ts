@@ -67,7 +67,7 @@ export class OrganisationsService {
   ): Promise<PaginatedResult<OrganisationResponseDto>> {
     const { skip, take } = buildPrismaSkipTake(query);
 
-    const [memberships, total] = await Promise.all([
+    const [memberships, total] = await this.prisma.$transaction([
       this.prisma.organisationMember.findMany({
         where: { userId },
         orderBy: { organisation: { createdAt: 'desc' } },

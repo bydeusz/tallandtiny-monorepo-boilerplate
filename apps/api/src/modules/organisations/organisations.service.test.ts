@@ -23,7 +23,10 @@ function buildService(overrides: Record<string, unknown> = {}) {
     user: { create: vi.fn() },
   };
   const prisma = {
-    $transaction: vi.fn(async (cb: (t: typeof tx) => unknown) => cb(tx)),
+    $transaction: vi.fn(
+      (arg: unknown[] | ((t: typeof tx) => unknown)) =>
+        Array.isArray(arg) ? Promise.all(arg) : arg(tx),
+    ),
     organisation: {
       findUnique: vi.fn().mockResolvedValue({ ...orgRow, _count: { members: 1 } }),
     },
