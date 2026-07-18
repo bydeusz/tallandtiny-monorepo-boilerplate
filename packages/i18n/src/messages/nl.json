@@ -2,7 +2,7 @@
   "auth": {
     "login": {
       "title": "Welkom terug",
-      "description": "Log in om door te gaan naar je dashboard.",
+      "description": "Log in om door te gaan.",
       "email": "E-mailadres",
       "password": "Wachtwoord",
       "signIn": "Inloggen",
