@@ -52,6 +52,10 @@ export default () => ({
       .filter(Boolean),
     registrationEnabled: process.env.REGISTRATION_ENABLED === 'true',
     frontendUrl: process.env.FRONTEND_URL ?? 'http://localhost:3000',
+    invitePasswordTtlMs: parseInt(
+      process.env.INVITE_PASSWORD_TTL_MS ?? String(72 * 60 * 60 * 1000),
+      10,
+    ),
   },
   mail: {
     host: process.env.SMTP_HOST ?? 'localhost',

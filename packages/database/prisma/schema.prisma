@@ -17,6 +17,11 @@ enum Role {
   SUPER_ADMIN
 }
 
+enum OrganisationRole {
+  OWNER
+  MEMBER
+}
+
 model User {
   id                         String               @id @default(uuid())
   name                       String
@@ -38,6 +43,7 @@ model User {
   activationCodes            ActivationCode[]
   emailChangeRequests        EmailChangeRequest[]
   files                      File[]
+  organisationMemberships    OrganisationMember[]
   createdAt                  DateTime             @default(now())
   updatedAt                  DateTime             @updatedAt
 }
@@ -94,4 +100,34 @@ model File {
 
   @@index([userId])
   @@index([scope])
+}
+
+model Organisation {
+  id         String               @id @default(uuid())
+  name       String
+  address    String?
+  postalCode String?
+  city       String?
+  kvk        String?
+  vatNumber  String?
+  iban       String?
+  logoUrl    String?
+  members    OrganisationMember[]
+  createdAt  DateTime             @default(now())
+  updatedAt  DateTime             @updatedAt
+}
+
+model OrganisationMember {
+  id             String           @id @default(uuid())
+  userId         String
+  user           User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organisationId String
+  organisation   Organisation     @relation(fields: [organisationId], references: [id], onDelete: Cascade)
+  role           OrganisationRole @default(MEMBER)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  @@unique([userId, organisationId])
+  @@index([userId])
+  @@index([organisationId])
 }
