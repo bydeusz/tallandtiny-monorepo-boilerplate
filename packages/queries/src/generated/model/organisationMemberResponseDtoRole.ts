@@ -6,9 +6,11 @@
  * OpenAPI spec version: 1.0
  */
 
-export type FileListScope = (typeof FileListScope)[keyof typeof FileListScope];
+export type OrganisationMemberResponseDtoRole =
+  (typeof OrganisationMemberResponseDtoRole)[keyof typeof OrganisationMemberResponseDtoRole];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const FileListScope = {
-  USER: 'USER',
+export const OrganisationMemberResponseDtoRole = {
+  OWNER: 'OWNER',
+  MEMBER: 'MEMBER',
 } as const;

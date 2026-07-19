@@ -26,6 +26,7 @@ import type {
   AuthTokensResponseDto,
   ChangePasswordDto,
   ConfirmEmailChangeDto,
+  CurrentUserResponseDto,
   LoginDto,
   MessageResponseDto,
   RefreshTokenDto,
@@ -34,7 +35,6 @@ import type {
   RequestNewPasswordDto,
   ResendActivationDto,
   ResetPasswordDto,
-  UserResponseDto,
 } from '../../model';
 
 import { customAxios } from '../../../mutator/custom-axios';
@@ -803,7 +803,7 @@ export const authGetCurrentUser = (
   options?: SecondParameter<typeof customAxios>,
   signal?: AbortSignal,
 ) => {
-  return customAxios<UserResponseDto>(
+  return customAxios<CurrentUserResponseDto>(
     { url: `/api/v1/auth/me`, method: 'GET', signal },
     options,
   );

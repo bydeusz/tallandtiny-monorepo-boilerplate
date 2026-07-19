@@ -22,6 +22,7 @@ import type {
 } from '@tanstack/react-query';
 
 import type {
+  FileList200,
   FileListParams,
   FileReplaceBody,
   FileResponseDto,
@@ -270,7 +271,7 @@ export const fileList = (
   options?: SecondParameter<typeof customAxios>,
   signal?: AbortSignal,
 ) => {
-  return customAxios<void>(
+  return customAxios<FileList200>(
     { url: `/api/v1/files`, method: 'GET', params, signal },
     options,
   );
