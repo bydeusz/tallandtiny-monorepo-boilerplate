@@ -4,6 +4,7 @@
 #   1) pnpm install
 #   2) prisma generate (@repo/database)  -> src/generated/prisma
 #   3) build @repo/database (tsc)         -> dist/ that re-exports the client
+#   4) seed graphify-out/ (gitignored)    -> so `graphify query` works right away
 #
 # Invoked synchronously from the post-checkout hook, so `git worktree add`
 # (and the harness EnterWorktree, which uses it under the hood) BLOCKS until
@@ -36,6 +37,26 @@ if [ -n "$MAIN_ROOT" ] && [ "$MAIN_ROOT" != "$ROOT" ] && [ -d "$MAIN_ROOT" ]; th
       mkdir -p "$(dirname "$dest")"
       cp "$src" "$dest" && echo "[worktree-setup] env gekopieerd: $rel" >&2
     done
+fi
+
+# --- Seed the graphify knowledge graph ---------------------------------------
+# graphify-out/ is gitignored (machine-specific output — node ids embed absolute
+# paths — and every branch regenerating it made each PR conflict on ~12 generated
+# files), so a fresh worktree starts without one. graphify's own post-checkout
+# hook bails when the directory is absent, so without this the first
+# `graphify query` here fails until someone builds by hand.
+# AST-only: no LLM, no API cost, ~4s. Skipped when graphify is not installed.
+# PYTHONHASHSEED=0 matches the hooks: louvain clustering is otherwise randomized
+# per process. Runs BEFORE the sentinel guard (like the env copy above) so
+# `pnpm setup:worktree` also repairs a worktree that is only missing its graph;
+# the -d test keeps it a no-op once the graph exists.
+if [ ! -d "$ROOT/graphify-out" ] && command -v graphify >/dev/null 2>&1; then
+  echo "[worktree-setup] graphify-out/ ontbreekt → knowledge graph bouwen (~4s)…" >&2
+  if PYTHONHASHSEED=0 graphify update "$ROOT" >"$ROOT/.graphify-setup.log" 2>&1; then
+    echo "[worktree-setup] Knowledge graph gereed." >&2
+  else
+    echo "[worktree-setup] graphify update mislukt (zie .graphify-setup.log) — bouw handmatig met 'graphify update .'" >&2
+  fi
 fi
 
 # Idempotency via a completion SENTINEL, not "node_modules exists". pnpm creates
