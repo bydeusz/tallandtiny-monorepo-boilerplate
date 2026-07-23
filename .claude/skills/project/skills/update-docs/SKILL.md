@@ -92,7 +92,7 @@ Surface the page's full drift detail (doc-says → code-says-now → the fix —
 Present, before writing anything: the **actual changes as diffs** (old line → new line) in **both** languages for each selected page, including the `last-updated` bumps and any `meta.json` / `meta.<locale>.json` diffs — not full-page dumps. Apply the user's edits. **Only after explicit approval do you write to disk.**
 
 ### 7. Write, then ship as a draft PR
-Write the edits. Then, on the docs branch/worktree:
+Write the edits. Then, on the branch/worktree where you made them:
 - Commit **only the changed docs files** (pages + any `meta` files) — no `graphify-out/`, no unrelated changes.
 - Push and open a **draft PR** against `develop`.
 - Run `graphify update .` after writing so the graph reflects the changes.

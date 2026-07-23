@@ -24,8 +24,9 @@ Rules:
 - Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
 
-Commit hygiene for `graphify-out/`:
-- `graphify-out/` is tracked but is **generated output** (graph.json alone is ~35–70k lines). Keep it **out of feature commits** — stage specific paths, never `git add -A`, so PR diffs stay small and reviewable (a graph rebuild can balloon a review from ~24KB to ~10MB).
-- Land the graph in its **own commit as the final step** of a change: `graphify update .`, then `git add graphify-out && git commit -m "chore(graphify): update graph"`. This is where the `graphify-out/` churn belongs.
-- A `post-commit` hook (installed by `graphify hook install`) also rebuilds the graph in a detached background process after every commit — so the fresh graph can never be part of the commit that triggered it, and the working tree will show `graphify-out/` changes afterward. That's expected; the separate chore commit above is how you land them.
-- A graph-only commit does **not** retrigger the rebuild loop: the hook skips when only `graphify-out/` changed.
+`graphify-out/` is **gitignored — never commit it**:
+- It is a local build artifact, not shared state. Node ids embed absolute paths (including the home directory), so the output is machine-specific and differs per developer even from identical source.
+- It used to be tracked, which made **every** PR conflict on ~12 files of generated output (graph.json and graph.html are ~2.8MB each) while the source itself merged cleanly.
+- Rebuilding is cheap and free: `graphify update .` rebuilds the whole monorepo in ~4s, AST-only, no LLM and no API cost. There is nothing worth preserving in git.
+- Fresh worktrees are seeded automatically by `scripts/worktree-setup.sh`; the `post-commit` and `post-checkout` hooks keep the local graph current. Since nothing is tracked, that churn is now invisible to git — no chore commit, no conflicts.
+- Community labels in `.graphify_labels.json` are LLM-generated and keyed by community id, which is **not** stable across rebuilds. Expect `Community 17` instead of a name after a rebuild; run `graphify label .` (costs API credits) if readable names matter.
