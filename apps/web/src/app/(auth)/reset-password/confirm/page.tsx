@@ -1,0 +1,19 @@
+import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
+import { PasswordForm } from '@repo/auth/components';
+
+export const metadata: Metadata = { title: 'Set new password — Tall & Tiny' };
+
+export default async function ResetPasswordConfirmPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ email?: string }>;
+}) {
+  const { email } = await searchParams;
+
+  if (!email) {
+    redirect('/reset-password');
+  }
+
+  return <PasswordForm email={email} />;
+}

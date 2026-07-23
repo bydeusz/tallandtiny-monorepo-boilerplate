@@ -2,7 +2,7 @@
   "auth": {
     "login": {
       "title": "Welcome back",
-      "description": "Sign in to continue to your dashboard.",
+      "description": "Sign in to continue.",
       "email": "Email address",
       "password": "Password",
       "signIn": "Sign in",
