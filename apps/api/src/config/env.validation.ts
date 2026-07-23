@@ -158,6 +158,11 @@ class EnvironmentVariables {
   @IsString()
   @IsOptional()
   FRONTEND_URL: string = 'http://localhost:3000';
+
+  @IsNumber()
+  @IsOptional()
+  @Min(60000)
+  INVITE_PASSWORD_TTL_MS: number = 72 * 60 * 60 * 1000;
 }
 
 export function validate(config: Record<string, unknown>) {

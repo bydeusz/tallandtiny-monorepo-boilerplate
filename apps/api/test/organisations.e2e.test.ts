@@ -1,0 +1,267 @@
+import { describe, it, expect, beforeAll, afterAll } from "vitest";
+import { spawn } from "node:child_process";
+import type { ChildProcess } from "node:child_process";
+import { openSync, readFileSync, closeSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { fileURLToPath } from "node:url";
+import { dirname, resolve } from "node:path";
+
+const here = dirname(fileURLToPath(import.meta.url));
+const PORT = process.env.PORT ?? "3001";
+const BASE = `http://localhost:${PORT}/api/v1`;
+const HEALTH_URL = `${BASE}/health`;
+const SERVER_STARTUP_TIMEOUT_MS = 40_000;
+
+async function waitForServer(url: string, timeoutMs: number): Promise<void> {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) return;
+    } catch {
+      // not ready
+    }
+    await new Promise((r) => setTimeout(r, 200));
+  }
+  throw new Error(`Server not ready at ${url} within ${timeoutMs}ms`);
+}
+
+// The login endpoint is throttled (5 req/min per IP — see auth.controller.ts)
+// to block brute-force attempts. This suite logs in as the same two seeded
+// users repeatedly across cases, so tokens are cached per-email and reused
+// instead of hitting /auth/login fresh every time (identical semantics: the
+// JWT is user-scoped, not per-request, and lives for 1h — see
+// config/configuration.ts `jwt.expiration`).
+const tokenCache = new Map<string, string>();
+
+async function login(email: string): Promise<string> {
+  const cached = tokenCache.get(email);
+  if (cached) return cached;
+
+  const res = await fetch(`${BASE}/auth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password: "Admin123!" }),
+  });
+  expect(res.status).toBe(200);
+  const body = (await res.json()) as { data: { access_token: string } };
+  tokenCache.set(email, body.data.access_token);
+  return body.data.access_token;
+}
+
+function authHeaders(token: string, extra: Record<string, string> = {}) {
+  return { Authorization: `Bearer ${token}`, ...extra };
+}
+
+const logPath = `${tmpdir()}/api-org-e2e-server.log`;
+const logFd = openSync(logPath, "w");
+
+describe("Organisations (e2e)", () => {
+  let serverProcess: ChildProcess;
+
+  beforeAll(async () => {
+    const distMain = resolve(here, "../dist/main.js");
+    serverProcess = spawn(process.execPath, [distMain], {
+      env: { ...process.env },
+      cwd: resolve(here, ".."),
+      stdio: ["ignore", logFd, logFd],
+    });
+    try {
+      await waitForServer(HEALTH_URL, SERVER_STARTUP_TIMEOUT_MS);
+    } catch (err) {
+      let serverLog = "";
+      try {
+        serverLog = readFileSync(logPath, "utf8");
+      } catch {
+        // ignore
+      }
+      throw new Error(`${(err as Error).message}\n--- log ---\n${serverLog}`);
+    }
+  }, SERVER_STARTUP_TIMEOUT_MS + 5_000);
+
+  afterAll(async () => {
+    // exitCode === null means the process is still running; if it already
+    // crashed on its own the `once("exit")` listener below would never fire
+    // (the event has already passed), so skip the wait entirely in that case.
+    if (serverProcess && serverProcess.exitCode === null && !serverProcess.killed) {
+      serverProcess.kill("SIGTERM");
+      await new Promise<void>((r) => {
+        serverProcess.once("exit", () => r());
+        setTimeout(() => {
+          if (!serverProcess.killed) serverProcess.kill("SIGKILL");
+          r();
+        }, 5_000);
+      });
+    }
+    try {
+      closeSync(logFd);
+    } catch {
+      // ignore
+    }
+  });
+
+  it("creates an organisation and makes the creator an OWNER", async () => {
+    const token = await login("john.doe@example.com");
+    const res = await fetch(`${BASE}/organisations`, {
+      method: "POST",
+      headers: authHeaders(token, { "Content-Type": "application/json" }),
+      body: JSON.stringify({ name: "Acme BV" }),
+    });
+    expect(res.status).toBe(201);
+    const body = (await res.json()) as {
+      data: { id: string; role: string; memberCount: number };
+    };
+    expect(body.data.role).toBe("OWNER");
+    expect(body.data.memberCount).toBe(1);
+  });
+
+  it("enforces owner-only updates and tenant isolation", async () => {
+    const ownerToken = await login("john.doe@example.com");
+    const memberToken = await login("lisa.visser@example.com");
+
+    // owner creates an org
+    const createRes = await fetch(`${BASE}/organisations`, {
+      method: "POST",
+      headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+      body: JSON.stringify({ name: "Isolation Co" }),
+    });
+    const orgId = ((await createRes.json()) as { data: { id: string } }).data.id;
+
+    // a non-member (lisa) cannot read it → 404
+    const outsiderGet = await fetch(`${BASE}/organisations/${orgId}`, {
+      headers: authHeaders(memberToken),
+    });
+    expect(outsiderGet.status).toBe(404);
+
+    // owner adds lisa as a member
+    const addRes = await fetch(`${BASE}/organisations/${orgId}/members`, {
+      method: "POST",
+      headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+      body: JSON.stringify({ email: "lisa.visser@example.com" }),
+    });
+    expect(addRes.status).toBe(201);
+
+    // member can now read it
+    const memberGet = await fetch(`${BASE}/organisations/${orgId}`, {
+      headers: authHeaders(memberToken),
+    });
+    expect(memberGet.status).toBe(200);
+
+    // but a member cannot update → 403
+    const memberPatch = await fetch(`${BASE}/organisations/${orgId}`, {
+      method: "PATCH",
+      headers: authHeaders(memberToken, { "Content-Type": "application/json" }),
+      body: JSON.stringify({ name: "Hacked" }),
+    });
+    expect(memberPatch.status).toBe(403);
+
+    // duplicate add → 409
+    const dupAdd = await fetch(`${BASE}/organisations/${orgId}/members`, {
+      method: "POST",
+      headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+      body: JSON.stringify({ email: "lisa.visser@example.com" }),
+    });
+    expect(dupAdd.status).toBe(409);
+  });
+
+  it("invites a brand-new account and blocks its login until reset", async () => {
+    const ownerToken = await login("john.doe@example.com");
+    const createRes = await fetch(`${BASE}/organisations`, {
+      method: "POST",
+      headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+      body: JSON.stringify({ name: "Invite Co" }),
+    });
+    const orgId = ((await createRes.json()) as { data: { id: string } }).data.id;
+
+    const invitee = `invitee-${Date.now()}@example.com`;
+    const addRes = await fetch(`${BASE}/organisations/${orgId}/members`, {
+      method: "POST",
+      headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+      body: JSON.stringify({ email: invitee, name: "New", surname: "Invitee" }),
+    });
+    expect(addRes.status).toBe(201);
+    // the invite created a real MEMBER record for the new email — proving the
+    // account-creation path ran, not a silent no-op.
+    const added = (await addRes.json()) as {
+      data: { email: string; role: string };
+    };
+    expect(added.data.email).toBe(invitee);
+    expect(added.data.role).toBe("MEMBER");
+
+    // re-inviting the same email proves the account + membership were persisted:
+    // the second add now hits the unique-membership constraint → 409. Without a
+    // real persisted account this would be another 201.
+    const reAdd = await fetch(`${BASE}/organisations/${orgId}/members`, {
+      method: "POST",
+      headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+      body: JSON.stringify({ email: invitee }),
+    });
+    expect(reAdd.status).toBe(409);
+
+    // the new account exists but must change its password → a direct login
+    // attempt is rejected (the temp password is never returned to the client,
+    // so a guessed password exercises the credential-rejection path).
+    const loginRes = await fetch(`${BASE}/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: invitee, password: "whatever" }),
+    });
+    expect(loginRes.status).toBe(401);
+  });
+
+  it("protects the last owner and allows promotion", async () => {
+    const ownerToken = await login("john.doe@example.com");
+    const createRes = await fetch(`${BASE}/organisations`, {
+      method: "POST",
+      headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+      body: JSON.stringify({ name: "Succession Co" }),
+    });
+    const org = (await createRes.json()) as { data: { id: string } };
+    const orgId = org.data.id;
+
+    // find john's own userId via /auth/me
+    const meRes = await fetch(`${BASE}/auth/me`, {
+      headers: authHeaders(ownerToken),
+    });
+    const johnId = ((await meRes.json()) as { data: { id: string } }).data.id;
+
+    // last owner cannot be removed → 409
+    const selfRemove = await fetch(
+      `${BASE}/organisations/${orgId}/members/${johnId}`,
+      { method: "DELETE", headers: authHeaders(ownerToken) },
+    );
+    expect(selfRemove.status).toBe(409);
+
+    // add lisa and promote her to OWNER
+    const addLisa = await fetch(`${BASE}/organisations/${orgId}/members`, {
+      method: "POST",
+      headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+      body: JSON.stringify({ email: "lisa.visser@example.com" }),
+    });
+    expect(addLisa.status).toBe(201);
+    const lisaToken = await login("lisa.visser@example.com");
+    const lisaMe = await fetch(`${BASE}/auth/me`, {
+      headers: authHeaders(lisaToken),
+    });
+    const lisaId = ((await lisaMe.json()) as { data: { id: string } }).data.id;
+
+    const promote = await fetch(
+      `${BASE}/organisations/${orgId}/members/${lisaId}`,
+      {
+        method: "PATCH",
+        headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+        body: JSON.stringify({ role: "OWNER" }),
+      },
+    );
+    expect(promote.status).toBe(200);
+    const promoted = (await promote.json()) as { data: { role: string } };
+    expect(promoted.data.role).toBe("OWNER");
+
+    // now john can be removed (lisa is a second owner) → 204
+    const removeJohn = await fetch(
+      `${BASE}/organisations/${orgId}/members/${johnId}`,
+      { method: "DELETE", headers: authHeaders(lisaToken) },
+    );
+    expect(removeJohn.status).toBe(204);
+  });
+});

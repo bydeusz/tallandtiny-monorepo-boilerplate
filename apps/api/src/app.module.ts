@@ -19,6 +19,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { FilesModule } from './modules/files';
 import { HealthModule } from './modules/health';
 import { MailModule } from './modules/mail';
+import { OrganisationsModule } from './modules/organisations/organisations.module';
 import { QueueModule } from './modules/queue/queue.module';
 import { RedisModule } from './modules/redis';
 import { StorageModule } from './modules/storage';
@@ -80,6 +81,7 @@ import { PrismaModule } from './prisma/prisma.module';
     HealthModule,
     MailModule,
     UsersModule,
+    OrganisationsModule,
   ],
   providers: [
     GracefulShutdownService,

@@ -7,7 +7,7 @@
  */
 import type { Object } from './object';
 
-export type FileListParams = {
+export type OrganisationMemberListParams = {
   /**
    * @minimum 1
    */
@@ -17,7 +17,4 @@ export type FileListParams = {
    * @maximum 100
    */
   limit?: Object;
-  scope: string;
-  folder: string;
-  mimeType: string;
 };
