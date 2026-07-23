@@ -167,3 +167,10 @@ docs/superpowers/
 
 # Claude stuff
 .claude/worktrees/
+
+# graphify knowledge graph — local build artifact, never committed.
+# It is machine-specific (node ids embed absolute paths, incl. the home dir) and
+# every branch regenerated it, so tracking it made each PR conflict on ~12 files
+# of generated output. A full rebuild is ~4s and costs nothing:
+# `graphify update .`. Fresh worktrees are seeded by scripts/worktree-setup.sh.
+graphify-out/
