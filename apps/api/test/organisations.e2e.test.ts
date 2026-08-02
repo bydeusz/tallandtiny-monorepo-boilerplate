@@ -26,6 +26,10 @@ async function waitForServer(url: string, timeoutMs: number): Promise<void> {
   throw new Error(`Server not ready at ${url} within ${timeoutMs}ms`);
 }
 
+// /auth/login is throttled to 5 requests per minute per IP (auth.controller.ts)
+// to block brute force. This suite logs in as the same seeded users across many
+// cases, so tokens are cached per e-mail rather than re-issued each time; the
+// JWT is user-scoped and lives for 1h (config/configuration.ts `jwt.expiration`).
 const tokenCache = new Map<string, string>();
 
 async function login(email: string): Promise<string> {
@@ -74,6 +78,8 @@ describe("Organisations (e2e)", () => {
   }, SERVER_STARTUP_TIMEOUT_MS + 5_000);
 
   afterAll(async () => {
+    // If the child already exited, "exit" has fired and once() will never
+    // resolve, so the exitCode check has to come first or this hangs.
     if (serverProcess && serverProcess.exitCode === null && !serverProcess.killed) {
       serverProcess.kill("SIGTERM");
       await new Promise<void>((r) => {
@@ -178,6 +184,8 @@ describe("Organisations (e2e)", () => {
     });
     expect(reAdd.status).toBe(409);
 
+    // The invite's temporary password only ever goes out by e-mail, never in
+    // the API response, so a guessed one is the only password available here.
     const loginRes = await fetch(`${BASE}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
