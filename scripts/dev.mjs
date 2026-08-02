@@ -5,15 +5,30 @@
 // Each app's dev task pipes its output through scripts/dev-log.mjs, which tees a
 // clean copy to tmp/<app>-dev.log. We wipe those logs here so every `pnpm dev`
 // starts from a clean slate (even for apps that aren't running this time).
+//
+// Before starting turbo we run the guards in scripts/dev-cache-guard.mjs, which
+// drop Turbopack caches that belong to a different checkout and reclaim dev
+// ports from leftover servers. Pass --clean (`pnpm dev --clean`, or
+// `pnpm dev:clean`) to rebuild every cache from scratch regardless.
 import { spawn } from 'node:child_process';
 import { mkdirSync, readdirSync, rmSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
+import { preflight } from './dev-cache-guard.mjs';
 
-const logDir = resolve(dirname(fileURLToPath(import.meta.url)), '..', 'tmp');
+const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+
+const logDir = resolve(repoRoot, 'tmp');
 mkdirSync(logDir, { recursive: true });
 for (const file of readdirSync(logDir)) {
   if (file.endsWith('-dev.log')) rmSync(resolve(logDir, file), { force: true });
+}
+
+for (const note of preflight({
+  repoRoot,
+  force: process.argv.includes('--clean'),
+})) {
+  console.log(`[dev] ${note}`);
 }
 
 const TARGETS = [
