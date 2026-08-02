@@ -5,10 +5,12 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "node scripts/dev.mjs",
+    "dev:clean": "node scripts/dev.mjs --clean",
     "dev:docs": "turbo run dev --filter=docs",
     "lint": "turbo run lint",
     "check-types": "turbo run check-types",
     "test": "turbo run test",
+    "test:scripts": "node scripts/dev-cache-guard.test.mjs",
     "test:watch": "turbo run test:watch",
     "test:integration": "turbo run test:integration",
     "test:e2e": "turbo run test:e2e",
