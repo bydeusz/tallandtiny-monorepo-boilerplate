@@ -64,7 +64,7 @@ describe('seedSuperAdmin', () => {
 
   it('normalises the email (trim + lowercase)', async () => {
     await seedSuperAdmin(prisma as never, {
-      email: '  ROOT@Bydeusz.com  ',
+      email: '  ROOT@Example.com  ',
       password: 'Sup3rSecret!',
     });
 
