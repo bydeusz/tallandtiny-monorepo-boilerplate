@@ -14,33 +14,6 @@ trello: monorepo-boilerplate
   after the very first clone): run `pnpm setup:worktree` inside the worktree.
 - Worktrees live in .claude/worktrees/ (branches worktree-<topic>; same filesystem → pnpm hardlinks keep working).
 
-## Dev server / Turbopack caches
-
-`pnpm dev` runs `scripts/dev.mjs`, which calls the guards in
-`scripts/dev-cache-guard.mjs` before starting turbo. Covered by
-`pnpm test:scripts` (plain node, no vitest wiring).
-
-If a Next app throws `Cannot find module 'next-intl'` (or `@repo/auth`, or any
-bare import) while the package **is** installed and its symlink resolves, the
-dependency is not the problem — a poisoned `.next` is. Turbopack bakes absolute
-paths into chunk module ids and, when resolution fails at compile time, bakes a
-literal `throw new Error("Cannot find module …")` into the chunk. It then serves
-that chunk forever, so reinstalling or editing next.config changes nothing.
-
-Two things poison a cache, and the guard handles both:
-- **A `.next` from somewhere else** — inherited from another project, copied into
-  a worktree, or left by another Next version. Each cache is stamped with the app
-  path + Next version in `.next/cache/.dev-stamp.json` and cleared only when the
-  stamp mismatches. A healthy cache is kept: a warm route serves in ~350ms where
-  a cold one costs ~5s, so wiping on every start is not free.
-- **Two dev servers on one port** — a leftover `next dev` and a new one writing
-  the same `.next` interleave and corrupt it. The guard reclaims ports held by
-  processes whose cwd is inside this checkout, and never touches anything else.
-
-Spot it by hand with `lsof -ti tcp:3002` (more than one pid) or
-`grep -rl '"\[project\]/dev/' apps/<app>/.next | wc -l` (should be 0).
-Force a full rebuild with `pnpm dev:clean`.
-
 ## graphify
 
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
