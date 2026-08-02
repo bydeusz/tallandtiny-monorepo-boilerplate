@@ -29,6 +29,14 @@ export async function seedUsers(prisma: PrismaClient): Promise<void> {
         surname: profile.surname,
         password: passwordHash,
         isActive: true,
+        // An account invited through the API carries mustChangePassword, which
+        // makes login fail with PasswordResetRequired. Re-seeding hands out a
+        // fresh known password, so these have to be cleared as well or the
+        // account still cannot log in. The platform `role` is deliberately left
+        // alone: overwriting it would silently demote an account that was
+        // promoted on purpose.
+        mustChangePassword: false,
+        temporaryPasswordExpiresAt: null,
         address: profile.address,
         postalCode: profile.postalCode,
         city: profile.city,
