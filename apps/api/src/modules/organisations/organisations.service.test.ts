@@ -65,7 +65,7 @@ describe('OrganisationsService — create/list/get', () => {
     h = buildService();
   });
 
-  it('creates an organisation and makes the creator an OWNER (in a transaction)', async () => {
+  it('creates an organisation and makes the creator an ADMIN (in a transaction)', async () => {
     const result = await h.service.createOrganisation('user-1', { name: 'Acme' });
 
     expect(h.prisma.$transaction).toHaveBeenCalledOnce();
@@ -76,17 +76,17 @@ describe('OrganisationsService — create/list/get', () => {
       data: {
         userId: 'user-1',
         organisationId: 'org-1',
-        role: OrganisationRole.OWNER,
+        role: OrganisationRole.ADMIN,
       },
     });
-    expect(result.role).toBe(OrganisationRole.OWNER);
+    expect(result.role).toBe(OrganisationRole.ADMIN);
     expect(result.id).toBe('org-1');
     expect(result.memberCount).toBe(1);
   });
 
   it('lists only the organisations the user belongs to, with their role', async () => {
     h.prisma.organisationMember.findMany.mockResolvedValue([
-      { role: OrganisationRole.OWNER, organisation: { ...orgRow, _count: { members: 3 } } },
+      { role: OrganisationRole.ADMIN, organisation: { ...orgRow, _count: { members: 3 } } },
     ]);
     h.prisma.organisationMember.count.mockResolvedValue(1);
 
@@ -96,7 +96,7 @@ describe('OrganisationsService — create/list/get', () => {
       expect.objectContaining({ where: { userId: 'user-1' } }),
     );
     expect(result.data).toHaveLength(1);
-    expect(result.data[0].role).toBe(OrganisationRole.OWNER);
+    expect(result.data[0].role).toBe(OrganisationRole.ADMIN);
     expect(result.data[0].memberCount).toBe(3);
     expect(result.meta.total).toBe(1);
     expect(h.prisma.$transaction).toHaveBeenCalledWith(expect.any(Array));
@@ -128,11 +128,11 @@ describe('OrganisationsService — update/members/invite', () => {
     const result = await h.service.update(
       'org-1',
       { name: 'New' },
-      OrganisationRole.OWNER,
+      OrganisationRole.ADMIN,
     );
 
     expect(result.name).toBe('New');
-    expect(result.role).toBe(OrganisationRole.OWNER);
+    expect(result.role).toBe(OrganisationRole.ADMIN);
     expect(result.memberCount).toBe(2);
   });
 
@@ -229,16 +229,16 @@ describe('OrganisationsService — update/members/invite', () => {
     ).rejects.toBeInstanceOf(BadRequestException);
   });
 
-  it('refuses to remove the last owner (409)', async () => {
+  it('refuses to remove the last admin (409)', async () => {
     h.prisma.organisationMember.findUnique.mockResolvedValue({
-      userId: 'owner-1',
+      userId: 'admin-1',
       organisationId: 'org-1',
-      role: OrganisationRole.OWNER,
+      role: OrganisationRole.ADMIN,
     });
     h.prisma.organisationMember.count.mockResolvedValue(1);
 
     await expect(
-      h.service.removeMember('org-1', 'owner-1'),
+      h.service.removeMember('org-1', 'admin-1'),
     ).rejects.toBeInstanceOf(ConflictException);
     expect(h.prisma.organisationMember.delete).not.toHaveBeenCalled();
   });
@@ -267,22 +267,44 @@ describe('OrganisationsService — update/members/invite', () => {
     });
   });
 
-  it('refuses to demote the last owner (409)', async () => {
+  it('refuses to demote the last admin (409)', async () => {
     h.prisma.organisationMember.findUnique.mockResolvedValue({
-      userId: 'owner-1',
+      userId: 'admin-1',
       organisationId: 'org-1',
-      role: OrganisationRole.OWNER,
+      role: OrganisationRole.ADMIN,
     });
     h.prisma.organisationMember.count.mockResolvedValue(1);
 
     await expect(
-      h.service.changeMemberRole('org-1', 'owner-1', {
+      h.service.changeMemberRole('org-1', 'admin-1', {
         role: OrganisationRole.MEMBER,
       }),
     ).rejects.toBeInstanceOf(ConflictException);
   });
 
-  it('promotes a member to OWNER', async () => {
+  it('demotes an admin to MEMBER when another admin remains', async () => {
+    h.prisma.organisationMember.findUnique.mockResolvedValue({
+      userId: 'admin-1',
+      organisationId: 'org-1',
+      role: OrganisationRole.ADMIN,
+      user: { name: 'A', surname: 'One', email: 'a@example.com' },
+    });
+    h.prisma.organisationMember.count.mockResolvedValue(2);
+    h.prisma.organisationMember.update.mockResolvedValue({
+      userId: 'admin-1',
+      role: OrganisationRole.MEMBER,
+      createdAt: new Date('2026-04-04'),
+      user: { name: 'A', surname: 'One', email: 'a@example.com' },
+    });
+
+    const result = await h.service.changeMemberRole('org-1', 'admin-1', {
+      role: OrganisationRole.MEMBER,
+    });
+
+    expect(result.role).toBe(OrganisationRole.MEMBER);
+  });
+
+  it('promotes a member to ADMIN', async () => {
     h.prisma.organisationMember.findUnique.mockResolvedValue({
       userId: 'member-1',
       organisationId: 'org-1',
@@ -292,16 +314,16 @@ describe('OrganisationsService — update/members/invite', () => {
     h.prisma.organisationMember.count.mockResolvedValue(1);
     h.prisma.organisationMember.update.mockResolvedValue({
       userId: 'member-1',
-      role: OrganisationRole.OWNER,
+      role: OrganisationRole.ADMIN,
       createdAt: new Date('2026-04-04'),
       user: { name: 'M', surname: 'One', email: 'm@example.com' },
     });
 
     const result = await h.service.changeMemberRole('org-1', 'member-1', {
-      role: OrganisationRole.OWNER,
+      role: OrganisationRole.ADMIN,
     });
 
-    expect(result.role).toBe(OrganisationRole.OWNER);
+    expect(result.role).toBe(OrganisationRole.ADMIN);
     expect(h.prisma.$transaction).toHaveBeenCalledWith(expect.any(Function), {
       isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
     });
@@ -311,7 +333,7 @@ describe('OrganisationsService — update/members/invite', () => {
     h.prisma.organisationMember.findMany.mockResolvedValue([
       {
         userId: 'u1',
-        role: OrganisationRole.OWNER,
+        role: OrganisationRole.ADMIN,
         createdAt: new Date('2026-01-01'),
         user: { name: 'Ada', surname: 'Lovelace', email: 'ada@example.com' },
       },
@@ -328,7 +350,7 @@ describe('OrganisationsService — update/members/invite', () => {
       name: 'Ada',
       surname: 'Lovelace',
       email: 'ada@example.com',
-      role: OrganisationRole.OWNER,
+      role: OrganisationRole.ADMIN,
       createdAt: new Date('2026-01-01'),
     });
     expect(result.meta.total).toBe(1);

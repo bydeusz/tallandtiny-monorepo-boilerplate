@@ -41,6 +41,16 @@ export interface SeedUser {
 /** Total number of regular users the seed creates (super admins are separate). */
 export const SEED_USER_COUNT = 350;
 
+/**
+ * Admins per organisation; everyone else in it is a plain MEMBER.
+ *
+ * These are `OrganisationRole.ADMIN` — admins *of one organisation*, able to
+ * manage that organisation and nothing outside it. They are unrelated to the
+ * platform-wide `Role.SUPER_ADMIN` accounts the seed creates separately; every
+ * user here keeps the default platform role `USER`.
+ */
+export const ADMINS_PER_ORGANISATION = 4;
+
 /** Shared password for every seeded user, so any account can be logged into. */
 export const SEED_PASSWORD = 'Admin123!';
 
@@ -257,8 +267,13 @@ function toEmailPart(value: string): string {
  *
  * Users are dealt round-robin across the organisations (user `i` goes to
  * organisation `i % organisations.length`), which guarantees no organisation
- * is left empty and keeps the group sizes within one of each other. The first
- * user dealt to an organisation becomes its OWNER, the rest are MEMBERs.
+ * is left empty and keeps the group sizes within one of each other.
+ *
+ * Their organisation role follows from the round they were dealt in: the first
+ * `ADMINS_PER_ORGANISATION` users dealt to an organisation become its ADMINs
+ * and everyone after that is a MEMBER. With fewer users than that the split
+ * degrades gracefully — an organisation gets fewer admins, but the very first
+ * user dealt to it is always one, so no organisation is ever left unmanageable.
  */
 export function buildSeedUsers(
   count: number = SEED_USER_COUNT,
@@ -288,9 +303,11 @@ export function buildSeedUsers(
 
   for (let index = 0; index < count; index += 1) {
     const organisation = organisations[index % organisations.length];
-    // The first pass over the list hands each organisation its single owner.
+    // Which round of the round-robin this user was dealt in: the first few
+    // rounds staff each organisation with its admins.
+    const round = Math.floor(index / organisations.length);
     const organisationRole: OrganisationRole =
-      index < organisations.length ? 'OWNER' : 'MEMBER';
+      round < ADMINS_PER_ORGANISATION ? 'ADMIN' : 'MEMBER';
 
     const named = NAMED_USERS[index];
     const base = named ?? generateUser(index - NAMED_USERS.length);

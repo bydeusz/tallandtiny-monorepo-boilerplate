@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { OrganisationRole } from '@repo/database';
 import { describe, expect, it, vi } from 'vitest';
-import { OrganisationOwnerGuard } from './organisation-owner.guard';
+import { OrganisationAdminGuard } from './organisation-admin.guard';
 
 function createContext(user: unknown, params: Record<string, string>) {
   const request: Record<string, unknown> = { user, params };
@@ -19,18 +19,18 @@ function buildGuard(membership: unknown) {
   const prisma = {
     organisationMember: { findUnique: vi.fn().mockResolvedValue(membership) },
   };
-  return new OrganisationOwnerGuard(prisma as never);
+  return new OrganisationAdminGuard(prisma as never);
 }
 
 const user = { sub: 'user-1', email: 'a@example.com', role: 'USER' };
 
-describe('OrganisationOwnerGuard', () => {
-  it('allows an OWNER and attaches the membership', async () => {
+describe('OrganisationAdminGuard', () => {
+  it('allows an ADMIN and attaches the membership', async () => {
     const membership = {
       id: 'm1',
       userId: 'user-1',
       organisationId: 'org-1',
-      role: OrganisationRole.OWNER,
+      role: OrganisationRole.ADMIN,
     };
     const guard = buildGuard(membership);
     const { ctx, request } = createContext(user, { id: 'org-1' });
@@ -39,7 +39,7 @@ describe('OrganisationOwnerGuard', () => {
     expect(request.organisationMembership).toEqual(membership);
   });
 
-  it('throws 403 for a MEMBER (not an owner)', async () => {
+  it('throws 403 for a MEMBER (not an admin)', async () => {
     const guard = buildGuard({
       id: 'm1',
       userId: 'user-1',

@@ -32,7 +32,7 @@ import {
   UpdateOrganisationDto,
 } from './dto';
 import { OrganisationMemberGuard } from './guards/organisation-member.guard';
-import { OrganisationOwnerGuard } from './guards/organisation-owner.guard';
+import { OrganisationAdminGuard } from './guards/organisation-admin.guard';
 import { OrganisationsService } from './organisations.service';
 
 @Controller('organisations')
@@ -74,7 +74,7 @@ export class OrganisationsController {
 
   @ApiOperation({ operationId: 'OrganisationUpdate' })
   @ApiOkResponse({ type: OrganisationResponseDto })
-  @UseGuards(OrganisationOwnerGuard)
+  @UseGuards(OrganisationAdminGuard)
   @Patch(':id')
   update(
     @Param('id', ParseUUIDPipe) id: string,
@@ -86,7 +86,7 @@ export class OrganisationsController {
 
   @ApiOperation({ operationId: 'OrganisationMemberList' })
   @ApiPaginatedResponse(OrganisationMemberResponseDto)
-  @UseGuards(OrganisationOwnerGuard)
+  @UseGuards(OrganisationAdminGuard)
   @Get(':id/members')
   findMembers(
     @Param('id', ParseUUIDPipe) id: string,
@@ -97,7 +97,7 @@ export class OrganisationsController {
 
   @ApiOperation({ operationId: 'OrganisationMemberAdd' })
   @ApiOkResponse({ type: OrganisationMemberResponseDto })
-  @UseGuards(OrganisationOwnerGuard)
+  @UseGuards(OrganisationAdminGuard)
   @Post(':id/members')
   addMember(
     @Param('id', ParseUUIDPipe) id: string,
@@ -108,7 +108,7 @@ export class OrganisationsController {
 
   @ApiOperation({ operationId: 'OrganisationMemberRemove' })
   @ApiNoContentResponse()
-  @UseGuards(OrganisationOwnerGuard)
+  @UseGuards(OrganisationAdminGuard)
   @Delete(':id/members/:userId')
   @HttpCode(204)
   removeMember(
@@ -120,7 +120,7 @@ export class OrganisationsController {
 
   @ApiOperation({ operationId: 'OrganisationMemberUpdateRole' })
   @ApiOkResponse({ type: OrganisationMemberResponseDto })
-  @UseGuards(OrganisationOwnerGuard)
+  @UseGuards(OrganisationAdminGuard)
   @Patch(':id/members/:userId')
   changeMemberRole(
     @Param('id', ParseUUIDPipe) id: string,

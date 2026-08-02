@@ -18,7 +18,7 @@ enum Role {
 }
 
 enum OrganisationRole {
-  OWNER
+  ADMIN
   MEMBER
 }
 

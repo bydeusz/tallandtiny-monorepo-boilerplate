@@ -9,8 +9,16 @@ import { OrganisationRole } from '@repo/database';
 import { PrismaService } from '../../../prisma/prisma.service';
 import { RequestWithMembership } from './organisation-member.guard';
 
+/**
+ * Restricts a route to admins of the organisation in `:id`.
+ *
+ * Organisations have exactly two roles: ADMIN, who can change anything about
+ * the organisation, and MEMBER, who cannot. A non-member gets 404 rather than
+ * 403 so the guard never confirms that an organisation exists to someone with
+ * no business knowing.
+ */
 @Injectable()
-export class OrganisationOwnerGuard implements CanActivate {
+export class OrganisationAdminGuard implements CanActivate {
   constructor(private readonly prisma: PrismaService) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -32,8 +40,8 @@ export class OrganisationOwnerGuard implements CanActivate {
       throw new NotFoundException('Organisation not found.');
     }
 
-    if (membership.role !== OrganisationRole.OWNER) {
-      throw new ForbiddenException('Only organisation owners can do this.');
+    if (membership.role !== OrganisationRole.ADMIN) {
+      throw new ForbiddenException('Only organisation admins can do this.');
     }
 
     request.organisationMembership = membership;

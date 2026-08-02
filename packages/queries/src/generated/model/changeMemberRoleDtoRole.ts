@@ -11,6 +11,6 @@ export type ChangeMemberRoleDtoRole =
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ChangeMemberRoleDtoRole = {
-  OWNER: 'OWNER',
+  ADMIN: 'ADMIN',
   MEMBER: 'MEMBER',
 } as const;

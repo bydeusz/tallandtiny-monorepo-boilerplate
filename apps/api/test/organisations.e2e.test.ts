@@ -100,7 +100,7 @@ describe("Organisations (e2e)", () => {
     }
   });
 
-  it("creates an organisation and makes the creator an OWNER", async () => {
+  it("creates an organisation and makes the creator an ADMIN", async () => {
     const token = await login("john.doe@example.com");
     const res = await fetch(`${BASE}/organisations`, {
       method: "POST",
@@ -111,18 +111,18 @@ describe("Organisations (e2e)", () => {
     const body = (await res.json()) as {
       data: { id: string; role: string; memberCount: number };
     };
-    expect(body.data.role).toBe("OWNER");
+    expect(body.data.role).toBe("ADMIN");
     expect(body.data.memberCount).toBe(1);
   });
 
-  it("enforces owner-only updates and tenant isolation", async () => {
-    const ownerToken = await login("john.doe@example.com");
+  it("enforces admin-only updates and tenant isolation", async () => {
+    const adminToken = await login("john.doe@example.com");
     const memberToken = await login("lisa.visser@example.com");
 
-    // owner creates an org
+    // admin creates an org
     const createRes = await fetch(`${BASE}/organisations`, {
       method: "POST",
-      headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+      headers: authHeaders(adminToken, { "Content-Type": "application/json" }),
       body: JSON.stringify({ name: "Isolation Co" }),
     });
     const orgId = ((await createRes.json()) as { data: { id: string } }).data.id;
@@ -133,10 +133,10 @@ describe("Organisations (e2e)", () => {
     });
     expect(outsiderGet.status).toBe(404);
 
-    // owner adds lisa as a member
+    // admin adds lisa as a member
     const addRes = await fetch(`${BASE}/organisations/${orgId}/members`, {
       method: "POST",
-      headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+      headers: authHeaders(adminToken, { "Content-Type": "application/json" }),
       body: JSON.stringify({ email: "lisa.visser@example.com" }),
     });
     expect(addRes.status).toBe(201);
@@ -158,17 +158,17 @@ describe("Organisations (e2e)", () => {
     // duplicate add → 409
     const dupAdd = await fetch(`${BASE}/organisations/${orgId}/members`, {
       method: "POST",
-      headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+      headers: authHeaders(adminToken, { "Content-Type": "application/json" }),
       body: JSON.stringify({ email: "lisa.visser@example.com" }),
     });
     expect(dupAdd.status).toBe(409);
   });
 
   it("invites a brand-new account and blocks its login until reset", async () => {
-    const ownerToken = await login("john.doe@example.com");
+    const adminToken = await login("john.doe@example.com");
     const createRes = await fetch(`${BASE}/organisations`, {
       method: "POST",
-      headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+      headers: authHeaders(adminToken, { "Content-Type": "application/json" }),
       body: JSON.stringify({ name: "Invite Co" }),
     });
     const orgId = ((await createRes.json()) as { data: { id: string } }).data.id;
@@ -176,7 +176,7 @@ describe("Organisations (e2e)", () => {
     const invitee = `invitee-${Date.now()}@example.com`;
     const addRes = await fetch(`${BASE}/organisations/${orgId}/members`, {
       method: "POST",
-      headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+      headers: authHeaders(adminToken, { "Content-Type": "application/json" }),
       body: JSON.stringify({ email: invitee, name: "New", surname: "Invitee" }),
     });
     expect(addRes.status).toBe(201);
@@ -193,7 +193,7 @@ describe("Organisations (e2e)", () => {
     // real persisted account this would be another 201.
     const reAdd = await fetch(`${BASE}/organisations/${orgId}/members`, {
       method: "POST",
-      headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+      headers: authHeaders(adminToken, { "Content-Type": "application/json" }),
       body: JSON.stringify({ email: invitee }),
     });
     expect(reAdd.status).toBe(409);
@@ -209,11 +209,11 @@ describe("Organisations (e2e)", () => {
     expect(loginRes.status).toBe(401);
   });
 
-  it("protects the last owner and allows promotion", async () => {
-    const ownerToken = await login("john.doe@example.com");
+  it("protects the last admin and allows promotion", async () => {
+    const adminToken = await login("john.doe@example.com");
     const createRes = await fetch(`${BASE}/organisations`, {
       method: "POST",
-      headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+      headers: authHeaders(adminToken, { "Content-Type": "application/json" }),
       body: JSON.stringify({ name: "Succession Co" }),
     });
     const org = (await createRes.json()) as { data: { id: string } };
@@ -221,21 +221,21 @@ describe("Organisations (e2e)", () => {
 
     // find john's own userId via /auth/me
     const meRes = await fetch(`${BASE}/auth/me`, {
-      headers: authHeaders(ownerToken),
+      headers: authHeaders(adminToken),
     });
     const johnId = ((await meRes.json()) as { data: { id: string } }).data.id;
 
-    // last owner cannot be removed → 409
+    // last admin cannot be removed → 409
     const selfRemove = await fetch(
       `${BASE}/organisations/${orgId}/members/${johnId}`,
-      { method: "DELETE", headers: authHeaders(ownerToken) },
+      { method: "DELETE", headers: authHeaders(adminToken) },
     );
     expect(selfRemove.status).toBe(409);
 
-    // add lisa and promote her to OWNER
+    // add lisa and promote her to ADMIN
     const addLisa = await fetch(`${BASE}/organisations/${orgId}/members`, {
       method: "POST",
-      headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
+      headers: authHeaders(adminToken, { "Content-Type": "application/json" }),
       body: JSON.stringify({ email: "lisa.visser@example.com" }),
     });
     expect(addLisa.status).toBe(201);
@@ -249,15 +249,15 @@ describe("Organisations (e2e)", () => {
       `${BASE}/organisations/${orgId}/members/${lisaId}`,
       {
         method: "PATCH",
-        headers: authHeaders(ownerToken, { "Content-Type": "application/json" }),
-        body: JSON.stringify({ role: "OWNER" }),
+        headers: authHeaders(adminToken, { "Content-Type": "application/json" }),
+        body: JSON.stringify({ role: "ADMIN" }),
       },
     );
     expect(promote.status).toBe(200);
     const promoted = (await promote.json()) as { data: { role: string } };
-    expect(promoted.data.role).toBe("OWNER");
+    expect(promoted.data.role).toBe("ADMIN");
 
-    // now john can be removed (lisa is a second owner) → 204
+    // now john can be removed (lisa is a second admin) → 204
     const removeJohn = await fetch(
       `${BASE}/organisations/${orgId}/members/${johnId}`,
       { method: "DELETE", headers: authHeaders(lisaToken) },
