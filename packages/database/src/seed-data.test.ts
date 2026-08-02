@@ -119,8 +119,6 @@ describe('buildSeedUsers', () => {
   });
 
   it('degrades gracefully when there are too few users to fill the admin slots', () => {
-    // One user per organisation: too few for the full admin quota, but each
-    // organisation must still end up with an admin who can manage it.
     const small = buildSeedUsers(SEED_ORGANISATIONS.length);
 
     for (const org of SEED_ORGANISATIONS) {

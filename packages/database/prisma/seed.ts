@@ -8,11 +8,6 @@ import { seedOrganisations } from './seeders/organisation.seeder.js';
 import { resetDatabase } from './seeders/reset.seeder.js';
 import { seedUsers } from './seeders/user.seeder.js';
 
-// Dev-only super admins so a fresh `pnpm db:seed` always leaves some available
-// — two of them, so flows that need a second super admin (one admin acting on
-// another) can be exercised locally. Production/staging bootstrap their super
-// admin via `pnpm create:superadmin` instead (operator-chosen credentials, no
-// repo credentials there).
 const DEV_SUPER_ADMINS = [
   {
     email: 'superadmin@example.com',
@@ -38,10 +33,6 @@ const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
-  // `db:seed` is a destructive dev/CI tool: it truncates every table and
-  // provisions dev super admins with well-known passwords. Never let it run
-  // against a production database — bootstrap prod admins with
-  // `pnpm create:superadmin` instead.
   if (process.env.NODE_ENV === 'production') {
     throw new Error(
       'Refusing to run db:seed with NODE_ENV=production. This command is for ' +
@@ -52,7 +43,6 @@ async function main() {
   console.log('Clearing database...');
   await resetDatabase(prisma);
 
-  // Organisations first: every seeded user is attached to one of them.
   console.log(`Seeding ${SEED_ORGANISATIONS.length} organisations...`);
   await seedOrganisations(prisma);
 

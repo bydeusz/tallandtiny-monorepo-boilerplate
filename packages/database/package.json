@@ -20,7 +20,7 @@
     "db:studio": "prisma studio",
     "dev": "prisma studio --browser none --port 5555",
     "build": "tsc",
-    "check-types": "tsc --noEmit",
+    "check-types": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json",
     "test": "vitest run"
   },
   "dependencies": {

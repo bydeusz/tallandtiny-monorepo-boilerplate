@@ -16,7 +16,9 @@ function buildPrismaMock() {
       ...args.create,
     })),
   };
-  const organisationMember = { upsert: vi.fn(() => ({})) };
+  const organisationMember = {
+    upsert: vi.fn((_args: UpsertArgs) => ({})),
+  };
   return { user, organisationMember };
 }
 
@@ -42,15 +44,10 @@ describe('seedUsers', () => {
     const userArgs = prisma.user.upsert.mock.calls[0][0];
     expect(Object.keys(userArgs.where)).toEqual(['email']);
 
-    const memberArgs = prisma.organisationMember.upsert.mock
-      .calls[0][0] as unknown as UpsertArgs;
+    const memberArgs = prisma.organisationMember.upsert.mock.calls[0][0];
     expect(memberArgs.where).toHaveProperty('userId_organisationId');
   });
 
-  // A user invited through the API carries mustChangePassword = true, which
-  // makes login fail with PasswordResetRequired. Re-seeding hands out a fresh
-  // known password, so it has to clear that flag too — otherwise the account
-  // still cannot log in and the "refresh" is only half done.
   it('clears the invite flags so a re-seeded account can log in again', async () => {
     await seedUsers(prisma as never);
 

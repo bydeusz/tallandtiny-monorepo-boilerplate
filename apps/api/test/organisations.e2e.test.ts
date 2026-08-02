@@ -26,12 +26,6 @@ async function waitForServer(url: string, timeoutMs: number): Promise<void> {
   throw new Error(`Server not ready at ${url} within ${timeoutMs}ms`);
 }
 
-// The login endpoint is throttled (5 req/min per IP — see auth.controller.ts)
-// to block brute-force attempts. This suite logs in as the same two seeded
-// users repeatedly across cases, so tokens are cached per-email and reused
-// instead of hitting /auth/login fresh every time (identical semantics: the
-// JWT is user-scoped, not per-request, and lives for 1h — see
-// config/configuration.ts `jwt.expiration`).
 const tokenCache = new Map<string, string>();
 
 async function login(email: string): Promise<string> {
@@ -80,9 +74,6 @@ describe("Organisations (e2e)", () => {
   }, SERVER_STARTUP_TIMEOUT_MS + 5_000);
 
   afterAll(async () => {
-    // exitCode === null means the process is still running; if it already
-    // crashed on its own the `once("exit")` listener below would never fire
-    // (the event has already passed), so skip the wait entirely in that case.
     if (serverProcess && serverProcess.exitCode === null && !serverProcess.killed) {
       serverProcess.kill("SIGTERM");
       await new Promise<void>((r) => {
@@ -119,7 +110,6 @@ describe("Organisations (e2e)", () => {
     const adminToken = await login("john.doe@example.com");
     const memberToken = await login("lisa.visser@example.com");
 
-    // admin creates an org
     const createRes = await fetch(`${BASE}/organisations`, {
       method: "POST",
       headers: authHeaders(adminToken, { "Content-Type": "application/json" }),
@@ -127,13 +117,11 @@ describe("Organisations (e2e)", () => {
     });
     const orgId = ((await createRes.json()) as { data: { id: string } }).data.id;
 
-    // a non-member (lisa) cannot read it → 404
     const outsiderGet = await fetch(`${BASE}/organisations/${orgId}`, {
       headers: authHeaders(memberToken),
     });
     expect(outsiderGet.status).toBe(404);
 
-    // admin adds lisa as a member
     const addRes = await fetch(`${BASE}/organisations/${orgId}/members`, {
       method: "POST",
       headers: authHeaders(adminToken, { "Content-Type": "application/json" }),
@@ -141,13 +129,11 @@ describe("Organisations (e2e)", () => {
     });
     expect(addRes.status).toBe(201);
 
-    // member can now read it
     const memberGet = await fetch(`${BASE}/organisations/${orgId}`, {
       headers: authHeaders(memberToken),
     });
     expect(memberGet.status).toBe(200);
 
-    // but a member cannot update → 403
     const memberPatch = await fetch(`${BASE}/organisations/${orgId}`, {
       method: "PATCH",
       headers: authHeaders(memberToken, { "Content-Type": "application/json" }),
@@ -155,7 +141,6 @@ describe("Organisations (e2e)", () => {
     });
     expect(memberPatch.status).toBe(403);
 
-    // duplicate add → 409
     const dupAdd = await fetch(`${BASE}/organisations/${orgId}/members`, {
       method: "POST",
       headers: authHeaders(adminToken, { "Content-Type": "application/json" }),
@@ -180,17 +165,12 @@ describe("Organisations (e2e)", () => {
       body: JSON.stringify({ email: invitee, name: "New", surname: "Invitee" }),
     });
     expect(addRes.status).toBe(201);
-    // the invite created a real MEMBER record for the new email — proving the
-    // account-creation path ran, not a silent no-op.
     const added = (await addRes.json()) as {
       data: { email: string; role: string };
     };
     expect(added.data.email).toBe(invitee);
     expect(added.data.role).toBe("MEMBER");
 
-    // re-inviting the same email proves the account + membership were persisted:
-    // the second add now hits the unique-membership constraint → 409. Without a
-    // real persisted account this would be another 201.
     const reAdd = await fetch(`${BASE}/organisations/${orgId}/members`, {
       method: "POST",
       headers: authHeaders(adminToken, { "Content-Type": "application/json" }),
@@ -198,9 +178,6 @@ describe("Organisations (e2e)", () => {
     });
     expect(reAdd.status).toBe(409);
 
-    // the new account exists but must change its password → a direct login
-    // attempt is rejected (the temp password is never returned to the client,
-    // so a guessed password exercises the credential-rejection path).
     const loginRes = await fetch(`${BASE}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -219,20 +196,17 @@ describe("Organisations (e2e)", () => {
     const org = (await createRes.json()) as { data: { id: string } };
     const orgId = org.data.id;
 
-    // find john's own userId via /auth/me
     const meRes = await fetch(`${BASE}/auth/me`, {
       headers: authHeaders(adminToken),
     });
     const johnId = ((await meRes.json()) as { data: { id: string } }).data.id;
 
-    // last admin cannot be removed → 409
     const selfRemove = await fetch(
       `${BASE}/organisations/${orgId}/members/${johnId}`,
       { method: "DELETE", headers: authHeaders(adminToken) },
     );
     expect(selfRemove.status).toBe(409);
 
-    // add lisa and promote her to ADMIN
     const addLisa = await fetch(`${BASE}/organisations/${orgId}/members`, {
       method: "POST",
       headers: authHeaders(adminToken, { "Content-Type": "application/json" }),
@@ -257,7 +231,6 @@ describe("Organisations (e2e)", () => {
     const promoted = (await promote.json()) as { data: { role: string } };
     expect(promoted.data.role).toBe("ADMIN");
 
-    // now john can be removed (lisa is a second admin) → 204
     const removeJohn = await fetch(
       `${BASE}/organisations/${orgId}/members/${johnId}`,
       { method: "DELETE", headers: authHeaders(lisaToken) },

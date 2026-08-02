@@ -1,18 +1,5 @@
 import type { OrganisationRole } from './generated/prisma/client.js';
 
-/**
- * Dev seed fixtures: 10 organisations and 350 users spread across them.
- *
- * Everything here is pure data generation — no Prisma, no hashing — so the
- * shape of the seed (counts, distribution, uniqueness) is unit-testable
- * without a database. The `*.seeder.ts` files under `prisma/seeders/` do the
- * writing.
- *
- * The generated set is deterministic: the same input always yields the same
- * users, so a re-seed reproduces the exact same dev database and bookmarked
- * ids keep working.
- */
-
 export interface SeedOrganisation {
   id: string;
   name: string;
@@ -38,27 +25,12 @@ export interface SeedUser {
   organisationRole: OrganisationRole;
 }
 
-/** Total number of regular users the seed creates (super admins are separate). */
 export const SEED_USER_COUNT = 350;
 
-/**
- * Admins per organisation; everyone else in it is a plain MEMBER.
- *
- * These are `OrganisationRole.ADMIN` — admins *of one organisation*, able to
- * manage that organisation and nothing outside it. They are unrelated to the
- * platform-wide `Role.SUPER_ADMIN` accounts the seed creates separately; every
- * user here keeps the default platform role `USER`.
- */
 export const ADMINS_PER_ORGANISATION = 4;
 
-/** Shared password for every seeded user, so any account can be logged into. */
 export const SEED_PASSWORD = 'Admin123!';
 
-/**
- * Fixed ids rather than `@default(uuid())`: the seeder can then upsert by id,
- * which makes re-seeding idempotent (Organisation has no unique business key)
- * and keeps organisation ids stable across resets.
- */
 export const SEED_ORGANISATIONS: SeedOrganisation[] = [
   {
     id: '00000000-0000-4000-8000-000000000001',
@@ -162,11 +134,6 @@ export const SEED_ORGANISATIONS: SeedOrganisation[] = [
   },
 ];
 
-/**
- * The two long-standing demo logins. They stay first in the list and keep
- * their exact emails and addresses because the api e2e suite logs in as both
- * (see `apps/api/test/organisations.e2e.test.ts`).
- */
 const NAMED_USERS: Array<Omit<SeedUser, 'organisationId' | 'organisationRole'>> =
   [
     {
@@ -219,8 +186,6 @@ const FIRST_NAMES = [
   'Koen',
 ];
 
-// Deliberately excludes "Doe" and "Visser" so a generated user can never
-// collide with one of the NAMED_USERS emails above.
 const LAST_NAMES = [
   'Jansen',
   'De Vries',
@@ -257,24 +222,10 @@ const LOCATIONS = [
   { street: 'Wilhelminastraat', postalCode: '7511 CZ', city: 'Enschede' },
 ];
 
-/** "Van den Berg" -> "vandenberg", so emails stay valid local parts. */
 function toEmailPart(value: string): string {
   return value.toLowerCase().replace(/[^a-z]/g, '');
 }
 
-/**
- * Build the seed users, each already assigned to an organisation.
- *
- * Users are dealt round-robin across the organisations (user `i` goes to
- * organisation `i % organisations.length`), which guarantees no organisation
- * is left empty and keeps the group sizes within one of each other.
- *
- * Their organisation role follows from the round they were dealt in: the first
- * `ADMINS_PER_ORGANISATION` users dealt to an organisation become its ADMINs
- * and everyone after that is a MEMBER. With fewer users than that the split
- * degrades gracefully — an organisation gets fewer admins, but the very first
- * user dealt to it is always one, so no organisation is ever left unmanageable.
- */
 export function buildSeedUsers(
   count: number = SEED_USER_COUNT,
   organisations: SeedOrganisation[] = SEED_ORGANISATIONS,
@@ -303,8 +254,6 @@ export function buildSeedUsers(
 
   for (let index = 0; index < count; index += 1) {
     const organisation = organisations[index % organisations.length];
-    // Which round of the round-robin this user was dealt in: the first few
-    // rounds staff each organisation with its admins.
     const round = Math.floor(index / organisations.length);
     const organisationRole: OrganisationRole =
       round < ADMINS_PER_ORGANISATION ? 'ADMIN' : 'MEMBER';
@@ -322,19 +271,12 @@ export function buildSeedUsers(
   return users;
 }
 
-/**
- * `offset` indexes the generated users (0-based). First and last names are
- * picked so that every (first, last) pair is used at most once — that is what
- * keeps the derived emails unique without tacking a counter onto them.
- */
 function generateUser(
   offset: number,
 ): Omit<SeedUser, 'organisationId' | 'organisationRole'> {
   const name = FIRST_NAMES[offset % FIRST_NAMES.length];
   const surname = LAST_NAMES[Math.floor(offset / FIRST_NAMES.length)];
   const location = LOCATIONS[offset % LOCATIONS.length];
-  // A business identity for a quarter of the users, mirroring reality where
-  // only some accounts are registered companies.
   const isBusiness = offset % 4 === 0;
   const kvk = String(20000000 + offset);
 

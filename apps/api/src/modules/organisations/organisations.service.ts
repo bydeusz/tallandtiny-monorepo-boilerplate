@@ -305,12 +305,8 @@ export class OrganisationsService {
     const updated = await this.prisma.$transaction(
       async (tx) => {
         if (dto.role === OrganisationRole.ADMIN) {
-          // promotion: still ensure the member exists
           await this.getMemberOrThrow(tx, organisationId, targetUserId);
         } else {
-          // Demotion to MEMBER: refuse if it would strip the organisation of
-          // its last admin. For a target that is not an admin, this is just an
-          // existence check.
           await this.assertNotLastAdmin(tx, organisationId, targetUserId);
         }
 
