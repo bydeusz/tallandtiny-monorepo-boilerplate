@@ -13,14 +13,14 @@ async function makeUser(tag: string) {
 }
 
 describe("Organisation persistence (integration)", () => {
-  it("creates an organisation with an OWNER membership", async () => {
+  it("creates an organisation with an ADMIN membership", async () => {
     const user = await makeUser("owner");
     const org = await prisma.organisation.create({ data: { name: "Acme" } });
     const member = await prisma.organisationMember.create({
-      data: { userId: user.id, organisationId: org.id, role: "OWNER" },
+      data: { userId: user.id, organisationId: org.id, role: "ADMIN" },
     });
 
-    expect(member.role).toBe("OWNER");
+    expect(member.role).toBe("ADMIN");
   });
 
   it("rejects a duplicate (userId, organisationId) membership", async () => {
@@ -41,7 +41,7 @@ describe("Organisation persistence (integration)", () => {
     const user = await makeUser("cascade");
     const org = await prisma.organisation.create({ data: { name: "Gone Ltd" } });
     await prisma.organisationMember.create({
-      data: { userId: user.id, organisationId: org.id, role: "OWNER" },
+      data: { userId: user.id, organisationId: org.id, role: "ADMIN" },
     });
 
     await prisma.organisation.delete({ where: { id: org.id } });

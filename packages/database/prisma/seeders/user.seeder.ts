@@ -1,71 +1,48 @@
 import bcrypt from 'bcrypt';
-import { PrismaClient } from '../../src/generated/prisma/client.js';
+import type { PrismaClient } from '../../src/generated/prisma/client.js';
+import { SEED_PASSWORD, buildSeedUsers } from '../../src/seed-data.js';
 
-interface SeedUser {
-  name: string;
-  surname: string;
-  email: string;
-  address?: string;
-  postalCode?: string;
-  city?: string;
-  country?: string;
-  kvk?: string;
-  vatNumber?: string;
-}
+const SALT_ROUNDS = 10;
 
 export async function seedUsers(prisma: PrismaClient): Promise<void> {
-  const passwordHash = await bcrypt.hash('Admin123!', 10);
-
-  const users: SeedUser[] = [
-    {
-      name: 'John',
-      surname: 'Doe',
-      email: 'john.doe@example.com',
-      address: 'Damrak 70',
-      postalCode: '1012 LM',
-      city: 'Amsterdam',
-      country: 'NL',
-    },
-    {
-      name: 'Lisa',
-      surname: 'Visser',
-      email: 'lisa.visser@example.com',
-      address: 'Coolsingel 100',
-      postalCode: '3011 AG',
-      city: 'Rotterdam',
-      country: 'NL',
-      kvk: '87654321',
-      vatNumber: 'NL987654321B01',
-    },
-  ];
+  const passwordHash = await bcrypt.hash(SEED_PASSWORD, SALT_ROUNDS);
+  const users = buildSeedUsers();
 
   for (const user of users) {
-    await prisma.user.upsert({
-      where: { email: user.email },
+    const { organisationId, organisationRole, ...profile } = user;
+
+    const record = await prisma.user.upsert({
+      where: { email: profile.email },
       update: {
-        name: user.name,
-        surname: user.surname,
+        name: profile.name,
+        surname: profile.surname,
         password: passwordHash,
         isActive: true,
-        address: user.address ?? null,
-        postalCode: user.postalCode ?? null,
-        city: user.city ?? null,
-        country: user.country ?? null,
-        kvk: user.kvk ?? null,
-        vatNumber: user.vatNumber ?? null,
+        mustChangePassword: false,
+        temporaryPasswordExpiresAt: null,
+        address: profile.address,
+        postalCode: profile.postalCode,
+        city: profile.city,
+        country: profile.country,
+        kvk: profile.kvk ?? null,
+        vatNumber: profile.vatNumber ?? null,
       },
       create: {
-        name: user.name,
-        surname: user.surname,
-        email: user.email,
+        ...profile,
         password: passwordHash,
         isActive: true,
-        address: user.address,
-        postalCode: user.postalCode,
-        city: user.city,
-        country: user.country,
-        kvk: user.kvk,
-        vatNumber: user.vatNumber,
+      },
+    });
+
+    await prisma.organisationMember.upsert({
+      where: {
+        userId_organisationId: { userId: record.id, organisationId },
+      },
+      update: { role: organisationRole },
+      create: {
+        userId: record.id,
+        organisationId,
+        role: organisationRole,
       },
     });
   }

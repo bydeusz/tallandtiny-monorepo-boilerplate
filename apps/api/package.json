@@ -10,7 +10,7 @@
     "start:worker": "node dist/main-worker.js",
     "secrets": "node scripts/generate-jwt-secrets.mjs",
     "lint": "eslint \"src/**/*.ts\"",
-    "check-types": "tsc --noEmit",
+    "check-types": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json",
     "test": "vitest run",
     "test:integration": "vitest run --config vitest.integration.config.ts",
     "test:e2e": "vitest run --config vitest.e2e.config.ts",

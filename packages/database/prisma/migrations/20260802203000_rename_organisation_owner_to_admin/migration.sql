@@ -1,0 +1,1 @@
+ALTER TYPE "OrganisationRole" RENAME VALUE 'OWNER' TO 'ADMIN';

@@ -25,7 +25,7 @@ describe('AddMemberDto', () => {
 
   it('rejects an unknown field such as role', async () => {
     await expect(
-      pipe.transform({ email: 'a@example.com', role: 'OWNER' }, meta),
+      pipe.transform({ email: 'a@example.com', role: 'MEMBER' }, meta),
     ).rejects.toBeInstanceOf(BadRequestException);
   });
 });

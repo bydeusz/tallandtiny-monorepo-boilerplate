@@ -65,7 +65,7 @@ export class OrganisationsService {
         data: {
           userId,
           organisationId: created.id,
-          role: OrganisationRole.OWNER,
+          role: OrganisationRole.ADMIN,
         },
       });
       return created;
@@ -73,7 +73,7 @@ export class OrganisationsService {
 
     return this.toOrganisationResponseDto(
       organisation,
-      OrganisationRole.OWNER,
+      OrganisationRole.ADMIN,
       1,
     );
   }
@@ -286,7 +286,7 @@ export class OrganisationsService {
   ): Promise<void> {
     await this.prisma.$transaction(
       async (tx) => {
-        await this.assertNotLastOwner(tx, organisationId, targetUserId);
+        await this.assertNotLastAdmin(tx, organisationId, targetUserId);
         await tx.organisationMember.delete({
           where: {
             userId_organisationId: { userId: targetUserId, organisationId },
@@ -304,11 +304,10 @@ export class OrganisationsService {
   ): Promise<OrganisationMemberResponseDto> {
     const updated = await this.prisma.$transaction(
       async (tx) => {
-        if (dto.role === OrganisationRole.MEMBER) {
-          await this.assertNotLastOwner(tx, organisationId, targetUserId);
-        } else {
-          // promotion: still ensure the member exists
+        if (dto.role === OrganisationRole.ADMIN) {
           await this.getMemberOrThrow(tx, organisationId, targetUserId);
+        } else {
+          await this.assertNotLastAdmin(tx, organisationId, targetUserId);
         }
 
         return tx.organisationMember.update({
@@ -353,7 +352,7 @@ export class OrganisationsService {
     return member;
   }
 
-  private async assertNotLastOwner(
+  private async assertNotLastAdmin(
     client: Prisma.TransactionClient,
     organisationId: string,
     targetUserId: string,
@@ -364,17 +363,17 @@ export class OrganisationsService {
       targetUserId,
     );
 
-    if (target.role !== OrganisationRole.OWNER) {
+    if (target.role !== OrganisationRole.ADMIN) {
       return;
     }
 
-    const ownerCount = await client.organisationMember.count({
-      where: { organisationId, role: OrganisationRole.OWNER },
+    const adminCount = await client.organisationMember.count({
+      where: { organisationId, role: OrganisationRole.ADMIN },
     });
 
-    if (ownerCount <= 1) {
+    if (adminCount <= 1) {
       throw new ConflictException(
-        'Cannot remove or demote the last owner of an organisation.',
+        'Cannot remove or demote the last admin of an organisation.',
       );
     }
   }

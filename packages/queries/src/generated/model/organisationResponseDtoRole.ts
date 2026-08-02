@@ -11,6 +11,6 @@ export type OrganisationResponseDtoRole =
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const OrganisationResponseDtoRole = {
-  OWNER: 'OWNER',
+  ADMIN: 'ADMIN',
   MEMBER: 'MEMBER',
 } as const;

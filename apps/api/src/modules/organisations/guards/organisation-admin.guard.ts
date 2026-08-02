@@ -10,7 +10,7 @@ import { PrismaService } from '../../../prisma/prisma.service';
 import { RequestWithMembership } from './organisation-member.guard';
 
 @Injectable()
-export class OrganisationOwnerGuard implements CanActivate {
+export class OrganisationAdminGuard implements CanActivate {
   constructor(private readonly prisma: PrismaService) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -32,8 +32,8 @@ export class OrganisationOwnerGuard implements CanActivate {
       throw new NotFoundException('Organisation not found.');
     }
 
-    if (membership.role !== OrganisationRole.OWNER) {
-      throw new ForbiddenException('Only organisation owners can do this.');
+    if (membership.role !== OrganisationRole.ADMIN) {
+      throw new ForbiddenException('Only organisation admins can do this.');
     }
 
     request.organisationMembership = membership;
